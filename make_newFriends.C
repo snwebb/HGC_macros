@@ -27,7 +27,7 @@ void make_newFriends(TString dir, int nfiles){
 	else if(TString(tree->GetListOfFriends()->At(j)->GetName())=="jets"){      
 	  tree->GetListOfFriends()->Remove(tree->GetListOfFriends()->At(j));
 	  tree->AddFriend("jets",filename_3); 
-	}
+	  }
       }
       gDirectory->Delete("HGCalTriggerNtupleJet;*");
       tree->SetName("HGCalTriggerNtupleJet");
@@ -44,8 +44,8 @@ void make_newFriends(TString dir, int nfiles){
 
 void test(){
 
-  TString dir = "/vols/cms/tstreble/HGC_ntuples/VBF_Hinv_PU0_dRC3D_polarHisto/";
-  make_newFriends(dir,50);
+  TString dir = "/vols/cms/tstreble/HGC_ntuples/SingleNu_PU200_dRC3D_polarHisto_thresh_20MIPT_TC/";
+  make_newFriends(dir,49);
 
 }
 

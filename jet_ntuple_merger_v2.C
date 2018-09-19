@@ -242,7 +242,7 @@ void add_jet(TString filein,  TString treename, TString filein_jet, TString tree
 
   TTree* tree_new = new TTree("HGCalTriggerNtupleJet","HGCalTriggerNtupleJet");
   tree_new->AddFriend(treename,filein);
-  TString filejet_friend = "/vols/cms/tstreble/HGC_ntuples/" + filein_jet(27,filein_jet.Length());
+  TString filejet_friend = "/vols/cms/tstreble/HGC_ntuples/" + filein_jet(31,filein_jet.Length());
   tree_new->AddFriend(treename_jet,filejet_friend);
 
   

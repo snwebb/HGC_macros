@@ -435,7 +435,7 @@ void display2D_c3d(TString file, int n_event=0,
   }
 
   h->GetXaxis()->SetTitle("#eta(C3D)");
-  h->GetXaxis()->SetTitleOffset(1.5);
+  h->GetXaxis()->SetTitleOffset(1.2);
   h->GetYaxis()->SetTitle("#phi(C3D)");
   h->GetZaxis()->SetTitle("p_{T}(C3D) [GeV]");
   h->SetTitle("");

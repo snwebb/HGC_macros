@@ -9,10 +9,10 @@ print 'START'
 print 
 ########   YOU ONLY NEED TO FILL THE AREA BELOW   #########
 ########   customization  area #########
-NumberOfJobs= 100
+NumberOfJobs= 50
 # number of jobs to be submitted
 interval = 1 # number files to be processed in a single job, take care to split your file so that you run on all files. The last job might be with smaller number of files (the ones that remain).
-dir = "/vols/cms/tstreble/HGC_ntuples/SingleNu_PU200_dRC3D_polarHisto/"
+dir = "/vols/cms/tstreble/HGC_ntuples/SingleNu_PU200_dRC3D_polarHisto_thresh_20MIPT_TC/"
 OutputFileNames = dir + "jet_ntuples_merged/ntuple_jet_merged" # base of the output file name, they will be saved in res directory
 ScriptName = "scripts/runJets.py" # script to be used with cmsRun
 #FileList = "filelist.txt" # list with all the file directories
@@ -46,7 +46,7 @@ for x in range(1, int(NumberOfJobs)+1):
       fout.write("cd /home/hep/tstreble/HGC_macros\n")
       fout.write("root -b -l <<EOF\n")
       fout.write(".L jet_ntuple_merger_v2.C+\n")
-      fout.write("add_jet(\"root://cms-xrd-global.cern.ch//store/user/tstreble/SingleNeutrino/SingleNu_PU200_C3D_polarHisto_18_08_13/180813_163907/0000/ntuple_"+str(x)+".root\",\"hgcalTriggerNtuplizer/HGCalTriggerNtuple\",\""+dir+"jet_ntuples/ntuple_jet_"+str(x)+".root\",\"jets\",\""+OutputFileNames+"_"+str(x)+".root\");\n")      
+      fout.write("add_jet(\"root://cms-xrd-global.cern.ch//store/user/tstreble/SingleNeutrino/SingleNu_PU200_C3D_polarHisto_thresh_20MIPT_TC_18_09_05/180905_163131/0000/ntuple_"+str(x)+".root\",\"hgcalTriggerNtuplizer/HGCalTriggerNtuple\",\""+dir+"jet_ntuples/ntuple_jet_"+str(x)+".root\",\"jets\",\""+OutputFileNames+"_"+str(x)+".root\");\n")      
       fout.write(".q\n")
       fout.write("EOF\n")
       fout.write("echo 'STOP---------------'\n")

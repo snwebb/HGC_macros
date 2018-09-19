@@ -4,6 +4,9 @@
 #include <TStyle.h>
 #include <TCanvas.h>
 #include <iostream>
+#include <TLine.h>
+#include <TMath.h>
+
 
 using namespace std;
 
@@ -18,7 +21,8 @@ void display3D_tc(TString file,
 
   TH3F* h=new TH3F("h","h",50,eta_min,eta_max,50,phi_min,phi_max,layer_max-layer_min,layer_min,layer_max);
 
-  TChain * tree = new TChain("hgcalTriggerNtuplizer/HGCalTriggerNtuple");
+  //TChain * tree = new TChain("hgcalTriggerNtuplizer/HGCalTriggerNtuple");
+  TChain * tree = new TChain("HGCalTriggerNtupleJet");
   tree->Add(file);
   
   vector<float> *_tc_eta;
@@ -164,7 +168,8 @@ void display3D_cl(TString file,
 
   TH3F* h=new TH3F("h","h",50,eta_min,eta_max,50,phi_min,phi_max,layer_max-layer_min,layer_min,layer_max);
 
-  TChain * tree = new TChain("hgcalTriggerNtuplizer/HGCalTriggerNtuple");
+  //TChain * tree = new TChain("hgcalTriggerNtuplizer/HGCalTriggerNtuple");
+  TChain * tree = new TChain("HGCalTriggerNtupleJet");
   tree->Add(file);
   
   vector<float> *_cl_eta;
@@ -263,13 +268,14 @@ void display3D_cl(TString file,
 
 
 void display2D_c3d(TString file, int n_event=0, 
-		  const vector<int>& c3d= vector<int>(),
-		  float eta_min=-3, float eta_max=3, 
-		  float phi_min=-3.2, float phi_max=3.2){
+		   const vector<int>& c3d= vector<int>(),
+		   const vector<int>& jets= vector<int>(),
+		   float eta_min=-3, float eta_max=3, 
+		   float phi_min=-3.2, float phi_max=3.2){
 
   TH2F* h=new TH2F("h","h",50,eta_min,eta_max,50,phi_min,phi_max);
 
-  TChain * tree = new TChain("hgcalTriggerNtuplizer/HGCalTriggerNtuple");
+  TChain * tree = new TChain("HGCalTriggerNtupleJet");
   tree->Add(file);
   
   vector<float> *_cl3d_eta;
@@ -277,17 +283,21 @@ void display2D_c3d(TString file, int n_event=0,
   vector<float> *_cl3d_energy;
   vector<float> *_cl3d_pt;
 
+  vector<vector<int> > *_jets_cl3d;
 
   tree->SetBranchAddress("cl3d_eta",    &_cl3d_eta);
   tree->SetBranchAddress("cl3d_phi",    &_cl3d_phi);
   tree->SetBranchAddress("cl3d_energy", &_cl3d_energy);
   tree->SetBranchAddress("cl3d_pt", &_cl3d_pt);
 
+  tree->SetBranchAddress("jets_cl3d", &_jets_cl3d);
 
   _cl3d_eta = 0;
   _cl3d_phi = 0;
   _cl3d_energy = 0;
   _cl3d_pt = 0;
+
+  _jets_cl3d = 0;
 
   
   tree->GetEntry(n_event);
@@ -312,9 +322,19 @@ void display2D_c3d(TString file, int n_event=0,
   }
   
 
+  else if(jets.size()>0){
+    for(auto & i_jet : jets){
+      for(auto & i_c3d : (*_jets_cl3d)[i_jet]){
+	h->Fill((*_cl3d_eta)[i_c3d],(*_cl3d_phi)[i_c3d],(*_cl3d_pt)[i_c3d]);
+	cout<<"(pt,eta,phi)=("<<(*_cl3d_pt)[i_c3d]<<","<<(*_cl3d_eta)[i_c3d]<<","<<(*_cl3d_phi)[i_c3d]<<")"<<endl;	
+      }
+    }
+
+  }
+
 
   h->GetXaxis()->SetTitle("#eta(C3D)");
-  h->GetXaxis()->SetTitleOffset(1.5);
+  h->GetXaxis()->SetTitleOffset(1.3);
   h->GetYaxis()->SetTitle("#phi(C3D)");
   h->GetZaxis()->SetTitle("p_{T}(C3D) [GeV]");
   h->SetTitle("");
@@ -324,11 +344,43 @@ void display2D_c3d(TString file, int n_event=0,
   c->SetLeftMargin(0.15);
   c->SetRightMargin(0.15);
 
+  h->SetMarkerSize(1.5);
   gStyle->SetPaintTextFormat("4.1f");
   if(c3d.size()>0 && c3d[0]<0)
     h->Draw("colz");
   else
-    h->Draw("colztext");
+    h->Draw("text");
+
+  vector<TLine*> gr_x;
+  vector<TLine*> gr_y;
+  
+  for(unsigned int i=0; i<216; i++){
+    float phi = -TMath::Pi() + i*2*TMath::Pi()/216.;    
+    if(phi>phi_min && phi<phi_max){
+      TLine* line = new TLine(eta_min,phi,eta_max,phi);
+      gr_x.push_back(line);
+    }
+  }
+
+  for(unsigned int i=0; i<36; i++){
+    float rOverZ = 0.09 + i*(0.52-0.09)/36.;
+    float eta_plus = TMath::ASinH(1/rOverZ);
+    if(eta_plus>eta_min && eta_plus<eta_max){
+      TLine* line = new TLine(eta_plus,phi_min,eta_plus,phi_max);
+      gr_y.push_back(line);
+    }
+    float eta_minus = -TMath::ASinH(1/rOverZ);
+    if(eta_minus>eta_min && eta_minus<eta_max){
+      TLine* line = new TLine(eta_minus,phi_min,eta_minus,phi_max);
+      gr_y.push_back(line);
+    }
+  }
+
+  for(auto& gr : gr_x)
+    gr->Draw("same");
+  for(auto& gr : gr_y)
+    gr->Draw("same");
+
 
 }
 
@@ -399,3 +451,106 @@ void display2D_jets(TString file, int n_event=0,
   h->Draw("colz");
 
 }
+
+
+
+
+
+
+
+
+
+void display2D_gen(TString file, int n_event=0, 
+		   float eta_min=-3, float eta_max=3, 
+		   float phi_min=-3.2, float phi_max=3.2){
+
+  TH2F* h=new TH2F("h","h",100,eta_min,eta_max,100,phi_min,phi_max);
+
+  TChain * tree = new TChain("HGCalTriggerNtupleJet");
+  tree->Add(file);
+  
+  vector<float> *_gen_eta;
+  vector<float> *_gen_phi;
+  vector<float> *_gen_energy;
+  vector<float> *_gen_pt;
+  vector<int> *_gen_pdg;
+  vector<int> *_gen_status;
+
+  tree->SetBranchAddress("gen_eta",    &_gen_eta);
+  tree->SetBranchAddress("gen_phi",    &_gen_phi);
+  tree->SetBranchAddress("gen_energy", &_gen_energy);
+  tree->SetBranchAddress("gen_pt", &_gen_pt);
+  tree->SetBranchAddress("gen_id", &_gen_pdg);
+  tree->SetBranchAddress("gen_status", &_gen_status);
+
+
+  _gen_eta = 0;
+  _gen_phi = 0;
+  _gen_energy = 0;
+  _gen_pt = 0;
+  _gen_pdg = 0;
+  _gen_status = 0;
+
+  
+  tree->GetEntry(n_event);
+
+  for(unsigned int i_gen = 0; i_gen<(*_gen_eta).size(); i_gen++){
+    if((*_gen_status)[i_gen]==1){
+      h->Fill((*_gen_eta)[i_gen],(*_gen_phi)[i_gen],(*_gen_pt)[i_gen]);
+      cout<<"(pdg,pt,eta,phi)=("<<(*_gen_pdg)[i_gen]<<","<<(*_gen_pt)[i_gen]<<","<<(*_gen_eta)[i_gen]<<","<<(*_gen_phi)[i_gen]<<")"<<endl;
+    }
+  }
+
+
+
+  h->GetXaxis()->SetTitle("#eta(gen)");
+  h->GetXaxis()->SetTitleOffset(1.5);
+  h->GetYaxis()->SetTitle("#phi(gen)");
+  h->GetZaxis()->SetTitle("p_{T}(gen) [GeV]");
+  h->SetTitle("");
+  h->SetStats(0);
+ 
+  TCanvas* c=new TCanvas("c","c",650,600);
+  c->SetLeftMargin(0.15);
+  c->SetRightMargin(0.15);
+
+  h->SetMarkerSize(1.2);
+  gStyle->SetPaintTextFormat("4.1f");
+  h->Draw("text");
+
+  vector<TLine*> gr_x;
+  vector<TLine*> gr_y;
+  
+  for(unsigned int i=0; i<216; i++){
+    float phi = -TMath::Pi() + i*2*TMath::Pi()/216.;    
+    if(phi>phi_min && phi<phi_max){
+      TLine* line = new TLine(eta_min,phi,eta_max,phi);
+      gr_x.push_back(line);
+    }
+  }
+
+  for(unsigned int i=0; i<36; i++){
+    float rOverZ = 0.09 + i*(0.52-0.09)/36.;
+    float eta_plus = TMath::ASinH(1/rOverZ);
+    if(eta_plus>eta_min && eta_plus<eta_max){
+      TLine* line = new TLine(eta_plus,phi_min,eta_plus,phi_max);
+      gr_y.push_back(line);
+    }
+    float eta_minus = -TMath::ASinH(1/rOverZ);
+    if(eta_minus>eta_min && eta_minus<eta_max){
+      TLine* line = new TLine(eta_minus,phi_min,eta_minus,phi_max);
+      gr_y.push_back(line);
+    }
+  }
+
+  for(auto& gr : gr_x)
+    gr->Draw("same");
+  for(auto& gr : gr_y)
+    gr->Draw("same");
+
+
+}
+
+
+
+

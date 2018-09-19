@@ -978,9 +978,9 @@ void add_genmatch(TString filein,  TString treename, TString fileout){
 
 void test(){
 
-  TString filein="root://cms-xrd-global.cern.ch//store/user/tstreble/SinglePiPt25Eta1p6_2p8/SinglePi_Pt25_PU0_C3D_polarHisto_dR0p03_18_08_10/180810_182602/0000/ntuple_1.root";
+  TString filein="root://cms-xrd-global.cern.ch//store/user/tstreble/SinglePiPt25Eta1p6_2p8/SinglePi_PU0_C3D_polarHisto_18_08_15/180815_153528/0000/ntuple_1.root";
   TString treename="hgcalTriggerNtuplizer/HGCalTriggerNtuple";
-  TString fileout="/vols/cms/tstreble/HGC_ntuples/C3D_dRHisto_test/test_pi_C3D_polarHisto_dR0p03.root";
+  TString fileout="/vols/cms/tstreble/HGC_ntuples/C3D_dRHisto_test/test_pi_C3D_polarHisto_180815.root";
 
   add_genmatch( filein, treename, fileout);
 

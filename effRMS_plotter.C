@@ -23,7 +23,7 @@ double DoubleCB(double* x, double* par){
   double norm = par[0];
   double mean = par[1];
   double width = par[2];
-double alpha1 = par[3];
+  double alpha1 = par[3];
   double n1 = par[4];
   double alpha2 = par[5];
   double n2 = par[6];
@@ -67,7 +67,7 @@ TF1* doubleCBFit(TH1F* histo, double rangeInSigma=2., int fitrebin=1){
   fit->SetParameter(1,mean);
   fit->SetParameter(2,rms);
   histoCopy->Fit(fit, "RN");
- mean = fit->GetParameter(1);
+  mean = fit->GetParameter(1);
   rms = fit->GetParameter(2);
   norm = fit->GetParameter(0);
   fit = new TF1("doubleCBFit", DoubleCB, mean-rangeInSigma*rms, mean+rangeInSigma*rms, 7);
@@ -219,6 +219,48 @@ vector<float> effectiveRMS(TH1F* histo, double fraction=0.683, int fitrebin=1){
 
 
 
+TH1F* histo_ET_resolution_noPUS(TString filename, TString var, TString cut){
+
+  TChain * tree = new TChain("HGCalTriggerNtupleJet");
+  tree->Add(filename);
+
+  TString all_cuts=cut;
+
+  tree->Draw(var + ">>g(500,-2,2)",all_cuts+ " && jets_pt[VBF_parton_jets]>0","goff");
+  
+  TH1F* g=(TH1F*) ((TH1F*)gDirectory->Get("g"))->Clone();
+  //g->Scale(1/g->Integral());
+  
+  return g;
+  
+}
+
+
+
+
+
+
+TH1F* histo_ET_resolution_noPUS_histo(TString filename, TString cut){
+  
+  TChain * tree = new TChain("HGCalTriggerNtupleJet");
+  tree->Add(filename);
+
+  TString all_cuts=cut;
+
+  tree->Draw("(genjet_pt[VBF_parton_genjet] - 1.17*(4.98004e+00 -1.23767e+00 * log(max(jets_pt[VBF_parton_jets],0)) + 1.07929e-01* pow(log(max(jets_pt[VBF_parton_jets],0)),2) ) * jets_pt[VBF_parton_jets] ) / genjet_pt[VBF_parton_genjet]>>g(500,-2,2)",all_cuts+ " && jets_pt[VBF_parton_jets]>0","goff");
+
+  
+  TH1F* g=(TH1F*) ((TH1F*)gDirectory->Get("g"))->Clone();
+  //g->Scale(1/g->Integral());
+  
+  return g;
+  
+}
+
+
+
+
+
 TH1F* histo_ET_resolution_noPUS(TString filename, TString cut){
   
   TChain * tree = new TChain("HGCalTriggerNtupleJet");
@@ -241,6 +283,7 @@ TH1F* histo_ET_resolution_noPUS(TString filename, TString cut){
 
 
 
+
 TH1F* histo_ET_resolution_PUS(TString filename, TString cut){
   
   TChain * tree = new TChain("HGCalTriggerNtupleJet");
@@ -257,6 +300,51 @@ TH1F* histo_ET_resolution_PUS(TString filename, TString cut){
   return g;
   
 }
+
+
+
+
+
+
+TH1F* histo_ET_resolution_PUS_histo_old(TString filename, TString cut){
+  
+  TChain * tree = new TChain("HGCalTriggerNtupleJet");
+  tree->Add(filename);
+
+  TString all_cuts=cut;
+
+  tree->Draw("(genjet_pt[VBF_parton_genjet] - (1.36*(4.98004e+00 -1.23767e+00 * log(max(jets_pt[VBF_parton_jets]-0.7*jets_PU_subtr_cone_GEO_C3D[VBF_parton_jets],0)) + 1.02929e-01* pow(log(max(jets_pt[VBF_parton_jets]-0.7*jets_PU_subtr_cone_GEO_C3D[VBF_parton_jets],0)),2) ) * max(jets_pt[VBF_parton_jets]-0.7*jets_PU_subtr_cone_GEO_C3D[VBF_parton_jets],0)) ) / genjet_pt[VBF_parton_genjet]>>g(500,-2,2)",all_cuts+ " && max(jets_pt[VBF_parton_jets]-0.7*jets_PU_subtr_cone_GEO_C3D[VBF_parton_jets],0)>0","goff");
+
+  
+  TH1F* g=(TH1F*) ((TH1F*)gDirectory->Get("g"))->Clone();
+  //g->Scale(1/g->Integral());
+  
+  return g;
+  
+}
+
+
+
+
+
+
+TH1F* histo_ET_resolution_PUS_histo(TString filename, TString cut){
+  
+  TChain * tree = new TChain("HGCalTriggerNtupleJet");
+  tree->Add(filename);
+
+  TString all_cuts=cut;
+
+  tree->Draw("(genjet_pt[VBF_parton_genjet] - (1.17*(4.98004e+00 -1.23767e+00 * log(max(jets_pt[VBF_parton_jets]-1.1*jets_PU_subtr_cone_GEO_C3D[VBF_parton_jets],0)) + 1.07929e-01* pow(log(max(jets_pt[VBF_parton_jets]-1.1*jets_PU_subtr_cone_GEO_C3D[VBF_parton_jets],0)),2) ) * max(jets_pt[VBF_parton_jets]-1.1*jets_PU_subtr_cone_GEO_C3D[VBF_parton_jets],0)) ) / genjet_pt[VBF_parton_genjet]>>g(500,-2,2)",all_cuts+ " && max(jets_pt[VBF_parton_jets]-1.1*jets_PU_subtr_cone_GEO_C3D[VBF_parton_jets],0)>0","goff");
+
+  
+  TH1F* g=(TH1F*) ((TH1F*)gDirectory->Get("g"))->Clone();
+  //g->Scale(1/g->Integral());
+  
+  return g;
+  
+}
+
 
 
 
@@ -904,17 +992,19 @@ void plot_effRMS_pT_C3D_histo_PU0(){
   
   vector<TString> filename;
   filename.push_back("/vols/cms/tstreble/HGC_ntuples/VBF_Hinv_PU0_dRNNC2D/jet_ntuples_merged/ntuple_jet_merged_1*.root");
+  filename.push_back("/vols/cms/tstreble/HGC_ntuples/VBF_Hinv_PU0_dRC3D_polarHisto_old/jet_ntuples_merged/ntuple_jet_merged_*.root");
   filename.push_back("/vols/cms/tstreble/HGC_ntuples/VBF_Hinv_PU0_dRC3D_polarHisto/jet_ntuples_merged/ntuple_jet_merged_*.root");
 
 
   vector<TString> leg_entry;
   leg_entry.push_back("PU=0 cone");
-  leg_entry.push_back("PU=0 histo");
-
+  leg_entry.push_back("PU=0 histo old");
+  leg_entry.push_back("PU=0 histo new");
   
 
   vector<TString> cut;
   cut.push_back("VBF_parton_genjet>=0 && VBF_parton_jets>=0 && abs(genjet_eta[VBF_parton_genjet])>1.6 && abs(genjet_eta[VBF_parton_genjet])<2.9 && genjet_pt[VBF_parton_genjet]>20");
+  cut.push_back("VBF_parton_genjet>=0 && VBF_parton_jets>=0 && abs(genjet_eta[VBF_parton_genjet])>1.6 && abs(genjet_eta[VBF_parton_genjet])<2.9 && genjet_pt[VBF_parton_genjet]>20");   
   cut.push_back("VBF_parton_genjet>=0 && VBF_parton_jets>=0 && abs(genjet_eta[VBF_parton_genjet])>1.6 && abs(genjet_eta[VBF_parton_genjet])<2.9 && genjet_pt[VBF_parton_genjet]>20");   
 
 
@@ -931,7 +1021,9 @@ void plot_effRMS_pT_C3D_histo_PU0(){
     int n=0;
     for(int bin=0; bin<nbins; bin++){
       
-      TH1F* histo = histo_ET_resolution_noPUS(filename[i],Form(cut[i]+" && genjet_pt[VBF_parton_genjet]>%f && genjet_pt[VBF_parton_genjet]<%f",x[bin],x[bin+1]));
+      TH1F* histo;
+      if(i<2) histo = histo_ET_resolution_noPUS(filename[i],Form(cut[i]+" && genjet_pt[VBF_parton_genjet]>%f && genjet_pt[VBF_parton_genjet]<%f",x[bin],x[bin+1]));
+      else histo = histo_ET_resolution_noPUS_histo(filename[i],Form(cut[i]+" && genjet_pt[VBF_parton_genjet]>%f && genjet_pt[VBF_parton_genjet]<%f",x[bin],x[bin+1]));
       vector<float> eff_RMS=effectiveRMS(histo);
       gr->SetPoint(n,0.5*(x[bin]+x[bin+1]),eff_RMS[0]/(1-histo->GetMean()));
       gr->SetPointError(n,0.5*(-x[bin]+x[bin+1]),eff_RMS[1]/(1-histo->GetMean()));
@@ -1009,5 +1101,827 @@ void plot_effRMS_pT_C3D_histo_PU0(){
 }
 
 
+
+
+
+
+
+
+void plot_effRMS_pT_C3D_histo_PU200(){
+
+  
+  vector<TString> filename;
+  filename.push_back("/vols/cms/tstreble/HGC_ntuples/VBF_Hinv_PU200_dRNNC2D/jet_ntuples_merged/ntuple_jet_merged_*.root");
+  filename.push_back("/vols/cms/tstreble/HGC_ntuples/VBF_Hinv_PU200_dRC3D_polarHisto_old/jet_ntuples_merged/ntuple_jet_merged_*.root");
+  filename.push_back("/vols/cms/tstreble/HGC_ntuples/VBF_Hinv_PU200_dRC3D_polarHisto/jet_ntuples_merged/ntuple_jet_merged_*.root");
+
+
+  vector<TString> leg_entry;
+  leg_entry.push_back("PU=200 cone");
+  leg_entry.push_back("PU=200 histo old");
+  leg_entry.push_back("PU=200 histo new");
+  
+
+  vector<TString> cut;
+  cut.push_back("VBF_parton_genjet>=0 && VBF_parton_jets>=0 && abs(genjet_eta[VBF_parton_genjet])>1.6 && abs(genjet_eta[VBF_parton_genjet])<2.9 && genjet_pt[VBF_parton_genjet]>20");
+  cut.push_back("VBF_parton_genjet>=0 && VBF_parton_jets>=0 && abs(genjet_eta[VBF_parton_genjet])>1.6 && abs(genjet_eta[VBF_parton_genjet])<2.9 && genjet_pt[VBF_parton_genjet]>20");   
+  cut.push_back("VBF_parton_genjet>=0 && VBF_parton_jets>=0 && abs(genjet_eta[VBF_parton_genjet])>1.6 && abs(genjet_eta[VBF_parton_genjet])<2.9 && genjet_pt[VBF_parton_genjet]>20");   
+
+
+  double x[13]={20,40,60,80,100,120,140,160,180,200,220,250,300};
+  int nbins = 12;
+
+
+  vector<TGraphErrors*> graph;
+
+  for(unsigned int i=0; i<filename.size(); i++){
+
+    TGraphErrors* gr=new TGraphErrors();
+
+    int n=0;
+    for(int bin=0; bin<nbins; bin++){
+      
+      TH1F* histo;
+      if(i==0) histo = histo_ET_resolution_PUS(filename[i],Form(cut[i]+" && genjet_pt[VBF_parton_genjet]>%f && genjet_pt[VBF_parton_genjet]<%f",x[bin],x[bin+1]));
+      else if(i==1) histo = histo_ET_resolution_PUS_histo_old(filename[i],Form(cut[i]+" && genjet_pt[VBF_parton_genjet]>%f && genjet_pt[VBF_parton_genjet]<%f",x[bin],x[bin+1]));
+      else if(i==2) histo = histo_ET_resolution_PUS_histo(filename[i],Form(cut[i]+" && genjet_pt[VBF_parton_genjet]>%f && genjet_pt[VBF_parton_genjet]<%f",x[bin],x[bin+1]));
+
+      vector<float> eff_RMS=effectiveRMS(histo);
+      gr->SetPoint(n,0.5*(x[bin]+x[bin+1]),eff_RMS[0]/(1-histo->GetMean()));
+      gr->SetPointError(n,0.5*(-x[bin]+x[bin+1]),eff_RMS[1]/(1-histo->GetMean()));
+
+      n++;
+
+    }
+
+    gr->SetLineWidth(2);
+
+    if(i==0){
+      gr->SetLineColor(1);
+      gr->SetMarkerStyle(kFullCircle);
+      gr->SetFillColor(0);
+    }
+    else if(i==1){
+      gr->SetLineColor(2);
+      gr->SetMarkerColor(2);
+      gr->SetMarkerStyle(kFullCircle);
+      gr->SetFillColor(0);
+    }
+    else if(i==2){
+      gr->SetLineColor(3);
+      gr->SetMarkerColor(3);
+      gr->SetMarkerStyle(kFullCircle);
+      gr->SetFillColor(0);
+    }
+    else if(i==3){
+      gr->SetLineColor(4);
+      gr->SetMarkerColor(4);
+      gr->SetMarkerStyle(kFullCircle);
+      gr->SetFillColor(0);
+    }
+
+    graph.push_back(gr);
+
+  }
+
+
+  graph[0]->GetXaxis()->SetRangeUser(10,310);
+  graph[0]->GetYaxis()->SetRangeUser(0.,0.55);
+  graph[0]->GetXaxis()->SetTitle("p_{T}(gen. jet) [GeV]");
+  graph[0]->GetYaxis()->SetTitle("#sigma(p_{T}^{L1}/p_{T}^{gen})/<p_{T}^{L1}/p_{T}^{gen}>");
+  //graph[0]->GetYaxis()->SetTitle("Resolution");
+  graph[0]->GetYaxis()->SetTitleSize(0.04);
+  graph[0]->GetYaxis()->SetTitleOffset(1.3);
+
+  TLegend* leg=new TLegend(0.4,0.65,0.7,0.85);
+  leg->SetHeader("1.6<|#eta(gen.jet)|<2.9");
+  leg->SetBorderSize(0);
+  leg->SetTextSize(0.03);
+  leg->SetFillColor(0);
+  for(unsigned int i=0; i<graph.size();i++)
+    leg->AddEntry(graph[i], leg_entry[i]);
+
+  TCanvas *c = new TCanvas("c", "canvas", 850, 800);
+  c->SetLeftMargin(0.15);
+  gPad->SetTicks(1,1);
+
+  graph[0]->Draw("AP");
+  for(unsigned int i=1; i<graph.size(); i++)
+    graph[i]->Draw("Psame");
+  leg->Draw("same");
+
+ TLatex *texl = new TLatex(21,0.56,"CMS Simulation VBF H#rightarrowinv. #sqrt{s}=14 TeV");
+  texl->SetTextSize(0.03);
+  texl->Draw("same");
+  gPad->SetTicks();
+
+  c->SaveAs("plots/L1Jet_resolution_pT_C3D_histo_PU200.pdf");
+
+  return;
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+void plot_effRMS_pT_C3D_histo_PU0_test(){
+
+  
+  vector<TString> filename;
+  filename.push_back("/vols/cms/tstreble/HGC_ntuples/VBF_Hinv_PU0_dRNNC2D/jet_ntuples_merged/ntuple_jet_merged_1*.root");
+  filename.push_back("/vols/cms/tstreble/HGC_ntuples/VBF_Hinv_PU0_dRC3D_polarHisto/jet_ntuples_merged/ntuple_jet_merged_*.root");
+  filename.push_back("/vols/cms/tstreble/HGC_ntuples/VBF_Hinv_PU0_C3D_polarHisto_dR0p03/jet_ntuples_merged/ntuple_jet_merged_*.root");
+  filename.push_back("/vols/cms/tstreble/HGC_ntuples/VBF_Hinv_PU0_dRC3D_polarHisto_thresh_20MIPT/jet_ntuples_merged/ntuple_jet_merged_*.root");
+  filename.push_back("/vols/cms/tstreble/HGC_ntuples/VBF_Hinv_PU0_dRC3D_polarHisto_thresh_50MIPT/jet_ntuples_merged/ntuple_jet_merged_*.root");
+
+  vector<TString> leg_entry;
+ leg_entry.push_back("Cone dr=0.01");
+  leg_entry.push_back("Histo dr=0.01 Max. finding");
+  leg_entry.push_back("Histo dr=0.03 Max. finding");
+  leg_entry.push_back("Histo dr=0.01 20 MIPT-thresh.");
+  leg_entry.push_back("Histo dr=0.01 50 MIPT-thresh.");
+
+  
+
+  TString cut = "VBF_parton_genjet>=0 && VBF_parton_jets>=0 && abs(genjet_eta[VBF_parton_genjet])>1.6 && abs(genjet_eta[VBF_parton_genjet])<2.9 && genjet_pt[VBF_parton_genjet]>20";
+  vector<TString> cuts;
+  cuts.push_back(cut);
+  cuts.push_back(cut);
+  cuts.push_back(cut);
+  cuts.push_back(cut);
+  cuts.push_back(cut);
+
+  vector<TString> var;
+  var.push_back("1.06*(4.98004e+00 -1.23767e+00 * log(max(jets_pt[VBF_parton_jets],0)) + 1.02929e-01* pow(log(max(jets_pt[VBF_parton_jets],0)),2) ) * jets_pt[VBF_parton_jets]/genjet_pt[VBF_parton_genjet]");
+  var.push_back("1.17*(4.98004e+00 -1.23767e+00 * log(max(jets_pt[VBF_parton_jets],0)) + 1.07929e-01* pow(log(max(jets_pt[VBF_parton_jets],0)),2) ) * jets_pt[VBF_parton_jets]/genjet_pt[VBF_parton_genjet]");
+  var.push_back("1.06*(4.98004e+00 -1.23767e+00 * log(max(jets_pt[VBF_parton_jets],0)) + 1.02929e-01* pow(log(max(jets_pt[VBF_parton_jets],0)),2) ) * jets_pt[VBF_parton_jets]/genjet_pt[VBF_parton_genjet]");
+  var.push_back("1.10*(4.98004e+00 -1.23767e+00 * log(max(jets_pt[VBF_parton_jets],0)) + 1.01929e-01* pow(log(max(jets_pt[VBF_parton_jets],0)),2) ) * jets_pt[VBF_parton_jets]/genjet_pt[VBF_parton_genjet]");
+  var.push_back("1.20*(4.98004e+00 -1.25767e+00 * log(max(jets_pt[VBF_parton_jets],0)) + 1.02929e-01* pow(log(max(jets_pt[VBF_parton_jets],0)),2) ) * jets_pt[VBF_parton_jets]/genjet_pt[VBF_parton_genjet]");
+
+
+  double x[13]={20,40,60,80,100,120,140,160,180,200,220,250,300};
+  int nbins = 12;
+
+
+  vector<TGraphErrors*> graph;
+
+  for(unsigned int i=0; i<filename.size(); i++){
+
+    TGraphErrors* gr=new TGraphErrors();
+
+    int n=0;
+    for(int bin=0; bin<nbins; bin++){
+
+      TH1F* histo = histo_ET_resolution_noPUS(filename[i],var[i], Form(cuts[i]+" && genjet_pt[VBF_parton_genjet]>%f && genjet_pt[VBF_parton_genjet]<%f",x[bin],x[bin+1]));   
+      vector<float> eff_RMS=effectiveRMS(histo);
+      gr->SetPoint(n,0.5*(x[bin]+x[bin+1]),eff_RMS[0]/(histo->GetMean()));
+      gr->SetPointError(n,0.5*(-x[bin]+x[bin+1]),eff_RMS[1]/(histo->GetMean()));
+      n++;
+
+    }
+
+    gr->SetLineWidth(2);
+    gr->SetLineColor(i+1);
+    if(i>0) gr->SetMarkerColor(i+1);
+    if(i>3){
+      gr->SetLineColor(i+2);
+      if(i>0) gr->SetMarkerColor(i+2);
+    }
+
+    gr->SetMarkerStyle(kFullCircle);
+    gr->SetFillColor(0);
+    
+    graph.push_back(gr);
+
+  }
+
+
+  graph[0]->GetXaxis()->SetRangeUser(10,310);
+  graph[0]->GetYaxis()->SetRangeUser(0.,0.55);
+  graph[0]->GetXaxis()->SetTitle("p_{T}(gen. jet) [GeV]");
+  graph[0]->GetYaxis()->SetTitle("#sigma(p_{T}^{L1}/p_{T}^{gen})/<p_{T}^{L1}/p_{T}^{gen}>");
+  //graph[0]->GetYaxis()->SetTitle("Resolution");
+  graph[0]->GetYaxis()->SetTitleSize(0.04);
+  graph[0]->GetYaxis()->SetTitleOffset(1.3);
+
+  TLegend* leg=new TLegend(0.4,0.65,0.7,0.85);
+  leg->SetHeader("1.6<|#eta(gen.jet)|<2.9");
+  leg->SetBorderSize(0);
+  leg->SetTextSize(0.03);
+  leg->SetFillColor(0);
+  for(unsigned int i=0; i<graph.size();i++)
+    leg->AddEntry(graph[i], leg_entry[i]);
+
+  TCanvas *c = new TCanvas("c", "canvas", 850, 800);
+  c->SetLeftMargin(0.15);
+  gPad->SetTicks(1,1);
+
+  graph[0]->Draw("AP");
+  for(unsigned int i=1; i<graph.size(); i++)
+    graph[i]->Draw("Psame");
+  leg->Draw("same");
+
+ TLatex *texl = new TLatex(21,0.56,"CMS Simulation VBF H#rightarrowinv. #sqrt{s}=14 TeV PU=0");
+  texl->SetTextSize(0.03);
+  texl->Draw("same");
+  gPad->SetTicks();
+
+  c->SaveAs("plots/L1Jet_resolution_pT_C3D_histo_test.pdf");
+
+  return;
+
+
+}
+
+
+
+
+
+
+
+
+void plot_effRMS_pT_C3D_histo_PU0_test_etaLower2p4(){
+
+  
+  vector<TString> filename;
+  filename.push_back("/vols/cms/tstreble/HGC_ntuples/VBF_Hinv_PU0_dRNNC2D/jet_ntuples_merged/ntuple_jet_merged_1*.root");
+  filename.push_back("/vols/cms/tstreble/HGC_ntuples/VBF_Hinv_PU0_dRC3D_polarHisto/jet_ntuples_merged/ntuple_jet_merged_*.root");
+  filename.push_back("/vols/cms/tstreble/HGC_ntuples/VBF_Hinv_PU0_C3D_polarHisto_dR0p03/jet_ntuples_merged/ntuple_jet_merged_*.root");
+  filename.push_back("/vols/cms/tstreble/HGC_ntuples/VBF_Hinv_PU0_dRC3D_polarHisto_thresh_20MIPT/jet_ntuples_merged/ntuple_jet_merged_*.root");
+  filename.push_back("/vols/cms/tstreble/HGC_ntuples/VBF_Hinv_PU0_dRC3D_polarHisto_thresh_50MIPT/jet_ntuples_merged/ntuple_jet_merged_*.root");
+
+  vector<TString> leg_entry;
+  leg_entry.push_back("PU=0 cone dr=0.01");
+  leg_entry.push_back("PU=0 histo dr=0.01");
+  leg_entry.push_back("PU=0 histo dr=0.03");
+  leg_entry.push_back("PU=0 histo dr=0.01 20 MIPT-thresh.");
+  leg_entry.push_back("PU=0 histo dr=0.01 50 MIPT-thresh.");
+  
+
+  TString cut = "VBF_parton_genjet>=0 && VBF_parton_jets>=0 && abs(genjet_eta[VBF_parton_genjet])>1.6 && abs(genjet_eta[VBF_parton_genjet])<2.4 && genjet_pt[VBF_parton_genjet]>20";
+  vector<TString> cuts;
+  cuts.push_back(cut);
+  cuts.push_back(cut);
+  cuts.push_back(cut);
+  cuts.push_back(cut);
+  cuts.push_back(cut);
+
+  vector<TString> var;
+  var.push_back("1.06*(4.98004e+00 -1.23767e+00 * log(max(jets_pt[VBF_parton_jets],0)) + 1.02929e-01* pow(log(max(jets_pt[VBF_parton_jets],0)),2) ) * jets_pt[VBF_parton_jets]/genjet_pt[VBF_parton_genjet]");
+  var.push_back("1.17*(4.98004e+00 -1.23767e+00 * log(max(jets_pt[VBF_parton_jets],0)) + 1.07929e-01* pow(log(max(jets_pt[VBF_parton_jets],0)),2) ) * jets_pt[VBF_parton_jets]/genjet_pt[VBF_parton_genjet]");
+  var.push_back("1.06*(4.98004e+00 -1.23767e+00 * log(max(jets_pt[VBF_parton_jets],0)) + 1.02929e-01* pow(log(max(jets_pt[VBF_parton_jets],0)),2) ) * jets_pt[VBF_parton_jets]/genjet_pt[VBF_parton_genjet]");
+  var.push_back("1.10*(4.98004e+00 -1.23767e+00 * log(max(jets_pt[VBF_parton_jets],0)) + 1.01929e-01* pow(log(max(jets_pt[VBF_parton_jets],0)),2) ) * jets_pt[VBF_parton_jets]/genjet_pt[VBF_parton_genjet]");
+  var.push_back("1.20*(4.98004e+00 -1.25767e+00 * log(max(jets_pt[VBF_parton_jets],0)) + 1.02929e-01* pow(log(max(jets_pt[VBF_parton_jets],0)),2) ) * jets_pt[VBF_parton_jets]/genjet_pt[VBF_parton_genjet]");
+
+
+  double x[13]={20,40,60,80,100,120,140,160,180,200,220,250,300};
+  int nbins = 12;
+
+
+  vector<TGraphErrors*> graph;
+
+  for(unsigned int i=0; i<filename.size(); i++){
+
+    TGraphErrors* gr=new TGraphErrors();
+
+    int n=0;
+    for(int bin=0; bin<nbins; bin++){
+
+      TH1F* histo = histo_ET_resolution_noPUS(filename[i],var[i], Form(cuts[i]+" && genjet_pt[VBF_parton_genjet]>%f && genjet_pt[VBF_parton_genjet]<%f",x[bin],x[bin+1]));   
+      vector<float> eff_RMS=effectiveRMS(histo);
+      gr->SetPoint(n,0.5*(x[bin]+x[bin+1]),eff_RMS[0]/(histo->GetMean()));
+      gr->SetPointError(n,0.5*(-x[bin]+x[bin+1]),eff_RMS[1]/(histo->GetMean()));
+      n++;
+
+    }
+
+    gr->SetLineWidth(2);
+    gr->SetLineColor(i+1);
+    if(i>0) gr->SetMarkerColor(i+1);
+    if(i>3){
+      gr->SetLineColor(i+2);
+      if(i>0) gr->SetMarkerColor(i+2);
+    }
+
+    gr->SetMarkerStyle(kFullCircle);
+    gr->SetFillColor(0);
+    
+    graph.push_back(gr);
+
+  }
+
+
+  graph[0]->GetXaxis()->SetRangeUser(10,310);
+  graph[0]->GetYaxis()->SetRangeUser(0.,0.55);
+  graph[0]->GetXaxis()->SetTitle("p_{T}(gen. jet) [GeV]");
+  graph[0]->GetYaxis()->SetTitle("#sigma(p_{T}^{L1}/p_{T}^{gen})/<p_{T}^{L1}/p_{T}^{gen}>");
+  //graph[0]->GetYaxis()->SetTitle("Resolution");
+  graph[0]->GetYaxis()->SetTitleSize(0.04);
+  graph[0]->GetYaxis()->SetTitleOffset(1.3);
+
+  TLegend* leg=new TLegend(0.4,0.65,0.7,0.85);
+  leg->SetHeader("1.6<|#eta(gen.jet)|<2.4");
+  leg->SetBorderSize(0);
+  leg->SetTextSize(0.03);
+  leg->SetFillColor(0);
+  for(unsigned int i=0; i<graph.size();i++)
+    leg->AddEntry(graph[i], leg_entry[i]);
+
+  TCanvas *c = new TCanvas("c", "canvas", 850, 800);
+  c->SetLeftMargin(0.15);
+  gPad->SetTicks(1,1);
+
+  graph[0]->Draw("AP");
+  for(unsigned int i=1; i<graph.size(); i++)
+    graph[i]->Draw("Psame");
+  leg->Draw("same");
+
+ TLatex *texl = new TLatex(21,0.56,"CMS Simulation VBF H#rightarrowinv. #sqrt{s}=14 TeV");
+  texl->SetTextSize(0.03);
+  texl->Draw("same");
+  gPad->SetTicks();
+
+  c->SaveAs("plots/L1Jet_resolution_pT_C3D_histo_test_etaLower2p4.pdf");
+
+  return;
+
+
+}
+
+
+
+
+
+
+
+
+
+void plot_effRMS_pT_C3D_histo_PU0_test_etaLarger2p4(){
+
+  
+  vector<TString> filename;
+  filename.push_back("/vols/cms/tstreble/HGC_ntuples/VBF_Hinv_PU0_dRNNC2D/jet_ntuples_merged/ntuple_jet_merged_1*.root");
+  filename.push_back("/vols/cms/tstreble/HGC_ntuples/VBF_Hinv_PU0_dRC3D_polarHisto/jet_ntuples_merged/ntuple_jet_merged_*.root");
+  filename.push_back("/vols/cms/tstreble/HGC_ntuples/VBF_Hinv_PU0_C3D_polarHisto_dR0p03/jet_ntuples_merged/ntuple_jet_merged_*.root");
+  filename.push_back("/vols/cms/tstreble/HGC_ntuples/VBF_Hinv_PU0_dRC3D_polarHisto_thresh_20MIPT/jet_ntuples_merged/ntuple_jet_merged_*.root");
+  filename.push_back("/vols/cms/tstreble/HGC_ntuples/VBF_Hinv_PU0_dRC3D_polarHisto_thresh_50MIPT/jet_ntuples_merged/ntuple_jet_merged_*.root");
+
+  vector<TString> leg_entry;
+  leg_entry.push_back("PU=0 cone dr=0.01");
+  leg_entry.push_back("PU=0 histo dr=0.01");
+  leg_entry.push_back("PU=0 histo dr=0.03");
+  leg_entry.push_back("PU=0 histo dr=0.01 20 MIPT-thresh.");
+  leg_entry.push_back("PU=0 histo dr=0.01 50 MIPT-thresh.");
+  
+
+  TString cut = "VBF_parton_genjet>=0 && VBF_parton_jets>=0 && abs(genjet_eta[VBF_parton_genjet])>2.4 && abs(genjet_eta[VBF_parton_genjet])<2.9 && genjet_pt[VBF_parton_genjet]>20";
+  vector<TString> cuts;
+  cuts.push_back(cut);
+  cuts.push_back(cut);
+  cuts.push_back(cut);
+  cuts.push_back(cut);
+  cuts.push_back(cut);
+
+  vector<TString> var;
+  var.push_back("1.06*(4.98004e+00 -1.23767e+00 * log(max(jets_pt[VBF_parton_jets],0)) + 1.02929e-01* pow(log(max(jets_pt[VBF_parton_jets],0)),2) ) * jets_pt[VBF_parton_jets]/genjet_pt[VBF_parton_genjet]");
+  var.push_back("1.17*(4.98004e+00 -1.23767e+00 * log(max(jets_pt[VBF_parton_jets],0)) + 1.07929e-01* pow(log(max(jets_pt[VBF_parton_jets],0)),2) ) * jets_pt[VBF_parton_jets]/genjet_pt[VBF_parton_genjet]");
+  var.push_back("1.06*(4.98004e+00 -1.23767e+00 * log(max(jets_pt[VBF_parton_jets],0)) + 1.02929e-01* pow(log(max(jets_pt[VBF_parton_jets],0)),2) ) * jets_pt[VBF_parton_jets]/genjet_pt[VBF_parton_genjet]");
+  var.push_back("1.10*(4.98004e+00 -1.23767e+00 * log(max(jets_pt[VBF_parton_jets],0)) + 1.01929e-01* pow(log(max(jets_pt[VBF_parton_jets],0)),2) ) * jets_pt[VBF_parton_jets]/genjet_pt[VBF_parton_genjet]");
+  var.push_back("1.20*(4.98004e+00 -1.25767e+00 * log(max(jets_pt[VBF_parton_jets],0)) + 1.02929e-01* pow(log(max(jets_pt[VBF_parton_jets],0)),2) ) * jets_pt[VBF_parton_jets]/genjet_pt[VBF_parton_genjet]");
+
+
+  double x[13]={20,40,60,80,100,120,140,160,180,200,220,250,300};
+  int nbins = 12;
+
+
+  vector<TGraphErrors*> graph;
+
+  for(unsigned int i=0; i<filename.size(); i++){
+
+    TGraphErrors* gr=new TGraphErrors();
+
+    int n=0;
+    for(int bin=0; bin<nbins; bin++){
+
+      TH1F* histo = histo_ET_resolution_noPUS(filename[i],var[i], Form(cuts[i]+" && genjet_pt[VBF_parton_genjet]>%f && genjet_pt[VBF_parton_genjet]<%f",x[bin],x[bin+1]));   
+      vector<float> eff_RMS=effectiveRMS(histo);
+      gr->SetPoint(n,0.5*(x[bin]+x[bin+1]),eff_RMS[0]/(histo->GetMean()));
+      gr->SetPointError(n,0.5*(-x[bin]+x[bin+1]),eff_RMS[1]/(histo->GetMean()));
+      n++;
+
+    }
+
+    gr->SetLineWidth(2);
+    gr->SetLineColor(i+1);
+    if(i>0) gr->SetMarkerColor(i+1);
+    if(i>3){
+      gr->SetLineColor(i+2);
+      if(i>0) gr->SetMarkerColor(i+2);
+    }
+
+    gr->SetMarkerStyle(kFullCircle);
+    gr->SetFillColor(0);
+    
+    graph.push_back(gr);
+
+  }
+
+
+  graph[0]->GetXaxis()->SetRangeUser(10,310);
+  graph[0]->GetYaxis()->SetRangeUser(0.,0.55);
+  graph[0]->GetXaxis()->SetTitle("p_{T}(gen. jet) [GeV]");
+  graph[0]->GetYaxis()->SetTitle("#sigma(p_{T}^{L1}/p_{T}^{gen})/<p_{T}^{L1}/p_{T}^{gen}>");
+  //graph[0]->GetYaxis()->SetTitle("Resolution");
+  graph[0]->GetYaxis()->SetTitleSize(0.04);
+  graph[0]->GetYaxis()->SetTitleOffset(1.3);
+
+  TLegend* leg=new TLegend(0.4,0.65,0.7,0.85);
+  leg->SetHeader("2.4<|#eta(gen.jet)|<2.9");
+  leg->SetBorderSize(0);
+  leg->SetTextSize(0.03);
+  leg->SetFillColor(0);
+  for(unsigned int i=0; i<graph.size();i++)
+    leg->AddEntry(graph[i], leg_entry[i]);
+
+  TCanvas *c = new TCanvas("c", "canvas", 850, 800);
+  c->SetLeftMargin(0.15);
+  gPad->SetTicks(1,1);
+
+  graph[0]->Draw("AP");
+  for(unsigned int i=1; i<graph.size(); i++)
+    graph[i]->Draw("Psame");
+  leg->Draw("same");
+
+ TLatex *texl = new TLatex(21,0.56,"CMS Simulation VBF H#rightarrowinv. #sqrt{s}=14 TeV");
+  texl->SetTextSize(0.03);
+  texl->Draw("same");
+  gPad->SetTicks();
+
+  c->SaveAs("plots/L1Jet_resolution_pT_C3D_histo_test_etaLarger2p4.pdf");
+
+  return;
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+void plot_effRMS_pT_C3D_histo_PU200_test(){
+
+  
+  vector<TString> filename;
+  filename.push_back("/vols/cms/tstreble/HGC_ntuples/VBF_Hinv_PU200_dRNNC2D/jet_ntuples_merged/ntuple_jet_merged_*.root");
+  filename.push_back("/vols/cms/tstreble/HGC_ntuples/VBF_Hinv_PU200_dRC3D_polarHisto/jet_ntuples_merged/ntuple_jet_merged_*.root");
+  filename.push_back("/vols/cms/tstreble/HGC_ntuples/VBF_Hinv_PU200_C3D_polarHisto_dR0p03/jet_ntuples_merged/ntuple_jet_merged_*.root");
+  filename.push_back("/vols/cms/tstreble/HGC_ntuples/VBF_Hinv_PU200_dRC3D_polarHisto_thresh_20MIPT/jet_ntuples_merged/ntuple_jet_merged_*.root");
+  filename.push_back("/vols/cms/tstreble/HGC_ntuples/VBF_Hinv_PU200_dRC3D_polarHisto_thresh_50MIPT/jet_ntuples_merged/ntuple_jet_merged_*.root");
+
+  vector<TString> leg_entry;
+ leg_entry.push_back("Cone dr=0.01");
+  leg_entry.push_back("Histo dr=0.01 Max. finding");
+  leg_entry.push_back("Histo dr=0.03 Max. finding");
+  leg_entry.push_back("Histo dr=0.01 20 MIPT-thresh.");
+  leg_entry.push_back("Histo dr=0.01 50 MIPT-thresh.");
+  
+
+  TString cut = "VBF_parton_genjet>=0 && VBF_parton_jets>=0 && abs(genjet_eta[VBF_parton_genjet])>1.6 && abs(genjet_eta[VBF_parton_genjet])<2.9 && genjet_pt[VBF_parton_genjet]>20";
+  vector<TString> cuts;
+  cuts.push_back(cut + "&& (jets_pt[VBF_parton_jets]-2*jets_PU_subtr_cone_GEO_C3D[VBF_parton_jets])>0");
+  cuts.push_back(cut + "&& (jets_pt[VBF_parton_jets]-1.1*jets_PU_subtr_cone_GEO_C3D[VBF_parton_jets])>0");
+  cuts.push_back(cut + "&& (jets_pt[VBF_parton_jets]-2*jets_PU_subtr_cone_GEO_C3D[VBF_parton_jets])>0");
+  cuts.push_back(cut + "&& (jets_pt[VBF_parton_jets]-2*jets_PU_subtr_cone_GEO_C3D[VBF_parton_jets])>0");
+  cuts.push_back(cut + "&& (jets_pt[VBF_parton_jets]-1.5*jets_PU_subtr_cone_GEO_C3D[VBF_parton_jets])>0");
+
+  vector<TString> var;
+  var.push_back("1.06*(4.98004e+00 -1.23767e+00 * log(max(jets_pt[VBF_parton_jets]-2*jets_PU_subtr_cone_GEO_C3D[VBF_parton_jets],0)) + 1.02929e-01* pow(log(max(jets_pt[VBF_parton_jets]-2*jets_PU_subtr_cone_GEO_C3D[VBF_parton_jets],0)),2) ) * max(jets_pt[VBF_parton_jets]-2*jets_PU_subtr_cone_GEO_C3D[VBF_parton_jets],0)/genjet_pt[VBF_parton_genjet]");
+  var.push_back("1.17*(4.98004e+00 -1.23767e+00 * log(max(jets_pt[VBF_parton_jets]-1.1*jets_PU_subtr_cone_GEO_C3D[VBF_parton_jets],0)) + 1.07929e-01* pow(log(max(jets_pt[VBF_parton_jets]-1.1*jets_PU_subtr_cone_GEO_C3D[VBF_parton_jets],0)),2) ) * max(jets_pt[VBF_parton_jets]-1.1*jets_PU_subtr_cone_GEO_C3D[VBF_parton_jets],0)/genjet_pt[VBF_parton_genjet]");
+  var.push_back("1.06*(4.98004e+00 -1.23767e+00 * log(max(jets_pt[VBF_parton_jets]-2*jets_PU_subtr_cone_GEO_C3D[VBF_parton_jets],0)) + 1.02929e-01* pow(log(max(jets_pt[VBF_parton_jets]-2*jets_PU_subtr_cone_GEO_C3D[VBF_parton_jets],0)),2) ) * max(jets_pt[VBF_parton_jets]-2*jets_PU_subtr_cone_GEO_C3D[VBF_parton_jets],0)/genjet_pt[VBF_parton_genjet]");
+  var.push_back("1.10*(4.98004e+00 -1.23767e+00 * log(max(jets_pt[VBF_parton_jets]-2*jets_PU_subtr_cone_GEO_C3D[VBF_parton_jets],0)) + 1.01929e-01* pow(log(max(jets_pt[VBF_parton_jets]-2*jets_PU_subtr_cone_GEO_C3D[VBF_parton_jets],0)),2) ) * max(jets_pt[VBF_parton_jets]-2*jets_PU_subtr_cone_GEO_C3D[VBF_parton_jets],0)/genjet_pt[VBF_parton_genjet]");
+  var.push_back("1.20*(4.98004e+00 -1.25767e+00 * log(max(jets_pt[VBF_parton_jets]-1.5*jets_PU_subtr_cone_GEO_C3D[VBF_parton_jets],0)) + 1.02929e-01* pow(log(max(jets_pt[VBF_parton_jets]-1.5*jets_PU_subtr_cone_GEO_C3D[VBF_parton_jets],0)),2) ) * max(jets_pt[VBF_parton_jets]-1.5*jets_PU_subtr_cone_GEO_C3D[VBF_parton_jets],0)/genjet_pt[VBF_parton_genjet]");
+
+
+  double x[13]={20,40,60,80,100,120,140,160,180,200,220,250,300};
+  int nbins = 12;
+
+
+  vector<TGraphErrors*> graph;
+
+  for(unsigned int i=0; i<filename.size(); i++){
+
+    TGraphErrors* gr=new TGraphErrors();
+
+    int n=0;
+    for(int bin=0; bin<nbins; bin++){
+
+      TH1F* histo = histo_ET_resolution_noPUS(filename[i],var[i], Form(cuts[i]+" && genjet_pt[VBF_parton_genjet]>%f && genjet_pt[VBF_parton_genjet]<%f",x[bin],x[bin+1]));   
+      vector<float> eff_RMS=effectiveRMS(histo);
+      gr->SetPoint(n,0.5*(x[bin]+x[bin+1]),eff_RMS[0]/(histo->GetMean()));
+      gr->SetPointError(n,0.5*(-x[bin]+x[bin+1]),eff_RMS[1]/(histo->GetMean()));
+      n++;
+
+    }
+
+    gr->SetLineWidth(2);
+    gr->SetLineColor(i+1);
+    if(i>0) gr->SetMarkerColor(i+1);
+    if(i>3){
+      gr->SetLineColor(i+2);
+      if(i>0) gr->SetMarkerColor(i+2);
+    }
+
+    gr->SetMarkerStyle(kFullCircle);
+    gr->SetFillColor(0);
+    
+    graph.push_back(gr);
+
+  }
+
+
+  graph[0]->GetXaxis()->SetRangeUser(10,310);
+  graph[0]->GetYaxis()->SetRangeUser(0.,0.75);
+  graph[0]->GetXaxis()->SetTitle("p_{T}(gen. jet) [GeV]");
+  graph[0]->GetYaxis()->SetTitle("#sigma(p_{T}^{L1}/p_{T}^{gen})/<p_{T}^{L1}/p_{T}^{gen}>");
+  //graph[0]->GetYaxis()->SetTitle("Resolution");
+  graph[0]->GetYaxis()->SetTitleSize(0.04);
+  graph[0]->GetYaxis()->SetTitleOffset(1.3);
+
+  TLegend* leg=new TLegend(0.35,0.65,0.7,0.85);
+  leg->SetHeader("1.6<|#eta(gen.jet)|<2.9");
+  leg->SetBorderSize(0);
+  leg->SetTextSize(0.03);
+  leg->SetFillColor(0);
+  for(unsigned int i=0; i<graph.size();i++)
+    leg->AddEntry(graph[i], leg_entry[i]);
+
+  TCanvas *c = new TCanvas("c", "canvas", 850, 800);
+  c->SetLeftMargin(0.15);
+  gPad->SetTicks(1,1);
+
+  graph[0]->Draw("AP");
+  for(unsigned int i=1; i<graph.size(); i++)
+    graph[i]->Draw("Psame");
+  leg->Draw("same");
+
+ TLatex *texl = new TLatex(21,0.76,"CMS Simulation VBF H#rightarrowinv. PU=200 #sqrt{s}=14 TeV");
+  texl->SetTextSize(0.03);
+  texl->Draw("same");
+  gPad->SetTicks();
+
+  c->SaveAs("plots/L1Jet_resolution_pT_C3D_histo_PU200_test.pdf");
+
+  return;
+
+
+}
+
+
+
+
+
+
+
+
+void plot_effRMS_pT_C3D_histo_PU0_TC(){
+
+  
+  vector<TString> filename;
+  filename.push_back("/vols/cms/tstreble/HGC_ntuples/VBF_Hinv_PU0_dRNNC2D/jet_ntuples_merged/ntuple_jet_merged_1*.root");
+  filename.push_back("/vols/cms/tstreble/HGC_ntuples/VBF_Hinv_PU0_C3D_polarHisto_dR0p03/jet_ntuples_merged/ntuple_jet_merged_*.root");
+  filename.push_back("/vols/cms/tstreble/HGC_ntuples/VBF_Hinv_PU0_dRC3D_polarHisto_thresh_20MIPT/jet_ntuples_merged/ntuple_jet_merged_*.root");
+  filename.push_back("/vols/cms/tstreble/HGC_ntuples/VBF_Hinv_PU0_C3D_polarHisto_dR0p03_TC/jet_ntuples_merged/ntuple_jet_merged_*.root");
+  filename.push_back("/vols/cms/tstreble/HGC_ntuples/VBF_Hinv_PU0_dRC3D_polarHisto_thresh_20MIPT_TC/jet_ntuples_merged/ntuple_jet_merged_*.root");
+
+  vector<TString> leg_entry;
+  leg_entry.push_back("C2D + Cone dr=0.01");
+  leg_entry.push_back("C2D + Histo dr=0.03 Max. finding");
+  leg_entry.push_back("C2D + Histo dr=0.01 20 MIPT-thresh.");
+  leg_entry.push_back("TC + Histo dr=0.03 Max. finding");
+  leg_entry.push_back("TC + Histo dr=0.01 20 MIPT-thresh.");
+
+  
+
+  TString cut = "VBF_parton_genjet>=0 && VBF_parton_jets>=0 && abs(genjet_eta[VBF_parton_genjet])>1.6 && abs(genjet_eta[VBF_parton_genjet])<2.9 && genjet_pt[VBF_parton_genjet]>20";
+  vector<TString> cuts;
+  cuts.push_back(cut);
+  cuts.push_back(cut);
+  cuts.push_back(cut);
+  cuts.push_back(cut);
+  cuts.push_back(cut);
+
+  vector<TString> var;
+  var.push_back("1.06*(4.98004e+00 -1.23767e+00 * log(max(jets_pt[VBF_parton_jets],0)) + 1.02929e-01* pow(log(max(jets_pt[VBF_parton_jets],0)),2) ) * jets_pt[VBF_parton_jets]/genjet_pt[VBF_parton_genjet]");
+  var.push_back("1.06*(4.98004e+00 -1.23767e+00 * log(max(jets_pt[VBF_parton_jets],0)) + 1.02929e-01* pow(log(max(jets_pt[VBF_parton_jets],0)),2) ) * jets_pt[VBF_parton_jets]/genjet_pt[VBF_parton_genjet]");
+  var.push_back("1.10*(4.98004e+00 -1.23767e+00 * log(max(jets_pt[VBF_parton_jets],0)) + 1.01929e-01* pow(log(max(jets_pt[VBF_parton_jets],0)),2) ) * jets_pt[VBF_parton_jets]/genjet_pt[VBF_parton_genjet]");
+  var.push_back("0.84*(5.09004e+00 -1.22767e+00 * log(max(jets_pt[VBF_parton_jets],0)) + 1.02929e-01* pow(log(max(jets_pt[VBF_parton_jets],0)),2) ) * jets_pt[VBF_parton_jets]/genjet_pt[VBF_parton_genjet]");
+  var.push_back("0.98*(4.98004e+00 -1.23767e+00 * log(max(jets_pt[VBF_parton_jets],0)) + 1.00929e-01* pow(log(max(jets_pt[VBF_parton_jets],0)),2) ) * jets_pt[VBF_parton_jets]/genjet_pt[VBF_parton_genjet]");
+
+  double x[13]={20,40,60,80,100,120,140,160,180,200,220,250,300};
+  int nbins = 12;
+
+
+  vector<TGraphErrors*> graph;
+
+  for(unsigned int i=0; i<filename.size(); i++){
+
+    TGraphErrors* gr=new TGraphErrors();
+
+    int n=0;
+    for(int bin=0; bin<nbins; bin++){
+
+      TH1F* histo = histo_ET_resolution_noPUS(filename[i],var[i], Form(cuts[i]+" && genjet_pt[VBF_parton_genjet]>%f && genjet_pt[VBF_parton_genjet]<%f",x[bin],x[bin+1]));   
+      vector<float> eff_RMS=effectiveRMS(histo);
+      gr->SetPoint(n,0.5*(x[bin]+x[bin+1]),eff_RMS[0]/(histo->GetMean()));
+      gr->SetPointError(n,0.5*(-x[bin]+x[bin+1]),eff_RMS[1]/(histo->GetMean()));
+      n++;
+
+    }
+
+    gr->SetLineWidth(2);
+    gr->SetLineColor(i+1);
+    if(i>0) gr->SetMarkerColor(i+1);
+    if(i>3){
+      gr->SetLineColor(i+2);
+      if(i>0) gr->SetMarkerColor(i+2);
+    }
+
+    gr->SetMarkerStyle(kFullCircle);
+    gr->SetFillColor(0);
+    
+    graph.push_back(gr);
+
+  }
+
+
+  graph[0]->GetXaxis()->SetRangeUser(10,310);
+  graph[0]->GetYaxis()->SetRangeUser(0.,0.55);
+  graph[0]->GetXaxis()->SetTitle("p_{T}(gen. jet) [GeV]");
+  graph[0]->GetYaxis()->SetTitle("#sigma(p_{T}^{L1}/p_{T}^{gen})/<p_{T}^{L1}/p_{T}^{gen}>");
+  //graph[0]->GetYaxis()->SetTitle("Resolution");
+  graph[0]->GetYaxis()->SetTitleSize(0.04);
+  graph[0]->GetYaxis()->SetTitleOffset(1.3);
+
+  TLegend* leg=new TLegend(0.4,0.65,0.7,0.85);
+  leg->SetHeader("1.6<|#eta(gen.jet)|<2.9");
+  leg->SetBorderSize(0);
+  leg->SetTextSize(0.03);
+  leg->SetFillColor(0);
+  for(unsigned int i=0; i<graph.size();i++)
+    leg->AddEntry(graph[i], leg_entry[i]);
+
+  TCanvas *c = new TCanvas("c", "canvas", 850, 800);
+  c->SetLeftMargin(0.15);
+  gPad->SetTicks(1,1);
+
+  graph[0]->Draw("AP");
+  for(unsigned int i=1; i<graph.size(); i++)
+    graph[i]->Draw("Psame");
+  leg->Draw("same");
+
+ TLatex *texl = new TLatex(21,0.56,"CMS Simulation VBF H#rightarrowinv. #sqrt{s}=14 TeV PU=0");
+  texl->SetTextSize(0.03);
+  texl->Draw("same");
+  gPad->SetTicks();
+
+  c->SaveAs("plots/L1Jet_resolution_pT_C3D_histo_TC.pdf");
+
+  return;
+
+
+}
+
+
+
+
+
+
+
+
+
+
+void plot_effRMS_pT_C3D_histo_PU200_TC(){
+
+  
+  vector<TString> filename;
+  filename.push_back("/vols/cms/tstreble/HGC_ntuples/VBF_Hinv_PU200_dRNNC2D/jet_ntuples_merged/ntuple_jet_merged_*.root");
+  filename.push_back("/vols/cms/tstreble/HGC_ntuples/VBF_Hinv_PU200_C3D_polarHisto_dR0p03/jet_ntuples_merged/ntuple_jet_merged_*.root");
+  filename.push_back("/vols/cms/tstreble/HGC_ntuples/VBF_Hinv_PU200_dRC3D_polarHisto_thresh_20MIPT/jet_ntuples_merged/ntuple_jet_merged_*.root");
+  filename.push_back("/vols/cms/tstreble/HGC_ntuples/VBF_Hinv_PU200_C3D_polarHisto_dR0p03_TC/jet_ntuples_merged/ntuple_jet_merged_*.root");
+  filename.push_back("/vols/cms/tstreble/HGC_ntuples/VBF_Hinv_PU200_dRC3D_polarHisto_thresh_20MIPT_TC/jet_ntuples_merged/ntuple_jet_merged_*.root");
+
+  vector<TString> leg_entry;
+  leg_entry.push_back("C2D + Cone dr=0.01");
+  leg_entry.push_back("C2D + Histo dr=0.03 Max. finding");
+  leg_entry.push_back("C2D + Histo dr=0.01 20 MIPT-thresh.");
+  leg_entry.push_back("TC + Histo dr=0.03 Max. finding");
+  leg_entry.push_back("TC + Histo dr=0.01 20 MIPT-thresh.");
+
+  
+
+  TString cut = "VBF_parton_genjet>=0 && VBF_parton_jets>=0 && abs(genjet_eta[VBF_parton_genjet])>1.6 && abs(genjet_eta[VBF_parton_genjet])<2.9 && genjet_pt[VBF_parton_genjet]>20";
+  vector<TString> cuts;
+  cuts.push_back(cut + "&& (jets_pt[VBF_parton_jets]-2*jets_PU_subtr_cone_GEO_C3D[VBF_parton_jets])>0");
+  cuts.push_back(cut + "&& (jets_pt[VBF_parton_jets]-2*jets_PU_subtr_cone_GEO_C3D[VBF_parton_jets])>0");
+  cuts.push_back(cut + "&& (jets_pt[VBF_parton_jets]-2*jets_PU_subtr_cone_GEO_C3D[VBF_parton_jets])>0");
+  cuts.push_back(cut + "&& (jets_pt[VBF_parton_jets]-2.6*jets_PU_subtr_cone_GEO_C3D[VBF_parton_jets])>0");
+  cuts.push_back(cut + "&& (jets_pt[VBF_parton_jets]-2.6*jets_PU_subtr_cone_GEO_C3D[VBF_parton_jets])>0");
+
+  vector<TString> var;
+  var.push_back("1.06*(4.98004e+00 -1.23767e+00 * log(max(jets_pt[VBF_parton_jets]-2*jets_PU_subtr_cone_GEO_C3D[VBF_parton_jets],0)) + 1.02929e-01* pow(log(max(jets_pt[VBF_parton_jets]-2*jets_PU_subtr_cone_GEO_C3D[VBF_parton_jets],0)),2) ) * max(jets_pt[VBF_parton_jets]-2*jets_PU_subtr_cone_GEO_C3D[VBF_parton_jets],0)/genjet_pt[VBF_parton_genjet]");
+  var.push_back("1.06*(4.98004e+00 -1.23767e+00 * log(max(jets_pt[VBF_parton_jets]-2*jets_PU_subtr_cone_GEO_C3D[VBF_parton_jets],0)) + 1.02929e-01* pow(log(max(jets_pt[VBF_parton_jets]-2*jets_PU_subtr_cone_GEO_C3D[VBF_parton_jets],0)),2) ) * max(jets_pt[VBF_parton_jets]-2*jets_PU_subtr_cone_GEO_C3D[VBF_parton_jets],0)/genjet_pt[VBF_parton_genjet]");
+  var.push_back("1.10*(4.98004e+00 -1.23767e+00 * log(max(jets_pt[VBF_parton_jets]-2*jets_PU_subtr_cone_GEO_C3D[VBF_parton_jets],0)) + 1.01929e-01* pow(log(max(jets_pt[VBF_parton_jets]-2*jets_PU_subtr_cone_GEO_C3D[VBF_parton_jets],0)),2) ) * max(jets_pt[VBF_parton_jets]-2*jets_PU_subtr_cone_GEO_C3D[VBF_parton_jets],0)/genjet_pt[VBF_parton_genjet]");
+  var.push_back("0.84*(5.09004e+00 -1.22767e+00 * log(max(jets_pt[VBF_parton_jets]-2.6*jets_PU_subtr_cone_GEO_C3D[VBF_parton_jets],0)) + 1.02929e-01* pow(log(max(jets_pt[VBF_parton_jets]-2.6*jets_PU_subtr_cone_GEO_C3D[VBF_parton_jets],0)),2) ) * (jets_pt[VBF_parton_jets]-2.6*jets_PU_subtr_cone_GEO_C3D[VBF_parton_jets])/genjet_pt[VBF_parton_genjet]");
+  var.push_back("0.98*(4.98004e+00 -1.23767e+00 * log(max(jets_pt[VBF_parton_jets]-2.6*jets_PU_subtr_cone_GEO_C3D[VBF_parton_jets],0)) + 1.00929e-01* pow(log(max(jets_pt[VBF_parton_jets]-2.6*jets_PU_subtr_cone_GEO_C3D[VBF_parton_jets],0)),2) ) * (jets_pt[VBF_parton_jets]-2.6*jets_PU_subtr_cone_GEO_C3D[VBF_parton_jets])/genjet_pt[VBF_parton_genjet]");
+
+
+  double x[13]={20,40,60,80,100,120,140,160,180,200,220,250,300};
+  int nbins = 12;
+
+
+  vector<TGraphErrors*> graph;
+
+  for(unsigned int i=0; i<filename.size(); i++){
+
+    TGraphErrors* gr=new TGraphErrors();
+
+    int n=0;
+    for(int bin=0; bin<nbins; bin++){
+
+      TH1F* histo = histo_ET_resolution_noPUS(filename[i],var[i], Form(cuts[i]+" && genjet_pt[VBF_parton_genjet]>%f && genjet_pt[VBF_parton_genjet]<%f",x[bin],x[bin+1]));   
+      vector<float> eff_RMS=effectiveRMS(histo);
+      gr->SetPoint(n,0.5*(x[bin]+x[bin+1]),eff_RMS[0]/(histo->GetMean()));
+      gr->SetPointError(n,0.5*(-x[bin]+x[bin+1]),eff_RMS[1]/(histo->GetMean()));
+      n++;
+
+    }
+
+    gr->SetLineWidth(2);
+    gr->SetLineColor(i+1);
+    if(i>0) gr->SetMarkerColor(i+1);
+    if(i>3){
+      gr->SetLineColor(i+2);
+      if(i>0) gr->SetMarkerColor(i+2);
+    }
+
+    gr->SetMarkerStyle(kFullCircle);
+    gr->SetFillColor(0);
+    
+    graph.push_back(gr);
+
+  }
+
+
+  graph[0]->GetXaxis()->SetRangeUser(10,310);
+  graph[0]->GetYaxis()->SetRangeUser(0.,0.75);
+  graph[0]->GetXaxis()->SetTitle("p_{T}(gen. jet) [GeV]");
+  graph[0]->GetYaxis()->SetTitle("#sigma(p_{T}^{L1}/p_{T}^{gen})/<p_{T}^{L1}/p_{T}^{gen}>");
+  //graph[0]->GetYaxis()->SetTitle("Resolution");
+  graph[0]->GetYaxis()->SetTitleSize(0.04);
+  graph[0]->GetYaxis()->SetTitleOffset(1.3);
+
+  TLegend* leg=new TLegend(0.35,0.65,0.7,0.85);
+  leg->SetHeader("1.6<|#eta(gen.jet)|<2.9");
+  leg->SetBorderSize(0);
+  leg->SetTextSize(0.03);
+  leg->SetFillColor(0);
+  for(unsigned int i=0; i<graph.size();i++)
+    leg->AddEntry(graph[i], leg_entry[i]);
+
+  TCanvas *c = new TCanvas("c", "canvas", 850, 800);
+  c->SetLeftMargin(0.15);
+  gPad->SetTicks(1,1);
+
+  graph[0]->Draw("AP");
+  for(unsigned int i=1; i<graph.size(); i++)
+    graph[i]->Draw("Psame");
+  leg->Draw("same");
+
+ TLatex *texl = new TLatex(21,0.76,"CMS Simulation VBF H#rightarrowinv. PU=200 #sqrt{s}=14 TeV");
+  texl->SetTextSize(0.03);
+  texl->Draw("same");
+  gPad->SetTicks();
+
+  c->SaveAs("plots/L1Jet_resolution_pT_C3D_histo_PU200_TC.pdf");
+
+  return;
+
+
+}
 
 
