@@ -6,3 +6,4 @@ plots/
 *.bak
 obj/
 HGC
+*.pdf

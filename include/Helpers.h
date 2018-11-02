@@ -39,10 +39,11 @@ class Helpers{
   
  private:
 
-
+  int _counter;
 
  public:
-
+  
+  Helpers();
   double normalizedPhi(double phi);
   double deltaPhi(double phi1, double phi2);
   float binning(TH1F* h);
@@ -60,7 +61,7 @@ class Helpers{
   std::vector<TH1F*> sort_histo(std::vector<TH1F*> h);
   TH1F* single_plot(TString hname, std::vector<TString> files, TString tree_name, TString var, TString cut, int nbin, float min, float max);
   void makeBinContentsPositive(TH1* histogram, bool verbosity=false);
-  
+  TString counter();
 };
 
 #endif
