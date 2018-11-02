@@ -3,3 +3,6 @@ plots/
 *.so
 *.pcm
 *.d
+*.bak
+obj/
+HGC
