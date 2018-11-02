@@ -12,8 +12,14 @@ print
 NumberOfJobs= 50
 # number of jobs to be submitted
 interval = 1 # number files to be processed in a single job, take care to split your file so that you run on all files. The last job might be with smaller number of files (the ones that remain).
-dir = "/vols/cms/tstreble/HGC_ntuples/SingleNu_PU200_dRC3D_polarHisto_thresh_20MIPT_TC/"
-OutputFileNames = dir + "jet_ntuples_merged/ntuple_jet_merged" # base of the output file name, they will be saved in res directory
+#dir  = "SingleGammaPt25Eta1p6_2p8/crab_SingleGammaPt25_PU0-stc/181031_145114/0000"
+
+# dir  = "SingleGammaPt25Eta1p6_2p8/crab_SingleGammaPt25_PU0-threshold/181031_145212/0000"
+# dirout = "/vols/cms/snwebb/HGC_ntuples/SingleGammaPt25_PU0_threshold_1031/"
+dir  = "SingleGammaPt25Eta1p6_2p8/crab_SingleGammaPt25_PU0-stc/181031_145114/0000"
+dirout = "/vols/cms/snwebb/HGC_ntuples/SingleGammaPt25_PU0_stc_1031/"
+
+OutputFileNames = dirout + "jet_ntuples_merged/ntuple_jet_merged" # base of the output file name, they will be saved in res directory
 ScriptName = "scripts/runJets.py" # script to be used with cmsRun
 #FileList = "filelist.txt" # list with all the file directories
 queue = "8nh" # give bsub queue -- 8nm (8 minutes), 1nh (1 hour), 8nh, 1nd (1day), 2nd, 1nw (1 week), 2nw 
@@ -22,15 +28,16 @@ queue = "8nh" # give bsub queue -- 8nm (8 minutes), 1nh (1 hour), 8nh, 1nd (1day
 path = os.getcwd()
 print
 print 'do not worry about folder creation:'
-os.system("rm -r " + dir + "tmp")
-os.system("mkdir " + dir + "tmp")
+os.system("rm -r " + dirout + "tmp")
+os.system("mkdir -p " + dirout + "tmp")
+os.system("mkdir -p " + dirout + "jet_ntuples_merged")
 print
 
 ##### loop for creating and sending jobs #####
 for x in range(1, int(NumberOfJobs)+1):
    ##### creates directory and file list for job #######
-   os.system("mkdir "+dir+"tmp/"+str(x))
-   os.chdir(dir+"tmp/"+str(x))
+   os.system("mkdir "+dirout+"tmp/"+str(x))
+   os.chdir(dirout+"tmp/"+str(x))
    #os.system("sed '"+str(1+interval*(x-1))+","+str(interval*x)+"!d' ../../"+FileList+" > list.txt ")
    
    ##### creates jobs #######
@@ -40,13 +47,14 @@ for x in range(1, int(NumberOfJobs)+1):
       fout.write("echo\n")
       fout.write("echo 'START---------------'\n")
       fout.write("echo 'WORKDIR ' ${PWD}\n")
-      fout.write("cd /home/hep/tstreble/1016_BPHParkingAnalysis_PR21/CMSSW_10_1_6/src\n")
+      fout.write("cd /home/hep/snwebb/hgcal/CMSSW_10_1_7/src\n")
       fout.write("eval `scramv1 runtime -sh`\n")
-      fout.write("export X509_USER_PROXY=/home/hep/tstreble/myVoms/x509up_u1255448\n")
-      fout.write("cd /home/hep/tstreble/HGC_macros\n")
+#      fout.write("export X509_USER_PROXY=/home/hep/tstreble/myVoms/x509up_u1255448\n")
+      fout.write("cd /home/hep/snwebb/hgcal/HGC_macros\n")
       fout.write("root -b -l <<EOF\n")
       fout.write(".L jet_ntuple_merger_v2.C+\n")
-      fout.write("add_jet(\"root://cms-xrd-global.cern.ch//store/user/tstreble/SingleNeutrino/SingleNu_PU200_C3D_polarHisto_thresh_20MIPT_TC_18_09_05/180905_163131/0000/ntuple_"+str(x)+".root\",\"hgcalTriggerNtuplizer/HGCalTriggerNtuple\",\""+dir+"jet_ntuples/ntuple_jet_"+str(x)+".root\",\"jets\",\""+OutputFileNames+"_"+str(x)+".root\");\n")      
+#      fout.write("add_jet(\"" + dir + "/ntuples/ntuple_"+str(x)+".root\",\"hgcalTriggerNtuplizer/HGCalTriggerNtuple\",\""+dir+"/jet_ntuples/ntuple_jet_"+str(x)+".root\",\"jets\",\""+OutputFileNames+"_"+str(x)+".root\");\n")      
+      fout.write("add_jet(\"root://cms-xrd-global.cern.ch//store/user/sawebb/"+ dir + "/ntuple_"+str(x)+".root\",\"hgcalTriggerNtuplizer/HGCalTriggerNtuple\",\"" + dirout+"/jet_ntuples/ntuple_jet_"+str(x)+".root\",\"jets\",\""+OutputFileNames+"_"+str(x)+".root\");\n")      
       fout.write(".q\n")
       fout.write("EOF\n")
       fout.write("echo 'STOP---------------'\n")

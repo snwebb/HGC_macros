@@ -12,6 +12,8 @@
 #include <TClonesArray.h>
 #include <TChain.h>
 #include <TMath.h>
+#include <tuple>
+#include <map>
 
 #include <TSystem.h>
 #include <TROOT.h>
@@ -19,7 +21,11 @@ using namespace std;
 
 //gSystem->Load("/home/llr/cms/strebler/MG5_aMC_v2_2_1/ExRootAnalysis/libExRootAnalysis.so") before compilation in Root
 
+typedef std::map<std::array<int,3>,float> Histogram;
+typedef std::tuple<double,double,double> GlobalPoint;
 
+
+std::tuple<int, int, int> triple;
 
 
 double normalizedPhi(double phi){
@@ -192,6 +198,7 @@ TH2F* single_plot2D(TString file, TString tree_name, TString var1, TString var2,
   tree->Add(file);
 
   tree->Draw(var2+":"+var1+Form(">>h(%i,%f,%f,%i,%f,%f)",nbin1,min1,max1,nbin2,min2,max2),cut,"goff");
+
   TH2F* g=(TH2F*) ((TH2F*)gDirectory->Get("h"))->Clone();
   return g;
 }

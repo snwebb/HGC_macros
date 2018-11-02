@@ -99,6 +99,65 @@ float sigmaPhiPhi(const std::vector<pair<float,float> >& energy_phi_tc, const fl
 
 }
 
+int nBinsPhiHisto_ = 16;
+int nBinsRHisto_ = 10;
+double kROverZMin_ = 0;
+double kROverZMax_ = 1;
+
+std::vector<GlobalPoint> computeMaxSeeds( const Histogram & histoClusters ){
+
+    std::vector<GlobalPoint> seedPositions;
+
+    for(int z_side : {-1,1}){
+
+        for(int bin_R = 0; bin_R<int(nBinsRHisto_); bin_R++){
+
+            for(int bin_phi = 0; bin_phi<int(nBinsPhiHisto_); bin_phi++){
+
+                float MIPT_seed = histoClusters.at({{z_side,bin_R,bin_phi}});
+                bool isMax = MIPT_seed>0;
+
+                float MIPT_S = bin_R<(int(nBinsRHisto_)-1) ? histoClusters.at({{z_side,bin_R+1,bin_phi}}) : 0;
+                float MIPT_N = bin_R>0 ? histoClusters.at({{z_side,bin_R-1,bin_phi}}) : 0;
+
+                int binLeft = bin_phi - 1;
+                if( binLeft<0 ) binLeft += nBinsPhiHisto_;
+                int binRight = bin_phi + 1;
+                if( binRight>=int(nBinsPhiHisto_) ) binRight -= nBinsPhiHisto_;
+
+                float MIPT_W = histoClusters.at({{z_side,bin_R,binLeft}});
+                float MIPT_E = histoClusters.at({{z_side,bin_R,binRight}});
+                float MIPT_NW = bin_R>0 ? histoClusters.at({{z_side,bin_R-1,binLeft}}) : 0;
+                float MIPT_NE = bin_R>0 ?histoClusters.at({{z_side,bin_R-1,binRight}}) : 0;
+                float MIPT_SW = bin_R<(int(nBinsRHisto_)-1) ? histoClusters.at({{z_side,bin_R+1,binLeft}}) : 0;
+                float MIPT_SE = bin_R<(int(nBinsRHisto_)-1) ? histoClusters.at({{z_side,bin_R+1,binRight}}) : 0;
+
+                isMax &= MIPT_seed>=MIPT_S;
+                isMax &= MIPT_seed>MIPT_N;
+                isMax &= MIPT_seed>=MIPT_E;
+                isMax &= MIPT_seed>=MIPT_SE;
+                isMax &= MIPT_seed>=MIPT_NE;
+                isMax &= MIPT_seed>MIPT_W;
+                isMax &= MIPT_seed>MIPT_SW;
+                isMax &= MIPT_seed>MIPT_NW;
+
+                if(isMax){
+                    float ROverZ_seed = kROverZMin_ + (bin_R+0.5) * (kROverZMax_-kROverZMin_)/nBinsRHisto_;
+                    float phi_seed = -M_PI + (bin_phi+0.5) * 2*M_PI/nBinsPhiHisto_;
+                    float x_seed = ROverZ_seed*cos(phi_seed);
+                    float y_seed = ROverZ_seed*sin(phi_seed);
+                    seedPositions.emplace_back(x_seed,y_seed,z_side);
+                }
+
+            }
+
+        }
+
+    }
+
+    return seedPositions;
+
+}
 
 
 
@@ -242,7 +301,7 @@ void add_jet(TString filein,  TString treename, TString filein_jet, TString tree
 
   TTree* tree_new = new TTree("HGCalTriggerNtupleJet","HGCalTriggerNtupleJet");
   tree_new->AddFriend(treename,filein);
-  TString filejet_friend = "/vols/cms/tstreble/HGC_ntuples/" + filein_jet(31,filein_jet.Length());
+  TString filejet_friend = "/vols/cms/snwebb/HGC_ntuples/" + filein_jet(29,filein_jet.Length());
   tree_new->AddFriend(treename_jet,filejet_friend);
 
   
@@ -362,7 +421,7 @@ void add_jet(TString filein,  TString treename, TString filein_jet, TString tree
   int N = min(nentries,nentries2);
   for(int i=0;i<N;i++){
 
-    //if(i%1000==0)
+    if(i%1000==0)
       cout<<"i="<<i<<endl;
     
     _tc_n = 0;
@@ -475,7 +534,7 @@ void add_jet(TString filein,  TString treename, TString filein_jet, TString tree
     tree_jet->GetEntry(i);
 
     _jets_n = (*_jets_C3d_pt).size();   
-
+  
     map<unsigned int, unsigned int> tc_map; //First ID, Second index
     map<unsigned int, unsigned int> cl_map; //First ID, Second index
     map<unsigned int, unsigned int> cl3d_map; //First ID, Second index
@@ -563,7 +622,7 @@ void add_jet(TString filein,  TString treename, TString filein_jet, TString tree
 	
       }
     }
-            
+              
     _tc_cl3d.resize(_tc_n,-1);
     _cl_cl3d.resize(_cl_n,-1);
     for(unsigned int i_cl3d=0; i_cl3d<(_cl3d_clusters).size(); i_cl3d++){      
@@ -679,7 +738,7 @@ void add_jet(TString filein,  TString treename, TString filein_jet, TString tree
       
     }
 
-
+  
     //Jet shower-shape variables
     _layer_jets_energy_fraction.resize(53);
 
@@ -846,6 +905,34 @@ void add_jet(TString filein,  TString treename, TString filein_jet, TString tree
       
     }
 
+
+
+
+    // Steps: Fill 2D histogram either with Trigger Cell or 2D clustering information
+    // Find seeds using one of several methods
+    // Form the 3D clusters using these seeds
+
+
+
+    // //Find seeds (new implementation)
+
+    // /* seeds determined with local maximum criteria */
+    //  std::vector<std::vector<double> seedPositions;
+    // std::vector<GlobalPoint> seedPositions;
+    // Histogram histoCluster = fillHistoClusters(clustersPtrs); //key[0] = z.side(), key[1] = bin_R, key[2] = bin_phi, content = MIPTs summed along depth
+    // seedPositions = computeMaxSeeds(histoCluster);
+    
+
+
+
+
+
+
+
+
+
+
+    
 
     tree_new->Fill();
   }

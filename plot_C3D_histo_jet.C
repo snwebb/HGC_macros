@@ -20,6 +20,116 @@ using namespace std;
 
 
 
+//NEW
+
+
+void plot_profile_L1jet_response_pt_PU0_C3D_histo_refined(){
+
+  TString cut = "VBF_parton_genjet>=0 && VBF_parton_jets>=0 && abs(genjet_eta[VBF_parton_genjet])>1.6 && abs(genjet_eta[VBF_parton_genjet])<2.9 && genjet_pt[VBF_parton_genjet]>20";
+  std::cout << __LINE__ << std::endl;
+
+  TH2F* h_PU0_raw_refined = single_plot2D("/vols/cms/snwebb/HGC_ntuples/VBF_Hinv_PU0_C3D_polarHisto_refinedMax/jet_ntuples_merged/ntuple_jet_merged_*.root","HGCalTriggerNtupleJet","genjet_pt[VBF_parton_genjet]","jets_pt[VBF_parton_jets]/genjet_pt[VBF_parton_genjet]",cut+"&& jets_pt[VBF_parton_jets]>0",25,0,500,97,0.06,2);
+  TH2F* h_PU0_cal_refined = single_plot2D("/vols/cms/snwebb/HGC_ntuples/VBF_Hinv_PU0_C3D_polarHisto_refinedMax/jet_ntuples_merged/ntuple_jet_merged_*.root","HGCalTriggerNtupleJet","genjet_pt[VBF_parton_genjet]","1.06*(4.98004e+00 -1.23767e+00 * log(max(jets_pt[VBF_parton_jets],0)) + 1.02929e-01* pow(log(max(jets_pt[VBF_parton_jets],0)),2) ) * jets_pt[VBF_parton_jets]/genjet_pt[VBF_parton_genjet]",cut+"&& jets_pt[VBF_parton_jets]>0",25,0,500,97,0.06,2);
+
+  std::cout << __LINE__ << std::endl;
+  TH2F* h_PU0_raw_refined_tc = single_plot2D("/vols/cms/snwebb/HGC_ntuples/VBF_Hinv_PU0_C3D_polarHisto_refinedMax_TC/jet_ntuples_merged/ntuple_jet_merged_*.root","HGCalTriggerNtupleJet","genjet_pt[VBF_parton_genjet]","jets_pt[VBF_parton_jets]/genjet_pt[VBF_parton_genjet]",cut+"&& jets_pt[VBF_parton_jets]>0",25,0,500,97,0.06,2);
+  TH2F* h_PU0_cal_refined_tc = single_plot2D("/vols/cms/snwebb/HGC_ntuples/VBF_Hinv_PU0_C3D_polarHisto_refinedMax_TC/jet_ntuples_merged/ntuple_jet_merged_*.root","HGCalTriggerNtupleJet","genjet_pt[VBF_parton_genjet]","0.84*(5.09004e+00 -1.22767e+00 * log(max(jets_pt[VBF_parton_jets],0)) + 1.02929e-01* pow(log(max(jets_pt[VBF_parton_jets],0)),2) ) * jets_pt[VBF_parton_jets]/genjet_pt[VBF_parton_genjet]",cut+"&& jets_pt[VBF_parton_jets]>0",25,0,500,97,0.06,2);
+  std::cout << __LINE__ << std::endl;
+
+  TH2F* h_PU0_raw_crossrefined = single_plot2D("/vols/cms/snwebb/HGC_ntuples/VBF_Hinv_PU0_C3D_polarHisto_crossRefinedMax/jet_ntuples_merged/ntuple_jet_merged_*.root","HGCalTriggerNtupleJet","genjet_pt[VBF_parton_genjet]","jets_pt[VBF_parton_jets]/genjet_pt[VBF_parton_genjet]",cut+"&& jets_pt[VBF_parton_jets]>0",25,0,500,97,0.06,2);
+  TH2F* h_PU0_cal_crossrefined = single_plot2D("/vols/cms/snwebb/HGC_ntuples/VBF_Hinv_PU0_C3D_polarHisto_crossRefinedMax/jet_ntuples_merged/ntuple_jet_merged_*.root","HGCalTriggerNtupleJet","genjet_pt[VBF_parton_genjet]","1.06*(4.98004e+00 -1.23767e+00 * log(max(jets_pt[VBF_parton_jets],0)) + 1.02929e-01* pow(log(max(jets_pt[VBF_parton_jets],0)),2) ) * jets_pt[VBF_parton_jets]/genjet_pt[VBF_parton_genjet]",cut+"&& jets_pt[VBF_parton_jets]>0",25,0,500,97,0.06,2);
+  std::cout << __LINE__ << std::endl;
+
+  TH2F* h_PU0_raw_crossrefined_tc = single_plot2D("/vols/cms/snwebb/HGC_ntuples/VBF_Hinv_PU0_C3D_polarHisto_crossRefinedMax_TC/jet_ntuples_merged/ntuple_jet_merged_*.root","HGCalTriggerNtupleJet","genjet_pt[VBF_parton_genjet]","jets_pt[VBF_parton_jets]/genjet_pt[VBF_parton_genjet]",cut+"&& jets_pt[VBF_parton_jets]>0",25,0,500,97,0.06,2);
+  TH2F* h_PU0_cal_crossrefined_tc = single_plot2D("/vols/cms/snwebb/HGC_ntuples/VBF_Hinv_PU0_C3D_polarHisto_crossRefinedMax_TC/jet_ntuples_merged/ntuple_jet_merged_*.root","HGCalTriggerNtupleJet","genjet_pt[VBF_parton_genjet]","0.84*(5.09004e+00 -1.22767e+00 * log(max(jets_pt[VBF_parton_jets],0)) + 1.02929e-01* pow(log(max(jets_pt[VBF_parton_jets],0)),2) ) * jets_pt[VBF_parton_jets]/genjet_pt[VBF_parton_genjet]",cut+"&& jets_pt[VBF_parton_jets]>0",25,0,500,97,0.06,2);
+
+
+
+
+
+  // TH2F* h_PU0_raw_histo_old = single_plot2D("/vols/cms/tstreble/HGC_ntuples/VBF_Hinv_PU0_dRC3D_polarHisto_old/jet_ntuples_merged/ntuple_jet_merged_*.root","HGCalTriggerNtupleJet","genjet_pt[VBF_parton_genjet]","jets_pt[VBF_parton_jets]/genjet_pt[VBF_parton_genjet]",cut+"&& jets_pt[VBF_parton_jets]>0",25,0,500,97,0.06,2);
+  // TH2F* h_PU0_cal_histo_old = single_plot2D("/vols/cms/tstreble/HGC_ntuples/VBF_Hinv_PU0_dRC3D_polarHisto_old/jet_ntuples_merged/ntuple_jet_merged_*.root","HGCalTriggerNtupleJet","genjet_pt[VBF_parton_genjet]","1.36*(4.98004e+00 -1.23767e+00 * log(max(jets_pt[VBF_parton_jets],0)) + 1.02929e-01* pow(log(max(jets_pt[VBF_parton_jets],0)),2) ) * jets_pt[VBF_parton_jets]/genjet_pt[VBF_parton_genjet]",cut+"&& jets_pt[VBF_parton_jets]>0",25,0,500,97,0.06,2);
+  //  std::cout << __LINE__ << std::endl;
+
+  // TH2F* h_PU0_raw_histo = single_plot2D("/vols/cms/tstreble/HGC_ntuples/VBF_Hinv_PU0_dRC3D_polarHisto/jet_ntuples_merged/ntuple_jet_merged_*.root","HGCalTriggerNtupleJet","genjet_pt[VBF_parton_genjet]","jets_pt[VBF_parton_jets]/genjet_pt[VBF_parton_genjet]",cut+"&& jets_pt[VBF_parton_jets]>0",25,0,500,97,0.06,2);
+  // TH2F* h_PU0_cal_histo = single_plot2D("/vols/cms/tstreble/HGC_ntuples/VBF_Hinv_PU0_dRC3D_polarHisto/jet_ntuples_merged/ntuple_jet_merged_*.root","HGCalTriggerNtupleJet","genjet_pt[VBF_parton_genjet]","1.17*(4.98004e+00 -1.23767e+00 * log(max(jets_pt[VBF_parton_jets],0)) + 1.07929e-01* pow(log(max(jets_pt[VBF_parton_jets],0)),2) ) * jets_pt[VBF_parton_jets]/genjet_pt[VBF_parton_genjet]",cut+"&& jets_pt[VBF_parton_jets]>0",25,0,500,97,0.06,2);
+ 
+
+
+  vector<TH2F*> histo;
+  histo.push_back(h_PU0_raw_refined);
+  histo.push_back(h_PU0_cal_refined);
+  histo.push_back(h_PU0_raw_refined_tc);
+  histo.push_back(h_PU0_cal_refined_tc);
+  histo.push_back(h_PU0_raw_crossrefined);
+  histo.push_back(h_PU0_cal_crossrefined);
+  histo.push_back(h_PU0_raw_crossrefined_tc);
+  histo.push_back(h_PU0_cal_crossrefined_tc);
+
+
+  //    std::cout << __LINE__ << std::endl;
+  vector<TString> leg_entry;
+  leg_entry.push_back("PU=0 cone");
+  leg_entry.push_back("PU=0 cone + JEC");
+  leg_entry.push_back("TC PU=0 cone");
+  leg_entry.push_back("TC PU=0 cone + JEC");
+
+
+  leg_entry.push_back("PU=0 cone cross");
+  leg_entry.push_back("PU=0 cone + JEC cross");
+  leg_entry.push_back("TC PU=0 cone cross");
+  leg_entry.push_back("TC PU=0 cone + JEC cross");
+
+  TLegend* leg=new TLegend(0.4,0.15,0.7,0.5);
+  leg->SetHeader("#splitline{p_T(gen. jet)>20 GeV}{1.6<|#eta(gen.jet)|<2.9}");
+  leg->SetFillColor(0);
+  leg->SetBorderSize(0);
+  leg->SetTextSize(0.03);
+  
+  vector<TProfile*> prof;
+
+  for(unsigned int i=0;i<histo.size();i++){
+    TProfile* p = (TProfile*)histo[i]->ProfileX()->Clone();
+    prof.push_back(p);
+    prof[i]->SetLineColor(i+1);
+    if(i>3)
+      prof[i]->SetLineColor(i+2);
+    prof[i]->SetLineWidth(2);
+    leg->AddEntry(prof[i],leg_entry[i]);
+
+  }
+
+
+  TCanvas* c=new TCanvas("c","c",650,600);
+  c->SetLeftMargin(0.15);
+  c->SetRightMargin(0.15);
+
+  prof[0]->GetXaxis()->SetTitle("p_{T}(gen. jet) [GeV]");
+  prof[0]->GetYaxis()->SetTitle("p_{T}(L1)/p_{T}(gen. jet)");
+  prof[0]->GetYaxis()->SetTitleOffset(1.7);
+  prof[0]->GetYaxis()->SetRangeUser(-0.5,1.2);
+  prof[0]->SetStats(0);
+  prof[0]->SetTitle("");
+  prof[0]->Draw();
+  for(unsigned int i=1;i<histo.size();i++)
+    prof[i]->Draw("same");
+  leg->Draw("same");
+
+  TLatex *texl = new TLatex(2.,1.21,"CMS Simulation Preliminary, VBF H#rightarrowinv. #sqrt{s}=14 TeV");
+  texl->SetTextSize(0.03);
+  texl->Draw("same");
+
+  TLine* line = new TLine(0,1,500,1);
+  line->Draw("same");
+
+  gPad->SetTicks();
+
+
+  c->SaveAs("plots/profile_L1jet_response_pt_PU0_refinedmax.pdf");  
+
+
+}
+
 
 
 
@@ -507,7 +617,7 @@ void plot_L1jet_response_pt_PU0_C3D_histo_pt200(){
 
   TString filename_dRNNC2D = "/vols/cms/tstreble/HGC_ntuples/VBF_Hinv_PU0_dRNNC2D/jet_ntuples_merged/ntuple_jet_merged_*.root";
   TString filename_histo = "/vols/cms/tstreble/HGC_ntuples/VBF_Hinv_PU0_dRC3D_polarHisto/jet_ntuples_merged/ntuple_jet_merged_*.root";
-  TString filename_histo_0p03 = "/vols/cms/tstreble/HGC_ntuples/VBF_Hinv_PU0_C3D_polarHisto_dR0p03/jet_ntuples_merged/ntuple_jet_merged_*.root";
+  TString filename_histo_0p03 = "/vols/cms/tstreble/HGC_ntuples/VBF_Hinv_PU0_C3D_polarHisto_dR0p03/jet_ntuples_merged/ntuple_jet_merged_*.rootet_merged_*.root";
   TString filename_histo_thresh_20MIPT = "/vols/cms/tstreble/HGC_ntuples/VBF_Hinv_PU0_dRC3D_polarHisto_thresh_20MIPT/jet_ntuples_merged/ntuple_jet_merged_*.root";
   TString filename_histo_thresh_50MIPT = "/vols/cms/tstreble/HGC_ntuples/VBF_Hinv_PU0_dRC3D_polarHisto_thresh_50MIPT/jet_ntuples_merged/ntuple_jet_merged_*.root";
 
@@ -613,17 +723,17 @@ void plot_L1jet_nC3D_PU0_C3D_histo(){
 
   TH1F* h_PU0_dRNNC2D = single_plot(filename_dRNNC2D,"HGCalTriggerNtupleJet","jets_ncl3d[VBF_parton_jets]",cut+"&& genjet_pt[VBF_parton_genjet]>190 && genjet_pt[VBF_parton_genjet]<210",50,0.,50.);
   TH1F* h_PU0_histo = single_plot(filename_histo,"HGCalTriggerNtupleJet","jets_ncl3d[VBF_parton_jets]",cut+"&& genjet_pt[VBF_parton_genjet]>190 && genjet_pt[VBF_parton_genjet]<210",50,0.,50.);
-  TH1F* h_PU0_histo_0p03 = single_plot(filename_histo_0p03,"HGCalTriggerNtupleJet","jets_ncl3d[VBF_parton_jets]",cut+"&& genjet_pt[VBF_parton_genjet]>190 && genjet_pt[VBF_parton_genjet]<210",50,0.,50.);
+    TH1F* h_PU0_histo_0p03 = single_plot(filename_histo_0p03,"HGCalTriggerNtupleJet","jets_ncl3d[VBF_parton_jets]",cut+"&& genjet_pt[VBF_parton_genjet]>190 && genjet_pt[VBF_parton_genjet]<210",50,0.,50.);
   TH1F* h_PU0_histo_thresh_20MIPT = single_plot(filename_histo_thresh_20MIPT,"HGCalTriggerNtupleJet","jets_ncl3d[VBF_parton_jets]",cut+"&& genjet_pt[VBF_parton_genjet]>190 && genjet_pt[VBF_parton_genjet]<210",50,0.,50.);
-  TH1F* h_PU0_histo_thresh_50MIPT = single_plot(filename_histo_thresh_50MIPT,"HGCalTriggerNtupleJet","jets_ncl3d[VBF_parton_jets]",cut+"&& genjet_pt[VBF_parton_genjet]>190 && genjet_pt[VBF_parton_genjet]<210",50,0.,50.);
+   TH1F* h_PU0_histo_thresh_50MIPT = single_plot(filename_histo_thresh_50MIPT,"HGCalTriggerNtupleJet","jets_ncl3d[VBF_parton_jets]",cut+"&& genjet_pt[VBF_parton_genjet]>190 && genjet_pt[VBF_parton_genjet]<210",50,0.,50.);
   
 
   vector<TH1F*> histo;
   histo.push_back(h_PU0_dRNNC2D);
   histo.push_back(h_PU0_histo);
   histo.push_back(h_PU0_histo_0p03);
-  histo.push_back(h_PU0_histo_thresh_20MIPT);
-  histo.push_back(h_PU0_histo_thresh_50MIPT);
+   histo.push_back(h_PU0_histo_thresh_20MIPT);
+   histo.push_back(h_PU0_histo_thresh_50MIPT);
 
   vector<TString> leg_entry;
   leg_entry.push_back("Cone dr=0.01");
@@ -2495,30 +2605,48 @@ void plot_profile_L1jet_response_pt_PU200_C3D_histo_cal_TC(){
 
   TString cut = "VBF_parton_genjet>=0 && VBF_parton_jets>=0 && abs(genjet_eta[VBF_parton_genjet])>1.6 && abs(genjet_eta[VBF_parton_genjet])<2.9 && genjet_pt[VBF_parton_genjet]>20";
 
-  TH2F* h_PU200_cal_dRNNC2D = single_plot2D("/vols/cms/tstreble/HGC_ntuples/VBF_Hinv_PU200_dRNNC2D/jet_ntuples_merged/ntuple_jet_merged_*.root","HGCalTriggerNtupleJet","genjet_pt[VBF_parton_genjet]","1.06*(4.98004e+00 -1.23767e+00 * log(max(jets_pt[VBF_parton_jets]-2*jets_PU_subtr_cone_GEO_C3D[VBF_parton_jets],0)) + 1.02929e-01* pow(log(max(jets_pt[VBF_parton_jets]-2*jets_PU_subtr_cone_GEO_C3D[VBF_parton_jets],0)),2) ) * (jets_pt[VBF_parton_jets]-2*jets_PU_subtr_cone_GEO_C3D[VBF_parton_jets])/genjet_pt[VBF_parton_genjet]",cut+"&& (jets_pt[VBF_parton_jets]-2*jets_PU_subtr_cone_GEO_C3D[VBF_parton_jets])>0",25,0,500,97,0.06,2);
-
-  TH2F* h_PU200_cal_histo_0p03 = single_plot2D("/vols/cms/tstreble/HGC_ntuples/VBF_Hinv_PU200_C3D_polarHisto_dR0p03/jet_ntuples_merged/ntuple_jet_merged_*.root","HGCalTriggerNtupleJet","genjet_pt[VBF_parton_genjet]","1.06*(4.98004e+00 -1.23767e+00 * log(max(jets_pt[VBF_parton_jets]-2*jets_PU_subtr_cone_GEO_C3D[VBF_parton_jets],0)) + 1.02929e-01* pow(log(max(jets_pt[VBF_parton_jets]-2*jets_PU_subtr_cone_GEO_C3D[VBF_parton_jets],0)),2) ) * (jets_pt[VBF_parton_jets]-2*jets_PU_subtr_cone_GEO_C3D[VBF_parton_jets])/genjet_pt[VBF_parton_genjet]",cut+"&& (jets_pt[VBF_parton_jets]-2*jets_PU_subtr_cone_GEO_C3D[VBF_parton_jets])>0",25,0,500,97,0.06,2);
-
+  // TH2F* h_PU200_cal_dRNNC2D = single_plot2D("/vols/cms/tstreble/HGC_ntuples/VBF_Hinv_PU200_dRNNC2D/jet_ntuples_merged/ntuple_jet_merged_*.root","HGCalTriggerNtupleJet","genjet_pt[VBF_parton_genjet]","1.06*(4.98004e+00 -1.23767e+00 * log(max(jets_pt[VBF_parton_jets]-2*jets_PU_subtr_cone_GEO_C3D[VBF_parton_jets],0)) + 1.02929e-01* pow(log(max(jets_pt[VBF_parton_jets]-2*jets_PU_subtr_cone_GEO_C3D[VBF_parton_jets],0)),2) ) * (jets_pt[VBF_parton_jets]-2*jets_PU_subtr_cone_GEO_C3D[VBF_parton_jets])/genjet_pt[VBF_parton_genjet]",cut+"&& (jets_pt[VBF_parton_jets]-2*jets_PU_subtr_cone_GEO_C3D[VBF_parton_jets])>0",25,0,500,97,0.06,2);
+  // std::cout << __LINE__ << std::endl;
+  // TH2F* h_PU200_cal_histo_0p03 = single_plot2D("/vols/cms/tstreble/HGC_ntuples/VBF_Hinv_PU200_C3D_polarHisto_dR0p03/jet_ntuples_merged/ntuple_jet_merged_*.root","HGCalTriggerNtupleJet","genjet_pt[VBF_parton_genjet]","1.06*(4.98004e+00 -1.23767e+00 * log(max(jets_pt[VBF_parton_jets]-2*jets_PU_subtr_cone_GEO_C3D[VBF_parton_jets],0)) + 1.02929e-01* pow(log(max(jets_pt[VBF_parton_jets]-2*jets_PU_subtr_cone_GEO_C3D[VBF_parton_jets],0)),2) ) * (jets_pt[VBF_parton_jets]-2*jets_PU_subtr_cone_GEO_C3D[VBF_parton_jets])/genjet_pt[VBF_parton_genjet]",cut+"&& (jets_pt[VBF_parton_jets]-2*jets_PU_subtr_cone_GEO_C3D[VBF_parton_jets])>0",25,0,500,97,0.06,2);
+  // std::cout << __LINE__ << std::endl;
   TH2F* h_PU200_cal_histo_thresh_20MIPT = single_plot2D("/vols/cms/tstreble/HGC_ntuples/VBF_Hinv_PU200_dRC3D_polarHisto_thresh_20MIPT/jet_ntuples_merged/ntuple_jet_merged_*.root","HGCalTriggerNtupleJet","genjet_pt[VBF_parton_genjet]","1.10*(4.98004e+00 -1.23767e+00 * log(max(jets_pt[VBF_parton_jets]-2*jets_PU_subtr_cone_GEO_C3D[VBF_parton_jets],0)) + 1.01929e-01* pow(log(max(jets_pt[VBF_parton_jets]-2*jets_PU_subtr_cone_GEO_C3D[VBF_parton_jets],0)),2) ) * (jets_pt[VBF_parton_jets]-2*jets_PU_subtr_cone_GEO_C3D[VBF_parton_jets])/genjet_pt[VBF_parton_genjet]",cut+"&& (jets_pt[VBF_parton_jets]-2*jets_PU_subtr_cone_GEO_C3D[VBF_parton_jets])>0",25,0,500,97,0.06,2);
+  //  qwert
+  std::cout << __LINE__ << std::endl;
+  TH2F* h_PU200_cal_histo_thresh_20MIPT_nosmear = single_plot2D("/vols/cms/snwebb/HGC_ntuples/VBF_Hinv_PU200_C3D_polarHisto_nosmear_thresh_20MIPT/jet_ntuples_merged/ntuple_jet_merged_*.root","HGCalTriggerNtupleJet","genjet_pt[VBF_parton_genjet]","1.10*(4.98004e+00 -1.23767e+00 * log(max(jets_pt[VBF_parton_jets]-2*jets_PU_subtr_cone_GEO_C3D[VBF_parton_jets],0)) + 1.01929e-01* pow(log(max(jets_pt[VBF_parton_jets]-2*jets_PU_subtr_cone_GEO_C3D[VBF_parton_jets],0)),2) ) * (jets_pt[VBF_parton_jets]-2*jets_PU_subtr_cone_GEO_C3D[VBF_parton_jets])/genjet_pt[VBF_parton_genjet]",cut+"&& (jets_pt[VBF_parton_jets]-2*jets_PU_subtr_cone_GEO_C3D[VBF_parton_jets])>0",25,0,500,97,0.06,2);
 
 
   TH2F* h_PU200_cal_histo_0p03_TC = single_plot2D("/vols/cms/tstreble/HGC_ntuples/VBF_Hinv_PU200_C3D_polarHisto_dR0p03_TC/jet_ntuples_merged/ntuple_jet_merged_*.root","HGCalTriggerNtupleJet","genjet_pt[VBF_parton_genjet]","0.84*(5.09004e+00 -1.22767e+00 * log(max(jets_pt[VBF_parton_jets]-2.6*jets_PU_subtr_cone_GEO_C3D[VBF_parton_jets],0)) + 1.02929e-01* pow(log(max(jets_pt[VBF_parton_jets]-2.6*jets_PU_subtr_cone_GEO_C3D[VBF_parton_jets],0)),2) ) * (jets_pt[VBF_parton_jets]-2.6*jets_PU_subtr_cone_GEO_C3D[VBF_parton_jets])/genjet_pt[VBF_parton_genjet]",cut+"&& (jets_pt[VBF_parton_jets]-2.6*jets_PU_subtr_cone_GEO_C3D[VBF_parton_jets])>0",25,0,500,97,0.06,2);
+
+  TH2F* h_PU200_cal_histo_0p03_nosmear_TC = single_plot2D("/vols/cms/snwebb/HGC_ntuples/VBF_Hinv_PU200_C3D_polarHisto_nosmear_Max_dR0p03_TC/jet_ntuples_merged/ntuple_jet_merged_*.root","HGCalTriggerNtupleJet","genjet_pt[VBF_parton_genjet]","0.84*(5.09004e+00 -1.22767e+00 * log(max(jets_pt[VBF_parton_jets]-2.6*jets_PU_subtr_cone_GEO_C3D[VBF_parton_jets],0)) + 1.02929e-01* pow(log(max(jets_pt[VBF_parton_jets]-2.6*jets_PU_subtr_cone_GEO_C3D[VBF_parton_jets],0)),2) ) * (jets_pt[VBF_parton_jets]-2.6*jets_PU_subtr_cone_GEO_C3D[VBF_parton_jets])/genjet_pt[VBF_parton_genjet]",cut+"&& (jets_pt[VBF_parton_jets]-2.6*jets_PU_subtr_cone_GEO_C3D[VBF_parton_jets])>0",25,0,500,97,0.06,2);
   
-  TH2F* h_PU200_cal_histo_thresh_20MIPT_TC = single_plot2D("/vols/cms/tstreble/HGC_ntuples/VBF_Hinv_PU200_dRC3D_polarHisto_thresh_20MIPT_TC/jet_ntuples_merged/ntuple_jet_merged_*.root","HGCalTriggerNtupleJet","genjet_pt[VBF_parton_genjet]","0.98*(4.98004e+00 -1.23767e+00 * log(max(jets_pt[VBF_parton_jets]-2.6*jets_PU_subtr_cone_GEO_C3D[VBF_parton_jets],0)) + 1.00929e-01* pow(log(max(jets_pt[VBF_parton_jets]-2.6*jets_PU_subtr_cone_GEO_C3D[VBF_parton_jets],0)),2) ) * (jets_pt[VBF_parton_jets]-2.6*jets_PU_subtr_cone_GEO_C3D[VBF_parton_jets])/genjet_pt[VBF_parton_genjet]",cut+"&& (jets_pt[VBF_parton_jets]-2.6*jets_PU_subtr_cone_GEO_C3D[VBF_parton_jets])>0",25,0,500,97,0.06,2);
+  // TH2F* h_PU200_cal_histo_thresh_20MIPT_TC = single_plot2D("/vols/cms/tstreble/HGC_ntuples/VBF_Hinv_PU200_dRC3D_polarHisto_thresh_20MIPT_TC/jet_ntuples_merged/ntuple_jet_merged_*.root","HGCalTriggerNtupleJet","genjet_pt[VBF_parton_genjet]","0.98*(4.98004e+00 -1.23767e+00 * log(max(jets_pt[VBF_parton_jets]-2.6*jets_PU_subtr_cone_GEO_C3D[VBF_parton_jets],0)) + 1.00929e-01* pow(log(max(jets_pt[VBF_parton_jets]-2.6*jets_PU_subtr_cone_GEO_C3D[VBF_parton_jets],0)),2) ) * (jets_pt[VBF_parton_jets]-2.6*jets_PU_subtr_cone_GEO_C3D[VBF_parton_jets])/genjet_pt[VBF_parton_genjet]",cut+"&& (jets_pt[VBF_parton_jets]-2.6*jets_PU_subtr_cone_GEO_C3D[VBF_parton_jets])>0",25,0,500,97,0.06,2);
 
   vector<TH2F*> histo;
-  histo.push_back(h_PU200_cal_dRNNC2D);
-  histo.push_back(h_PU200_cal_histo_0p03);
-  histo.push_back(h_PU200_cal_histo_thresh_20MIPT);
-  histo.push_back(h_PU200_cal_histo_0p03_TC);
-  histo.push_back(h_PU200_cal_histo_thresh_20MIPT_TC);  
+  //  histo.push_back(h_PU200_cal_dRNNC2D);
+  //  histo.push_back(h_PU200_cal_histo_0p03);
+
+
+  histo.push_back(h_PU200_cal_histo_thresh_20MIPT);  //normal
+  histo.push_back(h_PU200_cal_histo_0p03_TC);//normal
+
+
+  histo.push_back(h_PU200_cal_histo_thresh_20MIPT_nosmear);  
+  histo.push_back(h_PU200_cal_histo_0p03_nosmear_TC);
+
+
+  //  histo.push_back(h_PU200_cal_histo_thresh_20MIPT_TC);  
   
   vector<TString> leg_entry;
-  leg_entry.push_back("C2D + Cone dr=0.01");
-  leg_entry.push_back("C2D + Histo dr=0.03 Max. finding");
-  leg_entry.push_back("C2D + Histo dr=0.01 20 MIPT-thresh.");
-  leg_entry.push_back("TC + Histo dr=0.03 Max. finding");
-  leg_entry.push_back("TC + Histo dr=0.01 20 MIPT-thresh."); 
+  //  leg_entry.push_back("C2D + Cone dr=0.01");
+  //  leg_entry.push_back("C2D + Histo dr=0.03 Max. finding");
+  leg_entry.push_back("C2D + Histo dr=0.01 20 MIPT-thresh.");//norm
+  leg_entry.push_back("TC + Histo dr=0.03 Max. finding");//norm
+
+  //leg_entry.push_back("TC + Histo dr=0.01 20 MIPT-thresh."); 
+
+  leg_entry.push_back("C2D + Histo dr=0.01 20 MIPT-thresh. no-smear");
+  leg_entry.push_back("TC + Histo dr=0.03 Max. finding no-smear");
+
 
   TLegend* leg=new TLegend(0.4,0.15,0.7,0.5);
   leg->SetHeader("#splitline{p_{T}(gen. jet)>20 GeV}{1.6<|#eta(gen.jet)|<2.9}");
