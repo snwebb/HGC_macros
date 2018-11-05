@@ -11,6 +11,7 @@ class C3D_histo_jet{
  private:
 
   Helpers helper;
+  TString snwebb = "/vols/cms/snwebb/HGC_ntuples/";
 
  public:
 

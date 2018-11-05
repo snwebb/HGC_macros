@@ -17,7 +17,7 @@ class Plotter{
   TLegend * _legend;
   TCanvas * _canvas;
   TLatex * _latex;
-
+  Helpers _helper;
 
  public:
 

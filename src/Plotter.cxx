@@ -36,7 +36,7 @@ void Plotter::InitialiseLegend(){
 
   _legend = new TLegend(0.4,0.15,0.7,0.5);
   _legend->SetHeader("#splitline{p_T(gen. jet)>20 GeV}{1.6<|#eta(gen.jet)|<2.9}");
-  _legend->SetHeader("#splitline{p_T(gen. jet)>20 GeV}{1.6<|#eta(gen.jet)|<2.9}");
+  //  _legend->SetHeader("#splitline{p_T(gen. jet)>20 GeV}{1.6<|#eta(gen.jet)|<2.9}");
   _legend->SetFillColor(0);
   _legend->SetBorderSize(0);
   _legend->SetTextSize(0.03);

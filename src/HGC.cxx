@@ -1,16 +1,18 @@
-#include "C3D_histo_jet.h"
-
+#include "HGC.h"
 
 int main(){
 
 
-  C3D_histo_jet c3d_histo_jet;
+  HGC hgc;
   
-  //    c3d_histo_jet.plot_profile_L1jet_response_pt_PU0_C3D_histo_refined();
+  //Response
+  // hgc.plot_profile_L1jet_response_pt_PU0_STC();
+  // hgc.plot_profile_L1jet_response_eta_PU0_STC();
+  
 
-
-    c3d_histo_jet.plot_profile_L1jet_response_pt_PU0_STC();
-
+  //Resolution
+  hgc.plot_effRMS_pT_C3D_histo_PU0_STC();
+  
 
   return 0;
 }

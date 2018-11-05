@@ -11,6 +11,7 @@
 #include <TH3F.h>
 #include <TStyle.h>
 #include <TLegend.h>
+#include <TRandom3.h>
 #include <TBranch.h>
 #include <TClonesArray.h>
 #include <TChain.h>
@@ -18,6 +19,7 @@
 #include <TLatex.h>
 #include <TProfile.h>
 #include <TMath.h>
+#include <TF1.h>
 #include <TLine.h>
 #include <TGaxis.h>
 #include <TGraphErrors.h>

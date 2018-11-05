@@ -22,7 +22,7 @@ void PlotterResponse::Draw(std::vector<TH2F*> &histo, std::vector<TString> &leg_
     prof[0]->GetYaxis()->SetTitle("p_{T}(L1)/p_{T}(gen. jet)");
   }
   if ( xvar == "eta" ){
-    prof[0]->GetXaxis()->SetTitle("p_{T}(gen. jet) [GeV]");
+    prof[0]->GetXaxis()->SetTitle("|#eta(gen. jet)|");
     prof[0]->GetYaxis()->SetTitle("p_{T}(L1)/p_{T}(gen. jet)");
   }
 
