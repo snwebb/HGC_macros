@@ -11,8 +11,8 @@ int main(){
   
 
   //Resolution
-  hgc.plot_effRMS_pT_C3D_histo_PU0_STC();
-  
+//  hgc.plot_effRMS_pT_C3D_histo_PU0_STC();
+  hgc.plot_effRMS_pT();
 
   return 0;
 }

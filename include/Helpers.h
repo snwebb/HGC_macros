@@ -33,6 +33,8 @@
 #include <vector>
 #include <cassert>
 
+#include "HistObject.h"
+
 
 typedef std::map<std::array<int,3>,float> Histogram;
 typedef std::tuple<double,double,double> GlobalPoint;

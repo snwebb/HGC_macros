@@ -1,21 +1,29 @@
 #include "PlotterResolution.h"
 
-void PlotterResolution::Draw(std::vector<TString> &filename, std::vector<TString> &leg_entry, std::vector<TString> &var, std::vector<double>& x, TString cut){
+
+void PlotterResolution::Draw(std::vector<HistObject>& hists, std::vector<double>& x, TString savename){
 
   std::vector<TGraphErrors*> graph;
-  
-  for(unsigned int i=0; i<filename.size(); i++){
-    
+
+  int i = 0;  
+  for (auto &hist: hists ){    
+
     TGraphErrors* gr=new TGraphErrors();
     
     int n=0;
     for(unsigned int bin=0; bin<x.size(); bin++){
       
-      TH1F* histo = histo_ET_resolution_noPUS(filename[i],var[i], Form(cut+" && genjet_pt[VBF_parton_genjet]>%f && genjet_pt[VBF_parton_genjet]<%f",x[bin],x[bin+1]));   
+      TH1F* histo = 0;
+      //      histo = histo_ET_resolution(hist.filename(),hist.var(), Form(hist.cut()+" && genjet_pt>%f && genjet_pt<%f",x[bin],x[bin+1]), hist.process(), hist.PUS() );   
+
+      histo = histo_ET_resolution(hist.filename(),hist.var(), hist.cut(), hist.process(), hist.PUS(), x[bin], x[bin+1]);   
+            
       std::vector<float> eff_RMS=effectiveRMS(histo);
-      gr->SetPoint(n,0.5*(x[bin]+x[bin+1]),eff_RMS[0]/(histo->GetMean()));
-      gr->SetPointError(n,0.5*(-x[bin]+x[bin+1]),eff_RMS[1]/(histo->GetMean()));
+      gr->SetPoint(n,0.5*(x[bin]+x[bin+1]),eff_RMS[0]/(1-histo->GetMean()));
+      std::cout << "--- " << eff_RMS[0]  << " - " << histo->GetMean() << std::endl;
+      gr->SetPointError(n,0.5*(-x[bin]+x[bin+1]),eff_RMS[1]/(1-histo->GetMean()));
       n++;
+      histo->Delete();
     }
 
     gr->SetLineWidth(2);
@@ -30,11 +38,13 @@ void PlotterResolution::Draw(std::vector<TString> &filename, std::vector<TString
     gr->SetFillColor(0);
     
     graph.push_back(gr);
-
+    i++;
   }
 
   graph[0]->GetXaxis()->SetRangeUser(10,310);
-  graph[0]->GetYaxis()->SetRangeUser(0.,0.55);
+  //  graph[0]->GetYaxis()->SetRangeUser(0.,0.55);
+  //  graph[0]->GetXaxis()->SetRangeUser(24.99,25.01);
+  //  graph[0]->GetYaxis()->SetRangeUser(0.035,0.055);
   graph[0]->GetXaxis()->SetTitle("p_{T}(gen. jet) [GeV]");
   graph[0]->GetYaxis()->SetTitle("#sigma(p_{T}^{L1}/p_{T}^{gen})/<p_{T}^{L1}/p_{T}^{gen}>");
   graph[0]->GetYaxis()->SetTitleSize(0.04);
@@ -43,7 +53,7 @@ void PlotterResolution::Draw(std::vector<TString> &filename, std::vector<TString
   _legend->SetHeader("1.6<|#eta(gen.jet)|<2.9");
   
   for(unsigned int i=0; i<graph.size();i++)
-    _legend->AddEntry(graph[i], leg_entry[i]);
+    _legend->AddEntry(graph[i], hists.at(i).leg_entry() );
 
   TCanvas * c = _canvas;
   c->SetCanvasSize(850, 800);
@@ -58,7 +68,7 @@ void PlotterResolution::Draw(std::vector<TString> &filename, std::vector<TString
   _latex->Draw("same");
   gPad->SetTicks();
 
-  c->SaveAs("plots/L1Jet_resolution_pT_C3D_histo_STC_TEST.pdf");
+  c->SaveAs("plots/" + savename + ".pdf");
 
 
 }
@@ -76,6 +86,7 @@ std::vector<float> PlotterResolution::effectiveRMS(const TH1F* histo, double fra
 
   TF1* fit = doubleCBFit(histoCopy,3.,fitrebin);
   double maxX = fit->GetParameter(1);
+  fit->Delete();
   int maxBinX = histoCopy->GetXaxis()->FindBin(maxX);
   double binWidth = histoCopy->GetXaxis()->GetBinWidth(maxBinX);
   histoCopy->Delete();
@@ -103,7 +114,7 @@ std::vector<float> PlotterResolution::effectiveRMS(const TH1F* histo, double fra
     double totalIntegral = histoCopy->Integral(0,nbins+1);
     //double totalIntegral = histoCopy->Integral();
     double sumBins = 0.;
-    double sumErrorBins = 0.;
+    //    double sumErrorBins = 0.;
     int indexRMSLeft = 0;
     int indexRMSRight = 0;
     int indexLeft = 0;
@@ -116,14 +127,14 @@ std::vector<float> PlotterResolution::effectiveRMS(const TH1F* histo, double fra
 
       if(bRight>nbins){
 	std::cout<<"WARNING: effectiveRMS: bin reached histo boundary"<<std::endl;
-        int binRMSRight = bRight;
-        int binRMSLeft = bLeft;
+        // int binRMSRight = bRight;
+        // int binRMSLeft = bLeft;
         break;
       }
       if (bLeft<=0){
         std::cout<<"WARNING: effectiveRMS: bin reached histo boundary"<<std::endl;
-        int binRMSRight = bRight;
-        int binRMSLeft = bLeft;
+        // int binRMSRight = bRight;
+        // int binRMSLeft = bLeft;
         break;
       }
 
@@ -163,7 +174,7 @@ std::vector<float> PlotterResolution::effectiveRMS(const TH1F* histo, double fra
     double xRight = histoCopy->GetXaxis()->GetBinCenter(maxBinX + indexRMSRight);
     //cout<<xLeft<<","<<xRight<<std::endl;;
     double rms = (xRight - xLeft)/2.;
-    //    rmsList.push_back(rms);
+    rmsList.push_back(rms);
     
   }
     
@@ -181,6 +192,8 @@ std::vector<float> PlotterResolution::effectiveRMS(const TH1F* histo, double fra
   rms=rms_histo->GetMean();
   rmsError=rms_histo->GetStdDev();
   
+  rms_histo->Delete();
+
   rmsError = std::max(rmsError, 1./sqrt(12.)*binWidth);
   std::cout<<rms<<","<<rmsError<<std::endl;
   
@@ -193,21 +206,60 @@ std::vector<float> PlotterResolution::effectiveRMS(const TH1F* histo, double fra
 
 
 
-TH1F* PlotterResolution::histo_ET_resolution_noPUS(TString filename, TString var, TString cut){
+TH1F* PlotterResolution::histo_ET_resolution(TString filename, TString var, TString cut, std::string process, bool PUS, double binlow, double binhigh){
+
 
   TChain * tree = new TChain("HGCalTriggerNtupleJet");
+
   tree->Add(filename);
+  TString all_cuts="";
+  if ( process == "Gamma" ) {
 
-  TString all_cuts=cut;
+    all_cuts = Form(cut+" && genjet_pt>%f && genjet_pt<%f",binlow,binhigh);
 
-  tree->Draw(var + ">>g(500,-2,2)",all_cuts+ " && jets_pt[VBF_parton_jets]>0","goff");
-  
+    if ( !PUS )
+      tree->Draw(var + ">>g(500,-2,2)",all_cuts+ " && jets_pt>0","goff");  
+    if ( PUS )
+      tree->Draw(var + ">>g(500,-2,2)",all_cuts+ " && jets_pt>0","goff");  
+
+  }
+
+  if ( process == "Jets" ) {
+
+    all_cuts = Form(cut+" && genjet_pt[VBF_parton_genjet]>%f && genjet_pt[VBF_parton_genjet]<%f",binlow,binhigh);
+
+    if ( !PUS ){
+      tree->Draw(var + ">>g(500,-2,2)",all_cuts+ " && jets_pt[VBF_parton_jets]>0","goff");  
+
+      std::cout << var + ">>g(500,-2,2)\",\"" + all_cuts + " && jets_pt[VBF_parton_jets]>0";
+    }
+    if ( PUS )
+      tree->Draw(var + ">>g(500,-2,2)",all_cuts+ " && jets_pt[VBF_parton_jets]-2*jets_PU_subtr_cone_GEO_C3D[VBF_parton_jets]>0","goff");  
+    
+
+  }
+    
+  //    std::cout << var + ">>g(500,-2,2)," + all_cuts+ " && jets_pt[VBF_parton_jets]>0" << std::endl;
+
   TH1F* g=(TH1F*) ((TH1F*)gDirectory->Get("g"))->Clone();
-  //g->Scale(1/g->Integral());
   
   return g;
   
 }
+
+// TH1F* PlotterResolution::histo_ET_resolution_Jets_noPUS(TString filename, TString var, TString cut){
+
+//   TChain * tree = new TChain("HGCalTriggerNtupleJet");
+//   tree->Add(filename);
+//   TString all_cuts=cut;
+//   tree->Draw(var + ">>g(500,-2,2)",all_cuts+ " && jets_pt[VBF_parton_jets]>0","goff");
+//   TH1F* g=(TH1F*) ((TH1F*)gDirectory->Get("g"))->Clone();
+  
+//   return g;
+  
+//}
+
+
 
 TF1* PlotterResolution::doubleCBFit(TH1F* histo, double rangeInSigma, int fitrebin){
 
