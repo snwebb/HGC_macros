@@ -24,6 +24,7 @@
 #include <TGaxis.h>
 #include <TGraphErrors.h>
 #include <TGraphAsymmErrors.h>
+#include <TLorentzVector.h>
 #include <TSystem.h>
 #include <TROOT.h>
 
@@ -32,6 +33,7 @@
 #include <iostream>
 #include <vector>
 #include <cassert>
+#include <unordered_map>
 
 #include "HistObject.h"
 

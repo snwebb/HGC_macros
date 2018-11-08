@@ -6,4 +6,5 @@ plots/
 *.bak
 obj/
 HGC
+jet_ntuple_merge
 *.pdf

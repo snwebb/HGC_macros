@@ -43,6 +43,33 @@ void HGC::plot_effRMS_pT_C3D_histo_PU0_STC(){
 
 
 
+
+void HGC::plot_effRMS_pT_STC(){
+
+  TString var1 = "(genjet_pt[VBF_parton_genjet] - (1.06*(4.98004e+00 -1.23767e+00 * log(max(jets_pt[VBF_parton_jets],0)) + 1.02929e-01* pow(log(max(jets_pt[VBF_parton_jets],0)),2) ) * jets_pt[VBF_parton_jets]) ) / genjet_pt[VBF_parton_genjet]";
+  TString var2 = "(genjet_pt[VBF_parton_genjet] - (1.06*(4.98004e+00 -1.23767e+00 * log(max(jets_pt[VBF_parton_jets]-2*jets_PU_subtr_cone_GEO_C3D[VBF_parton_jets],0)) + 1.02929e-01* pow(log(max(jets_pt[VBF_parton_jets]-2*jets_PU_subtr_cone_GEO_C3D[VBF_parton_jets],0)),2) ) * max(jets_pt[VBF_parton_jets]-2*jets_PU_subtr_cone_GEO_C3D[VBF_parton_jets],0)) ) / genjet_pt[VBF_parton_genjet]";
+  TString cut = "VBF_parton_genjet>=0 && VBF_parton_jets>=0 && abs(genjet_eta[VBF_parton_genjet])>1.6 && abs(genjet_eta[VBF_parton_genjet])<2.9 && genjet_pt[VBF_parton_genjet]>20";
+
+  std::vector<HistObject> histobjects;  
+
+  histobjects.push_back( HistObject(  "Jets", ("/vols/cms/tstreble/HGC_ntuples/VBF_Hinv_PU0_dRNNC2D/jet_ntuples_merged/ntuple_jet_merged_*.root"), "PU=0", var1, cut, false  ) );
+  histobjects.push_back( HistObject(  "Jets", ("/vols/cms/tstreble/HGC_ntuples/VBF_Hinv_PU200_dRNNC2D/jet_ntuples_merged/ntuple_jet_merged_*.root"), "PU=200", var2, cut, true  ) );
+
+  std::vector<double> x={20,40,60,80,100,120,140,160,180,200,220,250,300};
+
+  //  std::vector<TGraphErrors*> graph;
+
+ 
+  PlotterResolution plotter;
+  plotter.Draw(histobjects, x, "L1Jet_resolution_pT");
+
+  return;
+
+
+}
+
+
+
 void HGC::plot_effRMS_pT(){
 
   TString var1 = "(genjet_pt[VBF_parton_genjet] - (1.06*(4.98004e+00 -1.23767e+00 * log(max(jets_pt[VBF_parton_jets],0)) + 1.02929e-01* pow(log(max(jets_pt[VBF_parton_jets],0)),2) ) * jets_pt[VBF_parton_jets]) ) / genjet_pt[VBF_parton_genjet]";

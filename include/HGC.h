@@ -22,6 +22,7 @@ class HGC{
   //Resolution
   void plot_effRMS_pT_C3D_histo_PU0_STC();
   void plot_effRMS_pT();
+  void plot_effRMS_pT_STC();
 
 };
 

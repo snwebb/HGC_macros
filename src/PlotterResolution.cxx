@@ -20,7 +20,6 @@ void PlotterResolution::Draw(std::vector<HistObject>& hists, std::vector<double>
             
       std::vector<float> eff_RMS=effectiveRMS(histo);
       gr->SetPoint(n,0.5*(x[bin]+x[bin+1]),eff_RMS[0]/(1-histo->GetMean()));
-      std::cout << "--- " << eff_RMS[0]  << " - " << histo->GetMean() << std::endl;
       gr->SetPointError(n,0.5*(-x[bin]+x[bin+1]),eff_RMS[1]/(1-histo->GetMean()));
       n++;
       histo->Delete();

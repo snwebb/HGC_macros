@@ -1,7 +1,7 @@
 SRCDIR = src
 SRCS  := $(wildcard $(SRCDIR)/*.cxx)
 
-PROGS=HGC
+PROGS=HGC jet_ntuple_merge
 
 OBJDIR = obj
 OBJS  := $(SRCS:$(SRCDIR)/%.cxx=$(OBJDIR)/%.o)
@@ -18,7 +18,8 @@ PWD = $(shell pwd)
 MKDIR_P = mkdir -p
 
 COMMONOBJS1 =  $(OBJS)
-COMMONOBJS = $(filter-out $(OBJDIR)/HGC.o, $(COMMONOBJS1))
+COMMONOBJS = $(filter-out $(OBJDIR)/jet_ntuple_merge.o $(OBJDIR)/HGC.o, $(COMMONOBJS1))
+
 
 all: $(PROGS)
 

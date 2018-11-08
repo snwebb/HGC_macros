@@ -11,8 +11,10 @@ int main(){
   
 
   //Resolution
-//  hgc.plot_effRMS_pT_C3D_histo_PU0_STC();
-  hgc.plot_effRMS_pT();
+  //  hgc.plot_effRMS_pT_C3D_histo_PU0_STC();
+  //  hgc.plot_effRMS_pT();//test for pileup studies
+
+  hgc.plot_effRMS_pT_STC();
 
   return 0;
 }

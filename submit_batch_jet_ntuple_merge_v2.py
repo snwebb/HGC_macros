@@ -42,6 +42,9 @@ for x in range(1, int(NumberOfJobs)+1):
    
    ##### creates jobs #######
    with open('job.sh', 'w') as fout:
+
+
+
       fout.write("#!/bin/sh\n")
       fout.write("echo\n")
       fout.write("echo\n")
@@ -49,17 +52,35 @@ for x in range(1, int(NumberOfJobs)+1):
       fout.write("echo 'WORKDIR ' ${PWD}\n")
       fout.write("cd /home/hep/snwebb/hgcal/CMSSW_10_1_7/src\n")
       fout.write("eval `scramv1 runtime -sh`\n")
-#      fout.write("export X509_USER_PROXY=/home/hep/tstreble/myVoms/x509up_u1255448\n")
       fout.write("cd /home/hep/snwebb/hgcal/HGC_macros\n")
-      fout.write("root -b -l <<EOF\n")
-      fout.write(".L jet_ntuple_merger_v2.C+\n")
-#      fout.write("add_jet(\"" + dir + "/ntuples/ntuple_"+str(x)+".root\",\"hgcalTriggerNtuplizer/HGCalTriggerNtuple\",\""+dir+"/jet_ntuples/ntuple_jet_"+str(x)+".root\",\"jets\",\""+OutputFileNames+"_"+str(x)+".root\");\n")      
-      fout.write("add_jet(\"root://cms-xrd-global.cern.ch//store/user/sawebb/"+ dir + "/ntuple_"+str(x)+".root\",\"hgcalTriggerNtuplizer/HGCalTriggerNtuple\",\"" + dirout+"/jet_ntuples/ntuple_jet_"+str(x)+".root\",\"jets\",\""+OutputFileNames+"_"+str(x)+".root\");\n")      
-      fout.write(".q\n")
-      fout.write("EOF\n")
+#      fout.write("root -b -l <<EOF\n")
+      fout.write("./jet_ntuple_merge --filein root://cms-xrd-global.cern.ch//store/user/sawebb/"+ dir + "/ntuple_"+str(x)+".root --filein_jet " + dirout+"/jet_ntuples/ntuple_jet_"+str(x)+".root --fileout " + OutputFileNames +"_"+str(x)+".root \n")
+#      fout.write("add_jet(\"root://cms-xrd-global.cern.ch//store/user/sawebb/"+ dir + "/ntuple_"+str(x)+".root\",\"hgcalTriggerNtuplizer/HGCalTriggerNtuple\",\"" + dirout+"/jet_ntuples/ntuple_jet_"+str(x)+".root\",\"jets\",\""+OutputFileNames+"_"+str(x)+".root\");\n")      
+ #     fout.write(".q\n")
+  #    fout.write("EOF\n")
       fout.write("echo 'STOP---------------'\n")
       fout.write("echo\n")
       fout.write("echo\n")
+
+
+#       fout.write("#!/bin/sh\n")
+#       fout.write("echo\n")
+#       fout.write("echo\n")
+#       fout.write("echo 'START---------------'\n")
+#       fout.write("echo 'WORKDIR ' ${PWD}\n")
+#       fout.write("cd /home/hep/snwebb/hgcal/CMSSW_10_1_7/src\n")
+#       fout.write("eval `scramv1 runtime -sh`\n")
+# #      fout.write("export X509_USER_PROXY=/home/hep/tstreble/myVoms/x509up_u1255448\n")
+#       fout.write("cd /home/hep/snwebb/hgcal/HGC_macros\n")
+#       fout.write("root -b -l <<EOF\n")
+#       fout.write(".L jet_ntuple_merger_v2.C+\n")
+# #      fout.write("add_jet(\"" + dir + "/ntuples/ntuple_"+str(x)+".root\",\"hgcalTriggerNtuplizer/HGCalTriggerNtuple\",\""+dir+"/jet_ntuples/ntuple_jet_"+str(x)+".root\",\"jets\",\""+OutputFileNames+"_"+str(x)+".root\");\n")      
+#       fout.write("add_jet(\"root://cms-xrd-global.cern.ch//store/user/sawebb/"+ dir + "/ntuple_"+str(x)+".root\",\"hgcalTriggerNtuplizer/HGCalTriggerNtuple\",\"" + dirout+"/jet_ntuples/ntuple_jet_"+str(x)+".root\",\"jets\",\""+OutputFileNames+"_"+str(x)+".root\");\n")      
+#       fout.write(".q\n")
+#       fout.write("EOF\n")
+#       fout.write("echo 'STOP---------------'\n")
+#       fout.write("echo\n")
+#       fout.write("echo\n")
    os.system("chmod 755 job.sh")
    
    ###### sends bjobs ######
