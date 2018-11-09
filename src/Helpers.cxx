@@ -168,12 +168,13 @@ TH1F* Helpers::single_plot(std::vector<TString> files, TString tree_name, TStrin
 
 
 
-TH2F* Helpers::single_plot2D(TString file, TString tree_name, TString var1, TString var2, TString cut, int nbin1, float min1, float max1, int nbin2, float min2, float max2){
+//TH2F* Helpers::single_plot2D(TString file, TString tree_name, TString var1, TString var2, TString cut, int nbin1, float min1, float max1, int nbin2, float min2, float max2){
+TH2F* Helpers::single_plot2D(TString file, TString tree_name, TString var, TString cut, int nbin1, float min1, float max1, int nbin2, float min2, float max2){
 
   TChain * tree = new TChain(tree_name);
   tree->Add(file);
 
-  tree->Draw(var2+":"+var1+Form(">>h(%i,%f,%f,%i,%f,%f)",nbin1,min1,max1,nbin2,min2,max2),cut,"goff");
+  tree->Draw(var+Form(">>h(%i,%f,%f,%i,%f,%f)",nbin1,min1,max1,nbin2,min2,max2),cut,"goff");
   TH2F* g=(TH2F*) ((TH2F*)gDirectory->Get("h"))->Clone( tree_name + counter() );
   return g;
 }

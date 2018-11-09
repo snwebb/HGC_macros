@@ -1,18 +1,25 @@
 #include "PlotterResponse.h"
 
-void PlotterResponse::Draw(std::vector<TH2F*> &histo, std::vector<TString> &leg_entry, std::string plotname, std::string xvar){
+//void PlotterResponse::Draw(std::vector<TH2F*> &histo, std::vector<TString> &leg_entry, std::string plotname, std::string xvar){
 
-  std::vector<TProfile*> prof;
-  
-  for(unsigned int i=0;i<histo.size();i++){
-    TProfile* p = (TProfile*)histo[i]->ProfileX()->Clone();
+void PlotterResponse::Draw(std::vector<HistObject>& hists, std::string savename, std::string xvar){
+
+
+  int i = 0;  
+  std::vector<TProfile*> prof;  
+  for (auto &hist: hists ){    
+
+    TH2F * histo =  _helper.single_plot2D( hist.filename(),"HGCalTriggerNtupleJet",hist.var(),hist.cut()+"&& jets_pt>0",25,24.95,25.05,97,0.06,2);
+    TProfile* p = (TProfile*)histo->ProfileX()->Clone();
     prof.push_back(p);
     prof[i]->SetLineColor(i+1);
     if(i>3)
       prof[i]->SetLineColor(i+2);
     prof[i]->SetLineWidth(2);
-    _legend->AddEntry(prof[i],leg_entry[i]);
-
+    _legend->AddEntry( prof[i] , hist.leg_entry() );
+    histo->Delete();
+    
+    i++;
   }
 
   TCanvas * c = _canvas;
@@ -32,7 +39,7 @@ void PlotterResponse::Draw(std::vector<TH2F*> &histo, std::vector<TString> &leg_
   prof[0]->SetTitle("");
   prof[0]->Draw();
 
-  for(unsigned int i=1;i<histo.size();i++)
+  for(unsigned int i=1;i<hists.size();i++)
     prof[i]->Draw("same");
   _legend->Draw("same");
   _latex->Draw("same");
@@ -42,10 +49,10 @@ void PlotterResponse::Draw(std::vector<TH2F*> &histo, std::vector<TString> &leg_
 
   gPad->SetTicks();
 
-  c->SaveAs( ("plots/" + _outdir + "/profile_L1jet_response_" + xvar + "_" +  plotname+ ".pdf" ).c_str() );  
+  c->SaveAs( ("plots/" + _outdir + "/profile_L1jet_response_" + xvar + "_" +  savename+ ".pdf" ).c_str() );  
 
-  for(auto &it1 : histo) {
-    it1->Delete();
-  }
+  // for(auto &it1 : histo) {
+  //   it1->Delete();
+  // }
 
 }
