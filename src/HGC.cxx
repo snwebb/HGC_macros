@@ -1,9 +1,11 @@
 #include "HGC.h"
+#include "CmdLine.h"
 
-int main(){
+int main( int argc, char ** argv){
 
+  CmdLine cmd( argc, argv ) ;
 
-  HGC hgc;
+  HGC hgc( &cmd );
   
   //Response
   // hgc.plot_profile_L1jet_response_pt_PU0_STC();
@@ -16,5 +18,23 @@ int main(){
 
   hgc.plot_effRMS_pT_STC();
 
+
+  hgc.MakeTar();
+
   return 0;
+}
+
+
+HGC::HGC( CmdLine* cmd ){
+
+  _cmd = cmd;
+
+}
+
+void HGC::MakeTar(  ){
+
+  std::string  out_directory = _cmd->string_val( "--outdir" );
+  std::system( ("cd plots; tar -zcf " + out_directory + ".tar.gz " + out_directory + ";  cd ../plots").c_str() );
+
+
 }

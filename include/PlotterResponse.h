@@ -1,7 +1,6 @@
 #ifndef _PlotterResponse_h_
 #define _PlotterResponse_h_
 
-
 #include "Plotter.h"
 
 class PlotterResponse : public Plotter {
@@ -11,6 +10,7 @@ class PlotterResponse : public Plotter {
 
  public:
 
+  using Plotter::Plotter;
   void Draw(std::vector<TH2F*> &histo, std::vector<TString> &legentry, std::string plotname, std::string xvar);
 
 };

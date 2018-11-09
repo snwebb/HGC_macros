@@ -13,7 +13,7 @@ void HGC::plot_profile_L1jet_response_pt_PU0_STC(){
   leg_entry.push_back("Thresh PU=0 ");
   leg_entry.push_back("STC PU=0 ");
 
-  PlotterResponse plotter;
+  PlotterResponse plotter( _cmd );
   plotter.Draw(  histo, leg_entry, "PU0_STC_TEST", "pt");
 
 }
@@ -31,7 +31,7 @@ void HGC::plot_profile_L1jet_response_eta_PU0_STC(){
   leg_entry.push_back("Thresh PU=0 ");
   leg_entry.push_back("STC PU=0 ");
 
-  PlotterResponse plotter;
+  PlotterResponse plotter( _cmd );
   plotter.Draw(  histo, leg_entry, "PU0_STC_TEST", "eta");
 
 }

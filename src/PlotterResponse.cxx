@@ -42,7 +42,7 @@ void PlotterResponse::Draw(std::vector<TH2F*> &histo, std::vector<TString> &leg_
 
   gPad->SetTicks();
 
-  c->SaveAs( ("plots/profile_L1jet_response_" + xvar + "_" +  plotname+ ".pdf" ).c_str() );  
+  c->SaveAs( ("plots/" + _outdir + "/profile_L1jet_response_" + xvar + "_" +  plotname+ ".pdf" ).c_str() );  
 
   for(auto &it1 : histo) {
     it1->Delete();

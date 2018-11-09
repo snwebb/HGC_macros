@@ -3,6 +3,8 @@
 
 void PlotterResolution::Draw(std::vector<HistObject>& hists, std::vector<double>& x, TString savename){
 
+  std::system( ("mkdir -p plots/" + _outdir )   .c_str() );
+
   std::vector<TGraphErrors*> graph;
 
   int i = 0;  
@@ -50,7 +52,8 @@ void PlotterResolution::Draw(std::vector<HistObject>& hists, std::vector<double>
   graph[0]->GetYaxis()->SetTitleOffset(1.3);
 
   _legend->SetHeader("1.6<|#eta(gen.jet)|<2.9");
-  
+  SetLegendXY( 0.55, 0.15, 0.82, 0.3  );
+
   for(unsigned int i=0; i<graph.size();i++)
     _legend->AddEntry(graph[i], hists.at(i).leg_entry() );
 
@@ -67,7 +70,9 @@ void PlotterResolution::Draw(std::vector<HistObject>& hists, std::vector<double>
   _latex->Draw("same");
   gPad->SetTicks();
 
-  c->SaveAs("plots/" + savename + ".pdf");
+
+
+  c->SaveAs("plots/" + TString(_outdir) + "/" + savename + ".pdf");
 
 
 }
@@ -229,8 +234,6 @@ TH1F* PlotterResolution::histo_ET_resolution(TString filename, TString var, TStr
 
     if ( !PUS ){
       tree->Draw(var + ">>g(500,-2,2)",all_cuts+ " && jets_pt[VBF_parton_jets]>0","goff");  
-
-      std::cout << var + ">>g(500,-2,2)\",\"" + all_cuts + " && jets_pt[VBF_parton_jets]>0";
     }
     if ( PUS )
       tree->Draw(var + ">>g(500,-2,2)",all_cuts+ " && jets_pt[VBF_parton_jets]-2*jets_PU_subtr_cone_GEO_C3D[VBF_parton_jets]>0","goff");  

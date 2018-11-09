@@ -33,7 +33,7 @@ void HGC::plot_effRMS_pT_C3D_histo_PU0_STC(){
 
   std::vector<double> x={24.990,24.995,25.000,25.005,25.010};
 
-  PlotterResolution plotter;
+  PlotterResolution plotter( _cmd );
   //  plotter.Draw("Gamma", filename, leg_entry, var, x, cut);
 
   plotter.Draw(histobjects, x, TString("L1Jet_resolution_pT_C3D_histo_STC_TEST2"));
@@ -52,16 +52,13 @@ void HGC::plot_effRMS_pT_STC(){
 
   std::vector<HistObject> histobjects;  
 
-  histobjects.push_back( HistObject(  "Jets", ("/vols/cms/tstreble/HGC_ntuples/VBF_Hinv_PU0_dRNNC2D/jet_ntuples_merged/ntuple_jet_merged_*.root"), "PU=0", var1, cut, false  ) );
-  histobjects.push_back( HistObject(  "Jets", ("/vols/cms/tstreble/HGC_ntuples/VBF_Hinv_PU200_dRNNC2D/jet_ntuples_merged/ntuple_jet_merged_*.root"), "PU=200", var2, cut, true  ) );
+  histobjects.push_back( HistObject(  "Jets", (snwebb + "/VBF_Hinv_threshold/jet_ntuples_merged/ntuple_jet_merged_*.root"), "thresh", var1, cut, false  ) );
+  histobjects.push_back( HistObject(  "Jets", (snwebb + "/VBF_Hinv_stc/jet_ntuples_merged/ntuple_jet_merged_*.root"), "stc", var1, cut, false  ) );
 
   std::vector<double> x={20,40,60,80,100,120,140,160,180,200,220,250,300};
 
-  //  std::vector<TGraphErrors*> graph;
-
- 
-  PlotterResolution plotter;
-  plotter.Draw(histobjects, x, "L1Jet_resolution_pT");
+  PlotterResolution plotter( _cmd );
+  plotter.Draw(histobjects, x, "L1Jet_resolution_pT_STCcomparison");
 
   return;
 
@@ -83,10 +80,7 @@ void HGC::plot_effRMS_pT(){
 
   std::vector<double> x={20,40,60,80,100,120,140,160,180,200,220,250,300};
 
-  //  std::vector<TGraphErrors*> graph;
-
- 
-  PlotterResolution plotter;
+  PlotterResolution plotter( _cmd );
   plotter.Draw(histobjects, x, "L1Jet_resolution_pT");
 
   return;

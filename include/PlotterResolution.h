@@ -10,6 +10,7 @@ class PlotterResolution : public Plotter {
 
  public:
 
+  using Plotter::Plotter;
   void Draw(std::vector<HistObject>& hists, std::vector<double>& x, TString savename);
   //  void Draw(std::string process, std::vector<TString> &filename, std::vector<TString> &leg_entry, std::vector<TString> &var, std::vector<double>& x, TString cut);
   std::vector<float> effectiveRMS(const TH1F* histo, double fraction= 0.683, int fitrebin= 1);

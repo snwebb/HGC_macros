@@ -11,8 +11,13 @@ class HGC{
 
   Helpers helper;
   TString snwebb = "/vols/cms/snwebb/HGC_ntuples/";
+  CmdLine *  _cmd;
+  std::string _outdir;
 
  public:
+
+  HGC( CmdLine * cmd );
+  void MakeTar();
 
   //Response
   void plot_profile_L1jet_response_pt_PU0_STC();

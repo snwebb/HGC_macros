@@ -1,6 +1,8 @@
 #include "Plotter.h"
 
-Plotter::Plotter(){
+Plotter::Plotter( CmdLine * cmd ){
+
+  _outdir = cmd->string_val( "--outdir" );
 
   InitialiseLegend();
   InitialiseCanvas();
@@ -43,4 +45,11 @@ void Plotter::InitialiseLegend(){
 
 }
 
+void Plotter::SetLegendXY(Double_t x1, Double_t y1, Double_t x2, Double_t y2){
 
+    _legend->SetX1(x1);
+    _legend->SetY1(y1);
+    _legend->SetX2(x2);
+    _legend->SetY2(y2);
+
+}

@@ -12,12 +12,20 @@ print
 NumberOfJobs= 50
 # number of jobs to be submitted
 interval = 1 # number files to be processed in a single job, take care to split your file so that you run on all files. The last job might be with smaller number of files (the ones that remain).
-#dir  = "SingleGammaPt25Eta1p6_2p8/crab_SingleGammaPt25_PU0-stc/181031_145114/0000"
+
+#Single Gamma
 
 # dir  = "SingleGammaPt25Eta1p6_2p8/crab_SingleGammaPt25_PU0-threshold/181031_145212/0000"
 # dirout = "/vols/cms/snwebb/HGC_ntuples/SingleGammaPt25_PU0_threshold_1031/"
-dir  = "SingleGammaPt25Eta1p6_2p8/crab_SingleGammaPt25_PU0-stc/181031_145114/0000"
-dirout = "/vols/cms/snwebb/HGC_ntuples/SingleGammaPt25_PU0_stc_1031/"
+#dir  = "SingleGammaPt25Eta1p6_2p8/crab_SingleGammaPt25_PU0-stc/181031_145114/0000"
+#dirout = "/vols/cms/snwebb/HGC_ntuples/SingleGammaPt25_PU0_stc_1031/"
+
+#VBF
+
+dir  = "VBF_HToInvisible_M125_14TeV_powheg_pythia8/crab_threshold/181108_112741/0000"
+dirout = "/vols/cms/snwebb/HGC_ntuples/VBF_Hinv_threshold/"
+# dir  = "VBF_HToInvisible_M125_14TeV_powheg_pythia8/crab_stc/181108_104142/0000"
+# dirout = "/vols/cms/snwebb/HGC_ntuples/VBF_Hinv_stc/"
 
 OutputFileNames = dirout + "jet_ntuples_merged/ntuple_jet_merged" # base of the output file name, they will be saved in res directory
 ScriptName = "scripts/runJets.py" # script to be used with cmsRun
