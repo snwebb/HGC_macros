@@ -4,6 +4,7 @@
 
 void PlotterResponse::Draw(std::vector<HistObject>& hists, std::string savename, std::string xvar){
 
+  std::system( ("mkdir -p plots/" + _outdir )   .c_str() );
 
   int i = 0;  
   std::vector<TProfile*> prof;  
