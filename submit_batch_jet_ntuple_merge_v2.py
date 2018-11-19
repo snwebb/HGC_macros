@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-import os, re
+import os, re, subprocess
 import commands
 import math, time
 import sys
@@ -22,10 +22,17 @@ interval = 1 # number files to be processed in a single job, take care to split 
 
 #VBF
 
-dir  = "VBF_HToInvisible_M125_14TeV_powheg_pythia8/crab_threshold/181108_112741/0000"
-dirout = "/vols/cms/snwebb/HGC_ntuples/VBF_Hinv_threshold/"
+# dir  = "VBF_HToInvisible_M125_14TeV_powheg_pythia8/crab_threshold/181108_112741/0000"
+# dirout = "/vols/cms/snwebb/HGC_ntuples/VBF_Hinv_threshold/"
 # dir  = "VBF_HToInvisible_M125_14TeV_powheg_pythia8/crab_stc/181108_104142/0000"
 # dirout = "/vols/cms/snwebb/HGC_ntuples/VBF_Hinv_stc/"
+
+#Histomax algorithm
+#dir  = "VBF_HToInvisible_M125_14TeV_powheg_pythia8/crab_threshold-histoMax/181113_145731/0000"
+#dirout = "/vols/cms/snwebb/HGC_ntuples/VBF_Hinv/VBF_Hinv_PU0_threshold_polarHisto_Max/"
+dir  = "VBF_HToInvisible_M125_14TeV_powheg_pythia8/crab_stc-histoMax/181113_145456/0000"
+dirout = "/vols/cms/snwebb/HGC_ntuples/VBF_Hinv/VBF_Hinv_PU0_stc_polarHisto_Max/"
+
 
 OutputFileNames = dirout + "jet_ntuples_merged/ntuple_jet_merged" # base of the output file name, they will be saved in res directory
 ScriptName = "scripts/runJets.py" # script to be used with cmsRun
@@ -39,6 +46,11 @@ print 'do not worry about folder creation:'
 os.system("rm -r " + dirout + "tmp")
 os.system("mkdir -p " + dirout + "tmp")
 os.system("mkdir -p " + dirout + "jet_ntuples_merged")
+if subprocess.call(["voms-proxy-info",'--exists']) == 1:
+   print "Voms proxy does not exist:"
+   os.system("voms-proxy-init -voms cms -valid 96:00")
+else:
+   print "Voms proxy exists"
 print
 
 ##### loop for creating and sending jobs #####
