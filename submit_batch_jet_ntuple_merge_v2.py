@@ -20,6 +20,15 @@ interval = 1 # number files to be processed in a single job, take care to split 
 #dir  = "SingleGammaPt25Eta1p6_2p8/crab_SingleGammaPt25_PU0-stc/181031_145114/0000"
 #dirout = "/vols/cms/snwebb/HGC_ntuples/SingleGammaPt25_PU0_stc_1031/"
 
+# dir  = "SingleGammaPt25Eta1p6_2p8/crab_SingleGamma-PU0-threshold-TCs-histoMax-DR03/181121_113118/0000"
+# dirout = "/vols/cms/snwebb/HGC_ntuples/SingleGammaPt25/SingleGammaPt25_PU0_threshold_HistoMax/"
+# dir  = "SingleGammaPt25Eta1p6_2p8/crab_SingleGamma-PU0-stc-TCs-histoMax-DR03/181121_113207/0000"
+# dirout = "/vols/cms/snwebb/HGC_ntuples/SingleGammaPt25/SingleGammaPt25_PU0_stc_HistoMax/"
+# dir  = "SingleGammaPt25Eta1p6_2p8/crab_SingleGamma-PU200-threshold-TCs-histoMax-DR03/181121_115525/0000"
+# dirout = "/vols/cms/snwebb/HGC_ntuples/SingleGammaPt25/SingleGammaPt25_PU200_threshold_HistoMax/"
+dir  = "SingleGammaPt25Eta1p6_2p8/crab_SingleGamma-PU200-stc-TCs-histoMax-DR03/181121_115450/0000"
+dirout = "/vols/cms/snwebb/HGC_ntuples/SingleGammaPt25/SingleGammaPt25_PU200_stc_HistoMax/"
+
 #VBF
 
 # dir  = "VBF_HToInvisible_M125_14TeV_powheg_pythia8/crab_threshold/181108_112741/0000"
@@ -30,8 +39,7 @@ interval = 1 # number files to be processed in a single job, take care to split 
 #Histomax algorithm
 #dir  = "VBF_HToInvisible_M125_14TeV_powheg_pythia8/crab_threshold-histoMax/181113_145731/0000"
 #dirout = "/vols/cms/snwebb/HGC_ntuples/VBF_Hinv/VBF_Hinv_PU0_threshold_polarHisto_Max/"
-dir  = "VBF_HToInvisible_M125_14TeV_powheg_pythia8/crab_stc-histoMax/181113_145456/0000"
-dirout = "/vols/cms/snwebb/HGC_ntuples/VBF_Hinv/VBF_Hinv_PU0_stc_polarHisto_Max/"
+
 
 
 OutputFileNames = dirout + "jet_ntuples_merged/ntuple_jet_merged" # base of the output file name, they will be saved in res directory

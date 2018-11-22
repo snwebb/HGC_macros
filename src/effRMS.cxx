@@ -89,3 +89,29 @@ void HGC::plot_effRMS_pT(){
 }
 
 
+
+
+
+void HGC::plot_effRMS_pT_VBFHinv_PU0_HistoMax(){
+
+  TString var1 = "(genjet_pt[VBF_parton_genjet] - (1.06*(4.98004e+00 -1.23767e+00 * log(max(jets_pt[VBF_parton_jets],0)) + 1.02929e-01* pow(log(max(jets_pt[VBF_parton_jets],0)),2) ) * jets_pt[VBF_parton_jets]) ) / genjet_pt[VBF_parton_genjet]";
+  TString cut = "VBF_parton_genjet>=0 && VBF_parton_jets>=0 && abs(genjet_eta[VBF_parton_genjet])>1.6 && abs(genjet_eta[VBF_parton_genjet])<2.9 && genjet_pt[VBF_parton_genjet]>20";
+
+  std::vector<HistObject> histobjects;  
+
+  TString file1 = "VBF_Hinv/VBF_Hinv_PU0_threshold_polarHisto_Max";
+  TString file2 = "VBF_Hinv/VBF_Hinv_PU0_stc_polarHisto_Max";
+
+  histobjects.push_back( HistObject(  "Jets", (snwebb + "/" + file1 + "/jet_ntuples_merged/ntuple_jet_merged_*.root"), "thresh", var1, cut, false  ) );
+  histobjects.push_back( HistObject(  "Jets", (snwebb + "/" + file2 + "/jet_ntuples_merged/ntuple_jet_merged_*.root"), "stc", var1, cut, false  ) );
+
+  std::vector<double> x={20,40,60,80,100,120,140,160,180,200,220,250,300};
+
+  PlotterResolution plotter( _cmd );
+  plotter.Draw(histobjects, x, "L1Jet_resolution_pT_STCComparison_Histomax");
+
+  return;
+
+
+}
+

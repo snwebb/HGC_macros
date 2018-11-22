@@ -10,7 +10,16 @@ void PlotterResponse::Draw(std::vector<HistObject>& hists, std::string savename,
   std::vector<TProfile*> prof;  
   for (auto &hist: hists ){    
 
-    TH2F * histo =  _helper.single_plot2D( hist.filename(),"HGCalTriggerNtupleJet",hist.var(),hist.cut()+"&& jets_pt>0",25,24.95,25.05,97,0.06,2);
+    TH2F * histo = 0;
+    if ( hist.process() == "Gamma" )
+      histo =_helper.single_plot2D( hist.filename(),"HGCalTriggerNtupleJet",hist.var(),hist.cut()+"&& jets_pt>0",25,24.95,25.05,97,0.06,2);
+    else if ( hist.process() == "Jets" )
+      histo = _helper.single_plot2D( hist.filename(),"HGCalTriggerNtupleJet",hist.var(),hist.cut()+"&& jets_pt[VBF_parton_jets]>0",25,0,500,97,0.06,2);
+    else{
+      std::cout << "Process: " << hist.process() << " is not supported, exiting" << std::endl;
+      continue;
+    }
+
     TProfile* p = (TProfile*)histo->ProfileX()->Clone();
     prof.push_back(p);
     prof[i]->SetLineColor(i+1);

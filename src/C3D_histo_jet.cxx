@@ -1,5 +1,21 @@
 #include "HGC.h"
 
+void HGC::plot_profile_L1jet_response_pt_VBFHInv_PU0_HistoMax(){
+
+  TString cut = "VBF_parton_genjet>=0 && VBF_parton_jets>=0 && abs(genjet_eta[VBF_parton_genjet])>1.6 && abs(genjet_eta[VBF_parton_genjet])<2.9 && genjet_pt[VBF_parton_genjet]>20";  
+
+  std::vector<HistObject> histobjects;
+  TString file1 = "VBF_Hinv/VBF_Hinv_PU0_threshold_polarHisto_Max";
+  TString file2 = "VBF_Hinv/VBF_Hinv_PU0_stc_polarHisto_Max";
+
+  histobjects.push_back( HistObject( "Jets", (snwebb + "/" + file1 + "/jet_ntuples_merged/ntuple_jet_merged_1.root"), "Thresh PU=0", "jets_pt[VBF_parton_jets]/genjet_pt[VBF_parton_genjet]:genjet_pt[VBF_parton_genjet]", cut+"&&jets_pt[VBF_parton_jets]>0", false ) );
+  histobjects.push_back( HistObject( "Jets", (snwebb + "/" + file2 + "/jet_ntuples_merged/ntuple_jet_merged_1.root"), "STC PU=0", "jets_pt[VBF_parton_jets]/genjet_pt[VBF_parton_genjet]:genjet_pt[VBF_parton_genjet]", cut+"&&jets_pt[VBF_parton_jets]>0", false ) );
+
+  PlotterResponse plotter( _cmd );
+  plotter.Draw(  histobjects, "PU0_STC_HistoMax", "pt");
+
+}
+
 void HGC::plot_profile_L1jet_response_pt_VBFHInv_PU0_STC(){
 
   TString cut = "VBF_parton_genjet>=0 && VBF_parton_jets>=0 && abs(genjet_eta[VBF_parton_genjet])>1.6 && abs(genjet_eta[VBF_parton_genjet])<2.9 && genjet_pt[VBF_parton_genjet]>20";  
@@ -52,3 +68,5 @@ void HGC::plot_profile_L1jet_response_eta_PU0_STC(){
   plotter.Draw(  histobjects, "PU0_STC_TEST", "eta");
 
 }
+
+
