@@ -1,14 +1,5 @@
 #include "HGC.h"
-// #include <TH3F.h>
-// #include <TH2F.h>
-// #include <TChain.h>
-// #include <TStyle.h>
-// #include <TCanvas.h>
-// #include <iostream>
-// #include <TLine.h>
-// #include <TMath.h>
-
-using namespace std;
+#include "PlotterEventDisplay.h"
 
 void HGC::display3D_tc(TString file, int n_event, 
 		       const std::vector<int>& tc,
@@ -19,8 +10,6 @@ void HGC::display3D_tc(TString file, int n_event,
 		  float layer_min, float layer_max){
 
   TH3F* h=new TH3F("h","h",50,eta_min,eta_max,50,phi_min,phi_max,layer_max-layer_min,layer_min,layer_max);
-
-  //TChain * tree = new TChain("hgcalTriggerNtuplizer/HGCalTriggerNtuple");
   TChain * tree = new TChain("HGCalTriggerNtupleJet");
   tree->Add(file);
   
@@ -94,59 +83,45 @@ void HGC::display3D_tc(TString file, int n_event,
   
   tree->GetEntry(n_event);
   
-
-  if(tc.size()>0){
-
-    if(tc[0]<0){
-      for(unsigned int i_tc = 0; i_tc<(*_tc_eta).size(); i_tc++){
-	h->Fill((*_tc_eta)[i_tc],(*_tc_phi)[i_tc],(*_tc_HGClayer)[i_tc],(*_tc_pt)[i_tc]);
-      }
-    }
-
-    else{
-      for(auto & i_tc : tc){
-	h->Fill((*_tc_eta)[i_tc],(*_tc_phi)[i_tc],(*_tc_HGClayer)[i_tc],(*_tc_pt)[i_tc]);
-	cout<<"Tower "<<i_tc<<endl;
-	cout<<"(pt,eta,phi,layer)=("<<(*_tc_pt)[i_tc]<<","<<(*_tc_eta)[i_tc]<<","<<(*_tc_phi)[i_tc]<<","<<(*_tc_HGClayer)[i_tc]<<")"<<endl;
-      }
-    }
-
-  }
-
-
-  else if(cl.size()>0){
-    for(auto & i_cl : cl){    
-      cout<<"C2D "<<i_cl<<" (pt,eta,phi,layer)=("<<(*_cl_pt)[i_cl]<<","<<(*_cl_eta)[i_cl]<<","<<(*_cl_phi)[i_cl]<<","<<(*_cl_HGClayer)[i_cl]<<")"<<endl;      
-      for(auto & i_tc : (*_cl_cells)[i_cl]){
-	h->Fill((*_tc_eta)[i_tc],(*_tc_phi)[i_tc],(*_tc_HGClayer)[i_tc],(*_tc_pt)[i_tc]);
-	cout<<"(pt,eta,phi,layer)=("<<(*_tc_pt)[i_tc]<<","<<(*_tc_eta)[i_tc]<<","<<(*_tc_phi)[i_tc]<<","<<(*_tc_HGClayer)[i_tc]<<")"<<endl;
-      }
+  if(tc.size()==0){
+    for(unsigned int i_tc = 0; i_tc<(*_tc_eta).size(); i_tc++){
+      h->Fill((*_tc_eta)[i_tc],(*_tc_phi)[i_tc],(*_tc_HGClayer)[i_tc],(*_tc_pt)[i_tc]);
     }
   }
-
-  else if(c3d.size()>0){
-    for(auto & i_c3d : c3d){
-      cout<<"C3D "<<i_c3d<<" (pt,eta,phi)=("<<(*_cl3d_pt)[i_c3d]<<","<<(*_cl3d_eta)[i_c3d]<<","<<(*_cl3d_phi)[i_c3d]<<")"<<endl;
-      for(unsigned i_tc=0;i_tc<(*_tc_multicluster_id).size();i_tc++){
-	if((*_cl3d_id)[i_c3d]==(*_tc_multicluster_id)[i_tc]){   
-	  h->Fill((*_tc_eta)[i_tc],(*_tc_phi)[i_tc],(*_tc_HGClayer)[i_tc],(*_tc_pt)[i_tc]);
-	  cout<<"(pt,eta,phi,layer)=("<<(*_tc_pt)[i_tc]<<","<<(*_tc_eta)[i_tc]<<","<<(*_tc_phi)[i_tc]<<","<<(*_tc_HGClayer)[i_tc]<<")"<<endl;
-	}
-      }
+  else{
+    for(auto & i_tc : tc){
+      h->Fill((*_tc_eta)[i_tc],(*_tc_phi)[i_tc],(*_tc_HGClayer)[i_tc],(*_tc_pt)[i_tc]);
+      std::cout<<"Tower "<<i_tc<<std::endl;;
+      std::cout<<"(pt,eta,phi,layer)=("<<(*_tc_pt)[i_tc]<<","<<(*_tc_eta)[i_tc]<<","<<(*_tc_phi)[i_tc]<<","<<(*_tc_HGClayer)[i_tc]<<")"<<std::endl;;
     }
-  }
+  }  
+
+  // else if(cl.size()>0){
+  //   for(auto & i_cl : cl){    
+  //     std::cout<<"C2D "<<i_cl<<" (pt,eta,phi,layer)=("<<(*_cl_pt)[i_cl]<<","<<(*_cl_eta)[i_cl]<<","<<(*_cl_phi)[i_cl]<<","<<(*_cl_HGClayer)[i_cl]<<")"<<std::endl;;      
+  //     for(auto & i_tc : (*_cl_cells)[i_cl]){
+  // 	h->Fill((*_tc_eta)[i_tc],(*_tc_phi)[i_tc],(*_tc_HGClayer)[i_tc],(*_tc_pt)[i_tc]);
+  // 	std::cout<<"(pt,eta,phi,layer)=("<<(*_tc_pt)[i_tc]<<","<<(*_tc_eta)[i_tc]<<","<<(*_tc_phi)[i_tc]<<","<<(*_tc_HGClayer)[i_tc]<<")"<<std::endl;;
+  //     }
+  //   }
+  // }
+
+  // else if(c3d.size()>0){
+  //   for(auto & i_c3d : c3d){
+  //     std::cout<<"C3D "<<i_c3d<<" (pt,eta,phi)=("<<(*_cl3d_pt)[i_c3d]<<","<<(*_cl3d_eta)[i_c3d]<<","<<(*_cl3d_phi)[i_c3d]<<")"<<std::endl;;
+  //     for(unsigned i_tc=0;i_tc<(*_tc_multicluster_id).size();i_tc++){
+  // 	if((*_cl3d_id)[i_c3d]==(*_tc_multicluster_id)[i_tc]){   
+  // 	  h->Fill((*_tc_eta)[i_tc],(*_tc_phi)[i_tc],(*_tc_HGClayer)[i_tc],(*_tc_pt)[i_tc]);
+  // 	  std::cout<<"(pt,eta,phi,layer)=("<<(*_tc_pt)[i_tc]<<","<<(*_tc_eta)[i_tc]<<","<<(*_tc_phi)[i_tc]<<","<<(*_tc_HGClayer)[i_tc]<<")"<<std::endl;;
+  // 	}
+  //     }
+  //   }
+  // }
   
+  PlotterEventDisplay plotter( _cmd );
+  plotter.Draw(h,"3dtc","display3D_tc");
 
-
-
-  h->GetXaxis()->SetTitle("#eta(TC)");
-  h->GetXaxis()->SetTitleOffset(1.5);
-  h->GetYaxis()->SetTitle("#phi(TC)");
-  h->GetZaxis()->SetTitle("layer(TC)");
-  h->SetTitle("");
-  h->Draw("BOX2");
-
-
+  h->Delete();
 
 }
 
@@ -166,7 +141,7 @@ void HGC::display3D_cl(TString file,
  
   
   TH3F* h=new TH3F("h","h",50,eta_min,eta_max,50,phi_min,phi_max,layer_max-layer_min,layer_min,layer_max);
-
+  
   //TChain * tree = new TChain("hgcalTriggerNtuplizer/HGCalTriggerNtuple");
   TChain * tree = new TChain("HGCalTriggerNtupleJet");
   tree->Add(file);
@@ -178,7 +153,7 @@ void HGC::display3D_cl(TString file,
   std::vector<int> *_cl_HGClayer;
   //  std::vector<unsigned int> *_cl_id;
   std::vector<unsigned int> *_cl_multicluster_id;
-
+  
   std::vector<float> *_cl3d_eta;
   std::vector<float> *_cl3d_phi;
   std::vector<float> *_cl3d_energy;
@@ -217,46 +192,44 @@ void HGC::display3D_cl(TString file,
   tree->GetEntry(n_event);
 
   
-  if(cl.size()>0){
+  if(cl.size()==0){
     
-
-    if(cl[0]<0){
-      for(unsigned int i_cl = 0; i_cl<(*_cl_eta).size(); i_cl++){
-	h->Fill((*_cl_eta)[i_cl],(*_cl_phi)[i_cl],(*_cl_HGClayer)[i_cl],(*_cl_pt)[i_cl]);
-	if((*_cl_eta)[i_cl]>=eta_min && (*_cl_eta)[i_cl]<=eta_max && (*_cl_phi)[i_cl]>=phi_min && (*_cl_phi)[i_cl]<=phi_max && (*_cl_HGClayer)[i_cl]>=layer_min && (*_cl_HGClayer)[i_cl]<=layer_max)
-	  cout<<"(pt,eta,phi,layer)=("<<(*_cl_pt)[i_cl]<<","<<(*_cl_eta)[i_cl]<<","<<(*_cl_phi)[i_cl]<<","<<(*_cl_HGClayer)[i_cl]<<")"<<endl;
-      }
-    }
-
-    else{
-      for(auto & i_cl : cl){
-	h->Fill((*_cl_eta)[i_cl],(*_cl_phi)[i_cl],(*_cl_HGClayer)[i_cl],(*_cl_pt)[i_cl]);
-	cout<<"C2D "<<i_cl<<endl;
-	cout<<"(pt,eta,phi,layer)=("<<(*_cl_pt)[i_cl]<<","<<(*_cl_eta)[i_cl]<<","<<(*_cl_phi)[i_cl]<<","<<(*_cl_HGClayer)[i_cl]<<")"<<endl;
-      }
+    
+    //  if(cl[0]==0){
+    for(unsigned int i_cl = 0; i_cl<(*_cl_eta).size(); i_cl++){
+      h->Fill((*_cl_eta)[i_cl],(*_cl_phi)[i_cl],(*_cl_HGClayer)[i_cl],(*_cl_pt)[i_cl]);
+      if((*_cl_eta)[i_cl]>=eta_min && (*_cl_eta)[i_cl]<=eta_max && (*_cl_phi)[i_cl]>=phi_min && (*_cl_phi)[i_cl]<=phi_max && (*_cl_HGClayer)[i_cl]>=layer_min && (*_cl_HGClayer)[i_cl]<=layer_max)
+	std::cout<<"(pt,eta,phi,layer)=("<<(*_cl_pt)[i_cl]<<","<<(*_cl_eta)[i_cl]<<","<<(*_cl_phi)[i_cl]<<","<<(*_cl_HGClayer)[i_cl]<<")"<<std::endl;;
     }
   }
-
-  else if(c3d.size()>0){
-    for(auto & i_c3d : c3d){
-      cout<<"C3D "<<i_c3d<<" (pt,eta,phi)=("<<(*_cl3d_pt)[i_c3d]<<","<<(*_cl3d_eta)[i_c3d]<<","<<(*_cl3d_phi)[i_c3d]<<")"<<endl;
-      for(unsigned int i_cl = 0; i_cl<(*_cl_multicluster_id).size(); i_cl++){
-	if((*_cl3d_id)[i_c3d]==(*_cl_multicluster_id)[i_cl]){
-	  h->Fill((*_cl_eta)[i_cl],(*_cl_phi)[i_cl],(*_cl_HGClayer)[i_cl],(*_cl_pt)[i_cl]);
-	  cout<<"(pt,eta,phi,layer)=("<<(*_cl_pt)[i_cl]<<","<<(*_cl_eta)[i_cl]<<","<<(*_cl_phi)[i_cl]<<","<<(*_cl_HGClayer)[i_cl]<<")"<<endl;
-	}
-      }
+  
+  else{
+    for(auto & i_cl : cl){
+      h->Fill((*_cl_eta)[i_cl],(*_cl_phi)[i_cl],(*_cl_HGClayer)[i_cl],(*_cl_pt)[i_cl]);
+      std::cout<<"C2D "<<i_cl<<std::endl;;
+      std::cout<<"(pt,eta,phi,layer)=("<<(*_cl_pt)[i_cl]<<","<<(*_cl_eta)[i_cl]<<","<<(*_cl_phi)[i_cl]<<","<<(*_cl_HGClayer)[i_cl]<<")"<<std::endl;;
     }
   }
   
 
-  h->GetXaxis()->SetTitle("#eta(C2D)");
-  h->GetXaxis()->SetTitleOffset(1.5);
-  h->GetYaxis()->SetTitle("#phi(C2D)");
-  h->GetZaxis()->SetTitle("layer(C2D)");
-  h->SetTitle("");
-  h->Draw("BOX2");
+  // else if(c3d.size()>0){
+  //   for(auto & i_c3d : c3d){
+  //     std::cout<<"C3D "<<i_c3d<<" (pt,eta,phi)=("<<(*_cl3d_pt)[i_c3d]<<","<<(*_cl3d_eta)[i_c3d]<<","<<(*_cl3d_phi)[i_c3d]<<")"<<std::endl;;
+  //     for(unsigned int i_cl = 0; i_cl<(*_cl_multicluster_id).size(); i_cl++){
+  // 	if((*_cl3d_id)[i_c3d]==(*_cl_multicluster_id)[i_cl]){
+  // 	  h->Fill((*_cl_eta)[i_cl],(*_cl_phi)[i_cl],(*_cl_HGClayer)[i_cl],(*_cl_pt)[i_cl]);
+  // 	  std::cout<<"(pt,eta,phi,layer)=("<<(*_cl_pt)[i_cl]<<","<<(*_cl_eta)[i_cl]<<","<<(*_cl_phi)[i_cl]<<","<<(*_cl_HGClayer)[i_cl]<<")"<<std::endl;;
+  // 	}
+  //     }
+  //   }
+  // }
+  
 
+  PlotterEventDisplay plotter( _cmd );
+  plotter.Draw(h,"3dcl","display3D_cl");
+
+
+  h->Delete();
 
 
 }
@@ -301,85 +274,40 @@ void HGC::display2D_c3d(TString file, int n_event,
   
   tree->GetEntry(n_event);
   
-  if(c3d.size()>0){
+  if(c3d.size()==0){
 
-    if(c3d[0]<0){
-      cout<<"ok"<<endl;
-      for(unsigned int i_c3d = 0; i_c3d<(*_cl3d_eta).size(); i_c3d++){
-	h->Fill((*_cl3d_eta)[i_c3d],(*_cl3d_phi)[i_c3d],(*_cl3d_pt)[i_c3d]);
-	cout<<"(pt,eta,phi)=("<<(*_cl3d_pt)[i_c3d]<<","<<(*_cl3d_eta)[i_c3d]<<","<<(*_cl3d_phi)[i_c3d]<<")"<<endl;
-      }
-      cout<<"ok2"<<endl;
+    std::cout<<"ok"<<std::endl;;
+    for(unsigned int i_c3d = 0; i_c3d<(*_cl3d_eta).size(); i_c3d++){
+      h->Fill((*_cl3d_eta)[i_c3d],(*_cl3d_phi)[i_c3d],(*_cl3d_pt)[i_c3d]);
+      std::cout<<"(pt,eta,phi)=("<<(*_cl3d_pt)[i_c3d]<<","<<(*_cl3d_eta)[i_c3d]<<","<<(*_cl3d_phi)[i_c3d]<<")"<<std::endl;;
     }
-
-    else{
-      for(auto & i_c3d : c3d){     
-	cout<<"C3D "<<i_c3d<<" (pt,eta,phi)="<<(*_cl3d_pt)[i_c3d]<<","<<(*_cl3d_eta)[i_c3d]<<","<<(*_cl3d_phi)[i_c3d]<<")"<<endl;
-	h->Fill((*_cl3d_eta)[i_c3d],(*_cl3d_phi)[i_c3d],(*_cl3d_pt)[i_c3d]);      
-      }
-    }
+    std::cout<<"ok2"<<std::endl;;
   }
   
-
-  else if(jets.size()>0){
-    for(auto & i_jet : jets){
-      for(auto & i_c3d : (*_jets_cl3d)[i_jet]){
-	h->Fill((*_cl3d_eta)[i_c3d],(*_cl3d_phi)[i_c3d],(*_cl3d_pt)[i_c3d]);
-	cout<<"(pt,eta,phi)=("<<(*_cl3d_pt)[i_c3d]<<","<<(*_cl3d_eta)[i_c3d]<<","<<(*_cl3d_phi)[i_c3d]<<")"<<endl;	
-      }
+  else{
+    for(auto & i_c3d : c3d){     
+      std::cout<<"C3D "<<i_c3d<<" (pt,eta,phi)="<<(*_cl3d_pt)[i_c3d]<<","<<(*_cl3d_eta)[i_c3d]<<","<<(*_cl3d_phi)[i_c3d]<<")"<<std::endl;;
+      h->Fill((*_cl3d_eta)[i_c3d],(*_cl3d_phi)[i_c3d],(*_cl3d_pt)[i_c3d]);      
     }
-
   }
 
-
-  h->GetXaxis()->SetTitle("#eta(C3D)");
-  h->GetXaxis()->SetTitleOffset(1.3);
-  h->GetYaxis()->SetTitle("#phi(C3D)");
-  h->GetZaxis()->SetTitle("p_{T}(C3D) [GeV]");
-  h->SetTitle("");
-  h->SetStats(0);
- 
-  TCanvas* c=new TCanvas("c","c",650,600);
-  c->SetLeftMargin(0.15);
-  c->SetRightMargin(0.15);
-
-  h->SetMarkerSize(1.5);
-  gStyle->SetPaintTextFormat("4.1f");
-  if(c3d.size()>0 && c3d[0]<0)
-    h->Draw("colz");
-  else
-    h->Draw("text");
-
-  std::vector<TLine*> gr_x;
-  std::vector<TLine*> gr_y;
   
-  for(unsigned int i=0; i<216; i++){
-    float phi = -TMath::Pi() + i*2*TMath::Pi()/216.;    
-    if(phi>phi_min && phi<phi_max){
-      TLine* line = new TLine(eta_min,phi,eta_max,phi);
-      gr_x.push_back(line);
-    }
-  }
 
-  for(unsigned int i=0; i<36; i++){
-    float rOverZ = 0.09 + i*(0.52-0.09)/36.;
-    float eta_plus = TMath::ASinH(1/rOverZ);
-    if(eta_plus>eta_min && eta_plus<eta_max){
-      TLine* line = new TLine(eta_plus,phi_min,eta_plus,phi_max);
-      gr_y.push_back(line);
-    }
-    float eta_minus = -TMath::ASinH(1/rOverZ);
-    if(eta_minus>eta_min && eta_minus<eta_max){
-      TLine* line = new TLine(eta_minus,phi_min,eta_minus,phi_max);
-      gr_y.push_back(line);
-    }
-  }
+  // else if(jets.size()>0){
+  //   for(auto & i_jet : jets){
+  //     for(auto & i_c3d : (*_jets_cl3d)[i_jet]){
+  // 	h->Fill((*_cl3d_eta)[i_c3d],(*_cl3d_phi)[i_c3d],(*_cl3d_pt)[i_c3d]);
+  // 	std::cout<<"(pt,eta,phi)=("<<(*_cl3d_pt)[i_c3d]<<","<<(*_cl3d_eta)[i_c3d]<<","<<(*_cl3d_phi)[i_c3d]<<")"<<std::endl;;	
+  //     }
+  //   }
 
-  for(auto& gr : gr_x)
-    gr->Draw("same");
-  for(auto& gr : gr_y)
-    gr->Draw("same");
+  // }
 
+
+  PlotterEventDisplay plotter( _cmd );
+  plotter.Draw(h,"2dc3d","display2D_c3d");
+
+  h->Delete();
 
 }
 
@@ -423,13 +351,13 @@ void HGC::display2D_jets(TString file, int n_event,
     if(jet[0]<0){
       for(unsigned int i_jet = 0; i_jet<(*_jets_eta).size(); i_jet++){
 	h->Fill((*_jets_eta)[i_jet],(*_jets_phi)[i_jet],(*_jets_pt)[i_jet]);
-	cout<<"(pt,eta,phi)=("<<(*_jets_pt)[i_jet]<<","<<(*_jets_eta)[i_jet]<<","<<(*_jets_phi)[i_jet]<<")"<<endl;
+	std::cout<<"(pt,eta,phi)=("<<(*_jets_pt)[i_jet]<<","<<(*_jets_eta)[i_jet]<<","<<(*_jets_phi)[i_jet]<<")"<<std::endl;;
       }
     }
 
     else{
       for(auto & i_jet : jet){   
-	cout<<"Jet "<<i_jet<<"(pt,eta,phi)=("<<(*_jets_pt)[i_jet]<<","<<(*_jets_eta)[i_jet]<<","<<(*_jets_phi)[i_jet]<<")"<<endl;  
+	std::cout<<"Jet "<<i_jet<<"(pt,eta,phi)=("<<(*_jets_pt)[i_jet]<<","<<(*_jets_eta)[i_jet]<<","<<(*_jets_phi)[i_jet]<<")"<<std::endl;;  
 	h->Fill((*_jets_eta)[i_jet],(*_jets_phi)[i_jet],(*_jets_pt)[i_jet]);
       }
     }
@@ -479,7 +407,7 @@ void HGC::display2D_gen(TString file, int n_event,
   tree->SetBranchAddress("gen_phi",    &_gen_phi);
   tree->SetBranchAddress("gen_energy", &_gen_energy);
   tree->SetBranchAddress("gen_pt", &_gen_pt);
-  tree->SetBranchAddress("gen_id", &_gen_pdg);
+  tree->SetBranchAddress("gen_pdgid", &_gen_pdg);
   tree->SetBranchAddress("gen_status", &_gen_status);
 
 
@@ -496,57 +424,15 @@ void HGC::display2D_gen(TString file, int n_event,
   for(unsigned int i_gen = 0; i_gen<(*_gen_eta).size(); i_gen++){
     if((*_gen_status)[i_gen]==1){
       h->Fill((*_gen_eta)[i_gen],(*_gen_phi)[i_gen],(*_gen_pt)[i_gen]);
-      cout<<"(pdg,pt,eta,phi)=("<<(*_gen_pdg)[i_gen]<<","<<(*_gen_pt)[i_gen]<<","<<(*_gen_eta)[i_gen]<<","<<(*_gen_phi)[i_gen]<<")"<<endl;
+      std::cout<<"(pdg,pt,eta,phi)=("<<(*_gen_pdg)[i_gen]<<","<<(*_gen_pt)[i_gen]<<","<<(*_gen_eta)[i_gen]<<","<<(*_gen_phi)[i_gen]<<")"<<std::endl;;
     }
   }
 
 
+  PlotterEventDisplay plotter( _cmd );
+  plotter.Draw(h,"gen","display2D_gen");
 
-  h->GetXaxis()->SetTitle("#eta(gen)");
-  h->GetXaxis()->SetTitleOffset(1.5);
-  h->GetYaxis()->SetTitle("#phi(gen)");
-  h->GetZaxis()->SetTitle("p_{T}(gen) [GeV]");
-  h->SetTitle("");
-  h->SetStats(0);
- 
-  TCanvas* c=new TCanvas("c","c",650,600);
-  c->SetLeftMargin(0.15);
-  c->SetRightMargin(0.15);
-
-  h->SetMarkerSize(1.2);
-  gStyle->SetPaintTextFormat("4.1f");
-  h->Draw("text");
-
-  std::vector<TLine*> gr_x;
-  std::vector<TLine*> gr_y;
-  
-  for(unsigned int i=0; i<216; i++){
-    float phi = -TMath::Pi() + i*2*TMath::Pi()/216.;    
-    if(phi>phi_min && phi<phi_max){
-      TLine* line = new TLine(eta_min,phi,eta_max,phi);
-      gr_x.push_back(line);
-    }
-  }
-
-  for(unsigned int i=0; i<36; i++){
-    float rOverZ = 0.09 + i*(0.52-0.09)/36.;
-    float eta_plus = TMath::ASinH(1/rOverZ);
-    if(eta_plus>eta_min && eta_plus<eta_max){
-      TLine* line = new TLine(eta_plus,phi_min,eta_plus,phi_max);
-      gr_y.push_back(line);
-    }
-    float eta_minus = -TMath::ASinH(1/rOverZ);
-    if(eta_minus>eta_min && eta_minus<eta_max){
-      TLine* line = new TLine(eta_minus,phi_min,eta_minus,phi_max);
-      gr_y.push_back(line);
-    }
-  }
-
-  for(auto& gr : gr_x)
-    gr->Draw("same");
-  for(auto& gr : gr_y)
-    gr->Draw("same");
-
+  h->Delete();
 
 }
 

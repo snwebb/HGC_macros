@@ -4,6 +4,7 @@
 #include "Helpers.h"
 #include "PlotterResponse.h"
 #include "PlotterResolution.h"
+#include "PlotterEventDisplay.h"
 
 class HGC{
 

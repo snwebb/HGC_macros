@@ -24,11 +24,10 @@ int main( int argc, char ** argv){
   TString file2 = "/vols/cms/snwebb/HGC_ntuples/VBF_Hinv/VBF_Hinv_PU0_threshold_polarHisto_Max/jet_ntuples_merged/ntuple_jet_merged_1.root" ;
   //  TFile * file = new TFile ( file2 , "OPEN");
 
-  // std::vector<int> tc ;
-  // std::vector<int> cl ;
-  // std::vector<int> c3d ;
-  hgc.display3D_tc( file2 );
-
+  hgc.display3D_tc( file2, 1);
+  hgc.display3D_cl( file2, 1);
+  hgc.display2D_c3d( file2, 1);
+  hgc.display2D_gen( file2, 1);
 
   hgc.MakeTar();
 
