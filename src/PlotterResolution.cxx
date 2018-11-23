@@ -19,7 +19,6 @@ void PlotterResolution::Draw(std::vector<HistObject>& hists, std::vector<double>
       //      histo = histo_ET_resolution(hist.filename(),hist.var(), Form(hist.cut()+" && genjet_pt>%f && genjet_pt<%f",x[bin],x[bin+1]), hist.process(), hist.PUS() );   
 
       histo = histo_ET_resolution(hist.filename(),hist.var(), hist.cut(), hist.process(), hist.PUS(), x[bin], x[bin+1]);   
-            
       std::vector<float> eff_RMS=effectiveRMS(histo);
       gr->SetPoint(n,0.5*(x[bin]+x[bin+1]),eff_RMS[0]/(1-histo->GetMean()));
       gr->SetPointError(n,0.5*(-x[bin]+x[bin+1]),eff_RMS[1]/(1-histo->GetMean()));
