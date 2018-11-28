@@ -13,14 +13,18 @@ void PlotterResolution::Draw(std::vector<HistObject>& hists, std::vector<double>
     TGraphErrors* gr=new TGraphErrors();
     
     int n=0;
-    for(unsigned int bin=0; bin<x.size(); bin++){
+    for(unsigned int bin=0; bin<x.size()-1; bin++){
       
       TH1F* histo = 0;
       //      histo = histo_ET_resolution(hist.filename(),hist.var(), Form(hist.cut()+" && genjet_pt>%f && genjet_pt<%f",x[bin],x[bin+1]), hist.process(), hist.PUS() );   
 
       histo = histo_ET_resolution(hist.filename(),hist.var(), hist.cut(), hist.process(), hist.PUS(), x[bin], x[bin+1]);   
+      if ( histo == 0 ) {
+	return;
+      }
       std::vector<float> eff_RMS=effectiveRMS(histo);
       gr->SetPoint(n,0.5*(x[bin]+x[bin+1]),eff_RMS[0]/(1-histo->GetMean()));
+      std::cout << "n: "<< n << ", " << 0.5*(x[bin]+x[bin+1]) << std::endl;
       gr->SetPointError(n,0.5*(-x[bin]+x[bin+1]),eff_RMS[1]/(1-histo->GetMean()));
       n++;
       histo->Delete();
@@ -72,6 +76,7 @@ void PlotterResolution::Draw(std::vector<HistObject>& hists, std::vector<double>
 
 
   c->SaveAs("plots/" + TString(_outdir) + "/" + savename + ".pdf");
+  c->SaveAs("plots/" + TString(_outdir) + "/" + savename + ".png");
 
 
 }
@@ -215,6 +220,12 @@ TH1F* PlotterResolution::histo_ET_resolution(TString filename, TString var, TStr
   TChain * tree = new TChain("HGCalTriggerNtupleJet");
 
   tree->Add(filename);
+
+  if (tree->GetEntries() == 0 ) {
+    std::cout << "Tree has zero entries, no output produced" << std::endl;
+    return 0;
+  }
+    
   TString all_cuts="";
   if ( process == "Gamma" ) {
 

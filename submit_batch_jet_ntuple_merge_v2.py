@@ -26,8 +26,8 @@ interval = 1 # number files to be processed in a single job, take care to split 
 # dirout = "/vols/cms/snwebb/HGC_ntuples/SingleGammaPt25/SingleGammaPt25_PU0_stc_HistoMax/"
 # dir  = "SingleGammaPt25Eta1p6_2p8/crab_SingleGamma-PU200-threshold-TCs-histoMax-DR03/181121_115525/0000"
 # dirout = "/vols/cms/snwebb/HGC_ntuples/SingleGammaPt25/SingleGammaPt25_PU200_threshold_HistoMax/"
-dir  = "SingleGammaPt25Eta1p6_2p8/crab_SingleGamma-PU200-stc-TCs-histoMax-DR03/181121_115450/0000"
-dirout = "/vols/cms/snwebb/HGC_ntuples/SingleGammaPt25/SingleGammaPt25_PU200_stc_HistoMax/"
+# dir  = "SingleGammaPt25Eta1p6_2p8/crab_SingleGamma-PU200-stc-TCs-histoMax-DR03/181121_115450/0000"
+# dirout = "/vols/cms/snwebb/HGC_ntuples/SingleGammaPt25/SingleGammaPt25_PU200_stc_HistoMax/"
 
 #VBF
 
@@ -40,83 +40,98 @@ dirout = "/vols/cms/snwebb/HGC_ntuples/SingleGammaPt25/SingleGammaPt25_PU200_stc
 #dir  = "VBF_HToInvisible_M125_14TeV_powheg_pythia8/crab_threshold-histoMax/181113_145731/0000"
 #dirout = "/vols/cms/snwebb/HGC_ntuples/VBF_Hinv/VBF_Hinv_PU0_threshold_polarHisto_Max/"
 
+#dir = "VBF_HToInvisible_M125_14TeV_powheg_pythia8/crab_PU200-threshold-TCs-histoInterpolated1stOrder-DR03/181120_144304/0000"
+#dir = "VBF_HToInvisible_M125_14TeV_powheg_pythia8/crab_PU200-stc-TCs-histoInterpolated1stOrder-DR03/181120_144350/0000"
+#dir = "VBF_HToInvisible_M125_14TeV_powheg_pythia8/crab_PU200-thresold-TCs-histoInterpolated2ndOrder-DR03/181120_144511/0000"
+#dir = "VBF_HToInvisible_M125_14TeV_powheg_pythia8/crab_PU200-stc-TCs-histoInterpolated2ndOrder-DR03/181120_144618/0000"
+#dirout = "/vols/cms/snwebb/HGC_ntuples/VBF_Hinv/VBF_Hinv_PU200_threshold_polarHisto_Interpolated1stOrder"
+#dirout = "/vols/cms/snwebb/HGC_ntuples/VBF_Hinv/VBF_Hinv_PU200_stc_polarHisto_Interpolated1stOrder"
+#dirout = "/vols/cms/snwebb/HGC_ntuples/VBF_Hinv/VBF_Hinv_PU200_threshold_polarHisto_Interpolated2ndOrder"
+#dirout = "/vols/cms/snwebb/HGC_ntuples/VBF_Hinv/VBF_Hinv_PU200_stc_polarHisto_Interpolated2ndOrder"
+
+InputDirList = [ 
+#   "VBF_HToInvisible_M125_14TeV_powheg_pythia8/crab_VBF-PU200-threshold-TCs-histoMax-DR03/181126_114617/0000"
+#   "VBF_HToInvisible_M125_14TeV_powheg_pythia8/crab_VBF-PU200-stc-TCs-histoMax-DR03/181126_132117/0000",
+
+#    "VBF_HToInvisible_M125_14TeV_powheg_pythia8/crab_VBF-PU200-threshold-TCs-histoInterpolatedMax1stOrder-DR03/181126_114758/0000",
+#    "VBF_HToInvisible_M125_14TeV_powheg_pythia8/crab_VBF-PU200-stc-TCs-histoInterpolatedMax1stOrder-DR03/181126_131953/0000",
+   
+   "VBF_HToInvisible_M125_14TeV_powheg_pythia8/crab_VBF-PU200-threshold-TCs-histoInterpolatedMax2ndOrder-DR03/181126_114720/0000",
+ #   "VBF_HToInvisible_M125_14TeV_powheg_pythia8/crab_VBF-PU200-stc-TCs-histoInterpolatedMax2ndOrder-DR03/181126_132033/0000",
+   
+#    "VBF_HToInvisible_M125_14TeV_powheg_pythia8/crab_VBF-PU200-threshold-TCs-histoModifiedMax-DR03/181126_132731/0000",
+#   "VBF_HToInvisible_M125_14TeV_powheg_pythia8/crab_VBF-PU200-stc-TCs-histoModifiedMax-DR03/181126_132622/0000",
+   ]
+OutputDirList = [
+#   "/vols/cms/snwebb/HGC_ntuples/VBF_Hinv/VBF_Hinv_PU200_threshold_polarHisto_Max",
+   #"/vols/cms/snwebb/HGC_ntuples/VBF_Hinv/VBF_Hinv_PU200_stc_polarHisto_Max",
+
+   # "/vols/cms/snwebb/HGC_ntuples/VBF_Hinv/VBF_Hinv_PU200_threshold_polarHisto_Interpolated1stOrder",
+#    "/vols/cms/snwebb/HGC_ntuples/VBF_Hinv/VBF_Hinv_PU200_stc_polarHisto_Interpolated1stOrder",
+   "/vols/cms/snwebb/HGC_ntuples/VBF_Hinv/VBF_Hinv_PU200_threshold_polarHisto_Interpolated2ndOrder",
+ #   "/vols/cms/snwebb/HGC_ntuples/VBF_Hinv/VBF_Hinv_PU200_stc_polarHisto_Interpolated2ndOrder",
+
+  #  "/vols/cms/snwebb/HGC_ntuples/VBF_Hinv/VBF_Hinv_PU200_threshold_polarHisto_ModMax",
+##   "/vols/cms/snwebb/HGC_ntuples/VBF_Hinv/VBF_Hinv_PU200_stc_polarHisto_ModMax",
+
+   ]
 
 
-OutputFileNames = dirout + "jet_ntuples_merged/ntuple_jet_merged" # base of the output file name, they will be saved in res directory
-ScriptName = "scripts/runJets.py" # script to be used with cmsRun
+#ScriptName = "scripts/runJets.py" # script to be used with cmsRun
 #FileList = "filelist.txt" # list with all the file directories
-queue = "8nh" # give bsub queue -- 8nm (8 minutes), 1nh (1 hour), 8nh, 1nd (1day), 2nd, 1nw (1 week), 2nw 
+#queue = "8nh" # give bsub queue -- 8nm (8 minutes), 1nh (1 hour), 8nh, 1nd (1day), 2nd, 1nw (1 week), 2nw 
 ########   customization end   #########
 
-path = os.getcwd()
-print
-print 'do not worry about folder creation:'
-os.system("rm -r " + dirout + "tmp")
-os.system("mkdir -p " + dirout + "tmp")
-os.system("mkdir -p " + dirout + "jet_ntuples_merged")
-if subprocess.call(["voms-proxy-info",'--exists']) == 1:
-   print "Voms proxy does not exist:"
-   os.system("voms-proxy-init -voms cms -valid 96:00")
-else:
-   print "Voms proxy exists"
-print
 
 ##### loop for creating and sending jobs #####
-for x in range(1, int(NumberOfJobs)+1):
+for indir, outdir in zip( InputDirList, OutputDirList ):
+   OutputFileNames = outdir + "/jet_ntuples_merged/ntuple_jet_merged" # base of the output file name, they will be saved in res directory
+   path = os.getcwd()
+   print
+   print 'do not worry about folder creation:'
+   os.system("rm -r " + outdir + "/tmp")
+   os.system("mkdir -p " + outdir + "/tmp")
+   os.system("mkdir -p " + outdir + "/jet_ntuples_merged")
+   if subprocess.call(["voms-proxy-info",'--exists']) == 1:
+      print "Voms proxy does not exist:"
+      os.system("voms-proxy-init -voms cms -valid 96:00")
+   else:
+      print "Voms proxy exists"
+   print
+
+##### loop for creating and sending jobs #####
+   for x in range(1, int(NumberOfJobs)+1):
    ##### creates directory and file list for job #######
-   os.system("mkdir "+dirout+"tmp/"+str(x))
-   os.chdir(dirout+"tmp/"+str(x))
+      os.system("mkdir "+outdir+"/tmp/"+str(x))
+      os.chdir(outdir+"/tmp/"+str(x))
    #os.system("sed '"+str(1+interval*(x-1))+","+str(interval*x)+"!d' ../../"+FileList+" > list.txt ")
-   
+      
    ##### creates jobs #######
-   with open('job.sh', 'w') as fout:
+      with open('job.sh', 'w') as fout:
+         
+         
+         
+         fout.write("#!/bin/sh\n")
+         fout.write("echo\n")
+         fout.write("echo\n")
+         fout.write("echo 'START---------------'\n")
+         fout.write("echo 'WORKDIR ' ${PWD}\n")
+         fout.write("cd /home/hep/snwebb/hgcal/CMSSW_10_1_7/src\n")
+         fout.write("eval `scramv1 runtime -sh`\n")
+         fout.write("cd /home/hep/snwebb/hgcal/HGC_macros\n")
+         fout.write("./jet_ntuple_merge --filein root://cms-xrd-global.cern.ch//store/user/sawebb/"+ indir + "/ntuple_"+str(x)+".root --filein_jet " + outdir+"/jet_ntuples/ntuple_jet_"+str(x)+".root --fileout " + OutputFileNames +"_"+str(x)+".root \n")
+         fout.write("echo 'STOP---------------'\n")
+         fout.write("echo\n")
+         fout.write("echo\n")
 
-
-
-      fout.write("#!/bin/sh\n")
-      fout.write("echo\n")
-      fout.write("echo\n")
-      fout.write("echo 'START---------------'\n")
-      fout.write("echo 'WORKDIR ' ${PWD}\n")
-      fout.write("cd /home/hep/snwebb/hgcal/CMSSW_10_1_7/src\n")
-      fout.write("eval `scramv1 runtime -sh`\n")
-      fout.write("cd /home/hep/snwebb/hgcal/HGC_macros\n")
-#      fout.write("root -b -l <<EOF\n")
-      fout.write("./jet_ntuple_merge --filein root://cms-xrd-global.cern.ch//store/user/sawebb/"+ dir + "/ntuple_"+str(x)+".root --filein_jet " + dirout+"/jet_ntuples/ntuple_jet_"+str(x)+".root --fileout " + OutputFileNames +"_"+str(x)+".root \n")
-#      fout.write("add_jet(\"root://cms-xrd-global.cern.ch//store/user/sawebb/"+ dir + "/ntuple_"+str(x)+".root\",\"hgcalTriggerNtuplizer/HGCalTriggerNtuple\",\"" + dirout+"/jet_ntuples/ntuple_jet_"+str(x)+".root\",\"jets\",\""+OutputFileNames+"_"+str(x)+".root\");\n")      
- #     fout.write(".q\n")
-  #    fout.write("EOF\n")
-      fout.write("echo 'STOP---------------'\n")
-      fout.write("echo\n")
-      fout.write("echo\n")
-
-
-#       fout.write("#!/bin/sh\n")
-#       fout.write("echo\n")
-#       fout.write("echo\n")
-#       fout.write("echo 'START---------------'\n")
-#       fout.write("echo 'WORKDIR ' ${PWD}\n")
-#       fout.write("cd /home/hep/snwebb/hgcal/CMSSW_10_1_7/src\n")
-#       fout.write("eval `scramv1 runtime -sh`\n")
-# #      fout.write("export X509_USER_PROXY=/home/hep/tstreble/myVoms/x509up_u1255448\n")
-#       fout.write("cd /home/hep/snwebb/hgcal/HGC_macros\n")
-#       fout.write("root -b -l <<EOF\n")
-#       fout.write(".L jet_ntuple_merger_v2.C+\n")
-# #      fout.write("add_jet(\"" + dir + "/ntuples/ntuple_"+str(x)+".root\",\"hgcalTriggerNtuplizer/HGCalTriggerNtuple\",\""+dir+"/jet_ntuples/ntuple_jet_"+str(x)+".root\",\"jets\",\""+OutputFileNames+"_"+str(x)+".root\");\n")      
-#       fout.write("add_jet(\"root://cms-xrd-global.cern.ch//store/user/sawebb/"+ dir + "/ntuple_"+str(x)+".root\",\"hgcalTriggerNtuplizer/HGCalTriggerNtuple\",\"" + dirout+"/jet_ntuples/ntuple_jet_"+str(x)+".root\",\"jets\",\""+OutputFileNames+"_"+str(x)+".root\");\n")      
-#       fout.write(".q\n")
-#       fout.write("EOF\n")
-#       fout.write("echo 'STOP---------------'\n")
-#       fout.write("echo\n")
-#       fout.write("echo\n")
-   os.system("chmod 755 job.sh")
-   
+      os.system("chmod 755 job.sh")
+      
    ###### sends bjobs ######
    #os.system("bsub -q "+queue+" -o logs job.sh")
-   os.system("qsub -cwd -q hep.q -l h_vmem=12G -l h_rt=2:0:0 -l s_rt=1:50:0 job.sh")
-   print "job nr " + str(x) + " submitted"
-   
-   os.chdir("../..")
+      os.system("qsub -cwd -q hep.q -l h_vmem=12G -l h_rt=2:0:0 -l s_rt=1:50:0 job.sh")
+      print "job nr " + str(x) + " submitted"
+      
+      os.chdir("../..")
    
 print
 print "your jobs:"

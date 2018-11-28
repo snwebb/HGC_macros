@@ -25,7 +25,7 @@ class HGC{
   void plot_profile_L1jet_response_eta_PU0_STC();
   void plot_profile_L1jet_response_pt_VBFHInv_PU0_STC();
   void plot_profile_L1jet_response_pt_VBFHInv_PU0_HistoMax();
-
+  void plot_effRMS_pT_VBFHinv_PU200_CompareAlgos();
   //Resolution
   void plot_effRMS_pT_C3D_histo_PU0_STC();
   void plot_effRMS_pT();
@@ -44,6 +44,9 @@ class HGC{
   void display2D_gen(TString file,int n_event=0, float eta_min=-3, float eta_max=3, float phi_min=-3.2, float phi_max=3.2);
 
 
+  //Jet Calibration
+
+  void calibrate_jet(TString filein,TString fileout);
 
 };
 

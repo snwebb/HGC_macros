@@ -115,3 +115,42 @@ void HGC::plot_effRMS_pT_VBFHinv_PU0_HistoMax(){
 
 }
 
+
+
+
+void HGC::plot_effRMS_pT_VBFHinv_PU200_CompareAlgos(){
+
+  TString varhisto = "(genjet_pt[VBF_parton_genjet] - (1.17*(4.98004e+00 -1.23767e+00 * log(max(jets_pt[VBF_parton_jets]-1.1*jets_PU_subtr_cone_GEO_C3D[VBF_parton_jets],0)) + 1.07929e-01* pow(log(max(jets_pt[VBF_parton_jets]-1.1*jets_PU_subtr_cone_GEO_C3D[VBF_parton_jets],0)),2) ) * max(jets_pt[VBF_parton_jets]-1.1*jets_PU_subtr_cone_GEO_C3D[VBF_parton_jets],0)) ) / genjet_pt[VBF_parton_genjet]";
+  TString varcone = "(genjet_pt[VBF_parton_genjet] - (1.06*(4.98004e+00 -1.23767e+00 * log(max(jets_pt[VBF_parton_jets]-2*jets_PU_subtr_cone_GEO_C3D[VBF_parton_jets],0)) + 1.02929e-01* pow(log(max(jets_pt[VBF_parton_jets]-2*jets_PU_subtr_cone_GEO_C3D[VBF_parton_jets],0)),2) ) * max(jets_pt[VBF_parton_jets]-2*jets_PU_subtr_cone_GEO_C3D[VBF_parton_jets],0)) ) / genjet_pt[VBF_parton_genjet]";
+
+  TString cut = "VBF_parton_genjet>=0 && VBF_parton_jets>=0 && abs(genjet_eta[VBF_parton_genjet])>1.6 && abs(genjet_eta[VBF_parton_genjet])<2.9 && genjet_pt[VBF_parton_genjet]>20";
+
+  std::vector<HistObject> histobjects;  
+
+  TString file1 = "VBF_Hinv/VBF_Hinv_PU200_threshold_polarHisto_Max";
+  TString file2 = "VBF_Hinv/VBF_Hinv_PU200_stc_polarHisto_Max";
+  TString file3 = "VBF_Hinv/VBF_Hinv_PU200_threshold_polarHisto_Interpolated1stOrder";
+  TString file4 = "VBF_Hinv/VBF_Hinv_PU200_stc_polarHisto_Interpolated1stOrder";
+  TString file5 = "VBF_Hinv/VBF_Hinv_PU200_threshold_polarHisto_Interpolated2ndOrder";
+  TString file6 = "VBF_Hinv/VBF_Hinv_PU200_stc_polarHisto_Interpolated2ndOrder";
+  TString file7 = "VBF_Hinv/VBF_Hinv_PU200_threshold_polarHisto_ModMax";
+  TString file8 = "VBF_Hinv/VBF_Hinv_PU200_stc_polarHisto_ModMax";
+
+  //  histobjects.push_back( HistObject(  "Jets", (snwebb + "/" + file1 + "/jet_ntuples_merged/ntuple_jet_merged_*.root"), "thresh - max", varhisto, cut, false  ) );
+  //  histobjects.push_back( HistObject(  "Jets", (snwebb + "/" + file2 + "/jet_ntuples_merged/ntuple_jet_merged_*.root"), "stc - max", varhisto, cut, false  ) );
+  //histobjects.push_back( HistObject(  "Jets", (snwebb + "/" + file3 + "/jet_ntuples_merged/ntuple_jet_merged_*.root"), "thresh - inter1", varhisto, cut, false  ) );
+  // histobjects.push_back( HistObject(  "Jets", (snwebb + "/" + file4 + "/jet_ntuples_merged/ntuple_jet_merged_*.root"), "stc - inter1", varhisto, cut, false  ) );
+    histobjects.push_back( HistObject(  "Jets", (snwebb + "/" + file5 + "/jet_ntuples_merged/ntuple_jet_merged_*.root"), "thresh - inter2", varhisto, cut, false  ) );
+    histobjects.push_back( HistObject(  "Jets", (snwebb + "/" + file6 + "/jet_ntuples_merged/ntuple_jet_merged_*.root"), "stc - inter2", varhisto, cut, false  ) );
+  //  histobjects.push_back( HistObject(  "Jets", (snwebb + "/" + file7 + "/jet_ntuples_merged/ntuple_jet_merged_*.root"), "thresh - modmax", varhisto, cut, false  ) );
+  //  histobjects.push_back( HistObject(  "Jets", (snwebb + "/" + file8 + "/jet_ntuples_merged/ntuple_jet_merged_*.root"), "stc - modmax", varhisto, cut, false  ) );
+  std::vector<double> x={20,40,60,80,100,120,140,160,180,200,220,250,300};
+
+  PlotterResolution plotter( _cmd );
+  plotter.Draw(histobjects, x, "L1Jet_resolution_pT_PU200");
+
+  return;
+
+
+}
+

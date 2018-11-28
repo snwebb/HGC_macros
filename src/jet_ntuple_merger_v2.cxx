@@ -85,13 +85,7 @@ float jet_ntuple_merger_v2::sigmaPhiPhi(const std::vector<std::pair<float,float>
 
 void jet_ntuple_merger_v2::add_jet(TString filein,  TString treename, TString filein_jet, TString treename_jet, TString fileout){
 
-  TFile* f_new = TFile::Open(fileout);
-  if(f_new!=0){
-    std::cout<<fileout<<" already exists, please delete it before converting again"<<std::endl;
-    return;
-  }
-  
-  f_new = TFile::Open(fileout,"RECREATE");
+  TFile* f_new = new TFile(fileout, "RECREATE");
 
   TChain * tree = new TChain(treename);
   tree->Add(filein);
@@ -861,6 +855,8 @@ void jet_ntuple_merger_v2::add_jet(TString filein,  TString treename, TString fi
   f_new->cd();
   tree_new->Write();
   f_new->Close();
+  f_new->Delete();
+
   return;
 
 

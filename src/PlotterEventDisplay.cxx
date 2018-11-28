@@ -106,6 +106,6 @@ void PlotterEventDisplay::Draw( TH1 * hist, TString option, TString savename ){
   
   
   c->SaveAs("plots/" + TString(_outdir) + "/" + savename + ".pdf");
-  
+  c->SaveAs("plots/" + TString(_outdir) + "/" + savename + ".png");  
   
 }

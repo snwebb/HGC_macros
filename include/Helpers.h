@@ -34,6 +34,7 @@
 #include <vector>
 #include <cassert>
 #include <unordered_map>
+#include <algorithm> 
 
 #include "HistObject.h"
 

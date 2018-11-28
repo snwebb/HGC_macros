@@ -33,7 +33,7 @@ void HGC::display3D_tc(TString file, int n_event,
   std::vector<unsigned int> *_cl3d_id;
 
   //  std::vector<unsigned int> *_cl_id;
-  std::vector<std::vector<int> > *_cl_cells;
+  //  std::vector<std::vector<int> > *_cl_cells;
   // std::vector<std::vector<int> > *_cl3d_clusters;
 
   tree->SetBranchAddress("tc_eta",    &_tc_eta);
@@ -77,7 +77,7 @@ void HGC::display3D_tc(TString file, int n_event,
   _cl3d_pt = 0;
   _cl3d_id = 0;
 
-  _cl_cells = 0;
+  //  _cl_cells = 0;
   //  _cl_id = 0;
   //  _cl3d_clusters = 0;
   
@@ -275,13 +275,10 @@ void HGC::display2D_c3d(TString file, int n_event,
   tree->GetEntry(n_event);
   
   if(c3d.size()==0){
-
-    std::cout<<"ok"<<std::endl;;
     for(unsigned int i_c3d = 0; i_c3d<(*_cl3d_eta).size(); i_c3d++){
       h->Fill((*_cl3d_eta)[i_c3d],(*_cl3d_phi)[i_c3d],(*_cl3d_pt)[i_c3d]);
       std::cout<<"(pt,eta,phi)=("<<(*_cl3d_pt)[i_c3d]<<","<<(*_cl3d_eta)[i_c3d]<<","<<(*_cl3d_phi)[i_c3d]<<")"<<std::endl;;
     }
-    std::cout<<"ok2"<<std::endl;;
   }
   
   else{
