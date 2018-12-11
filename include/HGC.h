@@ -26,11 +26,13 @@ class HGC{
   void plot_profile_L1jet_response_pt_VBFHInv_PU0_STC();
   void plot_profile_L1jet_response_pt_VBFHInv_PU0_HistoMax();
   void plot_effRMS_pT_VBFHinv_PU200_CompareAlgos();
+  void plot_effRMS_pT_VBFHinv_PU200_CompareThreshold();
   //Resolution
   void plot_effRMS_pT_C3D_histo_PU0_STC();
   void plot_effRMS_pT();
   void plot_effRMS_pT_STC();
   void plot_effRMS_pT_VBFHinv_PU0_HistoMax();
+
 
   //Event Display
   void display3D_tc(TString file,int n_event=0,const std::vector<int>& tc= std::vector<int>(), const std::vector<int>& cl= std::vector<int>(), const std::vector<int>& c3d= std::vector<int>(), float eta_min=-3, float eta_max=3, float phi_min=-3.2, float phi_max=3.2, float layer_min=0, float layer_max=60);

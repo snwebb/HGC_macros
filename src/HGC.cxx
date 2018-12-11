@@ -18,8 +18,8 @@ int main( int argc, char ** argv){
   //  hgc.plot_effRMS_pT();//test for pileup studies
   //  hgc.plot_effRMS_pT_STC();
   //  hgc.plot_effRMS_pT_VBFHinv_PU0_HistoMax();
-
-  hgc.plot_effRMS_pT_VBFHinv_PU200_CompareAlgos();
+  //  hgc.plot_effRMS_pT_VBFHinv_PU200_CompareAlgos();
+   hgc.plot_effRMS_pT_VBFHinv_PU200_CompareThreshold();
 
   //Event Display
 
