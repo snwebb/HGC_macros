@@ -1,5 +1,6 @@
 #include "jet_ntuple_merger_v2.h"
-
+#include <time.h>
+#include "interrupts.h"
 jet_ntuple_merger_v2::jet_ntuple_merger_v2(){
 
 }
@@ -85,6 +86,8 @@ float jet_ntuple_merger_v2::sigmaPhiPhi(const std::vector<std::pair<float,float>
 
 void jet_ntuple_merger_v2::add_jet(TString filein,  TString treename, TString filein_jet, TString treename_jet, TString fileout){
 
+  catchSignals();
+  
   TFile* f_new = new TFile(fileout, "RECREATE");
 
   TChain * tree = new TChain(treename);
@@ -185,17 +188,6 @@ void jet_ntuple_merger_v2::add_jet(TString filein,  TString treename, TString fi
 
   tree->SetBranchAddress("cl_cells_id",        &_cl_cells_id);
   tree->SetBranchAddress("cl3d_clusters_id",   &_cl3d_clusters_id);
-
-  tree_jet->SetBranchAddress("jets_pt",     &_jets_pt);
-  tree_jet->SetBranchAddress("jets_eta",    &_jets_eta);
-  tree_jet->SetBranchAddress("jets_phi",    &_jets_phi);
-  tree_jet->SetBranchAddress("jets_energy", &_jets_energy);
-
-  tree_jet->SetBranchAddress("jets_C3d_pt",     &_jets_C3d_pt);
-  tree_jet->SetBranchAddress("jets_C3d_eta",    &_jets_C3d_eta);
-  tree_jet->SetBranchAddress("jets_C3d_phi",    &_jets_C3d_phi);
-  tree_jet->SetBranchAddress("jets_C3d_energy", &_jets_C3d_energy);
-
   //tree->SetBranchAddress("gen_id",     &_gen_id);
   tree->SetBranchAddress("gen_pdgid",     &_gen_id);
   tree->SetBranchAddress("gen_status", &_gen_status);
@@ -214,6 +206,75 @@ void jet_ntuple_merger_v2::add_jet(TString filein,  TString treename, TString fi
   tree->SetBranchAddress("gentau_vis_phi",    &_gentau_vis_phi);
   tree->SetBranchAddress("gentau_vis_energy", &_gentau_vis_energy);
 
+
+
+
+  tree->SetBranchStatus ("*",0);
+  tree->SetBranchStatus("tc_n"     ,1);
+  tree->SetBranchStatus("cl_n"     ,1);
+  tree->SetBranchStatus("cl3d_n"   ,1);
+  tree->SetBranchStatus("tc_eta"   ,1);
+  tree->SetBranchStatus("tc_phi"   ,1);
+  tree->SetBranchStatus("tc_energy",1);
+  tree->SetBranchStatus("tc_z"     ,1);
+  tree->SetBranchStatus("tc_layer" ,1);
+  tree->SetBranchStatus("tc_subdet",1);
+  tree->SetBranchStatus("tc_id"    ,1);
+  tree->SetBranchStatus("cl_pt"    ,1);
+  tree->SetBranchStatus("cl_mipPt" ,1);
+  tree->SetBranchStatus("cl_eta"   ,1);
+  tree->SetBranchStatus("cl_phi"   ,1);
+  tree->SetBranchStatus("cl_energy",1);
+  tree->SetBranchStatus("cl_id"    ,1);
+  tree->SetBranchStatus("cl3d_pt"  ,1);
+  tree->SetBranchStatus("cl3d_eta" ,1);
+
+
+  tree->SetBranchStatus("cl3d_phi"    ,1);
+  tree->SetBranchStatus("cl3d_energy" ,1);
+  tree->SetBranchStatus("cl3d_id"     ,1);
+  tree->SetBranchStatus("cl3d_firstlayer",1);
+
+  tree->SetBranchStatus("cl_cells_id"    ,1);
+  tree->SetBranchStatus("cl3d_clusters_id",1);
+
+
+
+  tree->SetBranchStatus("gen_pdgid",1);
+  tree->SetBranchStatus("gen_status",1);
+  tree->SetBranchStatus("gen_pt"   ,1);
+  tree->SetBranchStatus("gen_eta"  ,1);
+  tree->SetBranchStatus("gen_phi"  ,1);
+  tree->SetBranchStatus("gen_energy",1);
+
+
+  tree->SetBranchStatus("genjet_pt"     ,1);
+  tree->SetBranchStatus("genjet_eta"    ,1);
+  tree->SetBranchStatus("genjet_phi"    ,1);
+  tree->SetBranchStatus("genjet_energy" ,1);
+
+  tree->SetBranchStatus("gentau_vis_pt"    ,1);
+  tree->SetBranchStatus("gentau_vis_eta"   ,1);
+  tree->SetBranchStatus("gentau_vis_phi"   ,1);
+  tree->SetBranchStatus("gentau_vis_energy",1);
+
+
+
+
+
+  tree_jet->SetBranchAddress("jets_pt",     &_jets_pt);
+  tree_jet->SetBranchAddress("jets_eta",    &_jets_eta);
+  tree_jet->SetBranchAddress("jets_phi",    &_jets_phi);
+  tree_jet->SetBranchAddress("jets_energy", &_jets_energy);
+
+  tree_jet->SetBranchAddress("jets_C3d_pt",     &_jets_C3d_pt);
+  tree_jet->SetBranchAddress("jets_C3d_eta",    &_jets_C3d_eta);
+  tree_jet->SetBranchAddress("jets_C3d_phi",    &_jets_C3d_phi);
+  tree_jet->SetBranchAddress("jets_C3d_energy", &_jets_C3d_energy);
+
+
+
+  f_new->cd();
   TTree* tree_new = new TTree("HGCalTriggerNtupleJet","HGCalTriggerNtupleJet");
   tree_new->AddFriend(treename,filein);
   TString filejet_friend = "/vols/cms/snwebb/HGC_ntuples/" + filein_jet(29,filein_jet.Length());
@@ -221,8 +282,8 @@ void jet_ntuple_merger_v2::add_jet(TString filein,  TString treename, TString fi
 
   
   //New branches
-  std::vector<int> _tc_HGClayer;
-  std::vector<int> _cl_HGClayer;
+  std::vector<int> _tc_HGClayer;//need
+  std::vector<int> _cl_HGClayer;//need
 
   std::vector<int> _tc_cl;
   std::vector<int> _tc_cl3d;
@@ -269,32 +330,35 @@ void jet_ntuple_merger_v2::add_jet(TString filein,  TString treename, TString fi
   std::vector<float> _jets_clean_phi;
   std::vector<float> _jets_clean_energy;
 
+  bool slimmed = true;
 
-  tree_new->Branch("tc_HGClayer",     &_tc_HGClayer);
-  tree_new->Branch("cl_HGClayer",     &_cl_HGClayer);
 
-  tree_new->Branch("tc_cl",     &_tc_cl);
-  tree_new->Branch("tc_cl3d",   &_tc_cl3d);
-  tree_new->Branch("cl_cl3d",   &_cl_cl3d);
+    tree_new->Branch("tc_HGClayer",     &_tc_HGClayer);    //need
+    tree_new->Branch("cl_HGClayer",     &_cl_HGClayer);    //need
 
-  tree_new->Branch("tc_jet",    &_tc_jet);
-  tree_new->Branch("cl_jet",    &_cl_jet);
-  tree_new->Branch("cl3d_jet",  &_cl3d_jet);
+  if ( !slimmed ){    
+    tree_new->Branch("tc_cl",     &_tc_cl);                // not 
+    tree_new->Branch("tc_cl3d",   &_tc_cl3d);              // not 
+    tree_new->Branch("cl_cl3d",   &_cl_cl3d);              // not 
+    
+    tree_new->Branch("tc_jet",    &_tc_jet);               // not 
+    tree_new->Branch("cl_jet",    &_cl_jet);               // not 
+    tree_new->Branch("cl3d_jet",  &_cl3d_jet);             // not  
+    
+    tree_new->Branch("cl_cells",    &_cl_cells);           // not
+    tree_new->Branch("cl3d_clusters",    &_cl3d_clusters); // not
+    
+    tree_new->Branch("jets_n",    &_jets_n,   "jets_n/I"); //not
+    tree_new->Branch("jets_ncl3d", &_jets_ncl3d);          //not
+    tree_new->Branch("jets_cl3d", &_jets_cl3d);            //not
+    tree_new->Branch("jets_cl3d_id", &_jets_cl3d_id);      //not
+  }
 
-  tree_new->Branch("cl_cells",    &_cl_cells);
-  tree_new->Branch("cl3d_clusters",    &_cl3d_clusters);
- 
-  tree_new->Branch("jets_n",    &_jets_n,   "jets_n/I");
-  tree_new->Branch("jets_ncl3d", &_jets_ncl3d);
-  tree_new->Branch("jets_cl3d", &_jets_cl3d);
-  tree_new->Branch("jets_cl3d_id", &_jets_cl3d_id);
-
-  tree_new->Branch("cl3d_r_mean",     &_cl3d_r_mean);
-  tree_new->Branch("cl3d_z_mean",     &_cl3d_z_mean);
-  tree_new->Branch("layer_cl3d_energy_fraction", &_layer_cl3d_energy_fraction);
-  tree_new->Branch("cl3d_Fisher_jet", &_cl3d_Fisher_jet);
+  tree_new->Branch("cl3d_r_mean",     &_cl3d_r_mean);     
+  tree_new->Branch("cl3d_z_mean",     &_cl3d_z_mean);     
+  tree_new->Branch("layer_cl3d_energy_fraction", &_layer_cl3d_energy_fraction); 
+  tree_new->Branch("cl3d_Fisher_jet", &_cl3d_Fisher_jet); 
   tree_new->Branch("cl3d_Fisher_cl3d", &_cl3d_Fisher_cl3d);
-
 
   tree_new->Branch("jets_mipPt", &_jets_mipPt);
   tree_new->Branch("jets_seetot", &_jets_seetot);
@@ -315,11 +379,12 @@ void jet_ntuple_merger_v2::add_jet(TString filein,  TString treename, TString fi
 
   tree_new->Branch("gentau_jets", &_gentau_jets);
 
-  tree_new->Branch("jets_clean_pt", &_jets_clean_pt);
-  tree_new->Branch("jets_clean_eta", &_jets_clean_eta);
-  tree_new->Branch("jets_clean_phi", &_jets_clean_phi);
-  tree_new->Branch("jets_clean_energy", &_jets_clean_energy);
- 
+  if ( !slimmed ){
+    tree_new->Branch("jets_clean_pt", &_jets_clean_pt);
+    tree_new->Branch("jets_clean_eta", &_jets_clean_eta);
+    tree_new->Branch("jets_clean_phi", &_jets_clean_phi);
+    tree_new->Branch("jets_clean_energy", &_jets_clean_energy);
+  }
 
   TFile* f_PU_cone_eta = TFile::Open("PU_cone_vs_eta.root");
   TProfile* prof_cone_tc = (TProfile*)f_PU_cone_eta->Get("prof_cone_tc");
@@ -336,7 +401,7 @@ void jet_ntuple_merger_v2::add_jet(TString filein,  TString treename, TString fi
   int N = std::min(nentries,nentries2);
   for(int i=0;i<N;i++){
 
-    if(i%1000==0)
+    if(i%10==0)
       std::cout<<"i="<<i<<std::endl;
     
     _tc_n = 0;
@@ -396,6 +461,11 @@ void jet_ntuple_merger_v2::add_jet(TString filein,  TString treename, TString fi
     _gentau_vis_energy = 0;
     
     _jets_n = 0;
+
+
+
+    //New Branches
+
     _tc_HGClayer.clear();
     _cl_HGClayer.clear();
 
@@ -444,12 +514,11 @@ void jet_ntuple_merger_v2::add_jet(TString filein,  TString treename, TString fi
     _jets_clean_phi.clear();
     _jets_clean_energy.clear();  
 
-    
     tree->GetEntry(i);
     tree_jet->GetEntry(i);
 
     _jets_n = (*_jets_C3d_pt).size();   
-  
+
     std::map<unsigned int, unsigned int> tc_map; //First ID, Second index
     std::map<unsigned int, unsigned int> cl_map; //First ID, Second index
     std::map<unsigned int, unsigned int> cl3d_map; //First ID, Second index
@@ -461,7 +530,6 @@ void jet_ntuple_merger_v2::add_jet(TString filein,  TString treename, TString fi
       tc_map[(*_tc_id)[i_tc]] = i_tc;
 
     }
-
     for(unsigned int i_cl=0; i_cl<(*_cl_cells_id).size(); i_cl++){
 
       int tc_index = tc_map[(*_cl_cells_id)[i_cl][0]];
@@ -470,13 +538,11 @@ void jet_ntuple_merger_v2::add_jet(TString filein,  TString treename, TString fi
       cl_map[(*_cl_id)[i_cl]] = i_cl;
  
     }
-
     for(unsigned int i_c3d=0; i_c3d<(*_cl3d_clusters_id).size(); i_c3d++){
 
       cl3d_map[(*_cl3d_id)[i_c3d]] = i_c3d;
 
     }    
-
 
     _cl_cells.resize((*_cl_cells_id).size());
     for(unsigned int i_cl=0; i_cl<(*_cl_cells_id).size(); i_cl++){
@@ -491,98 +557,103 @@ void jet_ntuple_merger_v2::add_jet(TString filein,  TString treename, TString fi
 	_cl3d_clusters[i_cl3d].push_back(cl_map[(*_cl3d_clusters_id)[i_cl3d][i_cl]]);
       }
     }
-
     _jets_cl3d_id.resize((*_jets_C3d_pt).size());
     _jets_cl3d.resize((*_jets_C3d_pt).size());
-    for(unsigned int i_jet=0; i_jet<(*_jets_C3d_pt).size(); i_jet++){
 
-      std::vector<int> cl3d_currentjet;
-      std::vector<int> cl3d_id_currentjet;
-
-      for(unsigned int i_cl3d_jet=0; i_cl3d_jet<(*_jets_C3d_pt)[i_jet].size(); i_cl3d_jet++){
+    if ( !slimmed ){
+ 
+      for(unsigned int i_jet=0; i_jet<(*_jets_C3d_pt).size(); i_jet++){
 	
-	TLorentzVector C3D_jet;
-	C3D_jet.SetPtEtaPhiE((*_jets_C3d_pt)[i_jet][i_cl3d_jet],(*_jets_C3d_eta)[i_jet][i_cl3d_jet],(*_jets_C3d_phi)[i_jet][i_cl3d_jet],(*_jets_C3d_energy)[i_jet][i_cl3d_jet]);
-	int i_cl3d_matched = -1;
+	std::vector<int> cl3d_currentjet;
+	std::vector<int> cl3d_id_currentjet;
 	
-	for(unsigned int i_cl3d=0; i_cl3d<(*_cl3d_pt).size(); i_cl3d++){
-	  TLorentzVector C3D;
-	  C3D.SetPtEtaPhiE((*_cl3d_pt)[i_cl3d],(*_cl3d_eta)[i_cl3d],(*_cl3d_phi)[i_cl3d],(*_cl3d_energy)[i_cl3d]);
+	for(unsigned int i_cl3d_jet=0; i_cl3d_jet<(*_jets_C3d_pt)[i_jet].size(); i_cl3d_jet++){
+	  
+	  TLorentzVector C3D_jet;
+	  C3D_jet.SetPtEtaPhiE((*_jets_C3d_pt)[i_jet][i_cl3d_jet],(*_jets_C3d_eta)[i_jet][i_cl3d_jet],(*_jets_C3d_phi)[i_jet][i_cl3d_jet],(*_jets_C3d_energy)[i_jet][i_cl3d_jet]);
+	  int i_cl3d_matched = -1;
 
-	  if(C3D.DeltaR(C3D_jet)<0.01){
-	    i_cl3d_matched = i_cl3d;
-	    break;
-	  }
-	}	
-
-	_jets_cl3d[i_jet].emplace_back(i_cl3d_matched);
-	_jets_cl3d_id[i_jet].emplace_back((*_cl3d_id)[i_cl3d_matched]);
-
-      }
-
-  
-      _jets_ncl3d.emplace_back(_jets_cl3d[i_jet].size());
-
-    }    
-
+	  double smalldr = 100;
+	  for(unsigned int i_cl3d=0; i_cl3d<(*_cl3d_pt).size(); i_cl3d++){
+	    TLorentzVector C3D;
+	    C3D.SetPtEtaPhiE((*_cl3d_pt)[i_cl3d],(*_cl3d_eta)[i_cl3d],(*_cl3d_phi)[i_cl3d],(*_cl3d_energy)[i_cl3d]);
+	    
+	    
+	    if(C3D.DeltaR(C3D_jet)<smalldr){
+	      smalldr = C3D.DeltaR(C3D_jet);
+	      i_cl3d_matched = i_cl3d;
+	    }
+	  }	
+	  
+	  _jets_cl3d[i_jet].emplace_back(i_cl3d_matched);
+	  _jets_cl3d_id[i_jet].emplace_back((*_cl3d_id)[i_cl3d_matched]);
+	  
+	}
+	
+	
+	_jets_ncl3d.emplace_back(_jets_cl3d[i_jet].size());
+	
+      }    
+    }
 
     //Cross-reference of objects
-
-    _tc_cl.resize(_tc_n,-1);
-    for(unsigned int i_cl=0; i_cl<(_cl_cells).size(); i_cl++){
-      for(unsigned int i_tc=0; i_tc<(_cl_cells)[i_cl].size(); i_tc++){
-
-	int tc_index = (_cl_cells)[i_cl][i_tc];	
-	_tc_cl[tc_index] = i_cl;    
-	
-      }
-    }
-              
-    _tc_cl3d.resize(_tc_n,-1);
-    _cl_cl3d.resize(_cl_n,-1);
-    for(unsigned int i_cl3d=0; i_cl3d<(_cl3d_clusters).size(); i_cl3d++){      
-      for(unsigned int i_cl=0; i_cl<(_cl3d_clusters)[i_cl3d].size(); i_cl++){
-
-	int cl_index = (_cl3d_clusters)[i_cl3d][i_cl];
-	_cl_cl3d[cl_index] = i_cl3d;
-	
-	for(unsigned int i_tc=0; i_tc<(_cl_cells)[cl_index].size(); i_tc++){
-
-	  int tc_index = (_cl_cells)[cl_index][i_tc];
-	  _tc_cl3d[tc_index] = i_cl3d;    
-
+    if ( !slimmed ){
+      _tc_cl.resize(_tc_n,-1);
+      
+      for(unsigned int i_cl=0; i_cl<(_cl_cells).size(); i_cl++){
+	for(unsigned int i_tc=0; i_tc<(_cl_cells)[i_cl].size(); i_tc++){
+	  int tc_index = (_cl_cells)[i_cl][i_tc];	
+	  _tc_cl[tc_index] = i_cl;    
+	  
 	}
-
       }
-    }
-
-    _tc_jet.resize(_tc_n,-1);
-    _cl_jet.resize(_cl_n,-1);
-    _cl3d_jet.resize(_cl3d_n,-1);
-    for(unsigned int i_jet=0; i_jet<(_jets_cl3d).size(); i_jet++){
-
-      for(unsigned int i_cl3d=0; i_cl3d<(_jets_cl3d)[i_jet].size(); i_cl3d++){
-
-	int cl3d_index = (_jets_cl3d)[i_jet][i_cl3d];	
-	_cl3d_jet[cl3d_index] = i_jet;
-
-	for(unsigned int i_cl=0; i_cl<(_cl3d_clusters)[cl3d_index].size(); i_cl++){
-	  int cl_index = (_cl3d_clusters)[cl3d_index][i_cl];
-	  _cl_jet[cl_index] = i_jet;
-
+      
+      _tc_cl3d.resize(_tc_n,-1);
+      _cl_cl3d.resize(_cl_n,-1);
+      for(unsigned int i_cl3d=0; i_cl3d<(_cl3d_clusters).size(); i_cl3d++){      
+	for(unsigned int i_cl=0; i_cl<(_cl3d_clusters)[i_cl3d].size(); i_cl++){
+	  
+	  int cl_index = (_cl3d_clusters)[i_cl3d][i_cl];
+	  _cl_cl3d[cl_index] = i_cl3d;
+	  
 	  for(unsigned int i_tc=0; i_tc<(_cl_cells)[cl_index].size(); i_tc++){
+	    
 	    int tc_index = (_cl_cells)[cl_index][i_tc];
-	    _tc_jet[tc_index] = i_jet;	  
+	    _tc_cl3d[tc_index] = i_cl3d;    
+	    
 	  }
-
+	  
 	}
-
       }
+      (_cl_jet).resize(_cl_n,-1);
 
+      (_tc_jet).resize(_tc_n,-1);
+
+      (_cl3d_jet).resize(_cl3d_n,-1);
+
+      for(unsigned int i_jet=0; i_jet<(_jets_cl3d).size(); i_jet++){
+	for(unsigned int i_cl3d=0; i_cl3d<(_jets_cl3d)[i_jet].size(); i_cl3d++){
+	  int cl3d_index = (_jets_cl3d)[i_jet][i_cl3d];	
+
+	  _cl3d_jet[cl3d_index] = i_jet;
+	  for(unsigned int i_cl=0; i_cl<(_cl3d_clusters)[cl3d_index].size(); i_cl++){
+	    int cl_index = (_cl3d_clusters)[cl3d_index][i_cl];
+	    
+	    _cl_jet[cl_index] = i_jet;
+	    for(unsigned int i_tc=0; i_tc<(_cl_cells)[cl_index].size(); i_tc++){
+	      int tc_index = (_cl_cells)[cl_index][i_tc];
+
+	      _tc_jet[tc_index] = i_jet;	  
+	      
+	    }
+	  }
+	  
+	}
+	
+      }
+    
     }
   
-
-
     //Clusters shower-shape variables
 
     for(unsigned int i_cl3d=0; i_cl3d<(_cl3d_clusters).size();i_cl3d++){
@@ -594,6 +665,10 @@ void jet_ntuple_merger_v2::add_jet(TString filein,  TString treename, TString fi
       for(unsigned int i_cl=0; i_cl<(_cl3d_clusters)[i_cl3d].size();i_cl++){
 
 	int cl_index = (_cl3d_clusters)[i_cl3d][i_cl];
+	if ( cl_index == -1 ) {
+	  std::cout << 	  "cl_index == -1"  << std::endl;
+	  continue;
+	}
 
 	for(unsigned int i_tc=0;i_tc<(_cl_cells)[cl_index].size();i_tc++){
 
@@ -653,7 +728,6 @@ void jet_ntuple_merger_v2::add_jet(TString filein,  TString treename, TString fi
       
     }
 
-  
     //Jet shower-shape variables
     _layer_jets_energy_fraction.resize(53);
 
@@ -701,8 +775,8 @@ void jet_ntuple_merger_v2::add_jet(TString filein,  TString treename, TString fi
 	  }
 	  
       }
-
-
+    
+    
       float jet_See_tot = sigmaXX(energy_eta_c3d,(*_jets_eta)[i_jet]);
       float jet_Spp_tot = sigmaXX(energy_phi_c3d,(*_jets_phi)[i_jet]);
       float jet_Srr_tot = sigmaXX(energy_r_c3d,1/abs(TMath::ASinH((*_jets_eta)[i_jet])));
@@ -745,9 +819,10 @@ void jet_ntuple_merger_v2::add_jet(TString filein,  TString treename, TString fi
 
 
     }
-     
 
     _isVBF = true;
+
+
 
     for(unsigned int i_gen=0; i_gen<(*_gen_id).size(); i_gen++){
       if(abs((*_gen_id)[i_gen])==21 && (*_gen_status)[i_gen]==21) //Gluon splitting in initial partons
@@ -796,7 +871,6 @@ void jet_ntuple_merger_v2::add_jet(TString filein,  TString treename, TString fi
       
     }
 
-
     for(unsigned int i_gen=0; i_gen<(*_gentau_vis_pt).size(); i_gen++){
 
       TLorentzVector gentau;
@@ -819,7 +893,7 @@ void jet_ntuple_merger_v2::add_jet(TString filein,  TString treename, TString fi
       _gentau_jets.emplace_back(i_gentau_jet);
       
     }
-
+  
 
 
 
@@ -827,7 +901,7 @@ void jet_ntuple_merger_v2::add_jet(TString filein,  TString treename, TString fi
     // Find seeds using one of several methods
     // Form the 3D clusters using these seeds
 
-
+    
 
     // //Find seeds (new implementation)
 
@@ -842,14 +916,23 @@ void jet_ntuple_merger_v2::add_jet(TString filein,  TString treename, TString fi
 
 
 
+    delete _cl_cells_id;
+    delete _cl3d_clusters_id;
+    _cl_cells_id = 0;
+    _cl3d_clusters_id = 0;
 
-
-
-
-
+    delete _jets_C3d_pt;        
+    delete _jets_C3d_eta;        
+    delete _jets_C3d_phi;        
+    delete _jets_C3d_energy;        
+    _jets_C3d_pt = 0  ;        
+    _jets_C3d_eta = 0 ;        
+    _jets_C3d_phi = 0 ;        
+    _jets_C3d_energy = 0 ;        
     
-
     tree_new->Fill();
+
+    if ( continueJob == false ) break;
   }
 
   f_new->cd();

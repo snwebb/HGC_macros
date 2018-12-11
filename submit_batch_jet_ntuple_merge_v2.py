@@ -9,7 +9,7 @@ print 'START'
 print 
 ########   YOU ONLY NEED TO FILL THE AREA BELOW   #########
 ########   customization  area #########
-NumberOfJobs= 50
+NumberOfJobs= 100
 # number of jobs to be submitted
 interval = 1 # number files to be processed in a single job, take care to split your file so that you run on all files. The last job might be with smaller number of files (the ones that remain).
 
@@ -56,11 +56,23 @@ InputDirList = [
 #    "VBF_HToInvisible_M125_14TeV_powheg_pythia8/crab_VBF-PU200-threshold-TCs-histoInterpolatedMax1stOrder-DR03/181126_114758/0000",
 #    "VBF_HToInvisible_M125_14TeV_powheg_pythia8/crab_VBF-PU200-stc-TCs-histoInterpolatedMax1stOrder-DR03/181126_131953/0000",
    
-   "VBF_HToInvisible_M125_14TeV_powheg_pythia8/crab_VBF-PU200-threshold-TCs-histoInterpolatedMax2ndOrder-DR03/181126_114720/0000",
+#   "VBF_HToInvisible_M125_14TeV_powheg_pythia8/crab_VBF-PU200-threshold-TCs-histoInterpolatedMax2ndOrder-DR03/181126_114720/0000",
  #   "VBF_HToInvisible_M125_14TeV_powheg_pythia8/crab_VBF-PU200-stc-TCs-histoInterpolatedMax2ndOrder-DR03/181126_132033/0000",
    
 #    "VBF_HToInvisible_M125_14TeV_powheg_pythia8/crab_VBF-PU200-threshold-TCs-histoModifiedMax-DR03/181126_132731/0000",
 #   "VBF_HToInvisible_M125_14TeV_powheg_pythia8/crab_VBF-PU200-stc-TCs-histoModifiedMax-DR03/181126_132622/0000",
+
+"VBF_HToInvisible_M125_14TeV_powheg_pythia8/crab_VBF-PU200-stc-TCs-histoInterpolated1stOrder-0mipt-DR03-NS/181207_091543/0000",
+ # "VBF_HToInvisible_M125_14TeV_powheg_pythia8/crab_VBF-PU200-stc-TCs-histoInterpolated1stOrder-5mipt-DR03-NS/181207_091637/0000",
+ # "VBF_HToInvisible_M125_14TeV_powheg_pythia8/crab_VBF-PU200-stc-TCs-histoInterpolated1stOrder-10mipt-DR03-NS/181207_092457/0000",
+ # "VBF_HToInvisible_M125_14TeV_powheg_pythia8/crab_VBF-PU200-stc-TCs-histoInterpolated1stOrder-15mipt-DR03-NS/181207_092823/0000",
+ # "VBF_HToInvisible_M125_14TeV_powheg_pythia8/crab_VBF-PU200-stc-TCs-histoInterpolated1stOrder-20mipt-DR03-NS/181207_093448/0000",
+   
+#"VBF_HToInvisible_M125_14TeV_powheg_pythia8/crab_VBF-PU200-stc-TCs-histoInterpolated1stOrder-0mipt-DR03-WE/181206_160504/0000",
+#"VBF_HToInvisible_M125_14TeV_powheg_pythia8/crab_VBF-PU200-stc-TCs-histoInterpolated1stOrder-5mipt-DR03-WE/181206_160621/0000",
+#"VBF_HToInvisible_M125_14TeV_powheg_pythia8/crab_VBF-PU200-stc-TCs-histoInterpolated1stOrder-10mipt-DR03-WE/181206_160725/0000",
+"VBF_HToInvisible_M125_14TeV_powheg_pythia8/crab_VBF-PU200-stc-TCs-histoInterpolated1stOrder-15mipt-DR03-WE/181206_160853/0000",
+#"VBF_HToInvisible_M125_14TeV_powheg_pythia8/crab_VBF-PU200-stc-TCs-histoInterpolated1stOrder-20mipt-DR03-WE/181206_161001/0000",
    ]
 OutputDirList = [
 #   "/vols/cms/snwebb/HGC_ntuples/VBF_Hinv/VBF_Hinv_PU200_threshold_polarHisto_Max",
@@ -68,12 +80,22 @@ OutputDirList = [
 
    # "/vols/cms/snwebb/HGC_ntuples/VBF_Hinv/VBF_Hinv_PU200_threshold_polarHisto_Interpolated1stOrder",
 #    "/vols/cms/snwebb/HGC_ntuples/VBF_Hinv/VBF_Hinv_PU200_stc_polarHisto_Interpolated1stOrder",
-   "/vols/cms/snwebb/HGC_ntuples/VBF_Hinv/VBF_Hinv_PU200_threshold_polarHisto_Interpolated2ndOrder",
+ #  "/vols/cms/snwebb/HGC_ntuples/VBF_Hinv/VBF_Hinv_PU200_threshold_polarHisto_Interpolated2ndOrder",
  #   "/vols/cms/snwebb/HGC_ntuples/VBF_Hinv/VBF_Hinv_PU200_stc_polarHisto_Interpolated2ndOrder",
 
   #  "/vols/cms/snwebb/HGC_ntuples/VBF_Hinv/VBF_Hinv_PU200_threshold_polarHisto_ModMax",
 ##   "/vols/cms/snwebb/HGC_ntuples/VBF_Hinv/VBF_Hinv_PU200_stc_polarHisto_ModMax",
 
+     "/vols/cms/snwebb/HGC_ntuples/VBF_Hinv/VBF-PU200-stc-TCs-histoInterpolated1stOrder-0mipt-DR03-NS",
+     # "/vols/cms/snwebb/HGC_ntuples/VBF_Hinv/VBF-PU200-stc-TCs-histoInterpolated1stOrder-5mipt-DR03-NS",
+     # "/vols/cms/snwebb/HGC_ntuples/VBF_Hinv/VBF-PU200-stc-TCs-histoInterpolated1stOrder-10mipt-DR03-NS",
+     # "/vols/cms/snwebb/HGC_ntuples/VBF_Hinv/VBF-PU200-stc-TCs-histoInterpolated1stOrder-15mipt-DR03-NS",
+     # "/vols/cms/snwebb/HGC_ntuples/VBF_Hinv/VBF-PU200-stc-TCs-histoInterpolated1stOrder-20mipt-DR03-NS",
+#   "/vols/cms/snwebb/HGC_ntuples/VBF_Hinv/VBF-PU200-stc-TCs-histoInterpolated1stOrder-0mipt-DR03-WE",
+#     "/vols/cms/snwebb/HGC_ntuples/VBF_Hinv/VBF-PU200-stc-TCs-histoInterpolated1stOrder-5mipt-DR03-WE",
+  #  "/vols/cms/snwebb/HGC_ntuples/VBF_Hinv/VBF-PU200-stc-TCs-histoInterpolated1stOrder-10mipt-DR03-WE",
+    "/vols/cms/snwebb/HGC_ntuples/VBF_Hinv/VBF-PU200-stc-TCs-histoInterpolated1stOrder-15mipt-DR03-WE",
+  #  "/vols/cms/snwebb/HGC_ntuples/VBF_Hinv/VBF-PU200-stc-TCs-histoInterpolated1stOrder-20mipt-DR03-WE",
    ]
 
 
@@ -114,8 +136,16 @@ for indir, outdir in zip( InputDirList, OutputDirList ):
          fout.write("#!/bin/sh\n")
          fout.write("echo\n")
          fout.write("echo\n")
+         fout.write("ulimit -c 0\n")
          fout.write("echo 'START---------------'\n")
          fout.write("echo 'WORKDIR ' ${PWD}\n")
+
+         fout.write("trap \"echo SIGINT seen\"  SIGINT\n")
+         fout.write("trap \"echo SIGUSR1 seen\" SIGUSR1\n")
+         fout.write("trap \"echo SIGUSR2 seen\" SIGUSR2\n")
+         fout.write("trap \"echo SIGTERM seen\" SIGTERM\n")
+         fout.write("trap \"echo SIGXCPU seen\" SIGXCPU\n")
+
          fout.write("cd /home/hep/snwebb/hgcal/CMSSW_10_1_7/src\n")
          fout.write("eval `scramv1 runtime -sh`\n")
          fout.write("cd /home/hep/snwebb/hgcal/HGC_macros\n")
@@ -128,7 +158,7 @@ for indir, outdir in zip( InputDirList, OutputDirList ):
       
    ###### sends bjobs ######
    #os.system("bsub -q "+queue+" -o logs job.sh")
-      os.system("qsub -cwd -q hep.q -l h_vmem=12G -l h_rt=2:0:0 -l s_rt=1:50:0 job.sh")
+      os.system("qsub -cwd -q hep.q -l h_vmem=12G -l s_vmem=11.7G -l h_rt=4:0:0 -l s_rt=3:50:0 job.sh")
       print "job nr " + str(x) + " submitted"
       
       os.chdir("../..")
