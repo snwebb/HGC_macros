@@ -1,7 +1,9 @@
 #include "Helpers.h"
 
 Helpers::Helpers(){
-
+  
+  TH1::SetDefaultSumw2();
+  
   _counter = 0;
 
 }
@@ -38,14 +40,16 @@ TH1F* Helpers::single_plot(TString file, TString tree_name, TString var, TString
   TChain * tree = new TChain(tree_name);
   tree->Add(file);
 
-  TH1F* g=new TH1F("g","g",nbin,min,max);
-  g->Sumw2();
+  // TH1F* g=new TH1F("g","g",nbin,min,max);
+  // g->Sumw2();
   //g->SetBinErrorOption(TH1::kPoisson);
  
-  tree->Draw(var+">>g",cut,"goff");
+  tree->Draw(var+Form(">>g(%i, %f, %f)", nbin, min, max),cut,"goff");
 
-  delete tree;
-  return (TH1F*)g->Clone();
+  TH1F* g =  (TH1F*) ( (TH1F*)gDirectory->Get("g"))->Clone( file + counter() );
+
+  //  delete tree;
+  return g;
 
 }
 
@@ -183,6 +187,23 @@ TH2F* Helpers::single_plot2D(TString file, TString tree_name, TString var, TStri
 
 
 
+TH2F* Helpers::single_plot2D(TString file, TString tree_name, TString var, TString cut, int nbin1, double * x, int nbin2, float min2, float max2){
+
+  TChain * tree = new TChain(tree_name);
+  tree->Add(file);
+
+  TH2F *h = new TH2F("h","",nbin1, x, nbin2, min2, max2);
+  //  tree->Draw(var+Form(">>h(%i,%d,%i,%f,%f)",nbin1,min1,max1,nbin2,min2,max2),cut,"goff");
+  tree->Draw(var+">>h",cut,"goff");
+  TH2F* g=(TH2F*) ((TH2F*)gDirectory->Get("h"))->Clone( tree_name + counter() );
+  return g;
+}
+
+
+
+
+
+
 TH2F* Helpers::single_plot2D(std::vector<TString> files, TString tree_name, TString var1, TString var2, TString cut, int nbin1, float min1, float max1, int nbin2, float min2, float max2){
 
   TChain * tree = new TChain(tree_name);
@@ -194,9 +215,6 @@ TH2F* Helpers::single_plot2D(std::vector<TString> files, TString tree_name, TStr
   TH2F* g=(TH2F*) ((TH2F*)gDirectory->Get("h"))->Clone( files.at(0) + counter() );
   return g;
 }
-
-
-
 
 
 
@@ -213,7 +231,6 @@ TH2F* Helpers::single_plot2D(TString file, TString tree_name, TString var1, TStr
   return g;
 
 }
-
 
 
 

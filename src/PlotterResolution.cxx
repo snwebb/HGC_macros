@@ -26,10 +26,12 @@ void PlotterResolution::Draw(std::vector<HistObject>& hists, std::vector<double>
 	std::cout << "histin = " << histo->Integral() << std::endl;
       std::vector<float> eff_RMS=effectiveRMS(histo);
 
-      //      std::cout << n << eff_RMS[0] << " - " << (1-histo->GetMean()) <<  std::endl;
+      std::cout << "n:" << n << eff_RMS[0] << " - " << (1-histo->GetMean()) <<  std::endl;
       gr->SetPoint(n,0.5*(x[bin]+x[bin+1]),eff_RMS[0]/(1-histo->GetMean()));
-      std::cout << "n: "<< n << ", " << 0.5*(x[bin]+x[bin+1]) << std::endl;
-      gr->SetPointError(n,0.5*(-x[bin]+x[bin+1]),eff_RMS[1]/(1-histo->GetMean()));
+      //gr->SetPoint(n,0.5*(x[bin]+x[bin+1]),eff_RMS[0]/(histo->GetMean()));
+      //std::cout << "n: "<< n << ", " << 0.5*(x[bin]+x[bin+1]) << std::endl;
+           gr->SetPointError(n,0.5*(-x[bin]+x[bin+1]),eff_RMS[1]/(1-histo->GetMean()));
+	   // gr->SetPointError(n,0.5*(-x[bin]+x[bin+1]),eff_RMS[1]/(histo->GetMean()));
       n++;
       histo->Delete();
     }
@@ -69,7 +71,7 @@ void PlotterResolution::Draw(std::vector<HistObject>& hists, std::vector<double>
   gPad->SetTicks(1,1);
 
   graph[0]->Draw("AP");
-  graph[0]->SetMaximum(0.3);
+  graph[0]->SetMaximum(0.4);
   graph[0]->SetMinimum(0.01);
   for(unsigned int i=1; i<graph.size(); i++)
     graph[i]->Draw("Psame");
@@ -130,8 +132,8 @@ std::vector<float> PlotterResolution::effectiveRMS(const TH1F* histo, double fra
 
 
     double totalIntegral = histoCopy->Integral(0,nbins+1);
-
-       std::cout << "TOTAL INTE =  "<< totalIntegral << std::endl;
+    
+    std::cout << "TOTAL INTE =  "<< totalIntegral << std::endl;
 
     //double totalIntegral = histoCopy->Integral();
     double sumBins = 0.;
@@ -259,11 +261,14 @@ TH1F* PlotterResolution::histo_ET_resolution(TString filename, TString var, TStr
     all_cuts = Form(cut+" && genjet_pt[VBF_parton_genjet]>%f && genjet_pt[VBF_parton_genjet]<%f",binlow,binhigh);
 
     if ( !PUS ){
+      std::cout << "\"" << var + ">>g(500,-2,2)\",\"" << all_cuts << "&& jets_pt[VBF_parton_jets]>0\"" << std::endl;
       tree->Draw(var + ">>g(500,-2,2)",all_cuts+ " && jets_pt[VBF_parton_jets]>0","goff");  
     }
     if ( PUS ){
       std::cout << var + ">>g(500,-5,5), " << all_cuts << "&& jets_pt[VBF_parton_jets]-2*jets_PU_subtr_cone_GEO_C3D[VBF_parton_jets]>0" << std::endl;
-      tree->Draw(var + ">>g(500,-5,5)",all_cuts+ " && jets_pt[VBF_parton_jets]-2*jets_PU_subtr_cone_GEO_C3D[VBF_parton_jets]>0","goff");  
+      //            tree->Draw(var + ">>g(500,-5,5)",all_cuts+ " && jets_pt[VBF_parton_jets]-2*jets_PU_subtr_cone_GEO_C3D[VBF_parton_jets]>0","goff");  
+//      tree->Draw(var + ">>g(500,-5,5)",all_cuts+ " && (jets_pt[VBF_parton_jets]-jets_PU_subtr_cone_tc[VBF_parton_jets])>0","goff");  
+      tree->Draw(var + ">>g(500,-3,3)",all_cuts+ " && (jets_pt[VBF_parton_jets]-jets_PU_subtr_cone_tc[VBF_parton_jets])>0","goff");  
     }
 
   }

@@ -70,3 +70,36 @@ void HGC::plot_profile_L1jet_response_eta_PU0_STC(){
 }
 
 
+void HGC::plot_profile_L1jet_response_pt_VBFHInv_PU200_CompareThreshold(){
+
+  TString cut = "VBF_parton_genjet>=0 && VBF_parton_jets>=0 && abs(genjet_eta[VBF_parton_genjet])>1.6 && abs(genjet_eta[VBF_parton_genjet])<2.9 && genjet_pt[VBF_parton_genjet]>20";  
+
+  bool PUS = true;
+  std::vector<HistObject> histobjects;
+  TString file1 = "VBF_Hinv/VBF-PU200-stc-TCs-histoInterpolated1stOrder-0mipt-DR03-NS";
+  TString file2 = "VBF_Hinv/VBF-PU200-stc-TCs-histoInterpolated1stOrder-5mipt-DR03-NS";
+  TString file3 = "VBF_Hinv/VBF-PU200-stc-TCs-histoInterpolated1stOrder-10mipt-DR03-NS";
+  TString file4 = "VBF_Hinv/VBF-PU200-stc-TCs-histoInterpolated1stOrder-15mipt-DR03-NS";
+  TString file5 = "VBF_Hinv/VBF-PU200-stc-TCs-histoInterpolated1stOrder-20mipt-DR03-NS";
+  TString file6 = "VBF_Hinv/VBF-PU200-stc-TCs-histoInterpolated1stOrder-0mipt-DR03-WE";
+  TString file7 = "VBF_Hinv/VBF-PU200-stc-TCs-histoInterpolated1stOrder-5mipt-DR03-WE";
+  TString file8 = "VBF_Hinv/VBF-PU200-stc-TCs-histoInterpolated1stOrder-10mipt-DR03-WE";
+  TString file9 = "VBF_Hinv/VBF-PU200-stc-TCs-histoInterpolated1stOrder-15mipt-DR03-WE";
+  TString file10 = "VBF_Hinv/VBF-PU200-stc-TCs-histoInterpolated1stOrder-20mipt-DR03-WE";
+
+
+  histobjects.push_back( HistObject( "Jets", (snwebb + "/" + file1 + "/jet_ntuples_merged/ntuple_jet_merged_1*.root"), "0 - dist", "jets_pt[VBF_parton_jets]/genjet_pt[VBF_parton_genjet]:genjet_pt[VBF_parton_genjet]", cut+"&&jets_pt[VBF_parton_jets]>0", PUS ) );
+  //  histobjects.push_back( HistObject( "Jets", (snwebb + "/" + file2 + "/jet_ntuples_merged/ntuple_jet_merged_1*.root"), "5 - dist", "jets_pt[VBF_parton_jets]/genjet_pt[VBF_parton_genjet]:genjet_pt[VBF_parton_genjet]", cut+"&&jets_pt[VBF_parton_jets]>0", PUS ) );
+  //  histobjects.push_back( HistObject( "Jets", (snwebb + "/" + file3 + "/jet_ntuples_merged/ntuple_jet_merged_1*.root"), "10 - dist", "jets_pt[VBF_parton_jets]/genjet_pt[VBF_parton_genjet]:genjet_pt[VBF_parton_genjet]", cut+"&&jets_pt[VBF_parton_jets]>0", PUS ) );
+  //  histobjects.push_back( HistObject( "Jets", (snwebb + "/" + file4 + "/jet_ntuples_merged/ntuple_jet_merged_1*.root"), "15 - dist", "jets_pt[VBF_parton_jets]/genjet_pt[VBF_parton_genjet]:genjet_pt[VBF_parton_genjet]", cut+"&&jets_pt[VBF_parton_jets]>0", PUS ) );
+  histobjects.push_back( HistObject( "Jets", (snwebb + "/" + file5 + "/jet_ntuples_merged/ntuple_jet_merged_1*.root"), "20 - dist", "jets_pt[VBF_parton_jets]/genjet_pt[VBF_parton_genjet]:genjet_pt[VBF_parton_genjet]", cut+"&&jets_pt[VBF_parton_jets]>0", PUS ) );
+  histobjects.push_back( HistObject( "Jets", (snwebb + "/" + file6 + "/jet_ntuples_merged/ntuple_jet_merged_1*.root"), "0 - energy", "jets_pt[VBF_parton_jets]/genjet_pt[VBF_parton_genjet]:genjet_pt[VBF_parton_genjet]", cut+"&&jets_pt[VBF_parton_jets]>0", PUS ) );
+  //  histobjects.push_back( HistObject( "Jets", (snwebb + "/" + file7 + "/jet_ntuples_merged/ntuple_jet_merged_1*.root"), "5 - energy", "jets_pt[VBF_parton_jets]/genjet_pt[VBF_parton_genjet]:genjet_pt[VBF_parton_genjet]", cut+"&&jets_pt[VBF_parton_jets]>0", PUS ) );
+  //  histobjects.push_back( HistObject( "Jets", (snwebb + "/" + file8 + "/jet_ntuples_merged/ntuple_jet_merged_1*.root"), "10 - energy", "jets_pt[VBF_parton_jets]/genjet_pt[VBF_parton_genjet]:genjet_pt[VBF_parton_genjet]", cut+"&&jets_pt[VBF_parton_jets]>0", PUS ) );
+  //  histobjects.push_back( HistObject( "Jets", (snwebb + "/" + file9 + "/jet_ntuples_merged/ntuple_jet_merged_1*.root"), "15 - energy", "jets_pt[VBF_parton_jets]/genjet_pt[VBF_parton_genjet]:genjet_pt[VBF_parton_genjet]", cut+"&&jets_pt[VBF_parton_jets]>0", PUS ) );
+  histobjects.push_back( HistObject( "Jets", (snwebb + "/" + file10 + "/jet_ntuples_merged/ntuple_jet_merged_1*.root"), "20 - energy", "jets_pt[VBF_parton_jets]/genjet_pt[VBF_parton_genjet]:genjet_pt[VBF_parton_genjet]", cut+"&&jets_pt[VBF_parton_jets]>0", PUS ) );
+
+  PlotterResponse plotter( _cmd );
+  plotter.Draw(  histobjects, "PU0_STC_HistoMax", "pt");
+
+}

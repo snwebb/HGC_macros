@@ -210,13 +210,28 @@ void plot_profile_cone_pt_tc_eta(){
 
 void plot_profile_only_eta(){
 
-  TString filename = "/vols/cms/tstreble/HGC_ntuples/SingleNu_PU200/calibr_cone_ntuples/calibr_cone_ntuples_1.root";
+  //  TString filename = "/vols/cms/tstreble/HGC_ntuples/SingleNu_PU200_dRNNC2D/jet_ntuples_merged/ntuple_jet_merged_1.root";
+  //  TString filename = "/vols/cms/tstreble/HGC_ntuples/SingleNu_PU200/calibr_cone_ntuples/calibr_cone_ntuples_1.root";
+  TString filename = "/vols/cms/snwebb/HGC_ntuples/DoubleNu/DoubleNu-PU200-stc-TCs-histoMax-DRA040-DRB02-NS/calibr_cone_ntuples/test10.root";
 
-  TH2F* h_tc = single_plot2D(filename,"HGCalTriggerNtuple","abs(cone_eta)","cone_tc_calib_Luca_pt","",16,1.45,3.05,100,0,100);
-  TH2F* h_tc0 = single_plot2D(filename,"HGCalTriggerNtuple","abs(cone_eta)","cone_tc_calib_Luca_pt","cone_tc_calib_Luca_pt>0",16,1.45,3.05,100,0,100);
-  TH2F* h_C3D = single_plot2D(filename,"HGCalTriggerNtuple","abs(cone_eta)","cone_calib_Luca_pt","",16,1.45,3.05,100,0,100);
-  TH2F* h_C3D0 = single_plot2D(filename,"HGCalTriggerNtuple","abs(cone_eta)","cone_calib_Luca_pt","cone_calib_Luca_pt>0",16,1.45,3.05,100,0,100);
+  // TH2F* h_tc = single_plot2D(filename,"HGCalTriggerNtuple","abs(cone_eta)","cone_tc_calib_pt","",16,1.45,3.05,100,0,100);
+  // TH2F* h_tc0 = single_plot2D(filename,"HGCalTriggerNtuple","abs(cone_eta)","cone_tc_calib_pt","cone_tc_calib_pt>0",16,1.45,3.05,100,0,100);
+  // TH2F* h_C3D = single_plot2D(filename,"HGCalTriggerNtuple","abs(cone_eta)","cone_calib_pt","",16,1.45,3.05,100,0,100);
+  // TH2F* h_C3D0 = single_plot2D(filename,"HGCalTriggerNtuple","abs(cone_eta)","cone_calib_pt","cone_calib_pt>0",16,1.45,3.05,100,0,100);
+ 
+  // TH2F* h_tc = single_plot2D(filename,"HGCalTriggerNtuple","abs(cone_eta)","cone_tc_calib_Luca_pt","",16,1.45,3.05,100,0,100);
+  // TH2F* h_tc0 = single_plot2D(filename,"HGCalTriggerNtuple","abs(cone_eta)","cone_tc_calib_Luca_pt","cone_tc_calib_Luca_pt>0",16,1.45,3.05,100,0,100);
+  // TH2F* h_C3D = single_plot2D(filename,"HGCalTriggerNtuple","abs(cone_eta)","cone_calib_Luca_pt","",16,1.45,3.05,100,0,100);
+  // TH2F* h_C3D0 = single_plot2D(filename,"HGCalTriggerNtuple","abs(cone_eta)","cone_calib_Luca_pt","cone_calib_Luca_pt>0",16,1.45,3.05,100,0,100);
 
+
+  TH2F* h_tc = single_plot2D(filename,"HGCalTriggerNtuple","abs(cone_eta)","cone_tc_pt_original","",16,1.45,3.05,100,0,100);
+  TH2F* h_tc0 = single_plot2D(filename,"HGCalTriggerNtuple","abs(cone_eta)","cone_tc_pt_original","cone_tc_pt_original>0",16,1.45,3.05,100,0,100);
+  TH2F* h_C3D = single_plot2D(filename,"HGCalTriggerNtuple","abs(cone_eta)","cone_pt_original","",16,1.45,3.05,100,0,100);
+  TH2F* h_C3D0 = single_plot2D(filename,"HGCalTriggerNtuple","abs(cone_eta)","cone_pt_original","cone_pt_original>0",16,1.45,3.05,100,0,100);
+
+
+ 
   vector<TH2F*> histo;
   histo.push_back(h_tc);
   histo.push_back(h_tc0);
@@ -243,13 +258,13 @@ void plot_profile_only_eta(){
   leg->SetFillColor(0);
 
 
-  //TFile* f_new = TFile::Open("PU_cone_vs_eta.root");
-  /*if(f_new!=0){
-    cout<<"PU_cone_vs_eta.root already exists, please delete it before converting again"<<endl;
-    return;
-    }*/  
-  //f_new = TFile::Open("PU_cone_vs_eta.root","RECREATE");
-  //gStyle->SetOptTitle(0);
+  // TFile* f_new = TFile::Open("PU_cone_vs_eta_new.root");
+  // if(f_new!=0){
+  //   cout<<"PU_cone_vs_eta.root already exists, please delete it before converting again"<<endl;
+  //   return;
+  //   }  
+  TFile*  f_new = TFile::Open("PU_cone_vs_eta_20190121-3.root","RECREATE");
+  gStyle->SetOptTitle(0);
   
   for(unsigned int i=0; i<histo.size(); i++){
 
@@ -288,7 +303,7 @@ void plot_profile_only_eta(){
   cout<<"ok"<<endl;
 
   c->SaveAs("plots/profile_cone_pt_eta_comb.pdf");  
-  //f_new->Close();
+  f_new->Close();
   return;
 
 }

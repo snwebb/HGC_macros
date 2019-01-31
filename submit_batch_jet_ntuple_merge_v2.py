@@ -62,19 +62,44 @@ InputDirList = [
 #    "VBF_HToInvisible_M125_14TeV_powheg_pythia8/crab_VBF-PU200-threshold-TCs-histoModifiedMax-DR03/181126_132731/0000",
 #   "VBF_HToInvisible_M125_14TeV_powheg_pythia8/crab_VBF-PU200-stc-TCs-histoModifiedMax-DR03/181126_132622/0000",
 
-"VBF_HToInvisible_M125_14TeV_powheg_pythia8/crab_VBF-PU200-stc-TCs-histoInterpolated1stOrder-0mipt-DR03-NS/181207_091543/0000",
- # "VBF_HToInvisible_M125_14TeV_powheg_pythia8/crab_VBF-PU200-stc-TCs-histoInterpolated1stOrder-5mipt-DR03-NS/181207_091637/0000",
- # "VBF_HToInvisible_M125_14TeV_powheg_pythia8/crab_VBF-PU200-stc-TCs-histoInterpolated1stOrder-10mipt-DR03-NS/181207_092457/0000",
- # "VBF_HToInvisible_M125_14TeV_powheg_pythia8/crab_VBF-PU200-stc-TCs-histoInterpolated1stOrder-15mipt-DR03-NS/181207_092823/0000",
- # "VBF_HToInvisible_M125_14TeV_powheg_pythia8/crab_VBF-PU200-stc-TCs-histoInterpolated1stOrder-20mipt-DR03-NS/181207_093448/0000",
+#"VBF_HToInvisible_M125_14TeV_powheg_pythia8/crab_VBF-PU200-stc-TCs-histoInterpolated1stOrder-0mipt-DR03-NS/181207_091543/0000",
+# "VBF_HToInvisible_M125_14TeV_powheg_pythia8/crab_VBF-PU200-stc-TCs-histoInterpolated1stOrder-5mipt-DR03-NS/181207_091637/0000",
+# "VBF_HToInvisible_M125_14TeV_powheg_pythia8/crab_VBF-PU200-stc-TCs-histoInterpolated1stOrder-10mipt-DR03-NS/181207_092457/0000",
+# "VBF_HToInvisible_M125_14TeV_powheg_pythia8/crab_VBF-PU200-stc-TCs-histoInterpolated1stOrder-15mipt-DR03-NS/181207_092823/0000",
+# "VBF_HToInvisible_M125_14TeV_powheg_pythia8/crab_VBF-PU200-stc-TCs-histoInterpolated1stOrder-20mipt-DR03-NS/181207_093448/0000",
    
 #"VBF_HToInvisible_M125_14TeV_powheg_pythia8/crab_VBF-PU200-stc-TCs-histoInterpolated1stOrder-0mipt-DR03-WE/181206_160504/0000",
 #"VBF_HToInvisible_M125_14TeV_powheg_pythia8/crab_VBF-PU200-stc-TCs-histoInterpolated1stOrder-5mipt-DR03-WE/181206_160621/0000",
 #"VBF_HToInvisible_M125_14TeV_powheg_pythia8/crab_VBF-PU200-stc-TCs-histoInterpolated1stOrder-10mipt-DR03-WE/181206_160725/0000",
-"VBF_HToInvisible_M125_14TeV_powheg_pythia8/crab_VBF-PU200-stc-TCs-histoInterpolated1stOrder-15mipt-DR03-WE/181206_160853/0000",
+#"VBF_HToInvisible_M125_14TeV_powheg_pythia8/crab_VBF-PU200-stc-TCs-histoInterpolated1stOrder-15mipt-DR03-WE/181206_160853/0000",
 #"VBF_HToInvisible_M125_14TeV_powheg_pythia8/crab_VBF-PU200-stc-TCs-histoInterpolated1stOrder-20mipt-DR03-WE/181206_161001/0000",
+
+#"VBF_HToInvisible_M125_14TeV_powheg_pythia8/crab_VBF-PU200-stc-TCs-histoInterpolated1stOrder-5mipt-DRA016-DRB02-NS/181212_124134/0000",
+# "VBF_HToInvisible_M125_14TeV_powheg_pythia8/crab_VBF-PU200-stc-TCs-histoInterpolated1stOrder-5mipt-DRA018-DRB02-NS/181212_124221/0000",
+# "VBF_HToInvisible_M125_14TeV_powheg_pythia8/crab_VBF-PU200-stc-TCs-histoInterpolated1stOrder-5mipt-DRA020-DRB02-NS/181212_124338/0000",
+# "VBF_HToInvisible_M125_14TeV_powheg_pythia8/crab_VBF-PU200-stc-TCs-histoInterpolated1stOrder-5mipt-DRA025-DRB02-NS/181212_124434/0000",
+# "VBF_HToInvisible_M125_14TeV_powheg_pythia8/crab_VBF-PU200-stc-TCs-histoInterpolated1stOrder-5mipt-DRA030-DRB02-NS/181212_124527/0000",
+
+# "VBF_HToInvisible_M125_14TeV_powheg_pythia8/crab_VBF-PU200-stc-TCs-histoMax-5mipt-DRA015-DRB02-NS/181217_154547/0000",
+# "VBF_HToInvisible_M125_14TeV_powheg_pythia8/crab_VBF-PU200-stc-TCs-histoMax-5mipt-DRA020-DRB02-NS/181217_154732/0000",
+# "VBF_HToInvisible_M125_14TeV_powheg_pythia8/crab_VBF-PU200-stc-TCs-histoMax-5mipt-DRA030-DRB02-NS/181217_154932/0000",
+# "VBF_HToInvisible_M125_14TeV_powheg_pythia8/crab_VBF-PU200-stc-TCs-histoMax-5mipt-DRA040-DRB02-NS/181217_155131/0000",
+# "VBF_HToInvisible_M125_14TeV_powheg_pythia8/crab_VBF-PU200-stc-TCs-histoMax-5mipt-DRA050-DRB02-NS/181217_155258/0000",
+
+
+# "VBF_HToInvisible_M125_14TeV_powheg_pythia8/crab_VBF-PU200-stc-TCs-histoMax-5mipt-DRA050-DRB02-NS/181217_155258/0000",
+# "VBF_HToInvisible_M125_14TeV_powheg_pythia8/crab_VBF-PU200-stc-TCs-histoMax-5mipt-DRA040-DRB02-NS/181217_155131/0000",
+"VBF_HToInvisible_M125_14TeV_powheg_pythia8/crab_VBF-PU0-stc-TCs-histoMax-5mipt-DRA040-DRB02-NS/190104_150739/0000",
+   
+# "VBF_HToInvisible_M125_14TeV_powheg_pythia8/crab_VBF-PU200-stc-TCs-histoMax-DRA040-DRB00-NS-new/190111_103822/0000",
+# "VBF_HToInvisible_M125_14TeV_powheg_pythia8/crab_VBF-PU200-stc-TCs-histoMax-DRA040-DRB01-NS-new/190111_103702/0000",
+# "VBF_HToInvisible_M125_14TeV_powheg_pythia8/crab_VBF-PU200-stc-TCs-histoMax-DRA040-DRB03-NS-new/190111_103608/0000",
+
+
+#"DoubleNuE1Eta14_31/crab_DoubleNu-PU200-stc-TCs-histoMax-DRA040-DRB020-NS/190118_101937/0000",
    ]
 OutputDirList = [
+
 #   "/vols/cms/snwebb/HGC_ntuples/VBF_Hinv/VBF_Hinv_PU200_threshold_polarHisto_Max",
    #"/vols/cms/snwebb/HGC_ntuples/VBF_Hinv/VBF_Hinv_PU200_stc_polarHisto_Max",
 
@@ -86,16 +111,45 @@ OutputDirList = [
   #  "/vols/cms/snwebb/HGC_ntuples/VBF_Hinv/VBF_Hinv_PU200_threshold_polarHisto_ModMax",
 ##   "/vols/cms/snwebb/HGC_ntuples/VBF_Hinv/VBF_Hinv_PU200_stc_polarHisto_ModMax",
 
-     "/vols/cms/snwebb/HGC_ntuples/VBF_Hinv/VBF-PU200-stc-TCs-histoInterpolated1stOrder-0mipt-DR03-NS",
-     # "/vols/cms/snwebb/HGC_ntuples/VBF_Hinv/VBF-PU200-stc-TCs-histoInterpolated1stOrder-5mipt-DR03-NS",
-     # "/vols/cms/snwebb/HGC_ntuples/VBF_Hinv/VBF-PU200-stc-TCs-histoInterpolated1stOrder-10mipt-DR03-NS",
-     # "/vols/cms/snwebb/HGC_ntuples/VBF_Hinv/VBF-PU200-stc-TCs-histoInterpolated1stOrder-15mipt-DR03-NS",
-     # "/vols/cms/snwebb/HGC_ntuples/VBF_Hinv/VBF-PU200-stc-TCs-histoInterpolated1stOrder-20mipt-DR03-NS",
+#     "/vols/cms/snwebb/HGC_ntuples/VBF_Hinv/VBF-PU200-stc-TCs-histoInterpolated1stOrder-0mipt-DR03-NS",
+#     "/vols/cms/snwebb/HGC_ntuples/VBF_Hinv/VBF-PU200-stc-TCs-histoInterpolated1stOrder-5mipt-DR03-NS",
+#     "/vols/cms/snwebb/HGC_ntuples/VBF_Hinv/VBF-PU200-stc-TCs-histoInterpolated1stOrder-10mipt-DR03-NS",
+#     "/vols/cms/snwebb/HGC_ntuples/VBF_Hinv/VBF-PU200-stc-TCs-histoInterpolated1stOrder-15mipt-DR03-NS",
+#     "/vols/cms/snwebb/HGC_ntuples/VBF_Hinv/VBF-PU200-stc-TCs-histoInterpolated1stOrder-20mipt-DR03-NS",
 #   "/vols/cms/snwebb/HGC_ntuples/VBF_Hinv/VBF-PU200-stc-TCs-histoInterpolated1stOrder-0mipt-DR03-WE",
 #     "/vols/cms/snwebb/HGC_ntuples/VBF_Hinv/VBF-PU200-stc-TCs-histoInterpolated1stOrder-5mipt-DR03-WE",
   #  "/vols/cms/snwebb/HGC_ntuples/VBF_Hinv/VBF-PU200-stc-TCs-histoInterpolated1stOrder-10mipt-DR03-WE",
-    "/vols/cms/snwebb/HGC_ntuples/VBF_Hinv/VBF-PU200-stc-TCs-histoInterpolated1stOrder-15mipt-DR03-WE",
+ #   "/vols/cms/snwebb/HGC_ntuples/VBF_Hinv/VBF-PU200-stc-TCs-histoInterpolated1stOrder-15mipt-DR03-WE",
   #  "/vols/cms/snwebb/HGC_ntuples/VBF_Hinv/VBF-PU200-stc-TCs-histoInterpolated1stOrder-20mipt-DR03-WE",
+#  "/vols/cms/snwebb/HGC_ntuples/VBF_Hinv/VBF-PU200-stc-TCs-histoInterpolated1stOrder-5mipt-DRA016-DRB02-NS/",
+ #  "/vols/cms/snwebb/HGC_ntuples/VBF_Hinv/VBF-PU200-stc-TCs-histoInterpolated1stOrder-5mipt-DRA018-DRB02-NS/",
+ #  "/vols/cms/snwebb/HGC_ntuples/VBF_Hinv/VBF-PU200-stc-TCs-histoInterpolated1stOrder-5mipt-DRA020-DRB02-NS/",
+ #  "/vols/cms/snwebb/HGC_ntuples/VBF_Hinv/VBF-PU200-stc-TCs-histoInterpolated1stOrder-5mipt-DRA025-DRB02-NS/",
+ # "/vols/cms/snwebb/HGC_ntuples/VBF_Hinv/VBF-PU200-stc-TCs-histoInterpolated1stOrder-5mipt-DRA030-DRB02-NS/",
+
+ # "/vols/cms/snwebb/HGC_ntuples/VBF_Hinv/VBF-PU200-stc-TCs-histoMax-5mipt-DRA015-DRB02-NS/",
+ #  "/vols/cms/snwebb/HGC_ntuples/VBF_Hinv/VBF-PU200-stc-TCs-histoMax-5mipt-DRA020-DRB02-NS/",
+ #  "/vols/cms/snwebb/HGC_ntuples/VBF_Hinv/VBF-PU200-stc-TCs-histoMax-5mipt-DRA030-DRB02-NS/",
+ #  "/vols/cms/snwebb/HGC_ntuples/VBF_Hinv/VBF-PU200-stc-TCs-histoMax-5mipt-DRA040-DRB02-NS/",
+ # "/vols/cms/snwebb/HGC_ntuples/VBF_Hinv/VBF-PU200-stc-TCs-histoMax-5mipt-DRA050-DRB02-NS/",
+
+# "/vols/cms/snwebb/HGC_ntuples/VBF_Hinv/VBF-PU200-stc-TCs-TCs/",
+ "/vols/cms/snwebb/HGC_ntuples/VBF_Hinv/VBF-PU0-stc-TCs-TCs/",
+
+#  "/vols/cms/snwebb/HGC_ntuples/VBF_Hinv/VBF-PU200-stc-TCs-histoMax-5mipt-DRA040-DRB02-NS-JET01/",
+#  "/vols/cms/snwebb/HGC_ntuples/VBF_Hinv/VBF-PU0-stc-TCs-histoMax-5mipt-DRA040-DRB02-NS/",
+#  "/vols/cms/snwebb/HGC_ntuples/VBF_Hinv/VBF-PU0-stc-TCs-histoMax-5mipt-DRA040-DRB02-NS-2/",
+ # "/vols/cms/snwebb/HGC_ntuples/VBF_Hinv/VBF-PU200-stc-TCs-histoMax-DRA040-DRB00-NS/",
+ #  "/vols/cms/snwebb/HGC_ntuples/VBF_Hinv/VBF-PU200-stc-TCs-histoMax-DRA040-DRB01-NS/",
+ #  "/vols/cms/snwebb/HGC_ntuples/VBF_Hinv/VBF-PU200-stc-TCs-histoMax-DRA040-DRB03-NS/",
+
+
+#  "/vols/cms/snwebb/HGC_ntuples/VBF_Hinv/VBF-PU0-stc-TCs-histoMax-5mipt-DRA040-DRB02-NS-newpu/",
+
+#  "/vols/cms/snwebb/HGC_ntuples/DoubleNu/DoubleNu-PU200-stc-TCs-histoMax-DRA040-DRB02-NS/",
+
+
+#  "/vols/cms/snwebb/HGC_ntuples/VBF_Hinv/VBF-PU200-stc-TCs-histoMax-5mipt-DRA040-DRB02-NS-pu21/",
    ]
 
 
@@ -129,9 +183,7 @@ for indir, outdir in zip( InputDirList, OutputDirList ):
    #os.system("sed '"+str(1+interval*(x-1))+","+str(interval*x)+"!d' ../../"+FileList+" > list.txt ")
       
    ##### creates jobs #######
-      with open('job.sh', 'w') as fout:
-         
-         
+      with open('job.sh', 'w') as fout:                  
          
          fout.write("#!/bin/sh\n")
          fout.write("echo\n")
@@ -149,7 +201,7 @@ for indir, outdir in zip( InputDirList, OutputDirList ):
          fout.write("cd /home/hep/snwebb/hgcal/CMSSW_10_1_7/src\n")
          fout.write("eval `scramv1 runtime -sh`\n")
          fout.write("cd /home/hep/snwebb/hgcal/HGC_macros\n")
-         fout.write("./jet_ntuple_merge --filein root://cms-xrd-global.cern.ch//store/user/sawebb/"+ indir + "/ntuple_"+str(x)+".root --filein_jet " + outdir+"/jet_ntuples/ntuple_jet_"+str(x)+".root --fileout " + OutputFileNames +"_"+str(x)+".root \n")
+         fout.write("./jet_ntuple_merge --runtype jet --filein root://cms-xrd-global.cern.ch//store/user/sawebb/"+ indir + "/ntuple_"+str(x)+".root --filein_jet " + outdir+"/jet_ntuples/ntuple_jet_"+str(x)+".root --fileout " + OutputFileNames +"_"+str(x)+".root \n")
          fout.write("echo 'STOP---------------'\n")
          fout.write("echo\n")
          fout.write("echo\n")

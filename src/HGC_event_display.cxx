@@ -436,3 +436,185 @@ void HGC::display2D_gen(TString file, int n_event,
 
 
 
+
+void HGC::display2D_jetscl3dtc(TString file, int n_event, 
+		    float eta_min, float eta_max, 
+		    float phi_min, float phi_max){
+
+  bool focus_on_jet =false;
+  bool reduced = false;
+
+    if (reduced){
+      eta_min = -0.5;
+      eta_max = 0.5;
+      phi_min = -0.5;
+      phi_max = 0.5;
+    }
+  
+
+  TChain * tree = new TChain("HGCalTriggerNtupleJet");
+  tree->Add(file);
+  std::vector<float> *_tc_eta;
+  std::vector<float> *_tc_phi;
+  std::vector<float> *_tc_x;
+  std::vector<float> *_tc_y;
+  std::vector<float> *_tc_z;
+  std::vector<float> *_tc_energy;
+  std::vector<float> *_tc_pt;
+  std::vector<int> *_tc_HGClayer;
+  std::vector<unsigned int> *_tc_multicluster_id;
+  std::vector<float> *_cl3d_eta;
+  std::vector<float> *_cl3d_phi;
+  std::vector<float> *_cl3d_energy;
+  std::vector<float> *_cl3d_pt;
+  std::vector<unsigned int> *_cl3d_id;
+  std::vector<float> *_jets_eta;
+  std::vector<float> *_jets_phi;
+  std::vector<float> *_jets_energy;
+  std::vector<float> *_jets_pt;
+  std::vector<int> *_VBF_parton_jets;
+
+  tree->SetBranchAddress("tc_eta",    &_tc_eta);
+  tree->SetBranchAddress("tc_x",    &_tc_x);
+  tree->SetBranchAddress("tc_y",    &_tc_y);
+  tree->SetBranchAddress("tc_z",    &_tc_z);
+  tree->SetBranchAddress("tc_phi",    &_tc_phi);
+  tree->SetBranchAddress("tc_energy", &_tc_energy);
+  tree->SetBranchAddress("tc_pt",    &_tc_pt);
+  tree->SetBranchAddress("tc_layer", &_tc_HGClayer);
+  tree->SetBranchAddress("tc_multicluster_id", &_tc_multicluster_id);
+  tree->SetBranchAddress("cl3d_eta",    &_cl3d_eta);
+  tree->SetBranchAddress("cl3d_phi",    &_cl3d_phi);
+  tree->SetBranchAddress("cl3d_energy", &_cl3d_energy);
+  tree->SetBranchAddress("cl3d_pt",     &_cl3d_pt);
+  tree->SetBranchAddress("cl3d_id",     &_cl3d_id);
+  tree->SetBranchAddress("jets_eta",    &_jets_eta);
+  tree->SetBranchAddress("jets_phi",    &_jets_phi);
+  tree->SetBranchAddress("jets_energy", &_jets_energy);
+  tree->SetBranchAddress("jets_pt", &_jets_pt);     
+  tree->SetBranchAddress("VBF_parton_jets", &_VBF_parton_jets);     
+
+  _jets_eta = 0;
+  _jets_phi = 0;
+  _jets_energy = 0;
+  _jets_pt = 0;
+  _tc_eta = 0;
+  _tc_x = 0;
+  _tc_y = 0;
+  _tc_z = 0;
+  _tc_phi = 0;
+  _tc_energy = 0;
+  _tc_pt = 0;
+  _tc_HGClayer = 0;
+  _tc_multicluster_id = 0;
+  _cl3d_eta = 0;
+  _cl3d_phi = 0;
+  _cl3d_energy = 0;
+  _cl3d_pt = 0;
+  _cl3d_id = 0;
+  _VBF_parton_jets = 0;
+  
+  
+  tree->GetEntry(n_event);
+  
+  int nbins = 628;
+      nbins/=30;
+  if ( _VBF_parton_jets->at(0) > -1 &&  focus_on_jet ){
+    //    nbins/=30;
+
+    if ( !reduced ){
+      eta_min = _jets_eta->at(_VBF_parton_jets->at(0))-0.4;
+      eta_max = _jets_eta->at(_VBF_parton_jets->at(0))+0.4;
+      phi_min = _jets_phi->at(_VBF_parton_jets->at(0))-0.4;
+      phi_max = _jets_phi->at(_VBF_parton_jets->at(0))+0.4;
+    }
+    if ( reduced ){
+      TLorentzVector jet;
+      jet.SetPtEtaPhiE( (*_jets_pt)[(*_VBF_parton_jets)[0]], (*_jets_eta)[(*_VBF_parton_jets)[0]], (*_jets_phi)[(*_VBF_parton_jets)[0]], (*_jets_pt)[(*_VBF_parton_jets)[0]] );
+
+      eta_min = (jet.X()/jet.Z())-0.05;
+      eta_max = (jet.X()/jet.Z())+0.05;
+      phi_min = (jet.Y()/jet.Z())-0.05;
+      phi_max = (jet.Y()/jet.Z())+0.05;
+
+
+    }
+
+
+  }
+
+
+  TH2D * cl = new TH2D( "cl", "cl", nbins, eta_min, eta_max, nbins,phi_min, phi_max);
+  TH2D * tc = new TH2D( "tc", "tc", nbins, eta_min, eta_max, nbins,phi_min , phi_max);
+  TH2D * jets = new TH2D( "jets", "jets", nbins, eta_min, eta_max, nbins,phi_min , phi_max);
+
+  
+
+  //  for(unsigned int i_jet = 0; i_jet<(*_jets_eta).size(); i_jet++){
+  for(unsigned int i_jet = 0; i_jet<(*_VBF_parton_jets).size(); i_jet++){
+  
+    TLorentzVector jet;
+    jet.SetPtEtaPhiE( (*_jets_pt)[(*_VBF_parton_jets)[i_jet]], (*_jets_eta)[(*_VBF_parton_jets)[i_jet]], (*_jets_phi)[(*_VBF_parton_jets)[i_jet]], (*_jets_pt)[(*_VBF_parton_jets)[i_jet]] );
+      
+        if (!reduced)    jets->Fill((*_jets_eta)[(*_VBF_parton_jets)[i_jet]],(*_jets_phi)[(*_VBF_parton_jets)[i_jet]],(*_jets_pt)[(*_VBF_parton_jets)[i_jet]]);
+
+    if (reduced)    jets->Fill(jet.X()/jet.Z(), jet.Y()/jet.Z(), jet.Pt() );
+
+  }
+  for(unsigned int i_tc = 0; i_tc<(*_tc_eta).size(); i_tc++){
+
+
+    TLorentzVector tc1;
+    tc1.SetPtEtaPhiE( (*_tc_pt)[i_tc], (*_tc_eta)[i_tc], (*_tc_phi)[i_tc], (*_tc_pt)[i_tc] );
+    
+    if (!reduced)        tc->Fill((*_tc_eta)[i_tc],(*_tc_phi)[i_tc],(*_tc_pt)[i_tc]);
+
+    if (reduced)    tc->Fill((*_tc_x)[i_tc]/(*_tc_z)[i_tc],(*_tc_y)[i_tc]/(*_tc_z)[i_tc],(*_tc_pt)[i_tc]);
+
+
+
+
+  }
+  for(unsigned int i_cl3d = 0; i_cl3d<(*_cl3d_eta).size(); i_cl3d++){
+    TLorentzVector clus;
+    clus.SetPtEtaPhiE( (*_cl3d_pt)[i_cl3d], (*_cl3d_eta)[i_cl3d], (*_cl3d_phi)[i_cl3d], (*_cl3d_pt)[i_cl3d] );
+
+    if (!reduced)    cl->Fill((*_cl3d_eta)[i_cl3d],(*_cl3d_phi)[i_cl3d],(*_cl3d_pt)[i_cl3d]);
+    if (reduced)    cl->Fill(clus.X()/clus.Z(),clus.Y()/clus.Z(), clus.Pt() );
+  }
+  
+
+  
+
+
+
+
+
+  tc->GetXaxis()->SetTitle("#eta(jet)");
+  tc->GetXaxis()->SetTitleOffset(1.5);
+  tc->GetYaxis()->SetTitle("#phi(jet)");
+  tc->GetZaxis()->SetTitle("p_{T}(jet) [GeV]");
+  tc->SetTitle("");
+  tc->SetStats(0);
+
+  TCanvas* c=new TCanvas("c","c",650,600);
+  c->SetLeftMargin(0.15);
+  c->SetRightMargin(0.15);
+
+  gStyle->SetPaintTextFormat("4.1f");
+  jets->SetLineColor(kBlue);
+  tc->SetLineColor(kRed);
+  cl->SetLineColor(kGreen);
+
+  //  tc->Draw("box");
+  cl->Draw("colz");
+  jets->Draw("boxsame");
+
+  c->SaveAs("plots/20190107-1-temp/jetscl3dtc.png");
+  c->SaveAs("plots/20190107-1-temp/jetscl3dtc.root");
+
+}
+
+
+
+
