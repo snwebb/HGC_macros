@@ -12,6 +12,8 @@ class HGC{
 
   Helpers helper;
   TString snwebb = "/vols/cms/snwebb/HGC_ntuples/";
+  TString tstreble = "/vols/cms/tstreble/HGC_ntuples/";
+
   CmdLine *  _cmd;
   std::string _outdir;
 

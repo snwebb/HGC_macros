@@ -40,7 +40,7 @@ void Plotter::InitialiseLatex(){
 void Plotter::InitialiseLegend(){
 
   _legend = new TLegend(0.4,0.15,0.7,0.5);
-  _legend->SetHeader("#splitline{p_T(gen. jet)>20 GeV}{1.6<|#eta(gen.jet)|<2.9}");
+  //  _legend->SetHeader("#splitline{p_T(gen. jet)>20 GeV}{1.6<|#eta(gen.jet)|<2.9}");
   //  _legend->SetHeader("#splitline{p_T(gen. jet)>20 GeV}{1.6<|#eta(gen.jet)|<2.9}");
   _legend->SetFillColor(0);
   _legend->SetBorderSize(0);
@@ -196,6 +196,7 @@ TGraph * Plotter::DrawProfile(TH2F * hist, TString savename, Option_t * option =
   bool bootstrap = false;
  
   for (int i = 1; i < p_rms->GetNbinsX()+1; i++){
+    //    std::cout << "we have " <<  p_rms->GetNbinsX()+1 << " bins " << std::endl;
     //    std::cout << "bin i of x = " << i << std::endl;
 
     std::vector<double> rms_list;  
@@ -255,7 +256,7 @@ TGraph * Plotter::DrawProfile(TH2F * hist, TString savename, Option_t * option =
     
       auto min_value = *std::min_element(rms_list.begin(),rms_list.end());
       auto max_value = *std::max_element(rms_list.begin(),rms_list.end());
-      std::cout << "min max -= " << min_value << " - " << max_value << std::endl;
+      //      std::cout << "min max -= " << min_value << " - " << max_value << std::endl;
       TH1F* rms_histo=new TH1F("rms_histo","rms_histo",2000,min_value-1,max_value+1);
       for(unsigned int a=0; a<rms_list.size(); a++){
 	rms_histo->Fill(rms_list.at(a));
@@ -269,13 +270,17 @@ TGraph * Plotter::DrawProfile(TH2F * hist, TString savename, Option_t * option =
 
     }
     else{
-
+      
       double err = 0;
       double total = hist->IntegralAndError(i,i,1,hist->GetNbinsY() , err);
+      //      std::cout << "Total = " << total << std::endl;
       if (total>0.00001){ 
+	
 	for (int y = 1; y < hist->GetNbinsY()+1; y++){
+	  
 	  double frac = hist->Integral(i,i,centralbin_nominal-y,centralbin_nominal+y);    
 	  if ( frac/total  > 0.683 ){
+	     
 	    rms.push_back( double(y) );
 	    rms_err.push_back(   double(y)/( std::sqrt(2) * err ) );
 	    break;
@@ -283,15 +288,23 @@ TGraph * Plotter::DrawProfile(TH2F * hist, TString savename, Option_t * option =
 	}
       }
       else{
-	rms.push_back(100);      
-      }
+	std::cout << i << " - " << total << std::endl;
+	std::cout << "errsize = " << rms_err.size() << std::endl;
+	// rms.push_back(rms.at(i-1) );      
+	// rms_err.push_back( rms_err.at(i-1) );      
+	rms.push_back(1 );      
+	rms_err.push_back( 1 );      
 
+	std::cout << "errsize = " << rms_err.size() << std::endl;
+      }
+    
     }
 
     // std::cout << i-1 << std::endl;
     // std::cout << "THIS TIME = " << rms.at(i-1) << " - " << rms_err.at(i-1) << std::endl;
-
- 
+    
+    //    std::cout << rms.size() << " - " << rms_err.size() << std::endl;
+    
     rms_up  ->SetPoint(i-1, p_rms->GetBinCenter(i), double(centralbin_nominal+rms.at(i-1))/double(bins_per_unit) );
     rms_down->SetPoint(i-1, p_rms->GetBinCenter(i), double(centralbin_nominal-rms.at(i-1))/double(bins_per_unit) );
     
@@ -301,28 +314,34 @@ TGraph * Plotter::DrawProfile(TH2F * hist, TString savename, Option_t * option =
     rms_down->SetPointError(i-1, 0, double (rms_err.at(i-1))/double (bins_per_unit) );
     // rms_up  ->SetPointError(i-1, 0.5*p_rms->GetBinWidth(i), double (rms_err.at(i-1))/double (bins_per_unit) );
     // rms_down->SetPointError(i-1, 0.5*p_rms->GetBinWidth(i), double (rms_err.at(i-1))/double (bins_per_unit) );
-
+     
   }
 
 
-
+  
   // r = rms_up->Fit("pol3", "R", "", 0, 400);
   // r = rms_down->Fit("pol3", "R", "", 0, 400);
 
 
   r_rmsup = rms_up->Fit(pol1, "RS", "", 20, 300);
+  
   r = rms_down->Fit(pol1, "R", "", 20, 300);  
+
   f_mean->SetParameter( 0, pmean->GetFunction("pol1")->GetParameter( 0 ) );
+  
   f_mean->SetParameter( 1, pmean->GetFunction("pol1")->GetParameter( 1 ) );
+  
   f_mean->SetParErrors ( pmean->GetFunction("pol1")->GetParErrors() );
+  
   f_rmsup->SetParameter( 0, rms_up->GetFunction("pol1")->GetParameter( 0 ) );
   f_rmsup->SetParameter( 1, rms_up->GetFunction("pol1")->GetParameter( 1 ) );
   f_rmsup->SetParErrors ( rms_up->GetFunction("pol1")->GetParErrors() );
+  
   f_rmsdown->SetParameter( 0, rms_down->GetFunction("pol1")->GetParameter( 0 ) );
   f_rmsdown->SetParameter( 1, rms_down->GetFunction("pol1")->GetParameter( 1 ) );
   f_rmsdown->SetParErrors ( rms_down->GetFunction("pol1")->GetParErrors() );
 
-
+  
   f_rmsup->SetRange(20,300);
   f_rmsdown->SetRange(20,300);
 
@@ -397,6 +416,48 @@ TGraph * Plotter::DrawProfile(TH2F * hist, TString savename, Option_t * option =
 }
 
 
+void Plotter::Draw(std::vector<TH1F*>& hists, std::vector<TString>& legend, TString savename, bool logy){
+
+  TCanvas * c = _canvas;
+  c->SetCanvasSize(800, 600);
+  gPad->SetTicks(1,1);
+  SetLegendXY( 0.7, 0.5, 0.82, 0.75  );
+
+  int i = 0;
+  for (auto &hist: hists ){    
+
+    TH1F* histo = hist;
+  
+    _legend->AddEntry( histo, legend.at(i) , "L");    
+
+    histo->SetLineColor(i+1);
+    if(i>3){
+      histo->SetLineColor(i+2);
+    }
+    histo->SetTitle("");
+
+    if ( i == 0 ){
+	histo->Draw();
+	gPad->SetLogy(logy);
+    }
+    else{
+      histo->Draw("same");
+    }
+    i++;
+    histo->SetName("cl3dpt");
+
+  }
+
+  //_latex->Draw("same");
+  _legend->Draw("same");
+
+  gPad->SetTicks();
+  c->SaveAs("plots/" + TString(_outdir) + "/" + savename + ".root");
+  c->SaveAs("plots/" + TString(_outdir) + "/" + savename + ".png");
+
+}
+
+
 void Plotter::Draw(std::vector<HistObject>& hists, int nbins, double xlow, double xhigh, TString savename){
 
   TCanvas * c = _canvas;
@@ -425,15 +486,17 @@ void Plotter::Draw(std::vector<HistObject>& hists, int nbins, double xlow, doubl
       histo->Draw("same");
     }
     i++;
-
+    histo->SetName("cl3dpt");
+    histo->SaveAs("plots/" + TString(_outdir) + "/" + savename + ".root");
   }
 
-  _latex->Draw("same");
-  _legend->Draw("same");
+  //  _latex->Draw("same");
+  //  _legend->Draw("same");
 
   gPad->SetTicks();
 
   c->SaveAs("plots/" + TString(_outdir) + "/" + savename + ".png");
+
 }
 
 
@@ -519,3 +582,4 @@ TH2F * Plotter::Draw2D( HistObject hist, int nbins1, double* x, int nbins2, doub
 
 //   return histo;
 // }
+  

@@ -89,17 +89,42 @@ InputDirList = [
 
 # "VBF_HToInvisible_M125_14TeV_powheg_pythia8/crab_VBF-PU200-stc-TCs-histoMax-5mipt-DRA050-DRB02-NS/181217_155258/0000",
 # "VBF_HToInvisible_M125_14TeV_powheg_pythia8/crab_VBF-PU200-stc-TCs-histoMax-5mipt-DRA040-DRB02-NS/181217_155131/0000",
-"VBF_HToInvisible_M125_14TeV_powheg_pythia8/crab_VBF-PU0-stc-TCs-histoMax-5mipt-DRA040-DRB02-NS/190104_150739/0000",
+#"VBF_HToInvisible_M125_14TeV_powheg_pythia8/crab_VBF-PU0-stc-TCs-histoMax-5mipt-DRA040-DRB02-NS/190104_150739/0000",
    
 # "VBF_HToInvisible_M125_14TeV_powheg_pythia8/crab_VBF-PU200-stc-TCs-histoMax-DRA040-DRB00-NS-new/190111_103822/0000",
 # "VBF_HToInvisible_M125_14TeV_powheg_pythia8/crab_VBF-PU200-stc-TCs-histoMax-DRA040-DRB01-NS-new/190111_103702/0000",
 # "VBF_HToInvisible_M125_14TeV_powheg_pythia8/crab_VBF-PU200-stc-TCs-histoMax-DRA040-DRB03-NS-new/190111_103608/0000",
-
-
+#"VBF_HToInvisible_M125_14TeV_powheg_pythia8/crab_DoubleNu-PU200-stc-TCs-histoMax-DRA040-DRB040-NS/190131_153537/0000",
 #"DoubleNuE1Eta14_31/crab_DoubleNu-PU200-stc-TCs-histoMax-DRA040-DRB020-NS/190118_101937/0000",
+# "VBF_HToInvisible_M125_14TeV_powheg_pythia8/crab_VBF-PU200-stc-TCs-histoMax-DRAInf-DRB00-NS/190204_132500/0000",
+# "VBF_HToInvisible_M125_14TeV_powheg_pythia8/crab_VBF-PU200-stc-TCs-histoMax-DRAInf-DRB00-NS/190204_132500/0000",
+# "VBF_HToInvisible_M125_14TeV_powheg_pythia8/crab_VBF-PU200-stcV2-TCs-histoMax-DRA04-DRB00-NS/190206_144245/0000",
+
+# "VBF_HToInvisible_M125_14TeV_powheg_pythia8/crab_VBF-PU200-stc-TCs-histoMax-DRAInf-DRB00-NS/190204_132500/0000",
+#"VBF_HToInvisible_M125_14TeV_powheg_pythia8/crab_VBF-PU200-stcV3-TCs-histoMax-DRA04-DRB00-NS/190207_144328/0000",
+#"VBF_HToInvisible_M125_14TeV_powheg_pythia8/crab_VBF-PU200-stc-4416r-TCs-histoMax-DRA04-DRB00-NS/190212_131615/0000",
+
+"SingleGammaPt25Eta1p6_2p8/crab_SingleGamma-PU0-stc-wThresh-TCs-histoMax-DRA040-DRB00-NS/190213_132501/0000",
+"SingleGammaPt25Eta1p6_2p8/crab_SingleGamma-PU200-stc-wThresh-TCs-histoMax-DRA040-DRB00-NS/190213_132546/0000",
+"VBF_HToInvisible_M125_14TeV_powheg_pythia8/crab_VBF-PU200-stc-TCs-histoMax-DRA04-DRB00-NS-cl3dpt0/190213_133412/0000",
+"VBF_HToInvisible_M125_14TeV_powheg_pythia8/crab_VBF-PU0-stc-TCs-histoMax-DRAInf-DRB00-NS/190213_133629/0000",
+
    ]
 OutputDirList = [
 
+"/vols/cms/snwebb/HGC_ntuples/SingleGammaPt25/SingleGamma-PU0-stc-wThresh-TCs-histoMax-DRA040-DRB00-NS",
+"/vols/cms/snwebb/HGC_ntuples/SingleGammaPt25/SingleGamma-PU2000-stc-wThresh-TCs-histoMax-DRA040-DRB00-NS",
+"/vols/cms/snwebb/HGC_ntuples/VBF_Hinv/VBF-PU200-stc-TCs-histoMax-DRA04-DRB00-NS-cl3dpt0",
+"/vols/cms/snwebb/HGC_ntuples/VBF_Hinv/VBF-PU0-stc-TCs-histoMax-DRAInf-DRB00-NS",
+
+#"/vols/cms/snwebb/HGC_ntuples/VBF_Hinv/VBF-PU200-stc-4416r-TCs-histoMax-DRA04-DRB00-NS/",
+#"/vols/cms/snwebb/HGC_ntuples/VBF_Hinv/VBF-PU200-stc-TCs-histoMax-DRAInf-DRB00-NS-Jet5p0/",
+#"/vols/cms/snwebb/HGC_ntuples/VBF_Hinv/VBF-PU200-stc-TCs-histoMax-DRAInf-DRB00-NS-Jet10p0/",
+#"/vols/cms/snwebb/HGC_ntuples/VBF_Hinv/VBF-PU200-stc-TCs-histoMax-DRAInf-DRB00-NS-Jet1p0/",
+#"/vols/cms/snwebb/HGC_ntuples/VBF_Hinv/VBF-PU200-stc-TCs-histoMax-DRAInf-DRB00-NS-Jet2p0/",
+#"/vols/cms/snwebb/HGC_ntuples/VBF_Hinv/VBF-PU200-stcV2-TCs-histoMax-DRA04-DRB00-NS/",
+#"/vols/cms/snwebb/HGC_ntuples/VBF_Hinv/VBF-PU200-stcV3-TCs-histoMax-DRA04-DRB00-NS/",
+ #"/vols/cms/snwebb/HGC_ntuples/VBF_Hinv/VBF-PU200-stc-TCs-histoMax-DRAInf-DRB00-NS/",
 #   "/vols/cms/snwebb/HGC_ntuples/VBF_Hinv/VBF_Hinv_PU200_threshold_polarHisto_Max",
    #"/vols/cms/snwebb/HGC_ntuples/VBF_Hinv/VBF_Hinv_PU200_stc_polarHisto_Max",
 
@@ -134,14 +159,16 @@ OutputDirList = [
  # "/vols/cms/snwebb/HGC_ntuples/VBF_Hinv/VBF-PU200-stc-TCs-histoMax-5mipt-DRA050-DRB02-NS/",
 
 # "/vols/cms/snwebb/HGC_ntuples/VBF_Hinv/VBF-PU200-stc-TCs-TCs/",
- "/vols/cms/snwebb/HGC_ntuples/VBF_Hinv/VBF-PU0-stc-TCs-TCs/",
+# "/vols/cms/snwebb/HGC_ntuples/VBF_Hinv/VBF-PU0-stc-TCs-TCs/",
 
 #  "/vols/cms/snwebb/HGC_ntuples/VBF_Hinv/VBF-PU200-stc-TCs-histoMax-5mipt-DRA040-DRB02-NS-JET01/",
 #  "/vols/cms/snwebb/HGC_ntuples/VBF_Hinv/VBF-PU0-stc-TCs-histoMax-5mipt-DRA040-DRB02-NS/",
 #  "/vols/cms/snwebb/HGC_ntuples/VBF_Hinv/VBF-PU0-stc-TCs-histoMax-5mipt-DRA040-DRB02-NS-2/",
- # "/vols/cms/snwebb/HGC_ntuples/VBF_Hinv/VBF-PU200-stc-TCs-histoMax-DRA040-DRB00-NS/",
- #  "/vols/cms/snwebb/HGC_ntuples/VBF_Hinv/VBF-PU200-stc-TCs-histoMax-DRA040-DRB01-NS/",
- #  "/vols/cms/snwebb/HGC_ntuples/VBF_Hinv/VBF-PU200-stc-TCs-histoMax-DRA040-DRB03-NS/",
+   # "/vols/cms/snwebb/HGC_ntuples/VBF_Hinv/VBF-PU200-stc-TCs-histoMax-DRA040-DRB00-NS/",
+   # "/vols/cms/snwebb/HGC_ntuples/VBF_Hinv/VBF-PU200-stc-TCs-histoMax-DRA040-DRB01-NS/",
+   # "/vols/cms/snwebb/HGC_ntuples/VBF_Hinv/VBF-PU200-stc-TCs-histoMax-DRA040-DRB03-NS/",
+
+# "/vols/cms/snwebb/HGC_ntuples/VBF_Hinv/VBF-PU200-stc-TCs-histoMax-DRA040-DRB04-NS/",
 
 
 #  "/vols/cms/snwebb/HGC_ntuples/VBF_Hinv/VBF-PU0-stc-TCs-histoMax-5mipt-DRA040-DRB02-NS-newpu/",

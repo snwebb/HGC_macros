@@ -31,6 +31,7 @@ class Plotter{
   ~Plotter();
 
   void Draw(std::vector<HistObject>& hists, int nbins, double xlow, double high, TString savename);
+  void Draw(std::vector<TH1F*>& hists, std::vector<TString>& legend,  TString savename, bool logy = false);
   TGraph * DrawProfile(TH2F * hist, TString savename, Option_t * option);
   TH2F * Draw2D(HistObject hist, int nbins1, double xlow1, double high1, int nbins2, double xlow2, double high2, TString savename);
   TH2F * Draw2D(HistObject hist, int nbins1, double* x, int nbins2, double xlow2, double high2, TString savename);
