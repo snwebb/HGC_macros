@@ -4,8 +4,9 @@
 
 void HGC::plot_GenRecoET(){
 
-  //  TString stats = "*";
-  TString stats = "1*";
+    TString stats = "1*";
+  //    TString stats = "1*";
+  //    TString stats = "1*";
 
   TString file1 = "VBF_Hinv/VBF-PU200-stc-TCs-TCs";
 
@@ -42,94 +43,180 @@ void HGC::plot_GenRecoET(){
   TString file7c = "VBF_Hinv/VBF_Hinv_PU200_threshold_polarHisto_ModMax";
   TString file8c = "VBF_Hinv/VBF_Hinv_PU200_stc_polarHisto_ModMax";
 
-
   TString file1d = "VBF_Hinv/VBF-PU200-stc-TCs-histoMax-DRAInf-DRB00-NS";
   TString file2d = "VBF_Hinv/VBF-PU200-stc-TCs-histoMax-DRAInf-DRB00-NS-Jet1p0";
   TString file3d = "VBF_Hinv/VBF-PU200-stc-TCs-histoMax-DRAInf-DRB00-NS-Jet2p0";
   TString file4d = "VBF_Hinv/VBF-PU200-stc-TCs-histoMax-DRAInf-DRB00-NS-Jet5p0";
   TString file5d = "VBF_Hinv/VBF-PU200-stc-TCs-histoMax-DRAInf-DRB00-NS-Jet10p0";
+  TString file_nomin = "VBF_Hinv/VBF-PU200-stc-TCs-histoMax-DRA04-DRB00-NS-cl3dpt0";
 
 
 
+  //For presentation  
+  TString file_thresh_histomax_0400 = "VBF_Hinv/VBF-PU200-threshold-TCs-histoMax-DRA04-DRB00-NS";
+  TString file_thresh_inter_0400    = "VBF_Hinv/VBF-PU200-threshold-TCs-histoInterpolated1stOrder-5mipt-DRA04-DRB00-NS";
+
+  TString file_thresh_histomax_0402 = "VBF_Hinv/VBF-PU200-threshold-TCs-histoMax-DRA04-DRB02-NS";
+  TString file_thresh_inter_0402    = "VBF_Hinv/VBF-PU200-threshold-TCs-histoInterpolated1stOrder-5mipt-DRA04-DRB02-NS";
+
+  TString file_thresh_histomax_0302 = "VBF_Hinv/VBF-PU200-threshold-TCs-histoMax-DRA03-DRB02-NS";
+  TString file_thresh_inter_0302    = "VBF_Hinv/VBF-PU200-threshold-TCs-histoInterpolated1stOrder-5mipt-DRA03-DRB02-NS";
+
+  TString file_thresh_histomax_inf02 = "VBF_Hinv/VBF-PU200-threshold-TCs-histoMax-DRAInf-DRB02-NS";
+  TString file_thresh_inter_inf02    = "VBF_Hinv/VBF-PU200-threshold-TCs-histoInterpolated1stOrder-5mipt-DRAInf-DRB02-NS";
+
+  TString file_bestchoice    = "VBF_Hinv/VBF-PU200-bestChoice-TCs-histoMax-DRA04-DRB00-NS";
+  TString file_thresh_TCs = "VBF_Hinv/VBF-PU200-threshold-TCs-TCs";
+  TString file_stc_TCs = "VBF_Hinv/VBF-PU200-stc-TCs-TCs";
 
 
-  //    TString cut = "VBF_parton_genjet>=0 && VBF_parton_jets>=0 && abs(genjet_eta[VBF_parton_genjet])>1.7 && abs(genjet_eta[VBF_parton_genjet])<2.8 && genjet_pt[VBF_parton_genjet]>20 ";
-  TString cut = "VBF_parton_genjet>=0 && VBF_parton_jets>=0 && abs(genjet_eta[VBF_parton_genjet])>1.7 && abs(genjet_eta[VBF_parton_genjet])<2.8 ";
-  //        TString cut = "VBF_parton_genjet>=0 && VBF_parton_jets>=0 && abs(genjet_eta[VBF_parton_genjet])>2.1 && abs(genjet_eta[VBF_parton_genjet])<2.4 ";
-  //  TString cut = "VBF_parton_genjet>=0 && VBF_parton_jets>=0 && abs(genjet_eta[VBF_parton_genjet])>1.7 && abs(genjet_eta[VBF_parton_genjet])<1.9 ";
-  //TString cut = "VBF_parton_genjet>=0 && VBF_parton_jets>=0 && abs(genjet_eta[VBF_parton_genjet])>2.6 && abs(genjet_eta[VBF_parton_genjet])<2.8 ";
+  TString file_stc_histomax_0400 = "VBF_Hinv/VBF-PU200-stc-TCs-histoMax-DRA040-DRB00-NS";
+  TString file_stc_inter_0400    = "VBF_Hinv/VBF-PU200-stc-TCs-histoInterpolated1stOrder-5mipt-DRA04-DRB00-NS";
 
+  TString file_stc_histomax_0402 = "VBF_Hinv/VBF-PU200-stc-TCs-histoMax-5mipt-DRA040-DRB02-NS-pu21";
+  //  TString file_stc_inter_0402    = "VBF_Hinv/VBF-PU200-stc-TCs-histoInterpolated1stOrder-5mipt-DRA04-DRB02-NS";
+  TString file_stc_inter_0402    = "VBF_Hinv/VBF_Hinv_PU200_stc_polarHisto_Interpolated1stOrder";
+  TString file_stc_histomax_0302 = "VBF_Hinv/VBF-PU200-stc-TCs-histoMax-5mipt-DRA030-DRB02-NS";
+  TString file_stc_inter_0302    = "VBF_Hinv/VBF-PU200-stc-TCs-histoInterpolated1stOrder-5mipt-DRA030-DRB02-NS";
+
+  TString file_stc_histomax_inf02 = "VBF_Hinv/VBF-PU200-stc-TCs-histoMax-DRAInf-DRB00-NS";
+  TString file_stc_inter_inf02    = "VBF_Hinv/VBF-PU200-stc-TCs-histoInterpolated1stOrder-5mipt-DRAInf-DRB02-NS";
+
+
+  TString file_stc_histomax_0402_PU0 = "VBF_Hinv/VBF-PU0-stc-TCs-histoMax-5mipt-DRA040-DRB02-NS-2";
+
+  TString file_threshold_histomax_0402_PU0 = "doesn't exist";
+  TString file_stc_inter_0402_PU0 = "doesn't exist";
+  TString file_threshold_inter_0402_PU0 = "doesn't exist";
+
+
+
+  TString file_photon_wThresh = "SingleGammaPt25/SingleGamma-PU2000-stc-wThresh-TCs-histoMax-DRA040-DRB00-NS";
+  TString file_photon_nThresh = "SingleGammaPt25/SingleGamma-PU200-stc-TCs-histoMax-DRA040-DRB00-NS";
+
+  TString file_photon_wThresh_pu0 = "SingleGammaPt25/SingleGamma-PU0-stc-wThresh-TCs-histoMax-DRA040-DRB00-NS";
+  TString file_photon_nThresh_pu0 = "SingleGammaPt25/SingleGammaPt25_PU0_stc_HistoMax";
+
+  TString file_threshold_histomax_LayerDep01 = "VBF_Hinv/VBF-PU200-threshold-TCs-histoMax-LayerDependentDRA01-NS";
+  TString file_threshold_histomax_LayerDep02 = "VBF_Hinv/VBF-PU200-threshold-TCs-histoMax-LayerDependentDRA02-NS";
+  TString file_threshold_histomax_LayerDep03 = "VBF_Hinv/VBF-PU200-threshold-TCs-histoMax-LayerDependentDRA03-NS";
+  TString file_threshold_histomax_LayerDep04 = "VBF_Hinv/VBF-PU200-threshold-TCs-histoMax-LayerDependentDRA04-NS";
+  TString file_CurrentDefault = "VBF_Hinv/VBF-PU200-CurrentDefault";
   
-
+  
+  TString cut = "VBF_parton_genjet>=0 && VBF_parton_jets>=0 && abs(genjet_eta[VBF_parton_genjet])>1.7 && abs(genjet_eta[VBF_parton_genjet])<2.8 ";
+  
   std::vector<HistObject> histobjects;
   std::vector<TGraph*> graphs;
-  std::vector<TString> files = {file1d, file2d, file3d, file4d, file5d};
-  std::vector<TString> description = {"0p5","1p0","2p0","5p0","10p0"};
-  std::vector<TString> legend = {"0p5","1p0","2p0","5p0","10p0"};
-  // legend.push_back ("0p5");
-  // legend.push_back ("1p0");
-  // legend.push_back ("2p0");
-  // legend.push_back ("5p0");
-  // legend.push_back ("10p0");
+  Plotter plotter( _cmd );
+  double x[16]={0,10,20,40,60,80,100,120,140,160,180,200,220,250,300,400};
+  
+  
+  //Varying 3D cl pt
+  // std::vector<TString> files = {file1d, file2d, file3d, file4d, file5d};
+  // std::vector<TString> description = {"0p5","1p0","2p0","5p0","10p0"};
+  // std::vector<TString> legend = {"0p5","1p0","2p0","5p0","10p0"}; 
+
+  //Comparing TCs directly with 3D cluster jets
+  // std::vector<TString> files = {file1, file_nomin};
+  // std::vector<TString> description = {"TC-TCs","no_min"};
+  // std::vector<TString> legend = {"TC-TCs","no_min"}; 
+
+  //  Threshold algorithm - comparing seeding algorithms
+  // std::vector<TString> files = {file_thresh_histomax_0402, file_thresh_inter_0402};
+  // std::vector<TString> description = {"maximum","interpolated"};
+  // std::vector<TString> legend = {"maximum","interpolated"};
+
+  //Threshold algorithm - comparing clustering radius maximum
+  // std::vector<TString> files = {file_thresh_histomax_0400, file_thresh_histomax_0402, file_thresh_histomax_0302, file_thresh_histomax_inf02};
+  // std::vector<TString> description = {"0400","0402", "0302","Inf02"};
+  // std::vector<TString> legend = {"A=0.04,B=0.00","A=0.04,B=0.02","A=0.03,B=0.02","A=Infinity,B=0.02"};
+
+  //Threshold algorithm - comparing clustering radius interpolated
+  // std::vector<TString> files = {file_thresh_inter_0400, file_thresh_inter_0402, file_thresh_inter_0302, file_thresh_inter_inf02};
+  // std::vector<TString> description = {"0400","0402", "0302","Inf02"};
+  // std::vector<TString> legend = {"A=0.04,B=0.00","A=0.04,B=0.02","A=0.03,B=0.02","A=Infinity,B=0.02"};
+
+
+  // //STC algorithm - comparing seeding algorithms
+  // std::vector<TString> files = {file_stc_histomax_0400, file_stc_inter_0402};
+  // std::vector<TString> description = {"maximum","interpolated"};
+  // std::vector<TString> legend = {"maximum","interpolated"};
+
+  //STC algorithm - comparing clustering radius maximum
+  // std::vector<TString> files = {file_stc_histomax_0400, file_stc_histomax_0402, file_stc_histomax_0302, file_stc_histomax_inf02};
+  // std::vector<TString> description = {"0400","0402", "0302","Inf02"};
+  // std::vector<TString> legend = {"A=0.04,B=0.00","A=0.04,B=0.02","A=0.03,B=0.02","A=Infinity,B=0.02"};
+
+  //STC algorithm - comparing clustering radius interpolated
+  // std::vector<TString> files = {file_stc_inter_0402, file_stc_inter_0302, file_stc_inter_inf02};
+  // std::vector<TString> description = {"0402", "0302","Inf02"};
+  // std::vector<TString> legend = {"A=0.04,B=0.02","A=0.03,B=0.02","A=Infinity,B=0.02"};
+
+  //Comparing Thresh and STC with TCs directly (done)
+  // std::vector<TString> files = {file_stc_TCs,file_thresh_TCs};
+  // std::vector<TString> description = {"stc","thresh"};
+  // std::vector<TString> legend = {"stc","thresh"}; 
+
+
+  //Comparing Thresh, STC and best choice
+  // std::vector<TString> files = {file_thresh_histomax_0400,file_stc_histomax_0400,file_bestchoice, file_CurrentDefault};
+  // std::vector<TString> description = {"thresh","stc","bestchoice", "currentdefault"};
+  // std::vector<TString> legend = {"thresh","stc","bestchoice", "currentdefault"};
+
+  //STC algorithm - comparing seeding algorithms PU 0 
+  // std::vector<TString> files = {file_stc_histomax_0400, file_stc_inter_0400, file_threshold_histomax_0400, file_threshold_inter_0400,};
+  // std::vector<TString> description = {"maximum","interpolated"};
+  // std::vector<TString> legend = {"maximum","interpolated"};
+
+
+  //Single Photon PU200 - STC, with and without threshold
+  // std::vector<TString> files = {file_photon_wThresh, file_photon_nThresh};
+  // std::vector<TString> description = {"Threshold","NoThreshold"};
+  // std::vector<TString> legend = {"Threshold","No threshold"};
+
+  // //Single Photon PU0 - STC, with and without threshold
+  // std::vector<TString> files = {file_photon_wThresh_pu0, file_photon_nThresh_pu0};
+  // std::vector<TString> description = {"Threshold","NoThreshold"};
+  // std::vector<TString> legend = {"With Threshold","No Threshold"};
+
+  //  Comparing STC with TCs directly and inter
+  // std::vector<TString> files = {file_stc_TCs,file_stc_inter_0402};
+  // std::vector<TString> description = {"TCs","inter"};
+  // std::vector<TString> legend = {"TCs","inter"}; 
+
+
+  //Comparing Thresh, STC and best choice for inter
+  // std::vector<TString> files = {file_thresh_inter_0402,file_stc_inter_0402};
+  // std::vector<TString> description = {"thresh","stc"};
+  // std::vector<TString> legend = {"thresh","stc"};
+
+
+
+  //Layer dependent studies
+   std::vector<TString> files = {file_threshold_histomax_LayerDep01,file_threshold_histomax_LayerDep02,file_threshold_histomax_LayerDep03,file_threshold_histomax_LayerDep04};
+   //  std::vector<TString> files = {file_threshold_histomax_LayerDep02,file_threshold_histomax_LayerDep03,file_threshold_histomax_LayerDep04};
+   std::vector<TString> description = {"0p01","0p02","0p03","0p04"};
+   std::vector<TString> legend = {"A=0.01","A=0.02","A=0.03","A=0.04"};
+
+
+
+  //Producing N seed plots
+  //  std::vector<TString> files = {file_thresh_histomax_0400,file_stc_histomax_0400,file_bestchoice};
+  //  std::vector<TString> files = {file_thresh_histomax_0400,file_thresh_histomax_0400,file_thresh_histomax_0400,file_thresh_histomax_0400,file_thresh_histomax_0400};
+  //  std::vector<TString> files = {file_stc_histomax_0400,file_stc_histomax_0400,file_stc_histomax_0400,file_stc_histomax_0400,file_stc_histomax_0400};
+  // std::vector<TString> files = {file_bestchoice,file_bestchoice,file_bestchoice,file_bestchoice,file_bestchoice};
+  // std::vector<TString> description = {"0.5","1.0","2.0","5.0","10.0"};
+  // std::vector<TString> legend = {"0.5","1.0","2.0","5.0","10.0"};
+
+
+
+
 
 
   for(unsigned int i=0;i<files.size();i++){
     histobjects.emplace_back( HistObject( "Jets", (snwebb + "/" + files.at(i) + "/jet_ntuples_merged/ntuple_jet_merged_"+stats+".root"), "", "jets_pt[VBF_parton_jets]:genjet_pt[VBF_parton_genjet]", cut, true  ) );
   }
-
-  // HistObject hist1 =  HistObject( "Jets", (snwebb + "/" + file1 + "/jet_ntuples_merged/ntuple_jet_merged_"+stats+".root"), "", "jets_pt[VBF_parton_jets]:genjet_pt[VBF_parton_genjet]", cut, true  );
-
-  // HistObject hist1a =  HistObject( "Jets", (snwebb + "/" + file1a + "/jet_ntuples_merged/ntuple_jet_merged_"+stats+".root"), "", "jets_pt[VBF_parton_jets]:genjet_pt[VBF_parton_genjet]", cut, true  );
-  // HistObject hist2a =  HistObject( "Jets", (snwebb + "/" + file2a + "/jet_ntuples_merged/ntuple_jet_merged_"+stats+".root"), "", "jets_pt[VBF_parton_jets]:genjet_pt[VBF_parton_genjet]", cut, true  );
-  // HistObject hist3a =  HistObject( "Jets", (snwebb + "/" + file3a + "/jet_ntuples_merged/ntuple_jet_merged_"+stats+".root"), "", "jets_pt[VBF_parton_jets]:genjet_pt[VBF_parton_genjet]", cut, true  );
-  // HistObject hist4a =  HistObject( "Jets", (snwebb + "/" + file4a + "/jet_ntuples_merged/ntuple_jet_merged_"+stats+".root"), "", "jets_pt[VBF_parton_jets]:genjet_pt[VBF_parton_genjet]", cut, true  );
-  // HistObject hist5a =  HistObject( "Jets", (snwebb + "/" + file5a + "/jet_ntuples_merged/ntuple_jet_merged_"+stats+".root"), "", "jets_pt[VBF_parton_jets]:genjet_pt[VBF_parton_genjet]", cut, true  );
-  // HistObject hist7a =  HistObject( "Jets", (snwebb + "/" + file7a + "/jet_ntuples_merged/ntuple_jet_merged_"+stats+".root"), "", "jets_pt[VBF_parton_jets]:genjet_pt[VBF_parton_genjet]", cut, true  );
-
-  // HistObject hist6 =  HistObject( "Jets", (snwebb + "/" + file6 + "/jet_ntuples_merged/ntuple_jet_merged_"+stats+".root"), "", "jets_pt[VBF_parton_jets]:genjet_pt[VBF_parton_genjet]", cut, false  );
-  // HistObject hist6a =  HistObject( "Jets", (snwebb + "/" + file6a + "/jet_ntuples_merged/ntuple_jet_merged_"+stats+".root"), "", "jets_pt[VBF_parton_jets]:genjet_pt[VBF_parton_genjet]", cut, false  );
-
-
-  // HistObject hist1b =  HistObject( "Jets", (snwebb + "/" + file1b + "/jet_ntuples_merged/ntuple_jet_merged_"+stats+".root"), "", "jets_pt[VBF_parton_jets]:genjet_pt[VBF_parton_genjet]", cut, true  );
-  // HistObject hist2b =  HistObject( "Jets", (snwebb + "/" + file2b + "/jet_ntuples_merged/ntuple_jet_merged_"+stats+".root"), "", "jets_pt[VBF_parton_jets]:genjet_pt[VBF_parton_genjet]", cut, true  );
-  // HistObject hist3b =  HistObject( "Jets", (snwebb + "/" + file3b + "/jet_ntuples_merged/ntuple_jet_merged_"+stats+".root"), "", "jets_pt[VBF_parton_jets]:genjet_pt[VBF_parton_genjet]", cut, true  );
-  // HistObject hist4b =  HistObject( "Jets", (snwebb + "/" + file4b + "/jet_ntuples_merged/ntuple_jet_merged_"+stats+".root"), "", "jets_pt[VBF_parton_jets]:genjet_pt[VBF_parton_genjet]", cut, true  );
-  // HistObject hist5b =  HistObject( "Jets", (snwebb + "/" + file5b + "/jet_ntuples_merged/ntuple_jet_merged_"+stats+".root"), "", "jets_pt[VBF_parton_jets]:genjet_pt[VBF_parton_genjet]", cut, true  );
-  // HistObject hist6b =  HistObject( "Jets", (snwebb + "/" + file6b + "/jet_ntuples_merged/ntuple_jet_merged_"+stats+".root"), "", "jets_pt[VBF_parton_jets]:genjet_pt[VBF_parton_genjet]", cut, true  );
-  // HistObject hist7b =  HistObject( "Jets", (snwebb + "/" + file7b + "/jet_ntuples_merged/ntuple_jet_merged_"+stats+".root"), "", "jets_pt[VBF_parton_jets]:genjet_pt[VBF_parton_genjet]", cut, true  );
-  // HistObject hist8b =  HistObject( "Jets", (snwebb + "/" + file8b + "/jet_ntuples_merged/ntuple_jet_merged_"+stats+".root"), "", "jets_pt[VBF_parton_jets]:genjet_pt[VBF_parton_genjet]", cut, true  );
-
-
-
-
-
-
-  // HistObject hist1c =  HistObject( "Jets", (snwebb + "/" + file1c + "/jet_ntuples_merged/ntuple_jet_merged_"+stats+".root"), "", "jets_pt[VBF_parton_jets]:genjet_pt[VBF_parton_genjet]", cut, true  );
-  // HistObject hist2c =  HistObject( "Jets", (snwebb + "/" + file2c + "/jet_ntuples_merged/ntuple_jet_merged_"+stats+".root"), "", "jets_pt[VBF_parton_jets]:genjet_pt[VBF_parton_genjet]", cut, true  );
-  // HistObject hist3c =  HistObject( "Jets", (snwebb + "/" + file3c + "/jet_ntuples_merged/ntuple_jet_merged_"+stats+".root"), "", "jets_pt[VBF_parton_jets]:genjet_pt[VBF_parton_genjet]", cut, true  );
-  // HistObject hist4c =  HistObject( "Jets", (snwebb + "/" + file4c + "/jet_ntuples_merged/ntuple_jet_merged_"+stats+".root"), "", "jets_pt[VBF_parton_jets]:genjet_pt[VBF_parton_genjet]", cut, true  );
-  // HistObject hist5c =  HistObject( "Jets", (snwebb + "/" + file5c + "/jet_ntuples_merged/ntuple_jet_merged_"+stats+".root"), "", "jets_pt[VBF_parton_jets]:genjet_pt[VBF_parton_genjet]", cut, true  );
-  // HistObject hist6c =  HistObject( "Jets", (snwebb + "/" + file6c + "/jet_ntuples_merged/ntuple_jet_merged_"+stats+".root"), "", "jets_pt[VBF_parton_jets]:genjet_pt[VBF_parton_genjet]", cut, true  );
-  // HistObject hist7c =  HistObject( "Jets", (snwebb + "/" + file7c + "/jet_ntuples_merged/ntuple_jet_merged_"+stats+".root"), "", "jets_pt[VBF_parton_jets]:genjet_pt[VBF_parton_genjet]", cut, true  );
-  // HistObject hist8c =  HistObject( "Jets", (snwebb + "/" + file8c + "/jet_ntuples_merged/ntuple_jet_merged_"+stats+".root"), "", "jets_pt[VBF_parton_jets]:genjet_pt[VBF_parton_genjet]", cut, true  );
-
-  // HistObject hist1d =  HistObject( "Jets", (snwebb + "/" + file1d + "/jet_ntuples_merged/ntuple_jet_merged_"+stats+".root"), "", "jets_pt[VBF_parton_jets]:genjet_pt[VBF_parton_genjet]", cut, true  );
-  // HistObject hist2d =  HistObject( "Jets", (snwebb + "/" + file2d + "/jet_ntuples_merged/ntuple_jet_merged_"+stats+".root"), "", "jets_pt[VBF_parton_jets]:genjet_pt[VBF_parton_genjet]", cut, true  );
-  // HistObject hist3d =  HistObject( "Jets", (snwebb + "/" + file3d + "/jet_ntuples_merged/ntuple_jet_merged_"+stats+".root"), "", "jets_pt[VBF_parton_jets]:genjet_pt[VBF_parton_genjet]", cut, true  );
-  // HistObject hist4d =  HistObject( "Jets", (snwebb + "/" + file4d + "/jet_ntuples_merged/ntuple_jet_merged_"+stats+".root"), "", "jets_pt[VBF_parton_jets]:genjet_pt[VBF_parton_genjet]", cut, true  );
-  // HistObject hist5d =  HistObject( "Jets", (snwebb + "/" + file5d + "/jet_ntuples_merged/ntuple_jet_merged_"+stats+".root"), "", "jets_pt[VBF_parton_jets]:genjet_pt[VBF_parton_genjet]", cut, true  );
-
-
-  Plotter plotter( _cmd );
-  //  TH2F * hist2d = plotter.Draw2D(hist, 200, 0, 400, 200,0,400  ,"test");
-
-
-
-
-  double x[16]={0,10,20,40,60,80,100,120,140,160,180,200,220,250,300,400};
-
-
-
 
   for(unsigned int i=0;i<histobjects.size();i++){
     TH2F * hist = plotter.Draw2D(histobjects.at(i), 15, x, 4000,0,400  ,description.at(i));
@@ -137,170 +224,40 @@ void HGC::plot_GenRecoET(){
   }
 
   
-
-
-
-
-
-  // TH2F * hist2d1 = plotter.Draw2D(hist1, 15, x, 4000,0,400  ,"PU200-TCs");
-  // TGraph * tc = plotter.DrawProfile(hist2d1  ,"TCs_profile", "s" );
-
-  // TH2F * hist2d1a = plotter.Draw2D(hist1a, 15,x, 4000,0,400  ,"15");
-  // TGraph * a =  plotter.DrawProfile(hist2d1a  ,"a_profile", "s" );
-
-  // TH2F * hist2d1b = plotter.Draw2D(hist2a, 15,x, 4000,0,400  ,"15");
-  // TGraph * b =  plotter.DrawProfile(hist2d1b  ,"b_profile", "s" );
-
-  // TH2F * hist2d1c = plotter.Draw2D(hist3a, 15,x, 4000,0,400  ,"15");
-  // TGraph * c =  plotter.DrawProfile(hist2d1c  ,"c_profile", "s" );
-
-  // TH2F * hist2d1d = plotter.Draw2D(hist4a, 15,x, 4000,0,400  ,"PU200-3Dcl");
-  // TGraph * d =  plotter.DrawProfile(hist2d1d  ,"d_profile", "s" );
-
-  // TH2F * hist2d1e = plotter.Draw2D(hist5a, 15,x, 4000,0,400  ,"15");
-  // TGraph * e =  plotter.DrawProfile(hist2d1e  ,"e_profile", "s" );
-
-  // TH2F * hist2d1f = plotter.Draw2D(hist7a, 15,x, 4000,0,400  ,"15");
-  // TGraph * f =  plotter.DrawProfile(hist2d1f  ,"f_profile", "s" );
-
-
-  //VARYING B
-
-  // TH2F * hist2d1b = plotter.Draw2D(hist1b, 15,x, 4000,0,400  ,"0.0");
-  // TGraph * a =  plotter.DrawProfile(hist2d1b  ,"a_profile", "s" );
-
-  // TH2F * hist2d2b = plotter.Draw2D(hist2b, 15,x, 4000,0,400  ,"0.01");
-  // TGraph * b =  plotter.DrawProfile(hist2d2b  ,"b_profile", "s" );
-
-  // TH2F * hist2d3b = plotter.Draw2D(hist3b, 15,x, 4000,0,400  ,"0.02");
-  // TGraph * c =  plotter.DrawProfile(hist2d3b  ,"c_profile", "s" );
-
-  // TH2F * hist2d4b = plotter.Draw2D(hist4b, 15,x, 4000,0,400  ,"0.03");
-  // TGraph * d =  plotter.DrawProfile(hist2d4b  ,"d_profile", "s" );
-
-  // TH2F * hist2d5b = plotter.Draw2D(hist5b, 15,x, 4000,0,400  ,"0.04");
-  // TGraph * e =  plotter.DrawProfile(hist2d5b  ,"e_profile", "s" );
-
-  // TH2F * hist2d6b = plotter.Draw2D(hist6b, 15,x, 4000,0,400  ,"0.04");
-  // TGraph * f =  plotter.DrawProfile(hist2d6b  ,"f_profile", "s" );
-  
-  // TH2F * hist2d7b = plotter.Draw2D(hist7b, 15,x, 4000,0,400  ,"0.04");
-  // TGraph * g =  plotter.DrawProfile(hist2d7b  ,"g_profile", "s" );
-
-  // TH2F * hist2d8b = plotter.Draw2D(hist8b, 15,x, 4000,0,400  ,"0.04");
-  // TGraph * h =  plotter.DrawProfile(hist2d8b  ,"h_profile", "s" );
-
-
-  //VARYING ALGORITHMS
- 
-  // TH2F * hist2d1c = plotter.Draw2D(hist1c, 15,x, 4000,0,400  ,"0.0");
-  // TGraph * a =  plotter.DrawProfile(hist2d1c  ,"a_profile", "s" );
-
-  // TH2F * hist2d2c = plotter.Draw2D(hist2c, 15,x, 4000,0,400  ,"0.01");
-  // TGraph * b =  plotter.DrawProfile(hist2d2c  ,"b_profile", "s" );
-
-  // TH2F * hist2d3c = plotter.Draw2D(hist3c, 15,x, 4000,0,400  ,"0.02");
-  // TGraph * c =  plotter.DrawProfile(hist2d3c  ,"c_profile", "s" );
-
-  // TH2F * hist2d4c = plotter.Draw2D(hist4c, 15,x, 4000,0,400  ,"0.03");
-  // TGraph * d =  plotter.DrawProfile(hist2d4c  ,"d_profile", "s" );
-
-  // TH2F * hist2d5c = plotter.Draw2D(hist5c, 15,x, 4000,0,400  ,"0.0");
-  // TGraph * e =  plotter.DrawProfile(hist2d5c  ,"e_profile", "s" );
-
-  // TH2F * hist2d6c = plotter.Draw2D(hist6c, 15,x, 4000,0,400  ,"0.01");
-  // TGraph * f =  plotter.DrawProfile(hist2d6c  ,"f_profile", "s" );
-
-  // TH2F * hist2d7c = plotter.Draw2D(hist7c, 15,x, 4000,0,400  ,"0.02");
-  // TGraph * g =  plotter.DrawProfile(hist2d7c  ,"g_profile", "s" );
-
-  // TH2F * hist2d8c = plotter.Draw2D(hist8c, 15,x, 4000,0,400  ,"0.03");
-  // TGraph * h =  plotter.DrawProfile(hist2d8c  ,"h_profile", "s" );
-
-  //PU0
-
-
-  // TH2F * hist2d6 = plotter.Draw2D(hist6, 15,x, 4000,0,400  ,"PU0-3Dcl");
-  // TGraph * g6 = plotter.DrawProfile(hist2d6  ,"PU0_profile", "s" );
-  // TH2F * hist2d6a = plotter.Draw2D(hist6a, 15,x, 4000,0,400  ,"PU0-TCs");
-  // TGraph * g6a = plotter.DrawProfile(hist2d6a  ,"PU0_profile", "s" );
-
-
-  //Varying Cluster pT cut
-
-  // TH2F * hist2d1d = plotter.Draw2D(hist1d, 15,x, 4000,0,400  ,"0.5");
-  // TGraph * a = plotter.DrawProfile(hist2d1d  ,"0p5cut", "s" );
-  // TH2F * hist2d2d = plotter.Draw2D(hist2d, 15,x, 4000,0,400  ,"1.0");
-  // TGraph * b = plotter.DrawProfile(hist2d2d  ,"1p0cut", "s" );
-  // TH2F * hist2d3d = plotter.Draw2D(hist3d, 15,x, 4000,0,400  ,"1.0");
-  // TGraph * c = plotter.DrawProfile(hist2d3d  ,"2p0cut", "s" );
-  // TH2F * hist2d4d = plotter.Draw2D(hist4d, 15,x, 4000,0,400  ,"5.0");
-  // TGraph * d = plotter.DrawProfile(hist2d4d  ,"5p0cut", "s" );
-  // TH2F * hist2d5d = plotter.Draw2D(hist5d, 15,x, 4000,0,400  ,"10.0");
-  // TGraph * e = plotter.DrawProfile(hist2d5d  ,"10p0cut", "s" );
-
-
-  //   graphs.push_back(tc);
-  
-  //   graphs.push_back(a);
- // graphs.push_back(b);
- // graphs.push_back(c);
- //  graphs.push_back(d);
- //    graphs.push_back(e);
- //       graphs.push_back(tc);
-  //    graphs.push_back(g);
-  // graphs.push_back(h);
-  
-  // graphs.push_back(g6);
-  // graphs.push_back(g6a);
-  
-  //   legend.push_back ("PU200-TCs");
-  // legend.push_back ("A=0.015");
-  // legend.push_back ("A=0.020");
-  // legend.push_back ("A=0.030");
-  //      legend.push_back ("A=0.040");
-  // legend.push_back ("A=0.050");
-  // legend.push_back ("A=Inf");
-
- //   legend.push_back ("B=0.000");	
- //   legend.push_back ("B=0.010");
- //  legend.push_back ("B=0.020");
- //  legend.push_back ("B=0.030");
- // legend.push_back ("B=0.040");
-
-
-  // legend.push_back ("thresh max");
-  // legend.push_back ("stc max");
-
-  // legend.push_back ("thresh inter1");
-  // legend.push_back ("stc inter1");
-
-  // legend.push_back ("thresh inter2");
-  // legend.push_back ("stc inter2");
-
-  // legend.push_back ("thresh modm");
-  // legend.push_back ("stc modm");
-
-  // legend.push_back ("PU0-3Dcl");
-  // legend.push_back ("PU0-TCs");
-
-
-
-  // legend.push_back ("0p5");
-  // legend.push_back ("1p0");
-  // legend.push_back ("2p0");
-  // legend.push_back ("5p0");
-  // legend.push_back ("10p0");
-
-  
-  // legend.push_back ("TCs directly");
-  //  legend.push_back ("stc-4-4-4");
-  // legend.push_back ("stc-4");
-  //  legend.push_back ("stc-16-16-16");
-  //  legend.push_back ("stc-4-4-16");
-  // legend.push_back ("stc-16");
-
   plotter.DrawGraphs(graphs, legend);
+
+
+
+
+
+
+
+
+  std::vector<TH1F*> hist;
+
+  for(unsigned int i=0;i<files.size();i++){
+
+    TString cutval = "0.5";
+    // if ( i == 1 ) cutval = "1";
+    // if ( i == 2 ) cutval = "2";
+    // if ( i == 3 ) cutval = "5";
+    // if ( i == 4 ) cutval = "10";
+    //    TH1F * ncl3D = helper.single_plot( tstreble + "/" +files.at(i) +"/jet_ntuples_merged/ntuple_jet_merged_2.root" , "HGCalTriggerNtupleJet", "Sum$(cl3d_pt>"+cutval+")/2", "", 250,0,750);
+
+
+    //        TH1F * ncl3D = helper.single_plot( snwebb + "/" +files.at(i) +"/jet_ntuples_merged/ntuple_jet_merged_5.root" , "HGCalTriggerNtupleJet", "Sum$(cl3d_pt>"+cutval+")/2", "", 300,300.5,900.5);
+        TH1F * ncl3D = helper.single_plot( snwebb + "/" +files.at(i) +"/jet_ntuples_merged/ntuple_jet_merged_5.root" , "HGCalTriggerNtupleJet", "Sum$(cl3d_pt>"+cutval+")/2", "", 300,0.5,600.5);
+    //    TH1F * ncl3D = helper.single_plot( snwebb + "/" +files.at(i) +"/jet_ntuples_merged/ntuple_jet_merged_5.root" , "HGCalTriggerNtupleJet", "Sum$(cl3d_pt>"+cutval+")/2", "", 500,300,1800);
+    //    TH1F * ncl3D = helper.single_plot( snwebb + "/" +files.at(i) +"/jet_ntuples_merged/ntuple_jet_merged_2.root" , "HGCalTriggerNtupleJet", "Sum$(cl3d_pt>"+cutval+")/2", "", 14,-0.5,6.5);
+
+    ncl3D->SetTitle(";3D clusters per endcap;arbitrary units");
+    ncl3D->Scale(1/(ncl3D->Integral()));
+    hist.push_back( ncl3D );
+ 
+  }
+  
+  plotter.Draw( hist , legend, "ncl3d" , true);
+
 
 
 
@@ -313,6 +270,9 @@ void HGC::plot_nC3D(){
   std::vector<TString> files;
   std::vector<TString> legend;
   Plotter plotter( _cmd );
+
+
+
 
   // files.push_back("VBF_Hinv/VBF-PU200-stc-TCs-histoMax-DRAInf-DRB00-NS");
   // files.push_back("VBF_Hinv/VBF-PU200-stc-TCs-histoMax-DRAInf-DRB00-NS");
@@ -340,6 +300,9 @@ void HGC::plot_nC3D(){
   // legend.push_back( "2.0");
   // legend.push_back( "5.0");
   // legend.push_back( "10.0");
+
+
+
 
 
 

@@ -180,6 +180,7 @@ TH2F* Helpers::single_plot2D(TString file, TString tree_name, TString var, TStri
 
   tree->Draw(var+Form(">>h(%i,%f,%f,%i,%f,%f)",nbin1,min1,max1,nbin2,min2,max2),cut,"goff");
   TH2F* g=(TH2F*) ((TH2F*)gDirectory->Get("h"))->Clone( tree_name + counter() );
+  gDirectory->Get("h")->Delete();
   return g;
 }
 
@@ -196,6 +197,7 @@ TH2F* Helpers::single_plot2D(TString file, TString tree_name, TString var, TStri
   //  tree->Draw(var+Form(">>h(%i,%d,%i,%f,%f)",nbin1,min1,max1,nbin2,min2,max2),cut,"goff");
   tree->Draw(var+">>h",cut,"goff");
   TH2F* g=(TH2F*) ((TH2F*)gDirectory->Get("h"))->Clone( tree_name + counter() );
+  h->Delete();
   return g;
 }
 

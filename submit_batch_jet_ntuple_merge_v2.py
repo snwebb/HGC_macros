@@ -104,18 +104,70 @@ InputDirList = [
 #"VBF_HToInvisible_M125_14TeV_powheg_pythia8/crab_VBF-PU200-stcV3-TCs-histoMax-DRA04-DRB00-NS/190207_144328/0000",
 #"VBF_HToInvisible_M125_14TeV_powheg_pythia8/crab_VBF-PU200-stc-4416r-TCs-histoMax-DRA04-DRB00-NS/190212_131615/0000",
 
-"SingleGammaPt25Eta1p6_2p8/crab_SingleGamma-PU0-stc-wThresh-TCs-histoMax-DRA040-DRB00-NS/190213_132501/0000",
-"SingleGammaPt25Eta1p6_2p8/crab_SingleGamma-PU200-stc-wThresh-TCs-histoMax-DRA040-DRB00-NS/190213_132546/0000",
-"VBF_HToInvisible_M125_14TeV_powheg_pythia8/crab_VBF-PU200-stc-TCs-histoMax-DRA04-DRB00-NS-cl3dpt0/190213_133412/0000",
-"VBF_HToInvisible_M125_14TeV_powheg_pythia8/crab_VBF-PU0-stc-TCs-histoMax-DRAInf-DRB00-NS/190213_133629/0000",
+# "SingleGammaPt25Eta1p6_2p8/crab_SingleGamma-PU0-stc-wThresh-TCs-histoMax-DRA040-DRB00-NS/190213_132501/0000",
+# "SingleGammaPt25Eta1p6_2p8/crab_SingleGamma-PU200-stc-wThresh-TCs-histoMax-DRA040-DRB00-NS/190213_132546/0000",
+# "VBF_HToInvisible_M125_14TeV_powheg_pythia8/crab_VBF-PU200-stc-TCs-histoMax-DRA04-DRB00-NS-cl3dpt0/190213_133412/0000",
+# "VBF_HToInvisible_M125_14TeV_powheg_pythia8/crab_VBF-PU0-stc-TCs-histoMax-DRAInf-DRB00-NS/190213_133629/0000",
+
+
+# "VBF_HToInvisible_M125_14TeV_powheg_pythia8/crab_VBF-PU200-threshold-TCs-histoMax-DRA04-DRB00-NS-cl3dpt0/190218_105344/0000",
+# "VBF_HToInvisible_M125_14TeV_powheg_pythia8/crab_VBF-PU200-bestChoice-TCs-histoMax-DRA04-DRB00-NS/190218_100922/0000",
+# "VBF_HToInvisible_M125_14TeV_powheg_pythia8/crab_VBF-PU200-threshold-TCs-histoMax-DRA04-DRB00-NS-cl3dpt0/190218_105344/0000",
+# "VBF_HToInvisible_M125_14TeV_powheg_pythia8/crab_VBF-PU200-threshold-TCs-histoMax-DRA04-DRB02-NS-cl3dpt0/190218_105239/0000",
+# "VBF_HToInvisible_M125_14TeV_powheg_pythia8/crab_VBF-PU200-threshold-TCs-histoMax-DRA03-DRB02-NS-cl3dpt0/190218_105557/0000",
+# "VBF_HToInvisible_M125_14TeV_powheg_pythia8/crab_VBF-PU200-threshold-TCs-histoMax-DRAInf-DRB02-NS-cl3dpt0/190218_105804/0000",
+
+# "VBF_HToInvisible_M125_14TeV_powheg_pythia8/crab_VBF-PU200-threshold-TCs-histoInterpolated1stOrder-5mipt-DRA04-DRB00-NS-cl3dpt0/190218_111203/0000",
+# "VBF_HToInvisible_M125_14TeV_powheg_pythia8/crab_VBF-PU200-threshold-TCs-histoInterpolated1stOrder-5mipt-DRA04-DRB02-NS-cl3dpt0/190218_111038/0000",
+# "VBF_HToInvisible_M125_14TeV_powheg_pythia8/crab_VBF-PU200-threshold-TCs-histoInterpolated1stOrder-5mipt-DRAInf-DRB02-NS-cl3dpt0/190218_111609/0000",
+# "VBF_HToInvisible_M125_14TeV_powheg_pythia8/crab_VBF-PU200-threshold-TCs-histoInterpolated1stOrder-5mipt-DRA03-DRB02-NS-cl3dpt0/190218_111406/0000",
+
+# "SingleGammaPt25Eta1p6_2p8/crab_SingleGamma-PU200-stc-TCs-histoMax-DRA040-DRB00-NS/190218_134311/0000",
+
+"VBF_HToInvisible_M125_14TeV_powheg_pythia8/crab_VBF-PU200-threshold-TCs-histoMax-LayerDependentDRA01-NS/190221_150229/0000",
+# "VBF_HToInvisible_M125_14TeV_powheg_pythia8/crab_VBF-PU200-threshold-TCs-histoMax-LayerDependentDRA02-NS/190221_114421/0000",
+# "VBF_HToInvisible_M125_14TeV_powheg_pythia8/crab_VBF-PU200-threshold-TCs-histoMax-LayerDependentDRA03-NS/190221_114516/0000",
+# "VBF_HToInvisible_M125_14TeV_powheg_pythia8/crab_VBF-PU200-threshold-TCs-histoMax-LayerDependentDRA04-NS/190221_114611/0000",
+# "VBF_HToInvisible_M125_14TeV_powheg_pythia8/crab_VBF-PU200-CurrentDefault/190221_114714/0000",
 
    ]
 OutputDirList = [
 
-"/vols/cms/snwebb/HGC_ntuples/SingleGammaPt25/SingleGamma-PU0-stc-wThresh-TCs-histoMax-DRA040-DRB00-NS",
-"/vols/cms/snwebb/HGC_ntuples/SingleGammaPt25/SingleGamma-PU2000-stc-wThresh-TCs-histoMax-DRA040-DRB00-NS",
-"/vols/cms/snwebb/HGC_ntuples/VBF_Hinv/VBF-PU200-stc-TCs-histoMax-DRA04-DRB00-NS-cl3dpt0",
-"/vols/cms/snwebb/HGC_ntuples/VBF_Hinv/VBF-PU0-stc-TCs-histoMax-DRAInf-DRB00-NS",
+#Presentation
+
+# "/vols/cms/snwebb/HGC_ntuples/VBF_Hinv/VBF-PU200-threshold-TCs-TCs",
+# "/vols/cms/snwebb/HGC_ntuples/VBF_Hinv/VBF-PU200-bestChoice-TCs-histoMax-DRA04-DRB00-NS",
+# "/vols/cms/snwebb/HGC_ntuples/VBF_Hinv/VBF-PU200-threshold-TCs-histoMax-DRA04-DRB00-NS",
+# "/vols/cms/snwebb/HGC_ntuples/VBF_Hinv/VBF-PU200-threshold-TCs-histoMax-DRA04-DRB02-NS",
+# "/vols/cms/snwebb/HGC_ntuples/VBF_Hinv/VBF-PU200-threshold-TCs-histoMax-DRA03-DRB02-NS",
+# "/vols/cms/snwebb/HGC_ntuples/VBF_Hinv/VBF-PU200-threshold-TCs-histoMax-DRAInf-DRB02-NS",
+
+# "/vols/cms/snwebb/HGC_ntuples/VBF_Hinv/VBF-PU200-threshold-TCs-histoInterpolated1stOrder-5mipt-DRA04-DRB00-NS",
+# "/vols/cms/snwebb/HGC_ntuples/VBF_Hinv/VBF-PU200-threshold-TCs-histoInterpolated1stOrder-5mipt-DRA04-DRB02-NS",
+# "/vols/cms/snwebb/HGC_ntuples/VBF_Hinv/VBF-PU200-threshold-TCs-histoInterpolated1stOrder-5mipt-DRAInf-DRB02-NS",
+# "/vols/cms/snwebb/HGC_ntuples/VBF_Hinv/VBF-PU200-threshold-TCs-histoInterpolated1stOrder-5mipt-DRA03-DRB02-NS",
+
+# "/vols/cms/snwebb/HGC_ntuples/SingleGammaPt25/SingleGamma-PU200-stc-TCs-histoMax-DRA040-DRB00-NS",
+
+
+"/vols/cms/snwebb/HGC_ntuples/VBF_Hinv/VBF-PU200-threshold-TCs-histoMax-LayerDependentDRA01-NS",
+# "/vols/cms/snwebb/HGC_ntuples/VBF_Hinv/VBF-PU200-threshold-TCs-histoMax-LayerDependentDRA02-NS",
+# "/vols/cms/snwebb/HGC_ntuples/VBF_Hinv/VBF-PU200-threshold-TCs-histoMax-LayerDependentDRA03-NS",
+# "/vols/cms/snwebb/HGC_ntuples/VBF_Hinv/VBF-PU200-threshold-TCs-histoMax-LayerDependentDRA04-NS",
+# "/vols/cms/snwebb/HGC_ntuples/VBF_Hinv/VBF-PU200-CurrentDefault",
+
+
+
+
+
+
+
+
+
+# "/vols/cms/snwebb/HGC_ntuples/SingleGammaPt25/SingleGamma-PU0-stc-wThresh-TCs-histoMax-DRA040-DRB00-NS",
+# "/vols/cms/snwebb/HGC_ntuples/SingleGammaPt25/SingleGamma-PU2000-stc-wThresh-TCs-histoMax-DRA040-DRB00-NS",
+# "/vols/cms/snwebb/HGC_ntuples/VBF_Hinv/VBF-PU200-stc-TCs-histoMax-DRA04-DRB00-NS-cl3dpt0",
+# "/vols/cms/snwebb/HGC_ntuples/VBF_Hinv/VBF-PU0-stc-TCs-histoMax-DRAInf-DRB00-NS",
 
 #"/vols/cms/snwebb/HGC_ntuples/VBF_Hinv/VBF-PU200-stc-4416r-TCs-histoMax-DRA04-DRB00-NS/",
 #"/vols/cms/snwebb/HGC_ntuples/VBF_Hinv/VBF-PU200-stc-TCs-histoMax-DRAInf-DRB00-NS-Jet5p0/",

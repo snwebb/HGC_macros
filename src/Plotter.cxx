@@ -88,6 +88,7 @@ void Plotter::DrawGraphs(std::vector<TGraph*>& graphs, std::vector<TString>& leg
 
     _legend->Draw("same");
     c->SaveAs("plots/" + TString(_outdir) + "/res2.png");
+    c->SaveAs("plots/" + TString(_outdir) + "/res2.root");
   //  c->SaveAs("plots/" + TString(_outdir) + "/"+sa.root");
   
 
@@ -100,7 +101,7 @@ TGraph * Plotter::DrawProfile(TH2F * hist, TString savename, Option_t * option =
   TCanvas * c = _canvas;
   c->SetCanvasSize(800, 600);
   gPad->SetTicks(1,1);
-  SetLegendXY( 0.6, 0.5, 0.82, 0.75  );
+  SetLegendXY( 0.6, 0.45, 0.82, 0.75  );
 
   TProfile* pmean = hist->ProfileX( "profile_mean");
   TProfile* p_rms = hist->ProfileX( "profile", 1, -1, option );
@@ -180,7 +181,7 @@ TGraph * Plotter::DrawProfile(TH2F * hist, TString savename, Option_t * option =
    pmean->GetYaxis()->SetRangeUser(0,400);
    pmean->Draw("same");
 
-      p_rms->Draw("same");
+   p_rms->Draw("same");
 
   TGraphErrors * rms_up = new TGraphErrors( p_rms->GetNbinsX() );
   TGraphErrors * rms_down = new TGraphErrors( p_rms->GetNbinsX() );
@@ -300,14 +301,25 @@ TGraph * Plotter::DrawProfile(TH2F * hist, TString savename, Option_t * option =
     
     }
 
-    // std::cout << i-1 << std::endl;
-    // std::cout << "THIS TIME = " << rms.at(i-1) << " - " << rms_err.at(i-1) << std::endl;
+
     
     //    std::cout << rms.size() << " - " << rms_err.size() << std::endl;
-    
+
+
+    //normal way    
     rms_up  ->SetPoint(i-1, p_rms->GetBinCenter(i), double(centralbin_nominal+rms.at(i-1))/double(bins_per_unit) );
     rms_down->SetPoint(i-1, p_rms->GetBinCenter(i), double(centralbin_nominal-rms.at(i-1))/double(bins_per_unit) );
     
+    //test way
+    // rms_up  ->SetPoint(i-1, p_rms->GetBinCenter(i), p_rms->GetBinContent(i)+p_rms->GetBinError(i) );
+    // rms_down  ->SetPoint(i-1, p_rms->GetBinCenter(i), p_rms->GetBinContent(i)-p_rms->GetBinError(i) );
+    
+
+
+
+
+
+
     //    std::cout << " ------- " << double (rms_err.at(i-1)) << " - " << double (rms_err.at(i-1))/double (bins_per_unit) << std::endl;
 
     rms_up  ->SetPointError(i-1, 0, double (rms_err.at(i-1))/double (bins_per_unit) );
@@ -362,6 +374,7 @@ TGraph * Plotter::DrawProfile(TH2F * hist, TString savename, Option_t * option =
 
   c->Clear();
 
+     std::cout << "--------------" << std::endl;
   for (int i = 1; i < p_rms->GetNbinsX()+1; i++){
 
 
@@ -369,12 +382,16 @@ TGraph * Plotter::DrawProfile(TH2F * hist, TString savename, Option_t * option =
     double x[1] = { p_rms->GetBinCenter(i) };
     double err[1];  // error on the function at point x0
     r_rmsup->GetConfidenceIntervals(1, 1, 1, x, err, 0.683, false);
-    //    std::cout << "--------------" << std::endl;
+
 
 
 
     double sigma = 0.5 * std::abs( f_mean->GetX(f_rmsup->Eval(p_rms->GetBinCenter(i)) ) - f_mean->GetX(f_rmsdown->Eval(p_rms->GetBinCenter(i)) ) ); 
     double sigma_err = 0.5 * std::abs( f_mean->GetX(f_rmsup->Eval(p_rms->GetBinCenter(i)) + err[0]    ) - f_mean->GetX(f_rmsdown->Eval(p_rms->GetBinCenter(i)) - err[0] ) ); 
+
+
+    std::cout << p_rms->GetBinCenter(i) << " -  "<< f_rmsup->Eval(p_rms->GetBinCenter(i)) << " - " << f_mean->GetX(f_rmsup->Eval(p_rms->GetBinCenter(i)) ) << std::endl;
+    std::cout << sigma << std::endl;
 
     //Using the 68% counting method
     // double sigma_68 = rms.at(i-1)/double(bins_per_unit);
@@ -418,6 +435,7 @@ TGraph * Plotter::DrawProfile(TH2F * hist, TString savename, Option_t * option =
 
 void Plotter::Draw(std::vector<TH1F*>& hists, std::vector<TString>& legend, TString savename, bool logy){
 
+  _legend->Clear();
   TCanvas * c = _canvas;
   c->SetCanvasSize(800, 600);
   gPad->SetTicks(1,1);
@@ -438,7 +456,7 @@ void Plotter::Draw(std::vector<TH1F*>& hists, std::vector<TString>& legend, TStr
 
     if ( i == 0 ){
 	histo->Draw();
-	gPad->SetLogy(logy);
+       	gPad->SetLogy(logy);
     }
     else{
       histo->Draw("same");
@@ -548,7 +566,6 @@ TH2F * Plotter::Draw2D( HistObject hist, int nbins1, double* x, int nbins2, doub
 
   TH2F* histo = 0;
   histo = _helper.single_plot2D( hist.filename(), "HGCalTriggerNtupleJet", hist.var(), hist.cut(), nbins1, x, nbins2, xlow2, xhigh2 );
-  
   _legend->AddEntry( histo, hist.leg_entry(), "L");    
   histo->SetTitle("");
   histo->Draw();

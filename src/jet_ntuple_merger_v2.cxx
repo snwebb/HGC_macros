@@ -912,8 +912,6 @@ void jet_ntuple_merger_v2::add_jet(TString filein,  TString treename, TString fi
 
 
 
-    //    std::cout << "--" << std::endl;
-
     for(unsigned int i_VBF=0; i_VBF<_VBF_parton_gen.size(); i_VBF++){
 
       TLorentzVector VBF_parton;
