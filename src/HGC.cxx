@@ -7,6 +7,7 @@ int main( int argc, char ** argv){
 
   HGC hgc( &cmd );
   
+
   //Response
   // hgc.plot_profile_L1jet_response_pt_PU0_STC();
   // hgc.plot_profile_L1jet_response_eta_PU0_STC();
@@ -59,7 +60,7 @@ int main( int argc, char ** argv){
 HGC::HGC( CmdLine* cmd ){
 
   _cmd = cmd;
-
+  
 }
 
 void HGC::MakeTar(  ){

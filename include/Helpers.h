@@ -73,6 +73,7 @@ class Helpers{
   TH1F* single_plot(TString hname, std::vector<TString> files, TString tree_name, TString var, TString cut, int nbin, float min, float max);
   void makeBinContentsPositive(TH1* histogram, bool verbosity=false);
   TString counter();
+
 };
 
 #endif

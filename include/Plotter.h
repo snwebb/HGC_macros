@@ -13,6 +13,7 @@ class Plotter{
   void InitialiseCanvas();
   void InitialiseLatex();
   std::vector<HistObject> _histlist;
+  TFile * _fileout;
 
  protected:
 
@@ -39,6 +40,17 @@ class Plotter{
   void DrawGraphs (std::vector<TGraph*>& graphs, std::vector<TString>& legend);
   //  void DrawGraphs (std::vector<TGraph*>& graphs);
 
+
+  template< class T > void SaveFile( std::vector<T>& graphs ){
+    _fileout = new TFile ( (_outdir+"/graphs.root").c_str(), "RECREATE");
+    for (auto &graph: graphs ){
+      graph->Write( );
+    };
+    _fileout->Close();
+    _fileout->Delete();
+  }
+
+  //    void SaveFile( std::vector<TGraph*>& graphs );
 };
 
 

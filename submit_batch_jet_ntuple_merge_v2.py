@@ -124,14 +124,83 @@ InputDirList = [
 
 # "SingleGammaPt25Eta1p6_2p8/crab_SingleGamma-PU200-stc-TCs-histoMax-DRA040-DRB00-NS/190218_134311/0000",
 
-"VBF_HToInvisible_M125_14TeV_powheg_pythia8/crab_VBF-PU200-threshold-TCs-histoMax-LayerDependentDRA01-NS/190221_150229/0000",
+#"VBF_HToInvisible_M125_14TeV_powheg_pythia8/crab_VBF-PU200-threshold-TCs-histoMax-LayerDependentDRA01-NS/190221_150229/0000",
 # "VBF_HToInvisible_M125_14TeV_powheg_pythia8/crab_VBF-PU200-threshold-TCs-histoMax-LayerDependentDRA02-NS/190221_114421/0000",
 # "VBF_HToInvisible_M125_14TeV_powheg_pythia8/crab_VBF-PU200-threshold-TCs-histoMax-LayerDependentDRA03-NS/190221_114516/0000",
 # "VBF_HToInvisible_M125_14TeV_powheg_pythia8/crab_VBF-PU200-threshold-TCs-histoMax-LayerDependentDRA04-NS/190221_114611/0000",
 # "VBF_HToInvisible_M125_14TeV_powheg_pythia8/crab_VBF-PU200-CurrentDefault/190221_114714/0000",
 
+
+# "VBF_HToInvisible_M125_14TeV_powheg_pythia8/crab_VBF-PU200-NewDefault-histoMax-0mipt/190226_164146/0000",
+# "VBF_HToInvisible_M125_14TeV_powheg_pythia8/crab_VBF-PU200-NewDefault-histoMax-5mipt/190226_164230/0000",
+# "VBF_HToInvisible_M125_14TeV_powheg_pythia8/crab_VBF-PU200-NewDefault-histoMax-10mipt/190226_164305/0000",
+# "VBF_HToInvisible_M125_14TeV_powheg_pythia8/crab_VBF-PU200-STC16-NewDefault-histoMax-0mipt/190226_164715/0000",
+# "VBF_HToInvisible_M125_14TeV_powheg_pythia8/crab_VBF-PU200-STC16-NewDefault-histoMax-5mipt/190226_164643/0000",
+# "VBF_HToInvisible_M125_14TeV_powheg_pythia8/crab_VBF-PU200-STC16-NewDefault-histoMax-10mipt/190226_164611/0000",
+
+# "VBF_HToInvisible_M125_14TeV_powheg_pythia8/crab_VBF-PU200-threshold-histoMax-DRA04-DRB02-10mipt/190226_164844/0000",
+# "VBF_HToInvisible_M125_14TeV_powheg_pythia8/crab_VBF-PU200-STC16-histoMax-DRA04-DRB02-10mipt/190226_164801/0000",
+
+#"VBF_HToInvisible_M125_14TeV_powheg_pythia8/crab_VBF-PU200-NewDefault-histoMax-15mipt/190226_164337/0000",
+#"VBF_HToInvisible_M125_14TeV_powheg_pythia8/crab_VBF-PU200-NewDefault-histoMax-20mipt/190226_164403/0000",
+# "VBF_HToInvisible_M125_14TeV_powheg_pythia8/crab_VBF-PU200-STC16-NewDefault-histoMax-15mipt/190226_164538/0000",
+# "VBF_HToInvisible_M125_14TeV_powheg_pythia8/crab_VBF-PU200-STC16-NewDefault-histoMax-20mipt/190226_164452/0000",
+
+
+ # "VBF_HToInvisible_M125_14TeV_powheg_pythia8/crab_VBF-PU200-threshold-LbyLx1-DRB02-10mipt/190304_103514/0000",
+ # "VBF_HToInvisible_M125_14TeV_powheg_pythia8/crab_VBF-PU200-threshold-LbyLx1p5-DRB02-10mipt/190304_103651/0000",
+ # "VBF_HToInvisible_M125_14TeV_powheg_pythia8/crab_VBF-PU200-threshold-LbyLx2-DRB02-10mipt/190304_103726/0000",
+
+# "VBF_HToInvisible_M125_14TeV_powheg_pythia8/crab_VBF-PU200-threshold-LbyLx1p25-DRB02-10mipt/190304_160621/0000",
+# "VBF_HToInvisible_M125_14TeV_powheg_pythia8/crab_VBF-PU200-threshold-LbyLx1p25-DRB00-10mipt/190304_163003/0000",
+
+# "VBF_HToInvisible_M125_14TeV_powheg_pythia8/crab_VBF-PU200-threshold-LbyLx1p25-BLbyL0-10mipt/190305_095422/0000",
+# "VBF_HToInvisible_M125_14TeV_powheg_pythia8/crab_VBF-PU200-threshold-LbyLx1p25-BLbyL0p5-10mipt/190305_094944/0000",
+
+# "VBF_HToInvisible_M125_14TeV_powheg_pythia8/crab_VBF-PU200-STC4-LbyLx1p25-BLbyL0-10mipt/190305_101439/0000",
+# "VBF_HToInvisible_M125_14TeV_powheg_pythia8/crab_VBF-PU200-STC4-LbyLx1p25-BLbyL0p5-10mipt/190305_101351/0000",
+
+# "VBF_HToInvisible_M125_14TeV_powheg_pythia8/crab_VBF-PU200-STC16-LbyLx1p25-BLbyL0-10mipt/190305_101225/0000",
+# "VBF_HToInvisible_M125_14TeV_powheg_pythia8/crab_VBF-PU200-STC16-LbyLx1p25-BLbyL0p5-10mipt/190305_101307/0000",
+
+    "VBF_HToInvisible_M125_14TeV_powheg_pythia8/crab_VBF-PU200-STC4-EqualSpread-LbyLx1p25-BLbyL0-10mipt/190307_170810/0000",
+
    ]
 OutputDirList = [
+
+ "/vols/cms/snwebb/HGC_ntuples/VBF_Hinv/VBF-PU200-STC4-EqualSpread-LbyLx1p25-BLbyL0-10mipt",
+
+   # "/vols/cms/snwebb/HGC_ntuples/VBF_Hinv/VBF-PU200-threshold-LbyLx1p25-DRB02-10mipt",
+   # "/vols/cms/snwebb/HGC_ntuples/VBF_Hinv/VBF-PU200-threshold-LbyLx1p25-DRB00-10mipt",
+
+   # "/vols/cms/snwebb/HGC_ntuples/VBF_Hinv/VBF-PU200-threshold-LbyLx1p25-BLbyL0-10mipt",
+   # "/vols/cms/snwebb/HGC_ntuples/VBF_Hinv/VBF-PU200-threshold-LbyLx1p25-BLbyL0p5-10mipt",
+
+   # "/vols/cms/snwebb/HGC_ntuples/VBF_Hinv/VBF-PU200-STC4-LbyLx1p25-BLbyL0-10mipt",
+   # "/vols/cms/snwebb/HGC_ntuples/VBF_Hinv/VBF-PU200-STC4-LbyLx1p25-BLbyL0p5-10mipt",
+
+   # "/vols/cms/snwebb/HGC_ntuples/VBF_Hinv/VBF-PU200-STC16-LbyLx1p25-BLbyL0-10mipt",
+   # "/vols/cms/snwebb/HGC_ntuples/VBF_Hinv/VBF-PU200-STC16-LbyLx1p25-BLbyL0p5-10mipt",
+
+
+ # "/vols/cms/snwebb/HGC_ntuples/VBF_Hinv/VBF-PU200-threshold-LbyLx1-DRB02-10mipt",            
+ # "/vols/cms/snwebb/HGC_ntuples/VBF_Hinv/VBF-PU200-threshold-LbyLx1p5-DRB02-10mipt",            
+ # "/vols/cms/snwebb/HGC_ntuples/VBF_Hinv/VBF-PU200-threshold-LbyLx2-DRB02-10mipt",            
+
+# "/vols/cms/snwebb/HGC_ntuples/VBF_Hinv/VBF-PU200-NewDefault-histoMax-0mipt",            
+# "/vols/cms/snwebb/HGC_ntuples/VBF_Hinv/VBF-PU200-NewDefault-histoMax-5mipt",            
+# "/vols/cms/snwebb/HGC_ntuples/VBF_Hinv/VBF-PU200-NewDefault-histoMax-10mipt",           
+# "/vols/cms/snwebb/HGC_ntuples/VBF_Hinv/VBF-PU200-STC16-NewDefault-histoMax-0mipt",      
+# "/vols/cms/snwebb/HGC_ntuples/VBF_Hinv/VBF-PU200-STC16-NewDefault-histoMax-5mipt",      
+# "/vols/cms/snwebb/HGC_ntuples/VBF_Hinv/VBF-PU200-STC16-NewDefault-histoMax-10mipt",     
+
+# "/vols/cms/snwebb/HGC_ntuples/VBF_Hinv/VBF-PU200-threshold-histoMax-DRA04-DRB02-10mipt",
+# "/vols/cms/snwebb/HGC_ntuples/VBF_Hinv/VBF-PU200-STC16-histoMax-DRA04-DRB02-10mipt",    
+
+#"/vols/cms/snwebb/HGC_ntuples/VBF_Hinv/VBF-PU200-NewDefault-histoMax-15mipt",           
+#"/vols/cms/snwebb/HGC_ntuples/VBF_Hinv/VBF-PU200-NewDefault-histoMax-20mipt",           
+# "/vols/cms/snwebb/HGC_ntuples/VBF_Hinv/VBF-PU200-STC16-NewDefault-histoMax-15mipt",     
+# "/vols/cms/snwebb/HGC_ntuples/VBF_Hinv/VBF-PU200-STC16-NewDefault-histoMax-20mipt",     
 
 #Presentation
 
@@ -150,7 +219,7 @@ OutputDirList = [
 # "/vols/cms/snwebb/HGC_ntuples/SingleGammaPt25/SingleGamma-PU200-stc-TCs-histoMax-DRA040-DRB00-NS",
 
 
-"/vols/cms/snwebb/HGC_ntuples/VBF_Hinv/VBF-PU200-threshold-TCs-histoMax-LayerDependentDRA01-NS",
+#"/vols/cms/snwebb/HGC_ntuples/VBF_Hinv/VBF-PU200-threshold-TCs-histoMax-LayerDependentDRA01-NS",
 # "/vols/cms/snwebb/HGC_ntuples/VBF_Hinv/VBF-PU200-threshold-TCs-histoMax-LayerDependentDRA02-NS",
 # "/vols/cms/snwebb/HGC_ntuples/VBF_Hinv/VBF-PU200-threshold-TCs-histoMax-LayerDependentDRA03-NS",
 # "/vols/cms/snwebb/HGC_ntuples/VBF_Hinv/VBF-PU200-threshold-TCs-histoMax-LayerDependentDRA04-NS",
@@ -232,6 +301,7 @@ OutputDirList = [
    ]
 
 
+
 #ScriptName = "scripts/runJets.py" # script to be used with cmsRun
 #FileList = "filelist.txt" # list with all the file directories
 #queue = "8nh" # give bsub queue -- 8nm (8 minutes), 1nh (1 hour), 8nh, 1nd (1day), 2nd, 1nw (1 week), 2nw 
@@ -280,7 +350,8 @@ for indir, outdir in zip( InputDirList, OutputDirList ):
          fout.write("cd /home/hep/snwebb/hgcal/CMSSW_10_1_7/src\n")
          fout.write("eval `scramv1 runtime -sh`\n")
          fout.write("cd /home/hep/snwebb/hgcal/HGC_macros\n")
-         fout.write("./jet_ntuple_merge --runtype jet --filein root://cms-xrd-global.cern.ch//store/user/sawebb/"+ indir + "/ntuple_"+str(x)+".root --filein_jet " + outdir+"/jet_ntuples/ntuple_jet_"+str(x)+".root --fileout " + OutputFileNames +"_"+str(x)+".root \n")
+#         fout.write("./jet_ntuple_merge --runtype jet --filein root://cms-xrd-global.cern.ch//store/user/sawebb/"+ indir + "/ntuple_"+str(x)+".root --filein_jet " + outdir+"/jet_ntuples/ntuple_jet_"+str(x)+".root --fileout " + OutputFileNames +"_"+str(x)+".root \n")
+         fout.write("./jet_ntuple_merge --runtype jet --filein root://gfe02.grid.hep.ph.ic.ac.uk:1096//store/user/sawebb/"+ indir + "/ntuple_"+str(x)+".root --filein_jet " + outdir+"/jet_ntuples/ntuple_jet_"+str(x)+".root --fileout " + OutputFileNames +"_"+str(x)+".root \n")
          fout.write("echo 'STOP---------------'\n")
          fout.write("echo\n")
          fout.write("echo\n")

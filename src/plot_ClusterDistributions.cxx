@@ -4,7 +4,8 @@
 
 void HGC::plot_GenRecoET(){
 
-    TString stats = "1*";
+      TString stats = "1*";
+  //    TString stats = "2";
   //    TString stats = "1*";
   //    TString stats = "1*";
 
@@ -103,7 +104,40 @@ void HGC::plot_GenRecoET(){
   TString file_threshold_histomax_LayerDep04 = "VBF_Hinv/VBF-PU200-threshold-TCs-histoMax-LayerDependentDRA04-NS";
   TString file_CurrentDefault = "VBF_Hinv/VBF-PU200-CurrentDefault";
   
+
+
+  TString  file_NewDefault_0mipt = "VBF_Hinv/VBF-PU200-NewDefault-histoMax-0mipt";
+  TString  file_NewDefault_5mipt = "VBF_Hinv/VBF-PU200-NewDefault-histoMax-5mipt";
+  TString  file_NewDefault_10mipt = "VBF_Hinv/VBF-PU200-NewDefault-histoMax-10mipt";
+  TString  file_NewDefault_15mipt = "VBF_Hinv/VBF-PU200-NewDefault-histoMax-15mipt";
+  TString  file_NewDefault_20mipt = "VBF_Hinv/VBF-PU200-NewDefault-histoMax-20mipt";
+
+  TString  file_STC16_NewDefault_0mipt = "VBF_Hinv/VBF-PU200-STC16-NewDefault-histoMax-0mipt";
+  TString  file_STC16_NewDefault_5mipt = "VBF_Hinv/VBF-PU200-STC16-NewDefault-histoMax-5mipt";
+  TString  file_STC16_NewDefault_10mipt = "VBF_Hinv/VBF-PU200-STC16-NewDefault-histoMax-10mipt";
+  TString  file_STC16_NewDefault_15mipt = "VBF_Hinv/VBF-PU200-STC16-NewDefault-histoMax-15mipt";
+  TString  file_STC16_NewDefault_20mipt = "VBF_Hinv/VBF-PU200-STC16-NewDefault-histoMax-20mipt";
+
   
+  TString  file_STC16_histomax_10mipt = "VBF_Hinv/VBF-PU200-STC16-histoMax-DRA04-DRB02-10mipt";
+  TString  file_threshold_histomax_10mipt = "VBF_Hinv/VBF-PU200-threshold-histoMax-DRA04-DRB02-10mipt";
+
+
+  TString  file_lblx1 = "VBF_Hinv/VBF-PU200-threshold-LbyLx1-DRB02-10mipt";
+  TString  file_lblx1p5 = "VBF_Hinv/VBF-PU200-threshold-LbyLx1p5-DRB02-10mipt";
+  TString  file_lblx2 = "VBF_Hinv/VBF-PU200-threshold-LbyLx2-DRB02-10mipt";
+
+
+  TString  file_lblx1p25_b0 = "VBF_Hinv/VBF-PU200-threshold-LbyLx1p25-BLbyL0-10mipt";
+  TString  file_lblx1p25_b0p5 = "VBF_Hinv/VBF-PU200-threshold-LbyLx1p25-BLbyL0p5-10mipt";
+  TString  file_stc16_lblx1p25_b0 = "VBF_Hinv/VBF-PU200-STC16-LbyLx1p25-BLbyL0-10mipt";
+  TString  file_stc16_lblx1p25_b0p5 = "VBF_Hinv/VBF-PU200-STC16-LbyLx1p25-BLbyL0p5-10mipt";
+  TString  file_stc4_lblx1p25_b0 = "VBF_Hinv/VBF-PU200-STC4-LbyLx1p25-BLbyL0-10mipt";
+  TString  file_stc4_lblx1p25_b0p5 = "VBF_Hinv/VBF-PU200-STC4-LbyLx1p25-BLbyL0p5-10mipt";
+
+  TString  file_4bit = "VBF_Hinv/VBF-PU200-STC4-EqualSpread-LbyLx1p25-BLbyL0-10mipt";
+
+ 
   TString cut = "VBF_parton_genjet>=0 && VBF_parton_jets>=0 && abs(genjet_eta[VBF_parton_genjet])>1.7 && abs(genjet_eta[VBF_parton_genjet])<2.8 ";
   
   std::vector<HistObject> histobjects;
@@ -194,10 +228,10 @@ void HGC::plot_GenRecoET(){
 
 
   //Layer dependent studies
-   std::vector<TString> files = {file_threshold_histomax_LayerDep01,file_threshold_histomax_LayerDep02,file_threshold_histomax_LayerDep03,file_threshold_histomax_LayerDep04};
-   //  std::vector<TString> files = {file_threshold_histomax_LayerDep02,file_threshold_histomax_LayerDep03,file_threshold_histomax_LayerDep04};
-   std::vector<TString> description = {"0p01","0p02","0p03","0p04"};
-   std::vector<TString> legend = {"A=0.01","A=0.02","A=0.03","A=0.04"};
+   // std::vector<TString> files = {file_threshold_histomax_LayerDep01,file_threshold_histomax_LayerDep02,file_threshold_histomax_LayerDep03,file_threshold_histomax_LayerDep04};
+   // //  std::vector<TString> files = {file_threshold_histomax_LayerDep02,file_threshold_histomax_LayerDep03,file_threshold_histomax_LayerDep04};
+   // std::vector<TString> description = {"0p01","0p02","0p03","0p04"};
+   // std::vector<TString> legend = {"A=0.01","A=0.02","A=0.03","A=0.04"};
 
 
 
@@ -210,6 +244,51 @@ void HGC::plot_GenRecoET(){
   // std::vector<TString> legend = {"0.5","1.0","2.0","5.0","10.0"};
 
 
+
+  //New Default Threshold
+  // std::vector<TString> files = {file_NewDefault_0mipt, file_NewDefault_5mipt, file_NewDefault_10mipt, file_NewDefault_15mipt, file_NewDefault_20mipt};
+  // std::vector<TString> description = {"0mipt","5mipt","10mipt","15mipt","20mipt"};
+  // std::vector<TString> legend = {"0mipt","5mipt","10mipt","15mipt","20mipt"};
+
+  // std::vector<TString> files = {file_NewDefault_0mipt, file_NewDefault_5mipt, file_NewDefault_10mipt};
+  // std::vector<TString> description = {"0mipt","5mipt","10mipt"};
+  // std::vector<TString> legend = {"0mipt","5mipt","10mipt"};
+
+  // //New Default STC
+  // std::vector<TString> files = {file_STC16_NewDefault_0mipt, file_STC16_NewDefault_5mipt, file_STC16_NewDefault_10mipt, file_STC16_NewDefault_15mipt, file_STC16_NewDefault_20mipt};
+  // std::vector<TString> description = {"0mipt","5mipt","10mipt","15mipt","20mipt"};
+  // std::vector<TString> legend = {"0mipt","5mipt","10mipt","15mipt","20mipt"};
+
+
+  // //DRA04 DRB02 10MIPT
+  // std::vector<TString> files = {file_threshold_histomax_10mipt,file_STC16_histomax_10mipt};
+  // std::vector<TString> description = {"threshold","stc16"};
+  // std::vector<TString> legend = {"threshold","stc16"};
+
+
+
+  // //Varying cluster radius (layer by layer scaling)
+  // std::vector<TString> files = { file_NewDefault_10mipt, file_lblx1,file_lblx1p25_b0,file_lblx1p5,file_lblx2};
+  // std::vector<TString> description = { "noeta","1p0","1p25","1p5", "2p0"};
+  // std::vector<TString> legend = {"DefaultNoEta","DefaultEta","DefaultNoEta x 1.25","DefaultEta x 1.5", "DefaultEta x 2"};
+
+
+
+
+  //Varying cluster radius (layer by layer scaling)
+  // std::vector<TString> files = { file_lblx1p25_b0, file_lblx1p25_b0p5, file_stc4_lblx1p25_b0, file_stc4_lblx1p25_b0p5, file_stc16_lblx1p25_b0, file_stc16_lblx1p25_b0p5, };
+  // std::vector<TString> description = { "thresh-b0","thresh-b0p5", "stc4-b0","stc4-b0p5","stc16-b0","stc16-b0p5"};
+  // std::vector<TString> legend = { "thresh B=0","thresh B=0.5A", "stc4 B=0","stc4 B=0.5A","stc16 B=0","stc16 B=0.5A"};
+
+  // std::vector<TString> files = { file_NewDefault_10mipt, file_lblx1p25_b0, file_lblx2};
+  // std::vector<TString> description = { "Default","DefaultAx1p25","DefaultAx2"};
+  // std::vector<TString> legend = {"Default", "Default x 1.25","Default x 2"};
+
+
+  // 4 bit study
+  std::vector<TString> files = { file_4bit, file_lblx1p25_b0, file_stc4_lblx1p25_b0};
+  std::vector<TString> description = { "4bit", "thresh", "stc4"};
+  std::vector<TString> legend = {"4bit", "threshold", "stc4"};
 
 
 
@@ -226,11 +305,11 @@ void HGC::plot_GenRecoET(){
   
   plotter.DrawGraphs(graphs, legend);
 
+  plotter.SaveFile( graphs );
 
 
 
-
-
+  /*
 
 
   std::vector<TH1F*> hist;
@@ -246,7 +325,7 @@ void HGC::plot_GenRecoET(){
 
 
     //        TH1F * ncl3D = helper.single_plot( snwebb + "/" +files.at(i) +"/jet_ntuples_merged/ntuple_jet_merged_5.root" , "HGCalTriggerNtupleJet", "Sum$(cl3d_pt>"+cutval+")/2", "", 300,300.5,900.5);
-        TH1F * ncl3D = helper.single_plot( snwebb + "/" +files.at(i) +"/jet_ntuples_merged/ntuple_jet_merged_5.root" , "HGCalTriggerNtupleJet", "Sum$(cl3d_pt>"+cutval+")/2", "", 300,0.5,600.5);
+        TH1F * ncl3D = helper.single_plot( snwebb + "/" +files.at(i) +"/jet_ntuples_merged/ntuple_jet_merged_11.root" , "HGCalTriggerNtupleJet", "Sum$(cl3d_pt>"+cutval+")/2", "", 300,0.5,600.5);
     //    TH1F * ncl3D = helper.single_plot( snwebb + "/" +files.at(i) +"/jet_ntuples_merged/ntuple_jet_merged_5.root" , "HGCalTriggerNtupleJet", "Sum$(cl3d_pt>"+cutval+")/2", "", 500,300,1800);
     //    TH1F * ncl3D = helper.single_plot( snwebb + "/" +files.at(i) +"/jet_ntuples_merged/ntuple_jet_merged_2.root" , "HGCalTriggerNtupleJet", "Sum$(cl3d_pt>"+cutval+")/2", "", 14,-0.5,6.5);
 
@@ -257,7 +336,7 @@ void HGC::plot_GenRecoET(){
   }
   
   plotter.Draw( hist , legend, "ncl3d" , true);
-
+  */
 
 
 
