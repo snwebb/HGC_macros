@@ -32,15 +32,6 @@ class jet_ntuple_merger_simple{
   float thickCorr = 1.092;
  
 
-  float calibrateInMipT(int hwPt, float eta, int subdet);
-  float calibrateMipTinGeV(float MIPpt, int HGClayer, TString calib_version);
-
-  int HGC_layer(const uint32_t subdet, const uint32_t layer);
-  float meanX(const std::vector<std::pair<float,float> >& energy_X_tc);
-  float sigmaXX(const std::vector<std::pair<float,float> >& energy_X_tc, const float X_cluster);
-  float sigmaPhiPhi(const std::vector<std::pair<float,float> >& energy_phi_tc, const float phi_cluster);
-
-
  public:
 
   jet_ntuple_merger_simple();

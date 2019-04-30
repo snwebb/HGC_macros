@@ -57,7 +57,7 @@ void Plotter::SetLegendXY(Double_t x1, Double_t y1, Double_t x2, Double_t y2){
 
 }
 
-void Plotter::DrawGraphs(std::vector<TGraph*>& graphs, std::vector<TString>& legend){
+void Plotter::DrawGraphs(std::vector<TGraphErrors*>& graphs, std::vector<TString>& legend){
 
   TCanvas * c = _canvas;
   c->SetCanvasSize(800, 600);
@@ -74,6 +74,7 @@ void Plotter::DrawGraphs(std::vector<TGraph*>& graphs, std::vector<TString>& leg
 
       if ( i==0 ){
 	graph->Draw("ap");
+	graph->SetTitle(";gen p_{T};Resolution");
 	graph->GetXaxis()->SetRangeUser(20,300);
 	graph->GetYaxis()->SetRangeUser(0,0.4);
 	graph->Draw("apsame");
@@ -96,7 +97,152 @@ void Plotter::DrawGraphs(std::vector<TGraph*>& graphs, std::vector<TString>& leg
 }
 
 
-TGraph * Plotter::DrawProfile(TH2F * hist, TString savename, Option_t * option = ""){
+
+void Plotter::DrawEtaGraphs(std::vector<TGraphErrors*>& graphs){
+
+  TCanvas * c = _canvas;
+  c->SetCanvasSize(800, 600);
+  gPad->SetTicks(1,1);
+  std::vector<TString> legend;
+
+  std::vector<TGraphErrors*> eta_graphs;
+  std::vector<TGraphErrors*> eta_graphs2;
+  TMultiGraph *mg = new TMultiGraph();
+  mg->SetTitle("; #eta; Resolution");
+  //2 eta bins
+  // std::vector<float> eta_centres = {1.875,2.625};
+  // float eta_width = 0.375;  
+
+  //5 eta bins
+  std::vector<float> eta_centres = {1.65, 1.95, 2.25, 2.55, 2.85};
+  float eta_width = 0.15;  
+
+  // int begin_bin = 2;
+  // int end_bin = 5;
+  int begin_bin = 5;
+  int end_bin = 8;
+  // int begin_bin = 8;
+  // int end_bin = 13;
+
+
+
+  // int begin_bin = 11;
+  // int end_bin = 14;
+
+  int count = 0;
+  //  int count_type = 0;
+
+  for (auto &graph: graphs ){    
+
+    //    for ( int i = 0; i < graph->GetN(); i++ ){
+    for ( int i = 0; i < end_bin-begin_bin; i++ ){
+
+      TGraphErrors * g = 0;
+      if ( count == 0 )	g = new TGraphErrors( graphs.size() );
+      else g = eta_graphs.at(i);
+      double tempx, tempy;
+	graph->GetPoint(i+begin_bin, tempx, tempy);
+	//	std::cout << count << " - " << eta_centres.at(count) << " - " << tempy << std::endl;
+	g->SetPoint( count , eta_centres.at(count) , tempy ) ;
+	g->SetPointError( count , eta_width , graph->GetErrorY(i+begin_bin) ) ;
+	if ( count == 0 ) {
+	  eta_graphs.push_back( g );
+	  legend.push_back( TString( std::to_string(int(tempx))  + " pT STC4" ) );
+	  //	  std::cout << legend.size() << std::endl;
+	}
+    }
+    count++;
+    if (count == 5) break;
+  }
+
+
+  int count2 = 0;
+  count = 0;
+  for (auto &graph: graphs ){    
+    
+    if ( count2 < 5 ){
+      count2 ++;
+      continue;
+    }
+    //    for ( int i = 0; i < graph->GetN(); i++ ){
+    for ( int i = 0; i < end_bin-begin_bin; i++ ){
+      TGraphErrors * g = 0;
+      if ( count == 0 )	g = new TGraphErrors( graphs.size() );
+      else g = eta_graphs2.at(i);
+	double tempx, tempy;
+	graph->GetPoint(i+begin_bin, tempx, tempy);
+	//	std::cout << count << " - " << eta_centres.at(count) << " - " << tempy << std::endl;
+	g->SetPoint( count , eta_centres.at(count) , tempy ) ;
+	g->SetPointError( count , eta_width , graph->GetErrorY(i+begin_bin) ) ;
+
+	if ( count == 0 ) {
+	  eta_graphs2.push_back( g );
+	  legend.push_back( TString( std::to_string(int(tempx))  + " pT 1bit" ) );
+	  //	  std::cout << legend.size() << std::endl;
+	}
+    }
+    count++;
+  }
+
+
+  SetLegendXY( 0.2, 0.3, 0.35, 0.75  );
+  _legend->Clear();
+
+  int i = 0;
+  //Each graph is an eta point, 
+  for (auto &graph: eta_graphs ){    
+    graph->SetMarkerStyle(22);
+    graph->SetLineColor(i+1);      
+    graph->SetMarkerColor(i+1);      
+    if(i>3){
+      graph->SetLineColor(i+2);
+      graph->SetMarkerColor(i+2);
+    }
+    //    if ( i > 2 ){
+      mg->Add(graph, "p" );
+      _legend->AddEntry(graph, legend.at(i), "LP" );
+      //    }
+    i++;
+  }
+  i = 0;
+  for (auto &graph: eta_graphs2 ){    
+
+    graph->SetMarkerStyle(20);
+
+    if(i>3){
+      graph->SetLineColor(i+2);
+      graph->SetMarkerColor(i+2);
+    }
+    else{
+      graph->SetLineColor(i+1);  
+      graph->SetMarkerColor(i+1);    
+    }
+    //    if ( i > 2+5 ){
+      mg->Add(graph, "p" );
+
+  _legend->AddEntry(graph, legend.at(i+(end_bin-begin_bin)), "LP" );
+      //    }
+    i++;
+  }
+
+
+  mg->Draw("ap");
+  mg->GetXaxis()->SetLimits(0.75,3);
+  mg->GetYaxis()->SetRangeUser(0,0.4);
+
+
+      _legend->Draw("same");
+
+    c->SaveAs("plots/" + TString(_outdir) + "/eta_res.png");
+    c->SaveAs("plots/" + TString(_outdir) + "/eta_res.root");
+  //  c->SaveAs("plots/" + TString(_outdir) + "/"+sa.root");
+  
+
+
+}
+
+
+TGraphErrors * Plotter::DrawProfile(TH2F * hist, TString savename, Option_t * option = ""){
 
   TCanvas * c = _canvas;
   c->SetCanvasSize(800, 600);

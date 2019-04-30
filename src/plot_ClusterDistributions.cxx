@@ -4,10 +4,10 @@
 
 void HGC::plot_GenRecoET(){
 
-      TString stats = "1*";
+  //        TString stats = "full";
   //    TString stats = "2";
-  //    TString stats = "1*";
-  //    TString stats = "1*";
+  //        TString stats = "*";
+        TString stats = "1*";
 
   TString file1 = "VBF_Hinv/VBF-PU200-stc-TCs-TCs";
 
@@ -133,17 +133,103 @@ void HGC::plot_GenRecoET(){
   TString  file_stc16_lblx1p25_b0 = "VBF_Hinv/VBF-PU200-STC16-LbyLx1p25-BLbyL0-10mipt";
   TString  file_stc16_lblx1p25_b0p5 = "VBF_Hinv/VBF-PU200-STC16-LbyLx1p25-BLbyL0p5-10mipt";
   TString  file_stc4_lblx1p25_b0 = "VBF_Hinv/VBF-PU200-STC4-LbyLx1p25-BLbyL0-10mipt";
+  TString  file_stc8_lblx1p25_b0 = "VBF_Hinv/VBF-PU200-STC8-LbyLx1p25-BLbyL0-10mipt";
   TString  file_stc4_lblx1p25_b0p5 = "VBF_Hinv/VBF-PU200-STC4-LbyLx1p25-BLbyL0p5-10mipt";
 
   TString  file_4bit = "VBF_Hinv/VBF-PU200-STC4-EqualSpread-LbyLx1p25-BLbyL0-10mipt";
+  TString  file_Paul = "VBF_Hinv/VBF-PU200-STC4-Paul-LbyLx1p25-BLbyL0-10mipt";
 
- 
+  TString  file_energy_div = "VBF_Hinv/VBF-PU200-threshold-10mipt-EnergyDivisionClustering";
+  TString  file_energy_mul = "VBF_Hinv/VBF-PU200-threshold-10mipt-EnergyMultiplicationClustering";
+
+
+  TString  file_Pion_thresh = "SinglePi/SinglePiPt35-PU200-threshold-default/";
+  TString  file_Pion_stc16 = "SinglePi/SinglePiPt35-PU200-stc16-default/";
+
+  TString  file_NoThreshold = "VBF_Hinv/VBF-PU200-NoThreshold-default-Clusters";
+  TString  file_NoThreshold003 = "VBF_Hinv/VBF-PU200-threshold003-default";
+
+  TString  file_SimpleCoarsening = "VBF_Hinv/VBF-PU200-STC2_SimpleCoarsening-default";
+
+  TString  file_STC4_NewSensorThreshold = "VBF_Hinv/VBF-PU200-STC4-default-NewSensorThreshold";
+  TString  file_STC16_NewSensorThreshold = "VBF_Hinv/VBF-PU200-STC16-default-NewSensorThreshold";
+  TString  file_threshold_NewSensorThreshold = "VBF_Hinv/VBF-PU200-threshold-default-NewSensorThreshold";
+
+
+
+  TString  file_SimpleCoarsening_NewSensorThreshold = "VBF_Hinv/VBF-PU200-STC2_SimpleCoarsening-default-NewSensorThreshold";
+  TString  file_NoThreshold_NewSensorThreshold = "VBF_Hinv/VBF-PU200-0threshold-default-NewSensorThreshold";
+
+
+  TString  file_SimpleCoarsening_NewSensorThreshold_fix = "VBF_Hinv/VBF-PU200-STC2_SimpleCoarsening-default-NewSensorThreshold-Fix";
+
+
+
+
+  TString file_threshold0 = file_NoThreshold_NewSensorThreshold;
+  TString file_threshold0p5 = "VBF_Hinv/VBF-PU200-threshold0p5-default-3sigSensorThreshold";
+  TString file_threshold1p0 = "VBF_Hinv/VBF-PU200-threshold1p0-default-3sigSensorThreshold";
+  TString file_threshold1p5 = "VBF_Hinv/VBF-PU200-threshold1p5-default-3sigSensorThreshold";
+  TString file_threshold2p0 = file_threshold_NewSensorThreshold;
+
+  TString file_2sigSensorThreshold = "VBF_Hinv/VBF-PU200-threshold0-default-2sigSensorThreshold";
+  TString file_3sigSensorThreshold = file_NoThreshold_NewSensorThreshold;
+  TString file_4sigSensorThreshold = "VBF_Hinv/VBF-PU200-threshold0-default-4sigSensorThreshold";
+  TString file_5sigSensorThreshold = "VBF_Hinv/VBF-PU200-threshold0-default-5sigSensorThreshold";
+
+
+  TString file_SimpleCoarsening_Fix2 = "VBF_Hinv/VBF-PU200-STC2_SimpleCoarsening-default-NewSensorThreshold-Fix-2";
+  TString file_STC4_2sigSensorThreshold = "VBF_Hinv/VBF-PU200-STC4-default-2sigSensorThreshold";
+  TString file_STC4_3sigSensorThreshold = "VBF_Hinv/VBF-PU200-STC4-default-3sigSensorThreshold";  
+  TString file_STC4_4sigSensorThreshold = "VBF_Hinv/VBF-PU200-STC4-default-4sigSensorThreshold";
+  TString file_STC4_5sigSensorThreshold = "VBF_Hinv/VBF-PU200-STC4-default-5sigSensorThreshold";
+
+
+
+
+  TString file_ThickCoarse_STC4 = "VBF_Hinv/VBF-PU200-ThickCoarse-STC4-default/";
+  TString file_ThickCoarse_1bit = "VBF_Hinv/VBF-PU200-ThickCoarse-1bit-default/";
+  TString file_ThickCoarse_EqualShare = "VBF_Hinv/VBF-PU200-ThickCoarse-EqualShare-default/";
+
+  TString file_ThickCoarse_PU0_STC4 = "VBF_Hinv/VBF-PU0-ThickCoarse-STC4-default/";
+  TString file_ThickCoarse_PU0_EqualShare = "VBF_Hinv/VBF-PU0-ThickCoarse-EqualShare-default/";
+  TString file_ThickCoarse_PU0_1bit = "VBF_Hinv/VBF-PU0-ThickCoarse-1bit-default/";
+
+  TString  file_Pion_threshold = "SinglePionFlatPt/SinglePionFlatPt-PU200-Threshold/";
+  TString  file_Pion_stc4 = "SinglePionFlatPt/SinglePionFlatPt-PU200-STC4/";
+
+  TString file_ThickCoarse_STC4_Rad = "VBF_Hinv/VBF-PU200-ThickCoarse-STC4-Radx1p5/";
+  TString file_ThickCoarse_1bit_Rad = "VBF_Hinv/VBF-PU200-ThickCoarse-1bit-Radx1p5/";
+  TString file_ThickCoarse_EqualShare_Rad = "VBF_Hinv/VBF-PU200-ThickCoarse-EqualShare-Radx1p5/";
+
+
+
+
   TString cut = "VBF_parton_genjet>=0 && VBF_parton_jets>=0 && abs(genjet_eta[VBF_parton_genjet])>1.7 && abs(genjet_eta[VBF_parton_genjet])<2.8 ";
   
-  std::vector<HistObject> histobjects;
-  std::vector<TGraph*> graphs;
+  TString cut_pion = "Pion_genjet>=0 && Pion_jets>=0 && abs(genjet_eta[Pion_genjet])>1.7 && abs(genjet_eta[Pion_genjet])<2.8 ";
+
+  TString cuteta1 = "VBF_parton_genjet>=0 && VBF_parton_jets>=0 && abs(genjet_eta[VBF_parton_genjet])>1.5 && abs(genjet_eta[VBF_parton_genjet])<2.25 ";
+  TString cuteta2 = "VBF_parton_genjet>=0 && VBF_parton_jets>=0 && abs(genjet_eta[VBF_parton_genjet])>2.25 && abs(genjet_eta[VBF_parton_genjet])<3 ";
+
+
+
+  TString cuteta51 = "VBF_parton_genjet>=0 && VBF_parton_jets>=0 && abs(genjet_eta[VBF_parton_genjet])>1.5 && abs(genjet_eta[VBF_parton_genjet])<1.8 ";
+  TString cuteta52 = "VBF_parton_genjet>=0 && VBF_parton_jets>=0 && abs(genjet_eta[VBF_parton_genjet])>1.8 && abs(genjet_eta[VBF_parton_genjet])<2.1 ";
+  TString cuteta53 = "VBF_parton_genjet>=0 && VBF_parton_jets>=0 && abs(genjet_eta[VBF_parton_genjet])>2.1 && abs(genjet_eta[VBF_parton_genjet])<2.4 ";
+  TString cuteta54 = "VBF_parton_genjet>=0 && VBF_parton_jets>=0 && abs(genjet_eta[VBF_parton_genjet])>2.4 && abs(genjet_eta[VBF_parton_genjet])<2.7 ";
+  TString cuteta55 = "VBF_parton_genjet>=0 && VBF_parton_jets>=0 && abs(genjet_eta[VBF_parton_genjet])>2.7 && abs(genjet_eta[VBF_parton_genjet])<3 ";
+
+
+
+  std::vector<HistObject> histobjects, histobjects2;
+  std::vector<TGraphErrors*> graphs;
   Plotter plotter( _cmd );
   double x[16]={0,10,20,40,60,80,100,120,140,160,180,200,220,250,300,400};
+
+
+  //  double y[7]={0,10,20,40,60,80,100};
+  double y[11]={0,10,20,30,40,50,60,70,80,90,100};
   
   
   //Varying 3D cl pt
@@ -285,26 +371,148 @@ void HGC::plot_GenRecoET(){
   // std::vector<TString> legend = {"Default", "Default x 1.25","Default x 2"};
 
 
-  // 4 bit study
-  std::vector<TString> files = { file_4bit, file_lblx1p25_b0, file_stc4_lblx1p25_b0};
-  std::vector<TString> description = { "4bit", "thresh", "stc4"};
-  std::vector<TString> legend = {"4bit", "threshold", "stc4"};
+ //  // 4 bit study
+ //  //  std::vector<TString> files = { file_4bit, file_Paul, file_lblx1p25_b0, file_stc4_lblx1p25_b0};
+ //  std::vector<TString> files = { file_lblx1p25_b0, file_stc4_lblx1p25_b0, file_stc8_lblx1p25_b0};
+ //  //  std::vector<TString> description = { "equal", "binned", "thresh", "stc4"};
+ //  std::vector<TString> description = {  "thresh", "stc4", "stc8"};
+ // std::vector<TString> legend = {  "thresh", "stc4", "stc8"};
+ //  //  std::vector<TString> legend = {"equal except 0", "binned", "threshold", "stc4"};
 
+ //  // //  std::vector<TString> legend = {"equal except 0 low","equal except 0 high", "binned low", "binned high","threshold low","threshold high"  , "stc4 low", "stc4 high"};
+ //  // std::vector<TString> legend = {"threshold low","threshold high"  , "stc4 low", "stc4 high"};
+
+
+
+  //check with johannes and stephan's study
+  // std::vector<TString> files = { file_NewDefault_10mipt, file_energy_div, file_energy_mul};
+  // std::vector<TString> description = { "default", "divide", "multiply"};
+  // std::vector<TString> legend = { "default", "divide", "multiply"};
+
+
+ //  std::vector<TString> files = { file_Pion_thresh, file_Pion_stc16};
+ //  std::vector<TString> description = { "thresh", "stc16"};
+ //  std::vector<TString> legend = { "thresh", "stc16"};
+
+
+
+  // // // 4 bit study and eta
+  // std::vector<TString> files = { file_lblx1p25_b0, file_stc4_lblx1p25_b0};
+  // //  std::vector<TString> files = { file_stc4_lblx1p25_b0};
+  // std::vector<TString> description = {  "thresh1", "thresh2", "thresh3", "thresh4", "thresh5","thresh1b", "thresh2b", "thresh3b", "thresh4b", "thresh5b"};
+  // std::vector<TString> legend = {  "thresh1", "thresh2", "thresh3", "thresh4", "thresh5","thresh1b", "thresh2b", "thresh3b", "thresh4b", "thresh5b"};
+
+
+
+  //No Threshold comparison
+
+  //   std::vector<TString> files = { file_STC16_NewDefault_10mipt,  file_NewDefault_10mipt, file_NoThreshold003 };
+  // std::vector<TString> description = {  "stc16", "thresh2mip", "nothresh003" };
+  // std::vector<TString> legend = {  "stc16", "2-mipt", "3mev" };
+  //   std::vector<TString> files = {  file_NoThreshold003 };
+  // std::vector<TString> description = { "nothresh" };
+  // std::vector<TString> legend = {  "0-mipt" };
+
+
+  // std::vector<TString> files = { file_STC16_NewDefault_10mipt, file_NewDefault_10mipt, file_SimpleCoarsening};
+  // std::vector<TString> description = {  "stc16", "threshold", "coarse2" };
+  // std::vector<TString> legend = {  "stc16", "threshold", "coarse2" };
+
+
+
+  // std::vector<TString> files = { file_STC4_NewSensorThreshold, file_STC16_NewSensorThreshold, file_threshold_NewSensorThreshold};
+  // std::vector<TString> description = {  "stc4" , "stc16", "threshold"};
+  // std::vector<TString> legend = {  "stc4" , "stc16", "threshold"};
+
+
+
+  //  std::vector<TString> files = { file_STC4_NewSensorThreshold, file_SimpleCoarsening_NewSensorThreshold, file_threshold_NewSensorThreshold, file_NoThreshold_NewSensorThreshold};
+
+  // std::vector<TString> files = { file_STC4_NewSensorThreshold, file_SimpleCoarsening_Fix2, file_threshold_NewSensorThreshold, file_NoThreshold_NewSensorThreshold};
+  // std::vector<TString> description = {  "stc4" , "coarse2", "threshold","nothresh"};
+  // std::vector<TString> legend = {  "stc4" , "coarse2", "threshold", "nothresh"};
+
+
+
+
+
+  // std::vector<TString> files = { file_threshold0, file_threshold0p5, file_threshold1p0, file_threshold1p5, file_threshold2p0};
+  // std::vector<TString> description = { "0", "0p5", "1p0", "1p5", "2p0"};
+  // std::vector<TString> legend = { "0", "0p5", "1p0", "1p5", "2p0"};
+
+
+  // std::vector<TString> files = { file_2sigSensorThreshold, file_3sigSensorThreshold, file_4sigSensorThreshold, file_5sigSensorThreshold};
+  // std::vector<TString> description = { "2sig", "3sig", "4sig", "5sig"};
+  // std::vector<TString> legend = { "2sig", "3sig", "4sig", "5sig"};
+
+
+
+  // std::vector<TString> files = { file_STC4_2sigSensorThreshold, file_STC4_3sigSensorThreshold, file_STC4_4sigSensorThreshold, file_STC4_5sigSensorThreshold};
+  // std::vector<TString> description = { "2sig", "3sig", "4sig", "5sig"};
+  // std::vector<TString> legend = { "2sig", "3sig", "4sig", "5sig"};
+
+  // std::vector<TString> files = { file_ThickCoarse_STC4, file_ThickCoarse_1bit, file_ThickCoarse_EqualShare};
+  // std::vector<TString> description = { "STC4", "1bit", "equalshare"};
+  // std::vector<TString> legend = { "STC4", "1 bit fraction", "Equal Share"};
+
+
+  // std::vector<TString> files = { file_ThickCoarse_PU0_STC4, file_ThickCoarse_PU0_EqualShare};
+  // std::vector<TString> description = { "STC41","STC42","STC43","STC44","STC45", "1bit1","1bit2","1bit3", "1bit4","1bit5"};
+  // std::vector<TString> legend = { "STC41","STC42","STC43","STC44","STC45", "1bit1","1bit2","1bit3", "1bit4","1bit5"};
+
+  // std::vector<TString> files = { file_ThickCoarse_PU0_STC4, file_ThickCoarse_PU0_EqualShare};
+  // std::vector<TString> description = { "STC4", "equalshare"};
+  // std::vector<TString> legend = { "STC4", "Equal Share"};
+
+  std::vector<TString> files = { file_ThickCoarse_STC4_Rad, file_ThickCoarse_1bit_Rad, file_ThickCoarse_EqualShare_Rad};
+  std::vector<TString> description = { "STC4", "1bit", "equalshare"};
+  std::vector<TString> legend = { "STC4", "1 bit fraction", "Equal Share"};
+
+  // std::vector<TString> files = { file_Pion_threshold, file_Pion_stc4};
+  // std::vector<TString> description = { "thresh", "stc4"};
+  // std::vector<TString> legend = { "thresh", "stc4"};
 
 
 
   for(unsigned int i=0;i<files.size();i++){
-    histobjects.emplace_back( HistObject( "Jets", (snwebb + "/" + files.at(i) + "/jet_ntuples_merged/ntuple_jet_merged_"+stats+".root"), "", "jets_pt[VBF_parton_jets]:genjet_pt[VBF_parton_genjet]", cut, true  ) );
+
+    //2 bins
+    // histobjects.emplace_back( HistObject( "Jets", (snwebb + "/" + files.at(i) + "/jet_ntuples_merged/ntuple_jet_merged_"+stats+".root"), "", "jets_pt[VBF_parton_jets]:genjet_pt[VBF_parton_genjet]", cuteta1, true  ) );
+
+    // histobjects.emplace_back( HistObject( "Jets", (snwebb + "/" + files.at(i) + "/jet_ntuples_merged/ntuple_jet_merged_"+stats+".root"), "", "jets_pt[VBF_parton_jets]:genjet_pt[VBF_parton_genjet]" ,cuteta2, true  ) );
+
+
+    //5 bins
+
+    // histobjects.emplace_back( HistObject( "Jets", (snwebb + "/" + files.at(i) + "/jet_ntuples_merged/ntuple_jet_merged_"+stats+".root"), "", "jets_pt[VBF_parton_jets]:genjet_pt[VBF_parton_genjet]", cuteta51, true  ) );
+    // histobjects.emplace_back( HistObject( "Jets", (snwebb + "/" + files.at(i) + "/jet_ntuples_merged/ntuple_jet_merged_"+stats+".root"), "", "jets_pt[VBF_parton_jets]:genjet_pt[VBF_parton_genjet]" ,cuteta52, true  ) );
+    // histobjects.emplace_back( HistObject( "Jets", (snwebb + "/" + files.at(i) + "/jet_ntuples_merged/ntuple_jet_merged_"+stats+".root"), "", "jets_pt[VBF_parton_jets]:genjet_pt[VBF_parton_genjet]" ,cuteta53, true  ) );
+    // histobjects.emplace_back( HistObject( "Jets", (snwebb + "/" + files.at(i) + "/jet_ntuples_merged/ntuple_jet_merged_"+stats+".root"), "", "jets_pt[VBF_parton_jets]:genjet_pt[VBF_parton_genjet]" ,cuteta54, true  ) );
+    // histobjects.emplace_back( HistObject( "Jets", (snwebb + "/" + files.at(i) + "/jet_ntuples_merged/ntuple_jet_merged_"+stats+".root"), "", "jets_pt[VBF_parton_jets]:genjet_pt[VBF_parton_genjet]" ,cuteta55, true  ) );
+
+
+    //Pion
+    //    histobjects.emplace_back( HistObject( "Jets", (snwebb + "/" + files.at(i) + "/jet_ntuples_merged/ntuple_jet_merged_"+stats+".root"), "", "jets_pt[Pion_jets]:genjet_pt[Pion_genjet]", cut_pion, true  ) );
+
+    //Not separated (default)
+                histobjects.emplace_back( HistObject( "Jets", (snwebb + "/" + files.at(i) + "/jet_ntuples_merged/ntuple_jet_merged_"+stats+".root"), "", "jets_pt[VBF_parton_jets]:genjet_pt[VBF_parton_genjet]" ,cut, true  ) );
   }
 
   for(unsigned int i=0;i<histobjects.size();i++){
-    TH2F * hist = plotter.Draw2D(histobjects.at(i), 15, x, 4000,0,400  ,description.at(i));
+    TH2F * hist = plotter.Draw2D(histobjects.at(i), 15, x, 4000,0,400  ,description.at(i) );//VBF
+    //    TH2F * hist = plotter.Draw2D(histobjects.at(i), 10, y, 4000,0,400  ,description.at(i) );//Pion
     graphs.emplace_back( plotter.DrawProfile(hist  ,(description.at(i)+"_profile"), "s" ) );
+
+
+
+
+    // hist = plotter.Draw2D(histobjects2.at(i), 15, x, 4000,0,400  ,description.at(i) + "_high_eta");
+    // graphs.emplace_back( plotter.DrawProfile(hist  ,(description.at(i)+"_profile_high_eta"), "s" ) );
   }
 
-  
-  plotter.DrawGraphs(graphs, legend);
 
+    plotter.DrawGraphs(graphs, legend);
+  //        plotter.DrawEtaGraphs(graphs );
   plotter.SaveFile( graphs );
 
 
@@ -349,8 +557,6 @@ void HGC::plot_nC3D(){
   std::vector<TString> files;
   std::vector<TString> legend;
   Plotter plotter( _cmd );
-
-
 
 
   // files.push_back("VBF_Hinv/VBF-PU200-stc-TCs-histoMax-DRAInf-DRB00-NS");
@@ -2644,96 +2850,6 @@ void HGC::plot_eta_pt_cones_tc(){
 
 }
 
-
-
-
-
-
-
-
-void HGC::plot_profile_only_eta_C2D_dR(){
-
- TString filename = "/vols/cms/tstreble/HGC_ntuples/SingleNu_PU200_C2D_dR/calibr_cone_ntuples/calibr_cone_ntuples_10.root";
-
-  TH2F* h_tc = single_plot2D(filename,"HGCalTriggerNtuple","abs(cone_eta)","cone_tc_calib_Luca_pt","",16,1.45,3.05,100,0,100);
-  TH2F* h_tc0 = single_plot2D(filename,"HGCalTriggerNtuple","abs(cone_eta)","cone_tc_calib_Luca_pt","cone_tc_calib_Luca_pt>0",16,1.45,3.05,100,0,100);
-  TH2F* h_C3D = single_plot2D(filename,"HGCalTriggerNtuple","abs(cone_eta)","cone_calib_Luca_pt","",16,1.45,3.05,100,0,100);
-  TH2F* h_C3D0 = single_plot2D(filename,"HGCalTriggerNtuple","abs(cone_eta)","cone_calib_Luca_pt","cone_calib_Luca_pt>0",16,1.45,3.05,100,0,100);
-
-  vector<TH2F*> histo;
-  histo.push_back(h_tc);
-  histo.push_back(h_tc0);
-  histo.push_back(h_C3D);
-  histo.push_back(h_C3D0);
-
-  vector<TProfile*> prof;
-  
-  vector<TString> leg_entry;
-  leg_entry.push_back("TC cone");
-  leg_entry.push_back("TC cone p_{T}>0");
-  leg_entry.push_back("C3D cone");
-  leg_entry.push_back("C3D cone p_{T}>0");
-
-  vector<TString> name;
-  name.push_back("prof_cone_tc");
-  name.push_back("prof_cone_tc_pTgt0");
-  name.push_back("prof_cone_C3D");
-  name.push_back("prof_cone_C3D_pTgt0");
-
-  TLegend* leg=new TLegend(0.3,0.5,0.5,0.85);
-  leg->SetBorderSize(0);
-  leg->SetTextSize(0.04);
-  leg->SetFillColor(0);
-
-
-  TFile* f_new = TFile::Open("PU_cone_vs_eta_C2D_dR.root");
-  if(f_new!=0){
-    cout<<"PU_cone_vs_eta.root already exists, please delete it before converting again"<<endl;
-    return;
-  }
-  f_new = TFile::Open("PU_cone_vs_eta_C2D_dR.root","RECREATE");
-  gStyle->SetOptTitle(0);
-  
-  for(unsigned int i=0; i<histo.size(); i++){
-
-    TProfile* p = histo[i]->ProfileX();
-    p->SetLineColor(i+1);
-    p->SetLineWidth(2);
-    p->BuildOptions(0,0,"s");
-    p->SetStats(0);
-    p->SetNameTitle(name[i],name[i]);    
-    prof.push_back(p);
-    leg->AddEntry(p,leg_entry[i]);
-    p->Write();
-
-  }
-
-
-  TCanvas* c=new TCanvas("c","c",650,600);
-  c->SetLeftMargin(0.15);
-  c->SetRightMargin(0.15);
-  c->SetLogz();
-
-  prof[0]->GetXaxis()->SetTitle("|#eta|");
-  prof[0]->GetYaxis()->SetTitle("Cone p_{T} [GeV]");
-  prof[0]->GetYaxis()->SetTitleOffset(1.7);  
-  prof[0]->GetYaxis()->SetRangeUser(0,30);
-  prof[0]->Draw();
-  for(unsigned int i=1;i<prof.size();i++)
-    prof[i]->Draw("same");
-  leg->Draw("same");
-
-
-  TLatex *texl = new TLatex(1.47,1.02*30,"CMS Simulation Neutrino gun, #sqrt{s}=14 TeV PU=200");
-  texl->SetTextSize(0.03);
-  texl->Draw("same");
-  
-
-  c->SaveAs("plots/profile_cone_pt_eta_comb_C2D_dR.pdf");  
-  f_new->Close();
-  return;
-
-}
 
 
 
