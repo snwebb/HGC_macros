@@ -62,7 +62,7 @@ void Plotter::DrawGraphs(std::vector<TGraphErrors*>& graphs, std::vector<TString
   TCanvas * c = _canvas;
   c->SetCanvasSize(800, 600);
   gPad->SetTicks(1,1);
-  SetLegendXY( 0.6, 0.5, 0.82, 0.75  );
+  SetLegendXY( 0.6, 0.63, 0.82, 0.85  );
   _legend->Clear();
   int i = 0;
     for (auto &graph: graphs ){    
@@ -76,7 +76,7 @@ void Plotter::DrawGraphs(std::vector<TGraphErrors*>& graphs, std::vector<TString
 	graph->Draw("ap");
 	graph->SetTitle(";gen p_{T};Resolution");
 	graph->GetXaxis()->SetRangeUser(20,300);
-	graph->GetYaxis()->SetRangeUser(0,0.4);
+	graph->GetYaxis()->SetRangeUser(0,0.6);
 	graph->Draw("apsame");
       }
       else {
@@ -228,7 +228,7 @@ void Plotter::DrawEtaGraphs(std::vector<TGraphErrors*>& graphs){
 
   mg->Draw("ap");
   mg->GetXaxis()->SetLimits(0.75,3);
-  mg->GetYaxis()->SetRangeUser(0,0.4);
+  mg->GetYaxis()->SetRangeUser(0,0.6);
 
 
       _legend->Draw("same");
@@ -240,6 +240,8 @@ void Plotter::DrawEtaGraphs(std::vector<TGraphErrors*>& graphs){
 
 
 }
+
+
 
 
 TGraphErrors * Plotter::DrawProfile(TH2F * hist, TString savename, Option_t * option = ""){
@@ -281,8 +283,20 @@ TGraphErrors * Plotter::DrawProfile(TH2F * hist, TString savename, Option_t * op
   Logx->SetParLimits( 2, 0.001,10);
   Logx->SetParLimits( 3, 1,1000);
   Logx->SetParLimits( 4, 0.001,50);
+  double start = 20;
+  double end = 300;
 
-  TF1 * pol1 = new TF1 ( "pol1", "[0] + [1]*x" , 20 , 350);  
+  int order = 2;
+
+  TF1 * pol_choice;
+  if ( order == 1){
+    pol_choice  = new TF1 ( "pol", "[0] + [1]*x" , 20 , 350);
+  }
+  else if (  order ==2){
+    pol_choice  = new TF1 ( "pol", "[0] + [1]*x + [2]*x*x" , 20 , 350);
+  }
+  //TF1 * pol1 = new TF1 ( "pol", "[0] + [1]*x" , 20 , 350);  
+  //    TF1 * pol2 = new TF1 ( "pol", "[0] + [1]*x + [2]*x*x" , 20 , 350);  
 
     //    Logx->SetParLimits( 5, 100,300);
 
@@ -297,9 +311,11 @@ TGraphErrors * Plotter::DrawProfile(TH2F * hist, TString savename, Option_t * op
   // TF1 * f_rmsdown = new TF1 ( "f_rmsdown", Logx , 5, 350);
 
 
-  TF1 * f_mean = (TF1*)pol1->Clone("f_mean" );
-  TF1 * f_rmsup = (TF1*)pol1->Clone("f_rmsup" );
-  TF1 * f_rmsdown = (TF1*)pol1->Clone("f_rmsdown" );
+
+
+  TF1 * f_mean = (TF1*)pol_choice->Clone("f_mean" );
+  TF1 * f_rmsup = (TF1*)pol_choice->Clone("f_rmsup" );
+  TF1 * f_rmsdown = (TF1*)pol_choice->Clone("f_rmsdown" );
 
   // TF1 * f_mean = (TF1*)Logx->Clone("f_mean" );
   // TF1 * f_rmsup = (TF1*)Logx->Clone("f_rmsup" );
@@ -319,7 +335,7 @@ TGraphErrors * Plotter::DrawProfile(TH2F * hist, TString savename, Option_t * op
    //   r =  pmean->Fit( Logx, "R","",5,350);
 
 
-   r =  pmean->Fit( pol1, "R","",20,300);
+   r =  pmean->Fit( pol_choice, "R","",start,end);
 
 
 
@@ -481,37 +497,41 @@ TGraphErrors * Plotter::DrawProfile(TH2F * hist, TString savename, Option_t * op
   // r = rms_down->Fit("pol3", "R", "", 0, 400);
 
 
-  r_rmsup = rms_up->Fit(pol1, "RS", "", 20, 300);
-  
-  r = rms_down->Fit(pol1, "R", "", 20, 300);  
 
-  f_mean->SetParameter( 0, pmean->GetFunction("pol1")->GetParameter( 0 ) );
+  r_rmsup = rms_up->Fit(pol_choice, "RS", "", start, end);
   
-  f_mean->SetParameter( 1, pmean->GetFunction("pol1")->GetParameter( 1 ) );
+  r = rms_down->Fit(pol_choice, "R", "", start, end);  
+
+  f_mean->SetParameter( 0, pmean->GetFunction("pol")->GetParameter( 0 ) ); 
+  f_mean->SetParameter( 1, pmean->GetFunction("pol")->GetParameter( 1 ) );
+  f_mean->SetParameter( 2, pmean->GetFunction("pol")->GetParameter( 2 ) );
   
-  f_mean->SetParErrors ( pmean->GetFunction("pol1")->GetParErrors() );
+  f_mean->SetParErrors ( pmean->GetFunction("pol")->GetParErrors() );
   
-  f_rmsup->SetParameter( 0, rms_up->GetFunction("pol1")->GetParameter( 0 ) );
-  f_rmsup->SetParameter( 1, rms_up->GetFunction("pol1")->GetParameter( 1 ) );
-  f_rmsup->SetParErrors ( rms_up->GetFunction("pol1")->GetParErrors() );
+  f_rmsup->SetParameter( 0, rms_up->GetFunction("pol")->GetParameter( 0 ) );
+  f_rmsup->SetParameter( 1, rms_up->GetFunction("pol")->GetParameter( 1 ) );
+  f_rmsup->SetParameter( 2, rms_up->GetFunction("pol")->GetParameter( 2 ) );
+  f_rmsup->SetParErrors ( rms_up->GetFunction("pol")->GetParErrors() );
   
-  f_rmsdown->SetParameter( 0, rms_down->GetFunction("pol1")->GetParameter( 0 ) );
-  f_rmsdown->SetParameter( 1, rms_down->GetFunction("pol1")->GetParameter( 1 ) );
-  f_rmsdown->SetParErrors ( rms_down->GetFunction("pol1")->GetParErrors() );
+  f_rmsdown->SetParameter( 0, rms_down->GetFunction("pol")->GetParameter( 0 ) );
+  f_rmsdown->SetParameter( 1, rms_down->GetFunction("pol")->GetParameter( 1 ) );
+  f_rmsdown->SetParameter( 2, rms_down->GetFunction("pol")->GetParameter( 2 ) );
+  f_rmsdown->SetParErrors ( rms_down->GetFunction("pol")->GetParErrors() );
 
   
-  f_rmsup->SetRange(20,300);
-  f_rmsdown->SetRange(20,300);
+  f_rmsup->SetRange(start,end);
+  f_rmsdown->SetRange(start,end);
 
   f_rmsup->Draw("same");
   f_rmsdown->Draw("same");
-  f_mean->Draw("same");
+  f_mean->SetLineColor(kGreen);//temp remove
+  f_mean->Draw("same");//temp remove
+
 
   //rms_up->Draw("same");
-  //  rms_down->Draw("same");
+  //rms_down->Draw("same");
 
   pmean->Draw("same");		
-
   gPad->SetTicks();
   //  gPad->RedrawAxis();
 
@@ -520,7 +540,7 @@ TGraphErrors * Plotter::DrawProfile(TH2F * hist, TString savename, Option_t * op
 
   c->Clear();
 
-     std::cout << "--------------" << std::endl;
+  std::cout << "--------------" << std::endl;
   for (int i = 1; i < p_rms->GetNbinsX()+1; i++){
 
 
@@ -529,32 +549,32 @@ TGraphErrors * Plotter::DrawProfile(TH2F * hist, TString savename, Option_t * op
     double err[1];  // error on the function at point x0
     r_rmsup->GetConfidenceIntervals(1, 1, 1, x, err, 0.683, false);
 
+    double sigma = 0;
+    double sigma_err = 0;
 
-
-
-    double sigma = 0.5 * std::abs( f_mean->GetX(f_rmsup->Eval(p_rms->GetBinCenter(i)) ) - f_mean->GetX(f_rmsdown->Eval(p_rms->GetBinCenter(i)) ) ); 
-    double sigma_err = 0.5 * std::abs( f_mean->GetX(f_rmsup->Eval(p_rms->GetBinCenter(i)) + err[0]    ) - f_mean->GetX(f_rmsdown->Eval(p_rms->GetBinCenter(i)) - err[0] ) ); 
+    if ( order == 1){
+    //1st order pol1
+      sigma = 0.5 * std::abs( f_mean->GetX(f_rmsup->Eval(p_rms->GetBinCenter(i)) ) - f_mean->GetX(f_rmsdown->Eval(p_rms->GetBinCenter(i)) ) ); 
+      sigma_err = 0.5 * std::abs( f_mean->GetX(f_rmsup->Eval(p_rms->GetBinCenter(i)) + err[0]    ) - f_mean->GetX(f_rmsdown->Eval(p_rms->GetBinCenter(i)) - err[0] ) ); 
+    }
+    else if (order == 2){
+      //2nd order pol2
+      sigma = 0.5 * std::abs( _helper.Get2dX(f_mean,f_rmsup->Eval(p_rms->GetBinCenter(i)) ) - _helper.Get2dX(f_mean,f_rmsdown->Eval(p_rms->GetBinCenter(i)) ) ); 
+      sigma_err = 0.5 * std::abs( _helper.Get2dX(f_mean,f_rmsup->Eval(p_rms->GetBinCenter(i)) + err[0]  ) - _helper.Get2dX(f_mean,f_rmsdown->Eval(p_rms->GetBinCenter(i)) - err[0] ) ); 
+    }
 
 
     std::cout << p_rms->GetBinCenter(i) << " -  "<< f_rmsup->Eval(p_rms->GetBinCenter(i)) << " - " << f_mean->GetX(f_rmsup->Eval(p_rms->GetBinCenter(i)) ) << std::endl;
     std::cout << sigma << std::endl;
 
-    //Using the 68% counting method
-    // double sigma_68 = rms.at(i-1)/double(bins_per_unit);
+
+    //    Using the 68% counting method
+    //    double sigma_68 = rms.at(i-1)/double(bins_per_unit);
     // double sigma_err = rms_err.at(i-1)/double(bins_per_unit);
-    //     std::cout << "err from fit = " << err[0]  <<  " - " << sigma_err << std::endl;
+    // //  std::cout << "err from fit = " << err[0]  <<  " - " << sigma_err << std::endl;
     // sigma = std::abs( f_mean->GetX( sigma + f_mean->Eval(p_rms->GetBinCenter(i) ) ) - p_rms->GetBinCenter(i) );
-    //    sigma_err = std::abs( f_mean->GetX( sigma_err + f_rmsup->Eval(p_rms->GetBinCenter(i) ) ) - p_rms->GetBinCenter(i) );
-    // //    sigma_err = std::abs( f_mean->GetX( err[0] + f_mean->Eval(p_rms->GetBinCenter(i) ) ) - p_rms->GetBinCenter(i) );
-
-
-    //    std::cout << "21: " <<  i <<" - " << sigma << " - " << sigma_err << std::endl;
-
-
-
-    // std::cout << i << " - " << p_rms->GetBinCenter(i) << std::endl;
-    // std::cout << "1: " <<  sigma1 << " - " << sigma_err1 << std::endl;    
-    // std::cout << "22: " <<  sigma << " - " << sigma_err << std::endl;
+    // sigma_err = std::abs( f_mean->GetX( sigma_err + f_rmsup->Eval(p_rms->GetBinCenter(i) ) ) - p_rms->GetBinCenter(i) );
+    //    sigma_err = std::abs( f_mean->GetX( err[0] + f_mean->Eval(p_rms->GetBinCenter(i) ) ) - p_rms->GetBinCenter(i) );
 
 
     resolution->SetPoint(i-1, p_rms->GetBinCenter(i), sigma/p_rms->GetBinCenter(i));
@@ -564,16 +584,49 @@ TGraphErrors * Plotter::DrawProfile(TH2F * hist, TString savename, Option_t * op
   }
 
   resolution->Draw();
-  resolution->GetXaxis()->SetRangeUser(20,300);
-  resolution->GetYaxis()->SetRangeUser(0,0.4);
+  resolution->GetXaxis()->SetRangeUser(start,end);
+  resolution->GetYaxis()->SetRangeUser(0,0.6);
   resolution->Draw("same");
   c->SaveAs("plots/" + TString(_outdir) + "/"+savename+"resolution.png");
   c->SaveAs("plots/" + TString(_outdir) + "/"+savename+"resolution.root");
 
-  // std::cout << f_rmsup->Eval(60) << " - " << f_rmsdown->Eval(60) << std::endl;
-  // //  std::cout << f_mean->GetX(f_rmsup->Eval(60)) << " - " << f_mean->GetX(f_rmsdown->Eval(60)) << std::endl;
-  // std::cout << f_mean->GetX(94.7561) << " - " << f_mean->GetX(64.9826) << std::endl;
-  // std::cout << "Sigma at 60 = " << 0.5 * std::abs( f_mean->GetX(f_rmsup->Eval(60)) - f_mean->GetX(f_rmsdown->Eval(60)) ) << std::endl;
+
+  //Special Code for producing example plot
+  /*
+  //  std::cout << _helper.Get2dX(f_mean, 72.98 ) << std::endl;
+
+  for ( int z = 1; z < hist->GetNbinsX(); z++){  
+    TH1D * hist_projection = hist->ProjectionY("hist_proj",z,z);
+    TH1D * hist_gen = (TH1D*)hist_projection->Clone("hist_gen");
+    hist_gen->Reset();
+    for ( int i = 1; i < hist_projection->GetNbinsX()+1; i++){
+      
+      double event =  _helper.Get2dX(f_mean, hist_projection->GetBinCenter(i) );
+
+      //      std::cout << "1: " << hist_projection->GetBinCenter(i) << " - " << f_mean->Eval( event )  << std::endl;
+      //      std::cout  << hist_projection->GetBinCenter(i)/f_mean->Eval( event ) << std::endl;
+      for ( int j = 0; j < hist_projection->GetBinContent(i); j++ ){
+	hist_gen->Fill(event);
+      }
+      
+    }
+    
+    hist_gen->Rebin( 16 );
+    hist_projection->Rebin( 16 );
+
+    c->Clear();
+    hist_gen->Draw();
+    c->SaveAs("plots/" + TString(_outdir) + "/"+savename+"projected_gen_"+std::to_string(z)+".png");
+    c->SaveAs("plots/" + TString(_outdir) + "/"+savename+"projected_gen_"+std::to_string(z)+".root");
+
+
+    c->Clear();
+    hist_projection->Draw();
+    c->SaveAs("plots/" + TString(_outdir) + "/"+savename+"projected_reco_"+std::to_string(z)+".png");
+    c->SaveAs("plots/" + TString(_outdir) + "/"+savename+"projected_reco_"+std::to_string(z)+".root");
+
+      }
+  */
 
   return resolution;
 }
@@ -673,9 +726,8 @@ TH2F * Plotter::Draw2D( HistObject hist, int nbins1, double xlow1, double xhigh1
   gPad->SetTicks(1,1);
   SetLegendXY( 0.6, 0.5, 0.82, 0.75  );
 
-
   TH2F* histo = 0;
-  histo = _helper.single_plot2D( hist.filename(), "HGCalTriggerNtupleJet", hist.var(), hist.cut(), nbins1, xlow1, xhigh1, nbins2, xlow2, xhigh2 );
+  histo = _helper.single_plot2D( hist.filename(), hist.treename(), hist.var(), hist.cut(), nbins1, xlow1, xhigh1, nbins2, xlow2, xhigh2 );
   
   _legend->AddEntry( histo, hist.leg_entry(), "L");    
 
@@ -698,6 +750,7 @@ TH2F * Plotter::Draw2D( HistObject hist, int nbins1, double xlow1, double xhigh1
   gPad->SetTicks();
 
   c->SaveAs("plots/" + TString(_outdir) + "/" + savename + ".png");
+  c->SaveAs("plots/" + TString(_outdir) + "/" + savename + ".root");
 
   return histo;
 }
@@ -711,13 +764,14 @@ TH2F * Plotter::Draw2D( HistObject hist, int nbins1, double* x, int nbins2, doub
   SetLegendXY( 0.6, 0.5, 0.82, 0.75  );
 
   TH2F* histo = 0;
-  histo = _helper.single_plot2D( hist.filename(), "HGCalTriggerNtupleJet", hist.var(), hist.cut(), nbins1, x, nbins2, xlow2, xhigh2 );
+  histo = _helper.single_plot2D( hist.filename(), hist.treename(), hist.var(), hist.cut(), nbins1, x, nbins2, xlow2, xhigh2 );
   _legend->AddEntry( histo, hist.leg_entry(), "L");    
   histo->SetTitle("");
   histo->Draw();
   gPad->SetTicks();
 
   c->SaveAs("plots/" + TString(_outdir) + "/" + savename + ".png");
+  c->SaveAs("plots/" + TString(_outdir) + "/" + savename + ".root");
 
   return histo;
 }

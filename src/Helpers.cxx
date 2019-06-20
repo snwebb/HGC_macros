@@ -356,3 +356,15 @@ TString Helpers::counter(){
 }
 
 
+double Helpers::Get2dX(TF1 * f, double y){
+
+  double  a = f->GetParameter(2);
+  double  b = f->GetParameter(1);
+  double  c = f->GetParameter(0);
+
+  double x = ( -b + std::sqrt( b*b - 4*a*(c-y) ) ) / (2 * a);
+
+  return x;
+
+}
+

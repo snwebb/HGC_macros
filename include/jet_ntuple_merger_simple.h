@@ -35,7 +35,7 @@ class jet_ntuple_merger_simple{
  public:
 
   jet_ntuple_merger_simple();
-  void add_jet(TString filein,  TString treename, TString filein_jet, TString treename_jet, TString fileout);
+  void add_jet(TString filein,  TString treename, TString filein_jet, TString treename_jet, TString fileout , TString treenameout);
   void create_cones(TString filein,  TString treename, TString fileout);
   void calibrate_layer(TString filein,  TString treename, TString fileout, bool JB_version=false, bool add_jet=false, bool add_cone=false);
   void test();

@@ -6,213 +6,128 @@ void HGC::plot_GenRecoET(){
 
   //        TString stats = "full";
   //    TString stats = "2";
-  //        TString stats = "*";
-        TString stats = "1*";
+  //            TString stats = "10*";
+                    TString stats = "*";
+  //                  TString stats = "1*";
 
-  TString file1 = "VBF_Hinv/VBF-PU200-stc-TCs-TCs";
-
-
-  TString file1a = "VBF_Hinv/VBF-PU200-stc-TCs-histoMax-5mipt-DRA015-DRB02-NS";
-  TString file2a = "VBF_Hinv/VBF-PU200-stc-TCs-histoMax-5mipt-DRA020-DRB02-NS";
-  TString file3a = "VBF_Hinv/VBF-PU200-stc-TCs-histoMax-5mipt-DRA030-DRB02-NS";
-  TString file4a = "VBF_Hinv/VBF-PU200-stc-TCs-histoMax-5mipt-DRA040-DRB02-NS-pu21";
-  TString file5a = "VBF_Hinv/VBF-PU200-stc-TCs-histoMax-5mipt-DRA050-DRB02-NS";
-
-  TString file7a = "VBF_Hinv/VBF-PU200-stc-TCs-histoMax-DRAInf-DRB00-NS";
-
-  TString file6 = "VBF_Hinv/VBF-PU0-stc-TCs-histoMax-5mipt-DRA040-DRB02-NS-2";
-  TString file6a = "VBF_Hinv/VBF-PU0-stc-TCs-TCs";
-
-  
-  TString file1b = "VBF_Hinv/VBF-PU200-stc-TCs-histoMax-DRA040-DRB00-NS";
-  TString file2b = "VBF_Hinv/VBF-PU200-stc-TCs-histoMax-DRA040-DRB01-NS";
-  TString file3b = "VBF_Hinv/VBF-PU200-stc-TCs-histoMax-5mipt-DRA040-DRB02-NS-pu21";
-  TString file4b = "VBF_Hinv/VBF-PU200-stc-TCs-histoMax-DRA040-DRB03-NS";
-  TString file5b = "VBF_Hinv/VBF-PU200-stc-TCs-histoMax-DRA040-DRB04-NS";
-
-  TString file6b = "VBF_Hinv/VBF-PU200-stcV2-TCs-histoMax-DRA04-DRB00-NS";
-  TString file7b = "VBF_Hinv/VBF-PU200-stcV3-TCs-histoMax-DRA04-DRB00-NS";
-  TString file8b = "VBF_Hinv/VBF-PU200-stc-4416r-TCs-histoMax-DRA04-DRB00-NS";
+  TString file_OneBit4444Fixed       = "VBF_Hinv/VBF-PU200-OneBit-4-4-4-4-Fixed";	  
+  TString file_EqualShare4444Fixed   = "VBF_Hinv/VBF-PU200-EqualShare-4-4-4-4-Fixed";
+  TString file_Threshold3p0	     = "VBF_Hinv/VBF-PU200-Threshold-3p0";		  
+  TString file_Threshold2p0	     = "VBF_Hinv/VBF-PU200-Threshold-2p0";		  
+  TString file_Threshold1p5	     = "VBF_Hinv/VBF-PU200-Threshold-1p5";		  
+  TString file_Threshold1p0	     = "VBF_Hinv/VBF-PU200-Threshold-1p0";		  
+  TString file_Threshold0p5	     = "VBF_Hinv/VBF-PU200-Threshold-0p5";		  
+  TString file_Threshold0p0	     = "VBF_Hinv/VBF-PU200-Threshold-0p0";             
 
 
-  TString file1c = "VBF_Hinv/VBF_Hinv_PU200_threshold_polarHisto_Max";
-  TString file2c = "VBF_Hinv/VBF_Hinv_PU200_stc_polarHisto_Max";
-  TString file3c = "VBF_Hinv/VBF_Hinv_PU200_threshold_polarHisto_Interpolated1stOrder";
-  TString file4c = "VBF_Hinv/VBF_Hinv_PU200_stc_polarHisto_Interpolated1stOrder";
-  TString file5c = "VBF_Hinv/VBF_Hinv_PU200_threshold_polarHisto_Interpolated2ndOrder";
-  TString file6c = "VBF_Hinv/VBF_Hinv_PU200_stc_polarHisto_Interpolated2ndOrder";
-  TString file7c = "VBF_Hinv/VBF_Hinv_PU200_threshold_polarHisto_ModMax";
-  TString file8c = "VBF_Hinv/VBF_Hinv_PU200_stc_polarHisto_ModMax";
+  TString file_hgg_Threshold	     = "VBF_HGG/VBF-HGG-PU200-MultiAlgo-Threshold";		  
+  //V9 For Workshop
+  TString file_v9_Threshold	     = "VBF_HTT/VBF-HTT-PU200-MultiAlgo-Threshold";		  
+  TString file_v9_SuperTCs	     = "VBF_HTT/VBF-HTT-PU200-MultiAlgo-SuperTCs";		  
+  TString file_v9_SeedThreshold	     = "VBF_HTT/VBF-HTT-PU200-MultiAlgo-SeedThreshold";		  
+  TString file_v9_ClusterRadius	     = "VBF_HTT/VBF-HTT-PU200-MultiAlgo-ClusterRadius";		  
+  //V8 For Workshop
+  TString file_v8_Threshold	     = "VBF_Hinv/VBF-PU200-MultiAlgo-Threshold";		  
+  TString file_v8_SuperTCs	     = "VBF_Hinv/VBF-PU200-MultiAlgo-SuperTCs";		  
+  TString file_v8_SeedThreshold	     = "VBF_Hinv/VBF-PU200-MultiAlgo-SeedThreshold";		  
+  TString file_v8_ClusterRadius	     = "VBF_Hinv/VBF-PU200-MultiAlgo-ClusterRadius";		  
 
-  TString file1d = "VBF_Hinv/VBF-PU200-stc-TCs-histoMax-DRAInf-DRB00-NS";
-  TString file2d = "VBF_Hinv/VBF-PU200-stc-TCs-histoMax-DRAInf-DRB00-NS-Jet1p0";
-  TString file3d = "VBF_Hinv/VBF-PU200-stc-TCs-histoMax-DRAInf-DRB00-NS-Jet2p0";
-  TString file4d = "VBF_Hinv/VBF-PU200-stc-TCs-histoMax-DRAInf-DRB00-NS-Jet5p0";
-  TString file5d = "VBF_Hinv/VBF-PU200-stc-TCs-histoMax-DRAInf-DRB00-NS-Jet10p0";
-  TString file_nomin = "VBF_Hinv/VBF-PU200-stc-TCs-histoMax-DRA04-DRB00-NS-cl3dpt0";
+  TString file_v8_Threshold_dr175	     = "VBF_Hinv/VBF-PU200-MultiAlgo-Threshold-DR1p75";		  
+  TString file_v8_SuperTCs_dr175	     = "VBF_Hinv/VBF-PU200-MultiAlgo-SuperTCs-DR1p75";		  
+  TString file_v8_SeedThreshold_dr175	     = "VBF_Hinv/VBF-PU200-MultiAlgo-SeedThreshold-DR1p75";		  
+
+  TString file_v9_Default_WithTriggerCells = "VBF_HTT/VBF-HTT-PU200-Default-WithTriggerCells-WS";
+  TString file_v8_Default_WithTriggerCells = "VBF_Hinv/VBF-PU200-Default-WithTriggerCells";
 
 
 
-  //For presentation  
-  TString file_thresh_histomax_0400 = "VBF_Hinv/VBF-PU200-threshold-TCs-histoMax-DRA04-DRB00-NS";
-  TString file_thresh_inter_0400    = "VBF_Hinv/VBF-PU200-threshold-TCs-histoInterpolated1stOrder-5mipt-DRA04-DRB00-NS";
-
-  TString file_thresh_histomax_0402 = "VBF_Hinv/VBF-PU200-threshold-TCs-histoMax-DRA04-DRB02-NS";
-  TString file_thresh_inter_0402    = "VBF_Hinv/VBF-PU200-threshold-TCs-histoInterpolated1stOrder-5mipt-DRA04-DRB02-NS";
-
-  TString file_thresh_histomax_0302 = "VBF_Hinv/VBF-PU200-threshold-TCs-histoMax-DRA03-DRB02-NS";
-  TString file_thresh_inter_0302    = "VBF_Hinv/VBF-PU200-threshold-TCs-histoInterpolated1stOrder-5mipt-DRA03-DRB02-NS";
-
-  TString file_thresh_histomax_inf02 = "VBF_Hinv/VBF-PU200-threshold-TCs-histoMax-DRAInf-DRB02-NS";
-  TString file_thresh_inter_inf02    = "VBF_Hinv/VBF-PU200-threshold-TCs-histoInterpolated1stOrder-5mipt-DRAInf-DRB02-NS";
-
-  TString file_bestchoice    = "VBF_Hinv/VBF-PU200-bestChoice-TCs-histoMax-DRA04-DRB00-NS";
-  TString file_thresh_TCs = "VBF_Hinv/VBF-PU200-threshold-TCs-TCs";
-  TString file_stc_TCs = "VBF_Hinv/VBF-PU200-stc-TCs-TCs";
-
-
-  TString file_stc_histomax_0400 = "VBF_Hinv/VBF-PU200-stc-TCs-histoMax-DRA040-DRB00-NS";
-  TString file_stc_inter_0400    = "VBF_Hinv/VBF-PU200-stc-TCs-histoInterpolated1stOrder-5mipt-DRA04-DRB00-NS";
-
-  TString file_stc_histomax_0402 = "VBF_Hinv/VBF-PU200-stc-TCs-histoMax-5mipt-DRA040-DRB02-NS-pu21";
-  //  TString file_stc_inter_0402    = "VBF_Hinv/VBF-PU200-stc-TCs-histoInterpolated1stOrder-5mipt-DRA04-DRB02-NS";
-  TString file_stc_inter_0402    = "VBF_Hinv/VBF_Hinv_PU200_stc_polarHisto_Interpolated1stOrder";
-  TString file_stc_histomax_0302 = "VBF_Hinv/VBF-PU200-stc-TCs-histoMax-5mipt-DRA030-DRB02-NS";
-  TString file_stc_inter_0302    = "VBF_Hinv/VBF-PU200-stc-TCs-histoInterpolated1stOrder-5mipt-DRA030-DRB02-NS";
-
-  TString file_stc_histomax_inf02 = "VBF_Hinv/VBF-PU200-stc-TCs-histoMax-DRAInf-DRB00-NS";
-  TString file_stc_inter_inf02    = "VBF_Hinv/VBF-PU200-stc-TCs-histoInterpolated1stOrder-5mipt-DRAInf-DRB02-NS";
-
-
-  TString file_stc_histomax_0402_PU0 = "VBF_Hinv/VBF-PU0-stc-TCs-histoMax-5mipt-DRA040-DRB02-NS-2";
-
-  TString file_threshold_histomax_0402_PU0 = "doesn't exist";
-  TString file_stc_inter_0402_PU0 = "doesn't exist";
-  TString file_threshold_inter_0402_PU0 = "doesn't exist";
 
 
 
-  TString file_photon_wThresh = "SingleGammaPt25/SingleGamma-PU2000-stc-wThresh-TCs-histoMax-DRA040-DRB00-NS";
-  TString file_photon_nThresh = "SingleGammaPt25/SingleGamma-PU200-stc-TCs-histoMax-DRA040-DRB00-NS";
 
-  TString file_photon_wThresh_pu0 = "SingleGammaPt25/SingleGamma-PU0-stc-wThresh-TCs-histoMax-DRA040-DRB00-NS";
-  TString file_photon_nThresh_pu0 = "SingleGammaPt25/SingleGammaPt25_PU0_stc_HistoMax";
 
-  TString file_threshold_histomax_LayerDep01 = "VBF_Hinv/VBF-PU200-threshold-TCs-histoMax-LayerDependentDRA01-NS";
-  TString file_threshold_histomax_LayerDep02 = "VBF_Hinv/VBF-PU200-threshold-TCs-histoMax-LayerDependentDRA02-NS";
-  TString file_threshold_histomax_LayerDep03 = "VBF_Hinv/VBF-PU200-threshold-TCs-histoMax-LayerDependentDRA03-NS";
-  TString file_threshold_histomax_LayerDep04 = "VBF_Hinv/VBF-PU200-threshold-TCs-histoMax-LayerDependentDRA04-NS";
-  TString file_CurrentDefault = "VBF_Hinv/VBF-PU200-CurrentDefault";
+
+
+
+
+  TString file_httws_Threshold	     = "VBF_HTT/VBF-HTT-PU200-MultiAlgo-Threshold-WS";		  
+  TString file_httws_SuperTCs	     = "VBF_HTT/VBF-HTT-PU200-MultiAlgo-SuperTCs-WS";		  
+  TString file_httws_SeedThreshold	     = "VBF_HTT/VBF-HTT-PU200-MultiAlgo-SeedThreshold-WS";		  
+  TString file_httws_ClusterRadius	     = "VBF_HTT/VBF-HTT-PU200-MultiAlgo-ClusterRadius-WS";		  
+
+
+  TString file_hggws_Threshold	     = "VBF_HGG/VBF-HGG-PU200-MultiAlgo-Threshold-WS";		  
+  TString file_hggws_SuperTCs	     = "VBF_HGG/VBF-HGG-PU200-MultiAlgo-SuperTCs-WS";		  
+  TString file_hggws_SeedThreshold	     = "VBF_HGG/VBF-HGG-PU200-MultiAlgo-SeedThreshold-WS";		  
+  TString file_hggws_ClusterRadius	     = "VBF_HGG/VBF-HGG-PU200-MultiAlgo-ClusterRadius-WS";		  
+
+
+  TString tree_dr175_Threshold0p0  = "Fp8Threshold0p0DummyHistomaxvardrdrho1p75Ntup";
+  TString tree_dr175_Threshold0p5  = "Fp8Threshold0p5DummyHistomaxvardrdrho1p75Ntup";
+  TString tree_dr175_Threshold1p0  = "Fp8Threshold1p0DummyHistomaxvardrdrho1p75Ntup";
+  TString tree_dr175_Threshold1p5  = "Fp8Threshold1p5DummyHistomaxvardrdrho1p75Ntup";
+  TString tree_dr175_Threshold2p0  = "Fp8Threshold2p0DummyHistomaxvardrdrho1p75Ntup";
+  TString tree_dr175_Threshold3p0  = "Fp8Threshold3p0DummyHistomaxvardrdrho1p75Ntup";
   
 
+  TString tree_v9_Threshold0p0  = "Fp8Threshold0p0DummyHistomaxvardrdrho1p0Ntup";
+  TString tree_v9_Threshold0p5  = "Fp8Threshold0p5DummyHistomaxvardrdrho1p0Ntup";
+  TString tree_v9_Threshold1p0  = "Fp8Threshold1p0DummyHistomaxvardrdrho1p0Ntup";
+  TString tree_v9_Threshold1p5  = "Fp8Threshold1p5DummyHistomaxvardrdrho1p0Ntup";
+  TString tree_v9_Threshold2p0  = "Fp8Threshold2p0DummyHistomaxvardrdrho1p0Ntup";
+  TString tree_v9_Threshold3p0  = "Fp8Threshold3p0DummyHistomaxvardrdrho1p0Ntup";
 
-  TString  file_NewDefault_0mipt = "VBF_Hinv/VBF-PU200-NewDefault-histoMax-0mipt";
-  TString  file_NewDefault_5mipt = "VBF_Hinv/VBF-PU200-NewDefault-histoMax-5mipt";
-  TString  file_NewDefault_10mipt = "VBF_Hinv/VBF-PU200-NewDefault-histoMax-10mipt";
-  TString  file_NewDefault_15mipt = "VBF_Hinv/VBF-PU200-NewDefault-histoMax-15mipt";
-  TString  file_NewDefault_20mipt = "VBF_Hinv/VBF-PU200-NewDefault-histoMax-20mipt";
+  TString tree_v8_Threshold0p0  = "Fp8Threshold0p0DummyHistomaxvardrth10Ntup"; 
+  TString tree_v8_Threshold0p5  = "Fp8Threshold0p5DummyHistomaxvardrth10Ntup";
+  TString tree_v8_Threshold1p0  = "Fp8Threshold1p0DummyHistomaxvardrth10Ntup";
+  TString tree_v8_Threshold1p5  = "Fp8Threshold1p5DummyHistomaxvardrth10Ntup";
+  TString tree_v8_Threshold2p0  = "Fp8Threshold2p0DummyHistomaxvardrth10Ntup";
+  TString tree_v8_Threshold3p0  = "Fp8Threshold3p0DummyHistomaxvardrth10Ntup";
 
-  TString  file_STC16_NewDefault_0mipt = "VBF_Hinv/VBF-PU200-STC16-NewDefault-histoMax-0mipt";
-  TString  file_STC16_NewDefault_5mipt = "VBF_Hinv/VBF-PU200-STC16-NewDefault-histoMax-5mipt";
-  TString  file_STC16_NewDefault_10mipt = "VBF_Hinv/VBF-PU200-STC16-NewDefault-histoMax-10mipt";
-  TString  file_STC16_NewDefault_15mipt = "VBF_Hinv/VBF-PU200-STC16-NewDefault-histoMax-15mipt";
-  TString  file_STC16_NewDefault_20mipt = "VBF_Hinv/VBF-PU200-STC16-NewDefault-histoMax-20mipt";
 
+  TString tree_v8_Stc16  = "Fp8Stc4161616DummyHistomaxvardrth10Ntup";
+  TString tree_v8_Stc4  = "Fp8Stc4444FixedDummyHistomaxvardrth10Ntup";
+  TString tree_v8_ES  = "Fp8EqualShare4444FixedDummyHistomaxvardrth10Ntup";
+  TString tree_v8_OB  = "Fp8Onebit4444FixedDummyHistomaxvardrth10Ntup";
+  TString tree_v8_best  = "Fp8BestchoiceDummyHistomaxvardrth10Ntup";
+ 
+  TString tree_dr175_Stc16  = "Fp8Stc4161616DummyHistomaxvardrdrho1p75Ntup";
+  TString tree_dr175_Stc4  = "Fp8Stc4444FixedDummyHistomaxvardrdrho1p75Ntup";
+  TString tree_dr175_ES  = "Fp8EqualShare4444FixedDummyHistomaxvardrdrho1p75Ntup";
+  TString tree_dr175_OB  = "Fp8Onebit4444FixedDummyHistomaxvardrdrho1p75Ntup";
+  TString tree_dr175_best  = "Fp8BestchoiceDummyHistomaxvardrdrho1p75Ntup";
+
+
+  TString tree_v9_Stc16  = "Fp8Stc4161616DummyHistomaxvardrdrho1p0Ntup";
+  TString tree_v9_Stc4  = "Fp8Stc4444FixedDummyHistomaxvardrdrho1p0Ntup";
+  TString tree_v9_ES  = "Fp8EqualShare4444FixedDummyHistomaxvardrdrho1p0Ntup";
+  TString tree_v9_OB  = "Fp8Onebit4444FixedDummyHistomaxvardrdrho1p0Ntup";
+  TString tree_v9_best  = "Fp8BestchoiceDummyHistomaxvardrdrho1p0Ntup";
+
+  TString tree_v9_default  = "hgcalTriggerNtuplizer";
+
+  TString tree_v9_Seed0  = "Fp8ThresholdDummyHistomaxvardrth0Ntup";
+  TString tree_v9_Seed10  = "Fp8ThresholdDummyHistomaxvardrth10Ntup";
+  TString tree_v9_Seed20  = "Fp8ThresholdDummyHistomaxvardrth20Ntup";
+  TString tree_v9_Seed30  = "Fp8ThresholdDummyHistomaxvardrth30Ntup";
+  TString tree_v9_Seed40  = "Fp8ThresholdDummyHistomaxvardrth40Ntup";
+  TString tree_v9_Seed50  = "Fp8ThresholdDummyHistomaxvardrth50Ntup";
+  TString tree_v9_Seed100  = "Fp8ThresholdDummyHistomaxvardrth100Ntup";
   
-  TString  file_STC16_histomax_10mipt = "VBF_Hinv/VBF-PU200-STC16-histoMax-DRA04-DRB02-10mipt";
-  TString  file_threshold_histomax_10mipt = "VBF_Hinv/VBF-PU200-threshold-histoMax-DRA04-DRB02-10mipt";
+  TString tree_v9_dr1p0  ="Fp8ThresholdDummyHistomaxvardrdrho1p0Ntup";
+  TString tree_v9_dr1p25  ="Fp8ThresholdDummyHistomaxvardrdrho1p25Ntup";
+  TString tree_v9_dr1p5  ="Fp8ThresholdDummyHistomaxvardrdrho1p5Ntup";
+  TString tree_v9_dr1p75  ="Fp8ThresholdDummyHistomaxvardrdrho1p75Ntup";
+  TString tree_v9_dr2p0  ="Fp8ThresholdDummyHistomaxvardrdrho2p0Ntup";
+  TString tree_v9_dr3p0  ="Fp8ThresholdDummyHistomaxvardrdrho3p0Ntup";
+  TString tree_v9_dr5p0  ="Fp8ThresholdDummyHistomaxvardrdrho5p0Ntup";
 
-
-  TString  file_lblx1 = "VBF_Hinv/VBF-PU200-threshold-LbyLx1-DRB02-10mipt";
-  TString  file_lblx1p5 = "VBF_Hinv/VBF-PU200-threshold-LbyLx1p5-DRB02-10mipt";
-  TString  file_lblx2 = "VBF_Hinv/VBF-PU200-threshold-LbyLx2-DRB02-10mipt";
-
-
-  TString  file_lblx1p25_b0 = "VBF_Hinv/VBF-PU200-threshold-LbyLx1p25-BLbyL0-10mipt";
-  TString  file_lblx1p25_b0p5 = "VBF_Hinv/VBF-PU200-threshold-LbyLx1p25-BLbyL0p5-10mipt";
-  TString  file_stc16_lblx1p25_b0 = "VBF_Hinv/VBF-PU200-STC16-LbyLx1p25-BLbyL0-10mipt";
-  TString  file_stc16_lblx1p25_b0p5 = "VBF_Hinv/VBF-PU200-STC16-LbyLx1p25-BLbyL0p5-10mipt";
-  TString  file_stc4_lblx1p25_b0 = "VBF_Hinv/VBF-PU200-STC4-LbyLx1p25-BLbyL0-10mipt";
-  TString  file_stc8_lblx1p25_b0 = "VBF_Hinv/VBF-PU200-STC8-LbyLx1p25-BLbyL0-10mipt";
-  TString  file_stc4_lblx1p25_b0p5 = "VBF_Hinv/VBF-PU200-STC4-LbyLx1p25-BLbyL0p5-10mipt";
-
-  TString  file_4bit = "VBF_Hinv/VBF-PU200-STC4-EqualSpread-LbyLx1p25-BLbyL0-10mipt";
-  TString  file_Paul = "VBF_Hinv/VBF-PU200-STC4-Paul-LbyLx1p25-BLbyL0-10mipt";
-
-  TString  file_energy_div = "VBF_Hinv/VBF-PU200-threshold-10mipt-EnergyDivisionClustering";
-  TString  file_energy_mul = "VBF_Hinv/VBF-PU200-threshold-10mipt-EnergyMultiplicationClustering";
-
-
-  TString  file_Pion_thresh = "SinglePi/SinglePiPt35-PU200-threshold-default/";
-  TString  file_Pion_stc16 = "SinglePi/SinglePiPt35-PU200-stc16-default/";
-
-  TString  file_NoThreshold = "VBF_Hinv/VBF-PU200-NoThreshold-default-Clusters";
-  TString  file_NoThreshold003 = "VBF_Hinv/VBF-PU200-threshold003-default";
-
-  TString  file_SimpleCoarsening = "VBF_Hinv/VBF-PU200-STC2_SimpleCoarsening-default";
-
-  TString  file_STC4_NewSensorThreshold = "VBF_Hinv/VBF-PU200-STC4-default-NewSensorThreshold";
-  TString  file_STC16_NewSensorThreshold = "VBF_Hinv/VBF-PU200-STC16-default-NewSensorThreshold";
-  TString  file_threshold_NewSensorThreshold = "VBF_Hinv/VBF-PU200-threshold-default-NewSensorThreshold";
-
-
-
-  TString  file_SimpleCoarsening_NewSensorThreshold = "VBF_Hinv/VBF-PU200-STC2_SimpleCoarsening-default-NewSensorThreshold";
-  TString  file_NoThreshold_NewSensorThreshold = "VBF_Hinv/VBF-PU200-0threshold-default-NewSensorThreshold";
-
-
-  TString  file_SimpleCoarsening_NewSensorThreshold_fix = "VBF_Hinv/VBF-PU200-STC2_SimpleCoarsening-default-NewSensorThreshold-Fix";
-
-
-
-
-  TString file_threshold0 = file_NoThreshold_NewSensorThreshold;
-  TString file_threshold0p5 = "VBF_Hinv/VBF-PU200-threshold0p5-default-3sigSensorThreshold";
-  TString file_threshold1p0 = "VBF_Hinv/VBF-PU200-threshold1p0-default-3sigSensorThreshold";
-  TString file_threshold1p5 = "VBF_Hinv/VBF-PU200-threshold1p5-default-3sigSensorThreshold";
-  TString file_threshold2p0 = file_threshold_NewSensorThreshold;
-
-  TString file_2sigSensorThreshold = "VBF_Hinv/VBF-PU200-threshold0-default-2sigSensorThreshold";
-  TString file_3sigSensorThreshold = file_NoThreshold_NewSensorThreshold;
-  TString file_4sigSensorThreshold = "VBF_Hinv/VBF-PU200-threshold0-default-4sigSensorThreshold";
-  TString file_5sigSensorThreshold = "VBF_Hinv/VBF-PU200-threshold0-default-5sigSensorThreshold";
-
-
-  TString file_SimpleCoarsening_Fix2 = "VBF_Hinv/VBF-PU200-STC2_SimpleCoarsening-default-NewSensorThreshold-Fix-2";
-  TString file_STC4_2sigSensorThreshold = "VBF_Hinv/VBF-PU200-STC4-default-2sigSensorThreshold";
-  TString file_STC4_3sigSensorThreshold = "VBF_Hinv/VBF-PU200-STC4-default-3sigSensorThreshold";  
-  TString file_STC4_4sigSensorThreshold = "VBF_Hinv/VBF-PU200-STC4-default-4sigSensorThreshold";
-  TString file_STC4_5sigSensorThreshold = "VBF_Hinv/VBF-PU200-STC4-default-5sigSensorThreshold";
-
-
-
-
-  TString file_ThickCoarse_STC4 = "VBF_Hinv/VBF-PU200-ThickCoarse-STC4-default/";
-  TString file_ThickCoarse_1bit = "VBF_Hinv/VBF-PU200-ThickCoarse-1bit-default/";
-  TString file_ThickCoarse_EqualShare = "VBF_Hinv/VBF-PU200-ThickCoarse-EqualShare-default/";
-
-  TString file_ThickCoarse_PU0_STC4 = "VBF_Hinv/VBF-PU0-ThickCoarse-STC4-default/";
-  TString file_ThickCoarse_PU0_EqualShare = "VBF_Hinv/VBF-PU0-ThickCoarse-EqualShare-default/";
-  TString file_ThickCoarse_PU0_1bit = "VBF_Hinv/VBF-PU0-ThickCoarse-1bit-default/";
-
-  TString  file_Pion_threshold = "SinglePionFlatPt/SinglePionFlatPt-PU200-Threshold/";
-  TString  file_Pion_stc4 = "SinglePionFlatPt/SinglePionFlatPt-PU200-STC4/";
-
-  TString file_ThickCoarse_STC4_Rad = "VBF_Hinv/VBF-PU200-ThickCoarse-STC4-Radx1p5/";
-  TString file_ThickCoarse_1bit_Rad = "VBF_Hinv/VBF-PU200-ThickCoarse-1bit-Radx1p5/";
-  TString file_ThickCoarse_EqualShare_Rad = "VBF_Hinv/VBF-PU200-ThickCoarse-EqualShare-Radx1p5/";
-
-
-
-
-  TString cut = "VBF_parton_genjet>=0 && VBF_parton_jets>=0 && abs(genjet_eta[VBF_parton_genjet])>1.7 && abs(genjet_eta[VBF_parton_genjet])<2.8 ";
-  
+  //    TString cut_v9 = "VBF_parton_genjet>=0 && VBF_parton_jets>=0 && abs(genjet_eta[VBF_parton_genjet])>1.7 && abs(genjet_eta[VBF_parton_genjet])<2.8 && Tau_overlap<1";
+  TString cut_v9 = "VBF_parton_genjet>=0 && VBF_parton_jets>=0 && abs(genjet_eta[VBF_parton_genjet])>1.7 && abs(genjet_eta[VBF_parton_genjet])<2.8 ";
+  TString cut = "VBF_parton_genjet>=0 && VBF_parton_jets>=0 && abs(genjet_eta[VBF_parton_genjet])>1.7 && abs(genjet_eta[VBF_parton_genjet])<2.8";
   TString cut_pion = "Pion_genjet>=0 && Pion_jets>=0 && abs(genjet_eta[Pion_genjet])>1.7 && abs(genjet_eta[Pion_genjet])<2.8 ";
-
   TString cuteta1 = "VBF_parton_genjet>=0 && VBF_parton_jets>=0 && abs(genjet_eta[VBF_parton_genjet])>1.5 && abs(genjet_eta[VBF_parton_genjet])<2.25 ";
   TString cuteta2 = "VBF_parton_genjet>=0 && VBF_parton_jets>=0 && abs(genjet_eta[VBF_parton_genjet])>2.25 && abs(genjet_eta[VBF_parton_genjet])<3 ";
-
-
 
   TString cuteta51 = "VBF_parton_genjet>=0 && VBF_parton_jets>=0 && abs(genjet_eta[VBF_parton_genjet])>1.5 && abs(genjet_eta[VBF_parton_genjet])<1.8 ";
   TString cuteta52 = "VBF_parton_genjet>=0 && VBF_parton_jets>=0 && abs(genjet_eta[VBF_parton_genjet])>1.8 && abs(genjet_eta[VBF_parton_genjet])<2.1 ";
@@ -231,251 +146,71 @@ void HGC::plot_GenRecoET(){
   //  double y[7]={0,10,20,40,60,80,100};
   double y[11]={0,10,20,30,40,50,60,70,80,90,100};
   
+
+  //TString file = file_hggws_Threshold;
+  //    TString file = file_httws_Threshold;
+  //  TString file = file_v8_Threshold;
+  //  //   TString file = file_v8_Threshold_dr175;
+  //  //   std::vector<TString> trees = { tree_v9_Threshold0p0, tree_v9_Threshold1p0, tree_v9_Threshold2p0, tree_v9_Threshold3p0};
+  //  std::vector<TString> trees = { tree_v8_Threshold0p0, tree_v8_Threshold1p0, tree_v8_Threshold2p0, tree_v8_Threshold3p0};
+  //  //  std::vector<TString> trees = { tree_dr175_Threshold0p0, tree_dr175_Threshold1p0, tree_dr175_Threshold2p0, tree_dr175_Threshold3p0};
+  // std::vector<TString> description = { "0p0","1p0","2p0","3p0"};
+  // std::vector<TString> legend = { "Threshold 0 MIPT","Threshold 1.0 MIPT","Threshold 2.0 MIPT","Threshold 3.0 MIPT"};
   
-  //Varying 3D cl pt
-  // std::vector<TString> files = {file1d, file2d, file3d, file4d, file5d};
-  // std::vector<TString> description = {"0p5","1p0","2p0","5p0","10p0"};
-  // std::vector<TString> legend = {"0p5","1p0","2p0","5p0","10p0"}; 
 
-  //Comparing TCs directly with 3D cluster jets
-  // std::vector<TString> files = {file1, file_nomin};
-  // std::vector<TString> description = {"TC-TCs","no_min"};
-  // std::vector<TString> legend = {"TC-TCs","no_min"}; 
-
-  //  Threshold algorithm - comparing seeding algorithms
-  // std::vector<TString> files = {file_thresh_histomax_0402, file_thresh_inter_0402};
-  // std::vector<TString> description = {"maximum","interpolated"};
-  // std::vector<TString> legend = {"maximum","interpolated"};
-
-  //Threshold algorithm - comparing clustering radius maximum
-  // std::vector<TString> files = {file_thresh_histomax_0400, file_thresh_histomax_0402, file_thresh_histomax_0302, file_thresh_histomax_inf02};
-  // std::vector<TString> description = {"0400","0402", "0302","Inf02"};
-  // std::vector<TString> legend = {"A=0.04,B=0.00","A=0.04,B=0.02","A=0.03,B=0.02","A=Infinity,B=0.02"};
-
-  //Threshold algorithm - comparing clustering radius interpolated
-  // std::vector<TString> files = {file_thresh_inter_0400, file_thresh_inter_0402, file_thresh_inter_0302, file_thresh_inter_inf02};
-  // std::vector<TString> description = {"0400","0402", "0302","Inf02"};
-  // std::vector<TString> legend = {"A=0.04,B=0.00","A=0.04,B=0.02","A=0.03,B=0.02","A=Infinity,B=0.02"};
-
-
-  // //STC algorithm - comparing seeding algorithms
-  // std::vector<TString> files = {file_stc_histomax_0400, file_stc_inter_0402};
-  // std::vector<TString> description = {"maximum","interpolated"};
-  // std::vector<TString> legend = {"maximum","interpolated"};
-
-  //STC algorithm - comparing clustering radius maximum
-  // std::vector<TString> files = {file_stc_histomax_0400, file_stc_histomax_0402, file_stc_histomax_0302, file_stc_histomax_inf02};
-  // std::vector<TString> description = {"0400","0402", "0302","Inf02"};
-  // std::vector<TString> legend = {"A=0.04,B=0.00","A=0.04,B=0.02","A=0.03,B=0.02","A=Infinity,B=0.02"};
-
-  //STC algorithm - comparing clustering radius interpolated
-  // std::vector<TString> files = {file_stc_inter_0402, file_stc_inter_0302, file_stc_inter_inf02};
-  // std::vector<TString> description = {"0402", "0302","Inf02"};
-  // std::vector<TString> legend = {"A=0.04,B=0.02","A=0.03,B=0.02","A=Infinity,B=0.02"};
-
-  //Comparing Thresh and STC with TCs directly (done)
-  // std::vector<TString> files = {file_stc_TCs,file_thresh_TCs};
-  // std::vector<TString> description = {"stc","thresh"};
-  // std::vector<TString> legend = {"stc","thresh"}; 
-
-
-  //Comparing Thresh, STC and best choice
-  // std::vector<TString> files = {file_thresh_histomax_0400,file_stc_histomax_0400,file_bestchoice, file_CurrentDefault};
-  // std::vector<TString> description = {"thresh","stc","bestchoice", "currentdefault"};
-  // std::vector<TString> legend = {"thresh","stc","bestchoice", "currentdefault"};
-
-  //STC algorithm - comparing seeding algorithms PU 0 
-  // std::vector<TString> files = {file_stc_histomax_0400, file_stc_inter_0400, file_threshold_histomax_0400, file_threshold_inter_0400,};
-  // std::vector<TString> description = {"maximum","interpolated"};
-  // std::vector<TString> legend = {"maximum","interpolated"};
-
-
-  //Single Photon PU200 - STC, with and without threshold
-  // std::vector<TString> files = {file_photon_wThresh, file_photon_nThresh};
-  // std::vector<TString> description = {"Threshold","NoThreshold"};
-  // std::vector<TString> legend = {"Threshold","No threshold"};
-
-  // //Single Photon PU0 - STC, with and without threshold
-  // std::vector<TString> files = {file_photon_wThresh_pu0, file_photon_nThresh_pu0};
-  // std::vector<TString> description = {"Threshold","NoThreshold"};
-  // std::vector<TString> legend = {"With Threshold","No Threshold"};
-
-  //  Comparing STC with TCs directly and inter
-  // std::vector<TString> files = {file_stc_TCs,file_stc_inter_0402};
-  // std::vector<TString> description = {"TCs","inter"};
-  // std::vector<TString> legend = {"TCs","inter"}; 
-
-
-  //Comparing Thresh, STC and best choice for inter
-  // std::vector<TString> files = {file_thresh_inter_0402,file_stc_inter_0402};
-  // std::vector<TString> description = {"thresh","stc"};
-  // std::vector<TString> legend = {"thresh","stc"};
-
-
-
-  //Layer dependent studies
-   // std::vector<TString> files = {file_threshold_histomax_LayerDep01,file_threshold_histomax_LayerDep02,file_threshold_histomax_LayerDep03,file_threshold_histomax_LayerDep04};
-   // //  std::vector<TString> files = {file_threshold_histomax_LayerDep02,file_threshold_histomax_LayerDep03,file_threshold_histomax_LayerDep04};
-   // std::vector<TString> description = {"0p01","0p02","0p03","0p04"};
-   // std::vector<TString> legend = {"A=0.01","A=0.02","A=0.03","A=0.04"};
-
-
-
-  //Producing N seed plots
-  //  std::vector<TString> files = {file_thresh_histomax_0400,file_stc_histomax_0400,file_bestchoice};
-  //  std::vector<TString> files = {file_thresh_histomax_0400,file_thresh_histomax_0400,file_thresh_histomax_0400,file_thresh_histomax_0400,file_thresh_histomax_0400};
-  //  std::vector<TString> files = {file_stc_histomax_0400,file_stc_histomax_0400,file_stc_histomax_0400,file_stc_histomax_0400,file_stc_histomax_0400};
-  // std::vector<TString> files = {file_bestchoice,file_bestchoice,file_bestchoice,file_bestchoice,file_bestchoice};
-  // std::vector<TString> description = {"0.5","1.0","2.0","5.0","10.0"};
-  // std::vector<TString> legend = {"0.5","1.0","2.0","5.0","10.0"};
-
-
-
-  //New Default Threshold
-  // std::vector<TString> files = {file_NewDefault_0mipt, file_NewDefault_5mipt, file_NewDefault_10mipt, file_NewDefault_15mipt, file_NewDefault_20mipt};
-  // std::vector<TString> description = {"0mipt","5mipt","10mipt","15mipt","20mipt"};
-  // std::vector<TString> legend = {"0mipt","5mipt","10mipt","15mipt","20mipt"};
-
-  // std::vector<TString> files = {file_NewDefault_0mipt, file_NewDefault_5mipt, file_NewDefault_10mipt};
-  // std::vector<TString> description = {"0mipt","5mipt","10mipt"};
-  // std::vector<TString> legend = {"0mipt","5mipt","10mipt"};
-
-  // //New Default STC
-  // std::vector<TString> files = {file_STC16_NewDefault_0mipt, file_STC16_NewDefault_5mipt, file_STC16_NewDefault_10mipt, file_STC16_NewDefault_15mipt, file_STC16_NewDefault_20mipt};
-  // std::vector<TString> description = {"0mipt","5mipt","10mipt","15mipt","20mipt"};
-  // std::vector<TString> legend = {"0mipt","5mipt","10mipt","15mipt","20mipt"};
-
-
-  // //DRA04 DRB02 10MIPT
-  // std::vector<TString> files = {file_threshold_histomax_10mipt,file_STC16_histomax_10mipt};
-  // std::vector<TString> description = {"threshold","stc16"};
-  // std::vector<TString> legend = {"threshold","stc16"};
-
-
-
-  // //Varying cluster radius (layer by layer scaling)
-  // std::vector<TString> files = { file_NewDefault_10mipt, file_lblx1,file_lblx1p25_b0,file_lblx1p5,file_lblx2};
-  // std::vector<TString> description = { "noeta","1p0","1p25","1p5", "2p0"};
-  // std::vector<TString> legend = {"DefaultNoEta","DefaultEta","DefaultNoEta x 1.25","DefaultEta x 1.5", "DefaultEta x 2"};
-
-
-
-
-  //Varying cluster radius (layer by layer scaling)
-  // std::vector<TString> files = { file_lblx1p25_b0, file_lblx1p25_b0p5, file_stc4_lblx1p25_b0, file_stc4_lblx1p25_b0p5, file_stc16_lblx1p25_b0, file_stc16_lblx1p25_b0p5, };
-  // std::vector<TString> description = { "thresh-b0","thresh-b0p5", "stc4-b0","stc4-b0p5","stc16-b0","stc16-b0p5"};
-  // std::vector<TString> legend = { "thresh B=0","thresh B=0.5A", "stc4 B=0","stc4 B=0.5A","stc16 B=0","stc16 B=0.5A"};
-
-  // std::vector<TString> files = { file_NewDefault_10mipt, file_lblx1p25_b0, file_lblx2};
-  // std::vector<TString> description = { "Default","DefaultAx1p25","DefaultAx2"};
-  // std::vector<TString> legend = {"Default", "Default x 1.25","Default x 2"};
-
-
- //  // 4 bit study
- //  //  std::vector<TString> files = { file_4bit, file_Paul, file_lblx1p25_b0, file_stc4_lblx1p25_b0};
- //  std::vector<TString> files = { file_lblx1p25_b0, file_stc4_lblx1p25_b0, file_stc8_lblx1p25_b0};
- //  //  std::vector<TString> description = { "equal", "binned", "thresh", "stc4"};
- //  std::vector<TString> description = {  "thresh", "stc4", "stc8"};
- // std::vector<TString> legend = {  "thresh", "stc4", "stc8"};
- //  //  std::vector<TString> legend = {"equal except 0", "binned", "threshold", "stc4"};
-
- //  // //  std::vector<TString> legend = {"equal except 0 low","equal except 0 high", "binned low", "binned high","threshold low","threshold high"  , "stc4 low", "stc4 high"};
- //  // std::vector<TString> legend = {"threshold low","threshold high"  , "stc4 low", "stc4 high"};
-
-
-
-  //check with johannes and stephan's study
-  // std::vector<TString> files = { file_NewDefault_10mipt, file_energy_div, file_energy_mul};
-  // std::vector<TString> description = { "default", "divide", "multiply"};
-  // std::vector<TString> legend = { "default", "divide", "multiply"};
-
-
- //  std::vector<TString> files = { file_Pion_thresh, file_Pion_stc16};
- //  std::vector<TString> description = { "thresh", "stc16"};
- //  std::vector<TString> legend = { "thresh", "stc16"};
-
-
-
-  // // // 4 bit study and eta
-  // std::vector<TString> files = { file_lblx1p25_b0, file_stc4_lblx1p25_b0};
-  // //  std::vector<TString> files = { file_stc4_lblx1p25_b0};
-  // std::vector<TString> description = {  "thresh1", "thresh2", "thresh3", "thresh4", "thresh5","thresh1b", "thresh2b", "thresh3b", "thresh4b", "thresh5b"};
-  // std::vector<TString> legend = {  "thresh1", "thresh2", "thresh3", "thresh4", "thresh5","thresh1b", "thresh2b", "thresh3b", "thresh4b", "thresh5b"};
-
-
-
-  //No Threshold comparison
-
-  //   std::vector<TString> files = { file_STC16_NewDefault_10mipt,  file_NewDefault_10mipt, file_NoThreshold003 };
-  // std::vector<TString> description = {  "stc16", "thresh2mip", "nothresh003" };
-  // std::vector<TString> legend = {  "stc16", "2-mipt", "3mev" };
-  //   std::vector<TString> files = {  file_NoThreshold003 };
-  // std::vector<TString> description = { "nothresh" };
-  // std::vector<TString> legend = {  "0-mipt" };
-
-
-  // std::vector<TString> files = { file_STC16_NewDefault_10mipt, file_NewDefault_10mipt, file_SimpleCoarsening};
-  // std::vector<TString> description = {  "stc16", "threshold", "coarse2" };
-  // std::vector<TString> legend = {  "stc16", "threshold", "coarse2" };
-
-
-
-  // std::vector<TString> files = { file_STC4_NewSensorThreshold, file_STC16_NewSensorThreshold, file_threshold_NewSensorThreshold};
-  // std::vector<TString> description = {  "stc4" , "stc16", "threshold"};
-  // std::vector<TString> legend = {  "stc4" , "stc16", "threshold"};
-
-
-
-  //  std::vector<TString> files = { file_STC4_NewSensorThreshold, file_SimpleCoarsening_NewSensorThreshold, file_threshold_NewSensorThreshold, file_NoThreshold_NewSensorThreshold};
-
-  // std::vector<TString> files = { file_STC4_NewSensorThreshold, file_SimpleCoarsening_Fix2, file_threshold_NewSensorThreshold, file_NoThreshold_NewSensorThreshold};
-  // std::vector<TString> description = {  "stc4" , "coarse2", "threshold","nothresh"};
-  // std::vector<TString> legend = {  "stc4" , "coarse2", "threshold", "nothresh"};
-
-
-
-
-
-  // std::vector<TString> files = { file_threshold0, file_threshold0p5, file_threshold1p0, file_threshold1p5, file_threshold2p0};
-  // std::vector<TString> description = { "0", "0p5", "1p0", "1p5", "2p0"};
-  // std::vector<TString> legend = { "0", "0p5", "1p0", "1p5", "2p0"};
-
-
-  // std::vector<TString> files = { file_2sigSensorThreshold, file_3sigSensorThreshold, file_4sigSensorThreshold, file_5sigSensorThreshold};
-  // std::vector<TString> description = { "2sig", "3sig", "4sig", "5sig"};
-  // std::vector<TString> legend = { "2sig", "3sig", "4sig", "5sig"};
-
-
-
-  // std::vector<TString> files = { file_STC4_2sigSensorThreshold, file_STC4_3sigSensorThreshold, file_STC4_4sigSensorThreshold, file_STC4_5sigSensorThreshold};
-  // std::vector<TString> description = { "2sig", "3sig", "4sig", "5sig"};
-  // std::vector<TString> legend = { "2sig", "3sig", "4sig", "5sig"};
-
-  // std::vector<TString> files = { file_ThickCoarse_STC4, file_ThickCoarse_1bit, file_ThickCoarse_EqualShare};
-  // std::vector<TString> description = { "STC4", "1bit", "equalshare"};
-  // std::vector<TString> legend = { "STC4", "1 bit fraction", "Equal Share"};
-
-
-  // std::vector<TString> files = { file_ThickCoarse_PU0_STC4, file_ThickCoarse_PU0_EqualShare};
-  // std::vector<TString> description = { "STC41","STC42","STC43","STC44","STC45", "1bit1","1bit2","1bit3", "1bit4","1bit5"};
-  // std::vector<TString> legend = { "STC41","STC42","STC43","STC44","STC45", "1bit1","1bit2","1bit3", "1bit4","1bit5"};
-
-  // std::vector<TString> files = { file_ThickCoarse_PU0_STC4, file_ThickCoarse_PU0_EqualShare};
-  // std::vector<TString> description = { "STC4", "equalshare"};
-  // std::vector<TString> legend = { "STC4", "Equal Share"};
-
-  std::vector<TString> files = { file_ThickCoarse_STC4_Rad, file_ThickCoarse_1bit_Rad, file_ThickCoarse_EqualShare_Rad};
-  std::vector<TString> description = { "STC4", "1bit", "equalshare"};
-  std::vector<TString> legend = { "STC4", "1 bit fraction", "Equal Share"};
-
-  // std::vector<TString> files = { file_Pion_threshold, file_Pion_stc4};
-  // std::vector<TString> description = { "thresh", "stc4"};
-  // std::vector<TString> legend = { "thresh", "stc4"};
-
-
-
-  for(unsigned int i=0;i<files.size();i++){
-
+    //SUPER TCS
+  //  TString file = file_hggws_SuperTCs;
+  //    TString file = file_v8_SuperTCs;
+  //  TString file = file_v8_SuperTCs_dr175;
+  //std::vector<TString> trees = { tree_v8_Stc16, tree_v8_Stc4, tree_v8_ES, tree_v8_OB};
+  //  std::vector<TString> trees = { tree_v9_Stc16, tree_v9_Stc4, tree_v9_ES, tree_v9_OB};
+  // std::vector<TString> trees = { tree_dr175_Stc16, tree_dr175_Stc4, tree_dr175_ES, tree_dr175_OB};
+  // std::vector<TString> description = { "stc16", "stc4", "es", "ob"};
+  // std::vector<TString> legend = { "STC4+16", "STC4+CTC4", "Equal Share", "STC fractions"};
+  
+
+    //SEED THRESHOLD
+  //   TString file = file_hggws_SeedThreshold;
+  //    TString file = file_v8_SeedThreshold;
+  // std::vector<TString> trees = { tree_v9_Seed0, tree_v9_Seed10, tree_v9_Seed20, tree_v9_Seed40};
+  // std::vector<TString> description = { "0", "10", "20", "40"};
+  // std::vector<TString> legend = { "Threshold 0 MIPT","Threshold 10 MIPT","Threshold 20 MIPT","Threshold 40 MIPT"};
+ 
+   //CLUSTER RADIUS
+  //    TString file = file_hggws_ClusterRadius;  
+  // //     TString file = file_v8_ClusterRadius;  
+  // std::vector<TString> trees = { tree_v9_dr1p0, tree_v9_dr1p5, tree_v9_dr2p0, tree_v9_dr5p0};
+  // std::vector<TString> description = { "1", "1p5", "2",  "5"};
+  // std::vector<TString> legend = { "1 x default", "1.5 x default", "2 x default", "5 x default"};
+
+  //TRIGGER CELL CLUSTERING
+    //  TString file = file_v9_Default_WithTriggerCells;
+  TString file = file_v8_Default_WithTriggerCells;
+  std::vector<TString> trees = { tree_v9_default, tree_v9_dr1p0, tree_v9_dr2p0 };
+  std::vector<TString> description = { "tconly",  "1", "2"};
+  std::vector<TString> legend = { "Jet finding on TCs", "Default", "2 x default"};
+
+  //CONCENTRATOR COMBINATION
+  //  TString file = file_v8_Threshold;
+  // TString file = file_hggws_ClusterRadius;
+  // std::vector<TString> trees = { tree_v9_dr1p0, tree_v9_Stc16, tree_v9_best};
+  // //  std::vector<TString> trees = { tree_v9_dr1p0};
+  // std::vector<TString> description = { "1p35","stc16","bc"};
+  // std::vector<TString> legend = { "Threshold 1.35 MIPT","STC4+16","Best Choice"};
+
+  // TString file = file_v8_ClusterRadius;
+  // std::vector<TString> trees = { tree_v9_dr1p0, tree_v8_Stc16, tree_v8_best};
+  // std::vector<TString> description = { "2p0","stc16","bc"};
+  // std::vector<TString> legend = { "Threshold 2.0 MIPT","STC4+16","Best Choice"};
+
+
+ 
+  //   for(unsigned int i=0;i<files.size();i++){
+   for(unsigned int i=0;i<trees.size();i++){
+
+     //               if ( i == 1 ) file = file_v8_SuperTCs;
+     //     if ( i == 1 ) file = file_hggws_SuperTCs;
+      if ( i == 1 ) file = file_v8_ClusterRadius;
     //2 bins
     // histobjects.emplace_back( HistObject( "Jets", (snwebb + "/" + files.at(i) + "/jet_ntuples_merged/ntuple_jet_merged_"+stats+".root"), "", "jets_pt[VBF_parton_jets]:genjet_pt[VBF_parton_genjet]", cuteta1, true  ) );
 
@@ -493,9 +228,14 @@ void HGC::plot_GenRecoET(){
 
     //Pion
     //    histobjects.emplace_back( HistObject( "Jets", (snwebb + "/" + files.at(i) + "/jet_ntuples_merged/ntuple_jet_merged_"+stats+".root"), "", "jets_pt[Pion_jets]:genjet_pt[Pion_genjet]", cut_pion, true  ) );
-
     //Not separated (default)
-                histobjects.emplace_back( HistObject( "Jets", (snwebb + "/" + files.at(i) + "/jet_ntuples_merged/ntuple_jet_merged_"+stats+".root"), "", "jets_pt[VBF_parton_jets]:genjet_pt[VBF_parton_genjet]" ,cut, true  ) );
+    //                histobjects.emplace_back( HistObject( "Jets", (snwebb + "/" + files.at(i) + "/jet_ntuples_merged/ntuple_jet_merged_"+stats+".root"), "", "jets_pt[VBF_parton_jets]:genjet_pt[VBF_parton_genjet]" ,cut, true  ) );
+
+
+
+    histobjects.emplace_back( HistObject( "Jets", (snwebb + "/" + file + "/jet_ntuples_merged/ntuple_jet_merged_"+ trees.at(i) +"_"+stats+".root"), trees.at(i)+"_Jet", "", "jets_pt[VBF_parton_jets]:genjet_pt[VBF_parton_genjet]" ,cut_v9, true  ) );
+
+
   }
 
   for(unsigned int i=0;i<histobjects.size();i++){
@@ -504,22 +244,22 @@ void HGC::plot_GenRecoET(){
     graphs.emplace_back( plotter.DrawProfile(hist  ,(description.at(i)+"_profile"), "s" ) );
 
 
-
-
     // hist = plotter.Draw2D(histobjects2.at(i), 15, x, 4000,0,400  ,description.at(i) + "_high_eta");
     // graphs.emplace_back( plotter.DrawProfile(hist  ,(description.at(i)+"_profile_high_eta"), "s" ) );
-  }
+ 
+
+ }
 
 
-    plotter.DrawGraphs(graphs, legend);
+  plotter.DrawGraphs(graphs, legend);
   //        plotter.DrawEtaGraphs(graphs );
   plotter.SaveFile( graphs );
 
 
 
+  
+
   /*
-
-
   std::vector<TH1F*> hist;
 
   for(unsigned int i=0;i<files.size();i++){
@@ -542,9 +282,11 @@ void HGC::plot_GenRecoET(){
     hist.push_back( ncl3D );
  
   }
-  
+ 
   plotter.Draw( hist , legend, "ncl3d" , true);
-  */
+  */ 
+
+  
 
 
 
@@ -2647,212 +2389,5 @@ void HGC::plot_profile_L1jet_resolution_C2D_PU0(){
 
 
 
-
-
-
-
-
-
-void HGC::plot_eta_pt_jets(){
-
-  TH2F* h_NN = single_plot2D("/vols/cms/tstreble/HGC_ntuples/SingleNu_PU200/calibr_jet_ntuples/ntuple_calibr_jet_core_10.root","jets","abs(jets_eta)","jets_pt","",16,1.45,3.05,1000,0,1000);
-  TH2F* h_GEO = single_plot2D("/vols/cms/tstreble/HGC_ntuples/SingleNu_PU200_C2D_dR/jet_ntuples_merged/ntuple_jet_merged_10.root","jets","abs(jets_eta)","jets_pt","",16,1.45,3.05,1000,0,1000);
-
-
-  vector<TH2F*> histo;
-  histo.push_back(h_NN);
-  histo.push_back(h_GEO);
-
-  vector<TProfile*> prof;
-
-  vector<TString> leg_entry;
-  leg_entry.push_back("NN");
-  leg_entry.push_back("GEO");
-
-  TLegend* leg=new TLegend(0.3,0.5,0.5,0.8);
-  leg->SetFillColor(0);
-  leg->SetBorderSize(0);
-  leg->SetTextSize(0.03);
-
-  for(unsigned int i=0;i<histo.size();i++){
-
-    TProfile* p = (TProfile*)(histo[i]->ProfileX())->Clone();;
-    p->SetLineColor(i+1);
-    p->SetLineWidth(2);
-    p->BuildOptions(0,0,"s");
-    p->SetStats(0);
-    prof.push_back(p);
-    leg->AddEntry(p,leg_entry[i]);
-
-  }
-
-  TCanvas* c=new TCanvas("c","c",650,600);
-  c->SetLeftMargin(0.15);
-  c->SetRightMargin(0.15);
-
-  prof[0]->GetXaxis()->SetTitle("|#eta(C3D)|");
-  prof[0]->GetYaxis()->SetTitle("<p_{T}(C3D)> [GeV]");
-  prof[0]->GetYaxis()->SetTitleOffset(1.7);
-  prof[0]->GetYaxis()->SetRangeUser(0,20);
-  prof[0]->SetStats(0);
-  prof[0]->SetTitle("");
-  prof[0]->Draw();
-  for(unsigned int i=1;i<histo.size();i++)
-    prof[i]->Draw("same");
-  leg->Draw("same");
-
-  
-  TLatex *texl = new TLatex(1.51,20.1,"CMS Simulation NeutrinoGun PU=200 #sqrt{s}=14 TeV");
-  texl->SetTextSize(0.03);
-  texl->Draw("same");
-
-  gPad->SetTicks();
-
-
-  c->SaveAs("plots/eta_pT_C3D.pdf");  
-
-
-}
-
-
-
-
-
-
-
-
-
-void HGC::plot_eta_pt_cones(){
-
-  TH2F* h_NN_C3D = single_plot2D("/vols/cms/tstreble/HGC_ntuples/SingleNu_PU200/calibr_cone_ntuples/calibr_cone_ntuples_10.root","HGCalTriggerNtuple","abs(cone_eta)","cone_calib_Luca_pt","",16,1.45,3.05,100,0,100);
-  TH2F* h_GEO_C3D = single_plot2D("/vols/cms/tstreble/HGC_ntuples/SingleNu_PU200_C2D_dR/calibr_cone_ntuples/calibr_cone_ntuples_10.root","HGCalTriggerNtuple","abs(cone_eta)","cone_calib_Luca_pt","",16,1.45,3.05,100,0,100);
-
-
-  vector<TH2F*> histo;
-  histo.push_back(h_NN_C3D);
-  histo.push_back(h_GEO_C3D);
-
-  vector<TProfile*> prof;
-
-  vector<TString> leg_entry;
-  leg_entry.push_back("NN");
-  leg_entry.push_back("GEO");
-
-  TLegend* leg=new TLegend(0.3,0.5,0.5,0.8);
-  leg->SetFillColor(0);
-  leg->SetBorderSize(0);
-  leg->SetTextSize(0.03);
-
-  for(unsigned int i=0;i<histo.size();i++){
-
-    TProfile* p = (TProfile*)(histo[i]->ProfileX())->Clone();;
-    p->SetLineColor(i+1);
-    p->SetLineWidth(2);
-    p->BuildOptions(0,0,"s");
-    p->SetStats(0);
-    prof.push_back(p);
-    leg->AddEntry(p,leg_entry[i]);
-
-  }
-
-  TCanvas* c=new TCanvas("c","c",650,600);
-  c->SetLeftMargin(0.15);
-  c->SetRightMargin(0.15);
-
-  prof[0]->GetXaxis()->SetTitle("|#eta|");
-  prof[0]->GetYaxis()->SetTitle("Cone p_{T} [GeV]");
-  prof[0]->GetYaxis()->SetTitleOffset(1.7);
-  prof[0]->GetYaxis()->SetRangeUser(0,20);
-  prof[0]->SetStats(0);
-  prof[0]->SetTitle("");
-  prof[0]->Draw();
-  for(unsigned int i=1;i<histo.size();i++)
-    prof[i]->Draw("same");
-  leg->Draw("same");
-
-  
-  TLatex *texl = new TLatex(1.51,20.1,"CMS Simulation NeutrinoGun PU=200 #sqrt{s}=14 TeV");
-  texl->SetTextSize(0.03);
-  texl->Draw("same");
-
-  gPad->SetTicks();
-
-
-  c->SaveAs("plots/profile_cone_pt_eta_C2D_dR.pdf");  
-
-
-}
-
-
-
-
-
-
-
-void HGC::plot_eta_pt_cones_tc(){
-
-  TH2F* h_NN_C3D = single_plot2D("/vols/cms/tstreble/HGC_ntuples/SingleNu_PU200/calibr_cone_ntuples/calibr_cone_ntuples_10.root","HGCalTriggerNtuple","abs(cone_eta)","cone_tc_calib_Luca_pt","",16,1.45,3.05,100,0,100);
-  TH2F* h_GEO_C3D = single_plot2D("/vols/cms/tstreble/HGC_ntuples/SingleNu_PU200_C2D_dR/calibr_cone_ntuples/calibr_cone_ntuples_10.root","HGCalTriggerNtuple","abs(cone_eta)","cone_tc_calib_Luca_pt","",16,1.45,3.05,100,0,100);
-
-
-  vector<TH2F*> histo;
-  histo.push_back(h_NN_C3D);
-  histo.push_back(h_GEO_C3D);
-
-  vector<TProfile*> prof;
-
-  vector<TString> leg_entry;
-  leg_entry.push_back("NN");
-  leg_entry.push_back("GEO");
-
-  TLegend* leg=new TLegend(0.3,0.5,0.5,0.8);
-  leg->SetFillColor(0);
-  leg->SetBorderSize(0);
-  leg->SetTextSize(0.03);
-
-  for(unsigned int i=0;i<histo.size();i++){
-
-    TProfile* p = (TProfile*)(histo[i]->ProfileX())->Clone();;
-    p->SetLineColor(i+1);
-    p->SetLineWidth(2);
-    p->BuildOptions(0,0,"s");
-    p->SetStats(0);
-    prof.push_back(p);
-    leg->AddEntry(p,leg_entry[i]);
-
-  }
-
-  TCanvas* c=new TCanvas("c","c",650,600);
-  c->SetLeftMargin(0.15);
-  c->SetRightMargin(0.15);
-
-  prof[0]->GetXaxis()->SetTitle("|#eta|");
-  prof[0]->GetYaxis()->SetTitle("Cone p_{T} [GeV]");
-  prof[0]->GetYaxis()->SetTitleOffset(1.7);
-  prof[0]->GetYaxis()->SetRangeUser(0,50);
-  prof[0]->SetStats(0);
-  prof[0]->SetTitle("");
-  prof[0]->Draw();
-  for(unsigned int i=1;i<histo.size();i++)
-    prof[i]->Draw("same");
-  leg->Draw("same");
-
-  
-  TLatex *texl = new TLatex(1.51,50.1,"CMS Simulation NeutrinoGun PU=200 #sqrt{s}=14 TeV");
-  texl->SetTextSize(0.03);
-  texl->Draw("same");
-
-  gPad->SetTicks();
-
-
-  c->SaveAs("plots/profile_cone_tc_pt_eta_C2D_dR.pdf");  
-
-
-}
-
-
-
-
-
-
 */
+ 

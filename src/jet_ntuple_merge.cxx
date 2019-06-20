@@ -9,6 +9,7 @@ int main( int argc, char ** argv ){
 
   std::string filein   = cmd.string_val( "--filein" ) ;
   std::string treename = cmd.string_val( "--treename", "hgcalTriggerNtuplizer/HGCalTriggerNtuple" ) ;
+  std::string treenameout = cmd.string_val( "--treename_out", "HGCalTriggerNtupleJet" ) ;
 
   std::string filein_jet   = cmd.string_val( "--filein_jet", "" ) ;
   std::string treename_jet = cmd.string_val( "--treename_jet", "jets" ) ;
@@ -21,7 +22,7 @@ int main( int argc, char ** argv ){
   jet_ntuple_merger_simple jnm;
   
   if ( runtype == "jet" )
-    jnm.add_jet( filein, treename, filein_jet, treename_jet, fileout );
+    jnm.add_jet( filein, treename, filein_jet, treename_jet, fileout, treenameout );
     //    jnmv2.add_jet( filein, treename, filein_jet, treename_jet, fileout );
 
   // if ( runtype == "pu" )
