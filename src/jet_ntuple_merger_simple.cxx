@@ -44,6 +44,18 @@ void jet_ntuple_merger_simple::add_jet(TString filein,  TString treename, TStrin
   std::vector<float> *_jets_eta;
   std::vector<float> *_jets_phi;
   std::vector<float> *_jets_energy;
+  std::vector<unsigned int> *_jets_n_cl;
+  std::vector<float> *_jets_firstfrac;
+
+  std::vector<float> *_jets_srrsum;
+  std::vector<float> *_jets_srrjet;
+  std::vector<float> *_jets_srr_best;
+  std::vector<float> *_jets_srr_paul;
+
+  std::vector<float> *_jets_sppsum;
+  std::vector<float> *_jets_sppjet;
+  std::vector<float> *_jets_spp_best;
+  std::vector<float> *_jets_spp_paul;
 
   // std::vector<std::vector<float> > *_jets_C3d_pt;
   // std::vector<std::vector<float> > *_jets_C3d_eta;
@@ -138,6 +150,18 @@ void jet_ntuple_merger_simple::add_jet(TString filein,  TString treename, TStrin
   tree_jet->SetBranchAddress("jets_eta",    &_jets_eta);
   tree_jet->SetBranchAddress("jets_phi",    &_jets_phi);
   tree_jet->SetBranchAddress("jets_energy", &_jets_energy);
+  tree_jet->SetBranchAddress("jets_n_cl", &_jets_n_cl);
+  tree_jet->SetBranchAddress("jets_srrsum", &_jets_srrsum);
+  tree_jet->SetBranchAddress("jets_srrjet", &_jets_srrjet);
+  tree_jet->SetBranchAddress("jets_srr_best", &_jets_srr_best);
+  tree_jet->SetBranchAddress("jets_srr_paul", &_jets_srr_paul);
+
+  tree_jet->SetBranchAddress("jets_sppsum", &_jets_sppsum);
+  tree_jet->SetBranchAddress("jets_sppjet", &_jets_sppjet);
+  tree_jet->SetBranchAddress("jets_spp_best", &_jets_spp_best);
+  tree_jet->SetBranchAddress("jets_spp_paul", &_jets_spp_paul);
+
+  tree_jet->SetBranchAddress("jets_firstfrac", &_jets_firstfrac);
     
 
   // tree->SetBranchStatus ("*",1);
@@ -222,6 +246,19 @@ void jet_ntuple_merger_simple::add_jet(TString filein,  TString treename, TStrin
   tree_new->Branch("jets_eta", &_jets_eta);
   tree_new->Branch("jets_phi", &_jets_phi);
   tree_new->Branch("jets_energy", &_jets_energy);
+  tree_new->Branch("jets_n_cl", &_jets_n_cl);
+
+  tree_new->Branch("jets_srrsum", &_jets_srrsum);
+  tree_new->Branch("jets_srrjet", &_jets_srrjet);
+  tree_new->Branch("jets_srr_best", &_jets_srr_best);
+  tree_new->Branch("jets_srr_paul", &_jets_srr_paul);
+
+  tree_new->Branch("jets_sppsum", &_jets_sppsum);
+  tree_new->Branch("jets_sppjet", &_jets_sppjet);
+  tree_new->Branch("jets_spp_best", &_jets_spp_best);
+  tree_new->Branch("jets_spp_paul", &_jets_spp_paul);
+
+  tree_new->Branch("jets_firstfrac", &_jets_firstfrac);
 
   //  tree_new->Branch("num_seeds_in_jet", &_num_seeds_in_jet);
   
@@ -266,6 +303,18 @@ void jet_ntuple_merger_simple::add_jet(TString filein,  TString treename, TStrin
     _jets_eta = 0;
     _jets_phi = 0;
     _jets_energy = 0;  
+    _jets_n_cl = 0;  
+    _jets_srrsum = 0;  
+    _jets_srrjet = 0;  
+    _jets_srr_best = 0;  
+    _jets_srr_paul = 0;  
+
+    _jets_sppsum = 0;  
+    _jets_sppjet = 0;  
+    _jets_spp_best = 0;  
+    _jets_spp_paul = 0;  
+
+    _jets_firstfrac = 0;  
     
     _gen_id = 0;
     _gen_status = 0;

@@ -29,7 +29,7 @@ InputDirList = [
 # "VBF_HToInvisible_M125_14TeV_powheg_pythia8/crab_VBF-PU200-MultiAlgo-SuperTCs/190610_142730/0000",
 # "VBF_HToInvisible_M125_14TeV_powheg_pythia8/crab_VBF-PU200-MultiAlgo-SeedThreshold/190610_142831/0000",
 #"VBF_HToInvisible_M125_14TeV_powheg_pythia8/crab_VBF-PU200-MultiAlgo-ClusterRadius/190610_142908/0000",
-"VBF_HToInvisible_M125_14TeV_powheg_pythia8/crab_VBF-PU200-Default-WithTriggerCells/190610_143015/0000",
+#"VBF_HToInvisible_M125_14TeV_powheg_pythia8/crab_VBF-PU200-Default-WithTriggerCells/190610_143015/0000",
 
 #V9 (EXTENDED CLUSTER RADIUS)
 # "VBFHToTauTau_M125_14TeV_powheg_pythia8/crab_VBF-HTT-PU200-MultiAlgo-Threshold-DR1p75/190610_160411/0000",
@@ -56,7 +56,7 @@ InputDirList = [
 
 
 #"VBFHToGG_M-125_14TeV_powheg_pythia8/crab_VBF-HGG-PU200-MultiAlgo-Threshold-WS/190614_103104/0000",
-#    "VBFHToGG_M-125_14TeV_powheg_pythia8/crab_VBF-HGG-PU200-MultiAlgo-SuperTCs-WS/190614_103316/0000",
+#"VBFHToGG_M-125_14TeV_powheg_pythia8/crab_VBF-HGG-PU200-MultiAlgo-SuperTCs-WS/190614_103316/0000",
 # "VBFHToGG_M-125_14TeV_powheg_pythia8/crab_VBF-HGG-PU200-MultiAlgo-SeedThreshold-WS/190614_103718/0000",
 # "VBFHToGG_M-125_14TeV_powheg_pythia8/crab_VBF-HGG-PU200-MultiAlgo-ClusterRadius-WS/190614_103923/0000",
 
@@ -65,12 +65,18 @@ InputDirList = [
 # "VBFHToTauTau_M125_14TeV_powheg_pythia8/crab_VBF-HTT-PU200-MultiAlgo-SeedThreshold-WS/190614_103645/0000",
 #"VBFHToTauTau_M125_14TeV_powheg_pythia8/crab_VBF-HTT-PU200-MultiAlgo-ClusterRadius-WS/190614_103833/0000",
 
-
-
-
 #"VBFHToTauTau_M125_14TeV_powheg_pythia8/crab_VBF-HTT-PU200-Default-WithTriggerCells-WS/190614_132424/0000",
 
 
+
+
+
+#"VBFHToGG_M-125_14TeV_powheg_pythia8/crab_VBF-HGG-PU200-MultiAlgo-Decentralised/190709_130200/0000",
+#"NeutrinoGun_E_10GeV/crab_DoubleNu-PU200-MultiAlgo-Decentralised/190709_130228/0000",
+
+
+#"VBFHToGG_M-125_14TeV_powheg_pythia8/crab_VBF-HGG-PU200-MultiAlgo-Decentralised/190717_141103/0000",
+#"NeutrinoGun_E_10GeV/crab_DoubleNu-PU200-MultiAlgo-Decentralised/190717_141958/0000",
 
 #"VBF_HToInvisible_M125_14TeV_powheg_pythia8/crab_VBF-PU200-MultiAlgo-Threshold-WS/190617_142337/0000",
 #"VBF_HToInvisible_M125_14TeV_powheg_pythia8/crab_VBF-PU200-MultiAlgo-SuperTCs-WS/190617_155355/0000",
@@ -78,11 +84,31 @@ InputDirList = [
 #"VBF_HToInvisible_M125_14TeV_powheg_pythia8/crab_VBF-PU200-MultiAlgo-ClusterRadius-WS/190617_/0000",
 
 
+#"VBFHToGG_M-125_14TeV_powheg_pythia8/crab_VBF-HGG-PU200-MultiAlgo-Decentralised-BugFix/190718_161801/0000",
+#"NeutrinoGun_E_10GeV/crab_DoubleNu-PU200-MultiAlgo-Decentralised-BugFix/190718_161654/0000",
+
+
+#"VBFHToGG_M-125_14TeV_powheg_pythia8/crab_VBF-HGG-PU200-Default/190726_142831/0000",
+"VBFHToGG_M-125_14TeV_powheg_pythia8/crab_VBF-HGG-PU200-Decentralised/190730_112632/0000",
+
+#"NeutrinoGun_E_10GeV/crab_DoubleNu-PU200-Decentralised/190731_092913/0000",
+
+
+
+# "RelValDiQ_Pt20To300_Etam1p6Tom2p9/crab_QuarkGun-Neg-PU0-Decentralised/190802_100839/0000",
+# "RelValDiQ_Pt20To300_Etam1p6Tom2p9/crab_QuarkGun-Neg-PU140-Decentralised/190802_100807/0000",
+# "RelValDiQ_Pt20To300_Etam1p6Tom2p9/crab_QuarkGun-Neg-PU200-Decentralised/190802_100732/0000",
+# "RelValDiQ_Pt20To300_Eta1p6To2p9/crab_QuarkGun-Pos-PU0-Decentralised/190802_100704/0000",
+# "RelValDiQ_Pt20To300_Eta1p6To2p9/crab_QuarkGun-Pos-PU140-Decentralised/190802_100633/0000",
+# "RelValDiQ_Pt20To300_Eta1p6To2p9/crab_QuarkGun-Pos-PU200-Decentralised/190802_100555/0000",
+
    ]
 OutputDirList1=[  i.split("/")[1] for i in InputDirList ]
-OutputDirList=[  "/vols/cms/snwebb/HGC_ntuples/VBF_Hinv/" + i.split("_")[1] for i in OutputDirList1 ]
-#OutputDirList=[  "/vols/cms/snwebb/HGC_ntuples/VBF_HGG/" + i.split("_")[1] for i in OutputDirList1 ]
+#OutputDirList=[  "/vols/cms/snwebb/HGC_ntuples/VBF_Hinv/" + i.split("_")[1] for i in OutputDirList1 ]
+OutputDirList=[  "/vols/cms/snwebb/HGC_ntuples/VBF_HGG/" + i.split("_")[1] for i in OutputDirList1 ]
+#OutputDirList=[  "/vols/cms/snwebb/HGC_ntuples/DoubleNu/" + i.split("_")[1] for i in OutputDirList1 ]
 #OutputDirList=[  "/vols/cms/snwebb/HGC_ntuples/VBF_HTT/" + i.split("_")[1] for i in OutputDirList1 ]
+#OutputDirList=[  "/vols/cms/snwebb/HGC_ntuples/QuarkGun/" + i.split("_")[1] for i in OutputDirList1 ]
 
 
 
@@ -160,7 +186,7 @@ TreeNames = [
 
 
 #DEFAULT
-"hgcalTriggerNtuplizer",
+#"hgcalTriggerNtuplizer",
 
 
 
@@ -183,7 +209,7 @@ TreeNames = [
 
 # "Fp8BestchoiceDummyHistomaxvardrdrho1p0Ntup",
 # "Fp8Stc4161616DummyHistomaxvardrdrho1p0Ntup",
-# "Fp8Stc4444FixedDummyHistomaxvardrdrho1p0Ntup",
+#"Fp8Stc4444FixedDummyHistomaxvardrdrho1p0Ntup",
 # "Fp8EqualShare4444FixedDummyHistomaxvardrdrho1p0Ntup",
 # "Fp8Onebit4444FixedDummyHistomaxvardrdrho1p0Ntup",
 
@@ -206,6 +232,22 @@ TreeNames = [
 # "Fp8ThresholdDummyHistomaxvardrdrho2p0Ntup",
 # # "Fp8ThresholdDummyHistomaxvardrdrho3p0Ntup",
 # "Fp8ThresholdDummyHistomaxvardrdrho5p0Ntup",
+
+
+
+# "Fp8ThresholdDummyHistomaxNtup",
+# "Fp8Stc4444FixedDummyHistomaxNtup",
+# "Fp8BestchoiceDummyHistomaxNtup",
+
+
+# "Fp8ThresholdDummyHistomaxNtup",
+# "Fp8Stc4161616DummyHistomaxbin4Ntup",
+# "Fp8BestchoiceDummyHistomaxNtup",
+
+"Fp8ThresholdDummyHistomaxNtup",
+"Fp8Stc4161616DummyHistomaxNtup",
+"Fp8BestchoiceDummyHistomaxNtup",
+
  ]
 
 

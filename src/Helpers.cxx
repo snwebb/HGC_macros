@@ -46,7 +46,7 @@ TH1F* Helpers::single_plot(TString file, TString tree_name, TString var, TString
  
   tree->Draw(var+Form(">>g(%i, %f, %f)", nbin, min, max),cut,"goff");
 
-  TH1F* g =  (TH1F*) ( (TH1F*)gDirectory->Get("g"))->Clone( file + counter() );
+  TH1F* g =  (TH1F*) ( (TH1F*)gDirectory->Get("g"))->Clone( var + counter() );
 
   //  delete tree;
   return g;

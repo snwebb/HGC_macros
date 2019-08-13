@@ -7,8 +7,8 @@ void HGC::plot_GenRecoET(){
   //        TString stats = "full";
   //    TString stats = "2";
   //            TString stats = "10*";
-                    TString stats = "*";
-  //                  TString stats = "1*";
+                       TString stats = "*";
+  //                   TString stats = "1*";
 
   TString file_OneBit4444Fixed       = "VBF_Hinv/VBF-PU200-OneBit-4-4-4-4-Fixed";	  
   TString file_EqualShare4444Fixed   = "VBF_Hinv/VBF-PU200-EqualShare-4-4-4-4-Fixed";
@@ -42,14 +42,6 @@ void HGC::plot_GenRecoET(){
 
 
 
-
-
-
-
-
-
-
-
   TString file_httws_Threshold	     = "VBF_HTT/VBF-HTT-PU200-MultiAlgo-Threshold-WS";		  
   TString file_httws_SuperTCs	     = "VBF_HTT/VBF-HTT-PU200-MultiAlgo-SuperTCs-WS";		  
   TString file_httws_SeedThreshold	     = "VBF_HTT/VBF-HTT-PU200-MultiAlgo-SeedThreshold-WS";		  
@@ -60,6 +52,24 @@ void HGC::plot_GenRecoET(){
   TString file_hggws_SuperTCs	     = "VBF_HGG/VBF-HGG-PU200-MultiAlgo-SuperTCs-WS";		  
   TString file_hggws_SeedThreshold	     = "VBF_HGG/VBF-HGG-PU200-MultiAlgo-SeedThreshold-WS";		  
   TString file_hggws_ClusterRadius	     = "VBF_HGG/VBF-HGG-PU200-MultiAlgo-ClusterRadius-WS";		  
+
+
+
+
+
+  //  TString file_VBF_Decentralised = "VBF_HGG/VBF-HGG-PU200-MultiAlgo-Decentralised";
+  TString file_VBF_Decentralised = "VBF_HGG/VBF-HGG-PU200-Decentralised";
+  TString file_VBF_Default = "VBF_HGG/VBF-HGG-PU200-Default";
+  TString file_Nu_Decentralised = "DoubleNu/DoubleNu-PU200-MultiAlgo-Decentralised";
+
+  // TString file_VBF_Decentralised = "VBF_HGG/VBF-HGG-PU200-MultiAlgo-Decentralised-BugFix";
+  // TString file_Nu_Decentralised = "DoubleNu/DoubleNu-PU200-MultiAlgo-Decentralised-BugFix";
+
+  TString file_QG_Pos_200 = "QuarkGun/QuarkGun-Pos-PU200-Decentralised";
+  TString file_QG_Pos_140 = "QuarkGun/QuarkGun-Pos-PU140-Decentralised";
+  TString file_QG_Pos_0 = "QuarkGun/QuarkGun-Pos-PU0-Decentralised";
+
+
 
 
   TString tree_dr175_Threshold0p0  = "Fp8Threshold0p0DummyHistomaxvardrdrho1p75Ntup";
@@ -122,18 +132,38 @@ void HGC::plot_GenRecoET(){
   TString tree_v9_dr3p0  ="Fp8ThresholdDummyHistomaxvardrdrho3p0Ntup";
   TString tree_v9_dr5p0  ="Fp8ThresholdDummyHistomaxvardrdrho5p0Ntup";
 
+
+
+
+  TString tree_thresh  =  "Fp8ThresholdDummyHistomaxNtup";
+  //  TString tree_stc  =    "Fp8Stc4444FixedDummyHistomaxNtup";
+  //  TString tree_stc  =    "Fp8Stc4161616DummyHistomaxbin4Ntup";
+   TString tree_stc  =    "Fp8Stc4161616DummyHistomaxNtup";
+
+  TString tree_bc  =    "Fp8BestchoiceDummyHistomaxNtup";
+
+
+
   //    TString cut_v9 = "VBF_parton_genjet>=0 && VBF_parton_jets>=0 && abs(genjet_eta[VBF_parton_genjet])>1.7 && abs(genjet_eta[VBF_parton_genjet])<2.8 && Tau_overlap<1";
+ 
   TString cut_v9 = "VBF_parton_genjet>=0 && VBF_parton_jets>=0 && abs(genjet_eta[VBF_parton_genjet])>1.7 && abs(genjet_eta[VBF_parton_genjet])<2.8 ";
   TString cut = "VBF_parton_genjet>=0 && VBF_parton_jets>=0 && abs(genjet_eta[VBF_parton_genjet])>1.7 && abs(genjet_eta[VBF_parton_genjet])<2.8";
   TString cut_pion = "Pion_genjet>=0 && Pion_jets>=0 && abs(genjet_eta[Pion_genjet])>1.7 && abs(genjet_eta[Pion_genjet])<2.8 ";
-  TString cuteta1 = "VBF_parton_genjet>=0 && VBF_parton_jets>=0 && abs(genjet_eta[VBF_parton_genjet])>1.5 && abs(genjet_eta[VBF_parton_genjet])<2.25 ";
-  TString cuteta2 = "VBF_parton_genjet>=0 && VBF_parton_jets>=0 && abs(genjet_eta[VBF_parton_genjet])>2.25 && abs(genjet_eta[VBF_parton_genjet])<3 ";
+  TString cuteta1 = "VBF_parton_genjet>=0 && VBF_parton_jets>=0 && abs(genjet_eta[VBF_parton_genjet])>1.7 && abs(genjet_eta[VBF_parton_genjet])<2.0 ";
+  TString cuteta2 = "VBF_parton_genjet>=0 && VBF_parton_jets>=0 && abs(genjet_eta[VBF_parton_genjet])>2.0 && abs(genjet_eta[VBF_parton_genjet])<2.8 ";
 
   TString cuteta51 = "VBF_parton_genjet>=0 && VBF_parton_jets>=0 && abs(genjet_eta[VBF_parton_genjet])>1.5 && abs(genjet_eta[VBF_parton_genjet])<1.8 ";
   TString cuteta52 = "VBF_parton_genjet>=0 && VBF_parton_jets>=0 && abs(genjet_eta[VBF_parton_genjet])>1.8 && abs(genjet_eta[VBF_parton_genjet])<2.1 ";
   TString cuteta53 = "VBF_parton_genjet>=0 && VBF_parton_jets>=0 && abs(genjet_eta[VBF_parton_genjet])>2.1 && abs(genjet_eta[VBF_parton_genjet])<2.4 ";
   TString cuteta54 = "VBF_parton_genjet>=0 && VBF_parton_jets>=0 && abs(genjet_eta[VBF_parton_genjet])>2.4 && abs(genjet_eta[VBF_parton_genjet])<2.7 ";
   TString cuteta55 = "VBF_parton_genjet>=0 && VBF_parton_jets>=0 && abs(genjet_eta[VBF_parton_genjet])>2.7 && abs(genjet_eta[VBF_parton_genjet])<3 ";
+
+
+  // TString cuteta51 = "VBF_parton_genjet>=0 && VBF_parton_jets>=0 && abs(jets_eta[VBF_parton_jets])>1.5 && abs(jets_eta[VBF_parton_jets])<1.8 ";
+  // TString cuteta52 = "VBF_parton_genjet>=0 && VBF_parton_jets>=0 && abs(jets_eta[VBF_parton_jets])>1.8 && abs(jets_eta[VBF_parton_jets])<2.1 ";
+  // TString cuteta53 = "VBF_parton_genjet>=0 && VBF_parton_jets>=0 && abs(jets_eta[VBF_parton_jets])>2.1 && abs(jets_eta[VBF_parton_jets])<2.4 ";
+  // TString cuteta54 = "VBF_parton_genjet>=0 && VBF_parton_jets>=0 && abs(jets_eta[VBF_parton_jets])>2.4 && abs(jets_eta[VBF_parton_jets])<2.7 ";
+  // TString cuteta55 = "VBF_parton_genjet>=0 && VBF_parton_jets>=0 && abs(jets_eta[VBF_parton_jets])>2.7 && abs(jets_eta[VBF_parton_jets])<3 ";
 
 
 
@@ -185,10 +215,10 @@ void HGC::plot_GenRecoET(){
 
   //TRIGGER CELL CLUSTERING
     //  TString file = file_v9_Default_WithTriggerCells;
-  TString file = file_v8_Default_WithTriggerCells;
-  std::vector<TString> trees = { tree_v9_default, tree_v9_dr1p0, tree_v9_dr2p0 };
-  std::vector<TString> description = { "tconly",  "1", "2"};
-  std::vector<TString> legend = { "Jet finding on TCs", "Default", "2 x default"};
+  // TString file = file_v8_Default_WithTriggerCells;
+  // std::vector<TString> trees = { tree_v9_default, tree_v9_dr1p0, tree_v9_dr2p0 };
+  // std::vector<TString> description = { "tconly",  "1", "2"};
+  // std::vector<TString> legend = { "Jet finding on TCs", "Default", "2 x default"};
 
   //CONCENTRATOR COMBINATION
   //  TString file = file_v8_Threshold;
@@ -204,13 +234,45 @@ void HGC::plot_GenRecoET(){
   // std::vector<TString> legend = { "Threshold 2.0 MIPT","STC4+16","Best Choice"};
 
 
+
+
+
+
+    TString file = file_VBF_Decentralised;
+  //  TString file = file_VBF_Default;
+
+  //  TString file = file_QG_Pos_200;
+
+  // std::vector<TString> trees = { tree_thresh, tree_stc, tree_bc};
+  // std::vector<TString> description = { "th","stc","bc", "th","stc","bc",};
+  // std::vector<TString> legend = { "ThresholdLow","STCLow","Best ChoiceLow", "thresholdHigh","STCHigh","Best ChoiceHigh",};
+  // std::vector<TString> trees = { tree_bc};
+  // std::vector<TString> description = { "bc1", "bc2", "bc3", "bc4", "bc5" };
+  // std::vector<TString> legend = { "1.8-2.1", "2.1-2.4", "2.4-2.7" };
+
+  
+
+  std::vector<TString> trees = { tree_stc, tree_stc,tree_stc};
+  std::vector<TString> description = { "200", "140", "0"};
+  std::vector<TString> legend = { "200", "140", "0"};
+  // std::vector<TString> trees = { tree_thresh, tree_thresh,tree_thresh,};
+  // std::vector<TString> description = { "200", "140", "0"};
+  // std::vector<TString> legend = { "200", "140", "0"};
+
+  // std::vector<TString> trees = { tree_thresh, tree_stc, tree_bc};
+  // std::vector<TString> description = { "th","stc","bc"};
+  // std::vector<TString> legend = { "Threshold","STC","Best Choice"};
+ 
  
   //   for(unsigned int i=0;i<files.size();i++){
    for(unsigned int i=0;i<trees.size();i++){
 
+     if (i==1) file = file_QG_Pos_140;
+     if (i==2) file = file_QG_Pos_0;
+
      //               if ( i == 1 ) file = file_v8_SuperTCs;
      //     if ( i == 1 ) file = file_hggws_SuperTCs;
-      if ( i == 1 ) file = file_v8_ClusterRadius;
+     //      if ( i == 1 ) file = file_v8_ClusterRadius;
     //2 bins
     // histobjects.emplace_back( HistObject( "Jets", (snwebb + "/" + files.at(i) + "/jet_ntuples_merged/ntuple_jet_merged_"+stats+".root"), "", "jets_pt[VBF_parton_jets]:genjet_pt[VBF_parton_genjet]", cuteta1, true  ) );
 
@@ -233,10 +295,19 @@ void HGC::plot_GenRecoET(){
 
 
 
-    histobjects.emplace_back( HistObject( "Jets", (snwebb + "/" + file + "/jet_ntuples_merged/ntuple_jet_merged_"+ trees.at(i) +"_"+stats+".root"), trees.at(i)+"_Jet", "", "jets_pt[VBF_parton_jets]:genjet_pt[VBF_parton_genjet]" ,cut_v9, true  ) );
+     histobjects.emplace_back( HistObject( "Jets", (snwebb + "/" + file + "/jet_ntuples_merged/ntuple_jet_merged_"+ trees.at(i) +"_"+stats+".root"), trees.at(i)+"_Jet", "", "jets_pt[VBF_parton_jets]:genjet_pt[VBF_parton_genjet]" ,cut_v9, true  ) );
+    // histobjects.emplace_back( HistObject( "Jets", (snwebb + "/" + file + "/jet_ntuples_merged/ntuple_jet_merged_"+ trees.at(i) +"_"+stats+".root"), trees.at(i)+"_Jet", "", "jets_pt[VBF_parton_jets]:genjet_pt[VBF_parton_genjet]" ,cuteta52, true  ) );
+    // histobjects.emplace_back( HistObject( "Jets", (snwebb + "/" + file + "/jet_ntuples_merged/ntuple_jet_merged_"+ trees.at(i) +"_"+stats+".root"), trees.at(i)+"_Jet", "", "jets_pt[VBF_parton_jets]:genjet_pt[VBF_parton_genjet]" ,cuteta53, true  ) );
+    // histobjects.emplace_back( HistObject( "Jets", (snwebb + "/" + file + "/jet_ntuples_merged/ntuple_jet_merged_"+ trees.at(i) +"_"+stats+".root"), trees.at(i)+"_Jet", "", "jets_pt[VBF_parton_jets]:genjet_pt[VBF_parton_genjet]" ,cuteta54, true  ) );
+    //    histobjects.emplace_back( HistObject( "Jets", (snwebb + "/" + file + "/jet_ntuples_merged/ntuple_jet_merged_"+ trees.at(i) +"_"+stats+".root"), trees.at(i)+"_Jet", "", "jets_pt[VBF_parton_jets]:genjet_pt[VBF_parton_genjet]" ,cuteta55, true  ) );
 
 
   }
+
+
+
+
+
 
   for(unsigned int i=0;i<histobjects.size();i++){
     TH2F * hist = plotter.Draw2D(histobjects.at(i), 15, x, 4000,0,400  ,description.at(i) );//VBF
@@ -252,7 +323,7 @@ void HGC::plot_GenRecoET(){
 
 
   plotter.DrawGraphs(graphs, legend);
-  //        plotter.DrawEtaGraphs(graphs );
+  //  plotter.DrawEtaGraphs(graphs );
   plotter.SaveFile( graphs );
 
 
@@ -376,6 +447,123 @@ void HGC::plot_nC3D(){
   plotter.Draw( hist , legend, "ncl3d" , true);
   
 }
+
+
+void HGC::JetStudies(){
+
+  std::string stats = "*";
+
+  // std::string file1 = "VBF_HGG/VBF-HGG-PU200-MultiAlgo-Decentralised-BugFix";
+  // std::string file2 = "DoubleNu/DoubleNu-PU200-MultiAlgo-Decentralised-BugFix";
+
+  //  std::string file1 = "VBF_HGG/VBF-HGG-PU200-MultiAlgo-Decentralised";
+  //  std::string file1 = "VBF_HGG/VBF-HGG-PU200-Default";
+  std::string file1 = "VBF_HGG/VBF-HGG-PU200-Decentralised";
+  //  std::string file2 = "DoubleNu/DoubleNu-PU200-MultiAlgo-Decentralised";
+  //  TString file_VBF_Default = "VBF_HGG/VBF-HGG-PU200-Default";
+
+  std::string file2 = "DoubleNu/DoubleNu-PU200-Decentralised";
+
+  //  std::string tree = "Fp8Stc4444FixedDummyHistomaxNtup";
+
+
+  //std::string tree1 = "Fp8Stc4161616DummyHistomaxNtup";
+std::string tree1 = "Fp8ThresholdDummyHistomaxNtup";
+
+std::string tree = "Fp8ThresholdDummyHistomaxNtup";
+  //  std::string tree ="Fp8Stc4161616DummyHistomaxbin4Ntup";
+  std::string jetpt_low = "40";
+  std::string jetpt_high = "60";
+
+  //NCL == 1
+   // TString cut_basic = "abs(jets_eta)>1.7 && abs(jets_eta)<2.8 && jets_pt>" +jetpt_low +  " && jets_pt<"+jetpt_high + "&&jets_n_cl==1";
+   // TString cut_vbf = "VBF_parton_genjet>=0 && VBF_parton_jets>=0 && abs(genjet_eta[VBF_parton_genjet])>1.7 && abs(genjet_eta[VBF_parton_genjet])<2.8 && genjet_pt[VBF_parton_genjet]>"+jetpt_low +"&& genjet_pt[VBF_parton_genjet]<"+jetpt_high + "&&jets_n_cl[VBF_parton_jets]==1";
+
+   TString cut_basic = "abs(jets_eta)>1.7 && abs(jets_eta)<2.8 && jets_pt>" +jetpt_low +  " && jets_pt<"+jetpt_high;
+   TString cut_vbf = "VBF_parton_genjet>=0 && VBF_parton_jets>=0 && abs(genjet_eta[VBF_parton_genjet])>1.7 && abs(genjet_eta[VBF_parton_genjet])<2.8 && genjet_pt[VBF_parton_genjet]>"+jetpt_low +"&& genjet_pt[VBF_parton_genjet]<"+jetpt_high;
+
+   //TString cut_basic = "abs(jets_eta)>1.7 && abs(jets_eta)<2.8";
+  //  TString cut_basic = """";
+   //  TString cut_vbf = "VBF_parton_genjet>=0 && VBF_parton_jets>=0 && abs(genjet_eta[VBF_parton_genjet])>1.7 && abs(genjet_eta[VBF_parton_genjet])<2.8";
+
+   std::vector<HistObject> histobjects, histobjects_n_cl, histobjects_firstfrac, histobjects_srrsum, histobjects_srrjet, histobjects_sppsum, histobjects_sppjet, histobjects_spp_best, histobjects_srr_best, histobjects_spp_paul,histobjects_srr_paul, histobjects_sppsrr;
+
+  HistObject histobjects_2d( "Jets", (snwebb + "/" + file1 + "/jet_ntuples_merged/ntuple_jet_merged_"+ tree1 +"_"+stats+".root"), tree1+"_Jet", "vbf", "jets_n_cl[VBF_parton_jets]:jets_pt[VBF_parton_jets]" ,cut_vbf, true  );
+  HistObject histobjects_2d_pu( "Jets", (snwebb + "/" + file2 + "/jet_ntuples_merged/ntuple_jet_merged_"+ tree +"_"+stats+".root"), tree+"_Jet", "vbf", "jets_n_cl:jets_pt" ,cut_basic, true  );
+
+  histobjects.emplace_back( HistObject( "Jets", (snwebb + "/" + file1 + "/jet_ntuples_merged/ntuple_jet_merged_"+ tree1 +"_"+stats+".root"), tree1+"_Jet", "vbf", "jets_pt[VBF_parton_jets]" ,cut_vbf, true  ) );
+  histobjects.emplace_back( HistObject( "Jets", (snwebb + "/" + file2 + "/jet_ntuples_merged/ntuple_jet_merged_"+ tree +"_"+stats+".root"), tree+"_Jet", "pu", "jets_pt" ,cut_basic, true  ) );
+
+  histobjects_n_cl.emplace_back( HistObject( "Jets", (snwebb + "/" + file1 + "/jet_ntuples_merged/ntuple_jet_merged_"+ tree1 +"_"+stats+".root"), tree1+"_Jet", "vbf", "jets_n_cl[VBF_parton_jets]" ,cut_vbf, true  ) );
+  histobjects_n_cl.emplace_back( HistObject( "Jets", (snwebb + "/" + file2 + "/jet_ntuples_merged/ntuple_jet_merged_"+ tree +"_"+stats+".root"), tree+"_Jet", "pu", "jets_n_cl" ,cut_basic, true  ) );
+
+
+  histobjects_firstfrac.emplace_back( HistObject( "Jets", (snwebb + "/" + file1 + "/jet_ntuples_merged/ntuple_jet_merged_"+ tree1 +"_"+stats+".root"), tree1+"_Jet", "vbf", "jets_firstfrac[VBF_parton_jets]" ,cut_vbf, true  ) );
+  histobjects_firstfrac.emplace_back( HistObject( "Jets", (snwebb + "/" + file2 + "/jet_ntuples_merged/ntuple_jet_merged_"+ tree +"_"+stats+".root"), tree+"_Jet", "pu", "jets_firstfrac" ,cut_basic, true  ) );
+
+
+  histobjects_srrsum.emplace_back( HistObject( "Jets", (snwebb + "/" + file1 + "/jet_ntuples_merged/ntuple_jet_merged_"+ tree1 +"_"+stats+".root"), tree1+"_Jet", "vbf", "jets_srrsum[VBF_parton_jets]/jets_n_cl[VBF_parton_jets]" ,cut_vbf, true  ) );
+  histobjects_srrsum.emplace_back( HistObject( "Jets", (snwebb + "/" + file2 + "/jet_ntuples_merged/ntuple_jet_merged_"+ tree +"_"+stats+".root"), tree+"_Jet", "pu", "jets_srrsum/jets_n_cl" ,cut_basic, true  ) );
+
+  histobjects_sppsum.emplace_back( HistObject( "Jets", (snwebb + "/" + file1 + "/jet_ntuples_merged/ntuple_jet_merged_"+ tree1 +"_"+stats+".root"), tree1+"_Jet", "vbf", "jets_sppsum[VBF_parton_jets]/jets_n_cl[VBF_parton_jets]" ,cut_vbf, true  ) );
+  histobjects_sppsum.emplace_back( HistObject( "Jets", (snwebb + "/" + file2 + "/jet_ntuples_merged/ntuple_jet_merged_"+ tree +"_"+stats+".root"), tree+"_Jet", "pu", "jets_sppsum/jets_n_cl" ,cut_basic, true  ) );
+
+
+  histobjects_srrjet.emplace_back( HistObject( "Jets", (snwebb + "/" + file1 + "/jet_ntuples_merged/ntuple_jet_merged_"+ tree1 +"_"+stats+".root"), tree1+"_Jet", "vbf", "jets_srrjet[VBF_parton_jets]" ,cut_vbf, true  ) );
+  histobjects_srrjet.emplace_back( HistObject( "Jets", (snwebb + "/" + file2 + "/jet_ntuples_merged/ntuple_jet_merged_"+ tree +"_"+stats+".root"), tree+"_Jet", "pu", "jets_srrjet" ,cut_basic, true  ) );
+
+  histobjects_sppjet.emplace_back( HistObject( "Jets", (snwebb + "/" + file1 + "/jet_ntuples_merged/ntuple_jet_merged_"+ tree1 +"_"+stats+".root"), tree1+"_Jet", "vbf", "jets_sppjet[VBF_parton_jets]" ,cut_vbf, true  ) );
+  histobjects_sppjet.emplace_back( HistObject( "Jets", (snwebb + "/" + file2 + "/jet_ntuples_merged/ntuple_jet_merged_"+ tree +"_"+stats+".root"), tree+"_Jet", "pu", "jets_sppjet" ,cut_basic, true  ) );
+
+
+
+  histobjects_srr_best.emplace_back( HistObject( "Jets", (snwebb + "/" + file1 + "/jet_ntuples_merged/ntuple_jet_merged_"+ tree1 +"_"+stats+".root"), tree1+"_Jet", "vbf", "jets_srr_best[VBF_parton_jets]" ,cut_vbf, true  ) );
+  histobjects_srr_best.emplace_back( HistObject( "Jets", (snwebb + "/" + file2 + "/jet_ntuples_merged/ntuple_jet_merged_"+ tree +"_"+stats+".root"), tree+"_Jet", "pu", "jets_srr_best" ,cut_basic, true  ) );
+
+
+  histobjects_spp_best.emplace_back( HistObject( "Jets", (snwebb + "/" + file1 + "/jet_ntuples_merged/ntuple_jet_merged_"+ tree1 +"_"+stats+".root"), tree1+"_Jet", "vbf", "jets_spp_best[VBF_parton_jets]" ,cut_vbf, true  ) );
+  histobjects_spp_best.emplace_back( HistObject( "Jets", (snwebb + "/" + file2 + "/jet_ntuples_merged/ntuple_jet_merged_"+ tree +"_"+stats+".root"), tree+"_Jet", "pu", "jets_spp_best" ,cut_basic, true  ) );
+
+  histobjects_srr_paul.emplace_back( HistObject( "Jets", (snwebb + "/" + file1 + "/jet_ntuples_merged/ntuple_jet_merged_"+ tree1 +"_"+stats+".root"), tree1+"_Jet", "vbf", "jets_srr_paul[VBF_parton_jets]" ,cut_vbf, true  ) );
+  histobjects_srr_paul.emplace_back( HistObject( "Jets", (snwebb + "/" + file2 + "/jet_ntuples_merged/ntuple_jet_merged_"+ tree +"_"+stats+".root"), tree+"_Jet", "pu", "jets_srr_paul" ,cut_basic, true  ) );
+
+
+  histobjects_spp_paul.emplace_back( HistObject( "Jets", (snwebb + "/" + file1 + "/jet_ntuples_merged/ntuple_jet_merged_"+ tree1 +"_"+stats+".root"), tree1+"_Jet", "vbf", "jets_spp_paul[VBF_parton_jets]" ,cut_vbf, true  ) );
+  histobjects_spp_paul.emplace_back( HistObject( "Jets", (snwebb + "/" + file2 + "/jet_ntuples_merged/ntuple_jet_merged_"+ tree +"_"+stats+".root"), tree+"_Jet", "pu", "jets_spp_paul" ,cut_basic, true  ) );
+
+  // histobjects_sppsrr.emplace_back( HistObject( "Jets", (snwebb + "/" + file1 + "/jet_ntuples_merged/ntuple_jet_merged_"+ tree1 +"_"+stats+".root"), tree1+"_Jet", "vbf", "jets_spp_best[VBF_parton_jets]/jets_srr_best[VBF_parton_jets]" ,cut_vbf, true  ) );
+  // histobjects_sppsrr.emplace_back( HistObject( "Jets", (snwebb + "/" + file2 + "/jet_ntuples_merged/ntuple_jet_merged_"+ tree +"_"+stats+".root"), tree+"_Jet", "pu", "jets_spp_best/jets_srr_best" ,cut_basic, true  ) );
+
+
+
+  Plotter plotter( _cmd );
+  //  plotter.Draw(histobjects, 100, 0, 200  ,"pt" );
+
+  plotter.Draw(histobjects_n_cl, 10, -0.5, 9.5  ,"ncl" );
+
+  plotter.Draw(histobjects_firstfrac, 51, 0,1.01  ,"ff" );
+
+  plotter.Draw(histobjects_srrsum, 100, 0,0.05  ,"srrsum" );
+  plotter.Draw(histobjects_srrjet, 100, 0,0.05  ,"srrjet" );
+
+  plotter.Draw(histobjects_sppsum, 100, 0,0.2  ,"sppsum" );
+  plotter.Draw(histobjects_sppjet, 100, 0,0.05  ,"sppjet" );
+
+  plotter.Draw2D(histobjects_2d, 100, 0,200,10,-0.5,9.5  ,"nclpt_vbf" );
+  plotter.Draw2D(histobjects_2d_pu, 100, 0,200,10,-0.5,9.5  ,"nclpt_pu" );
+  
+
+  plotter.Draw(histobjects_srr_best, 100, -0.05,0.1  ,"srr_best" );
+  plotter.Draw(histobjects_spp_best, 100, -0.1,0.5  ,"spp_best" );
+
+  plotter.Draw(histobjects_srr_paul, 100, -0.05,0.1  ,"srr_paul" );
+  plotter.Draw(histobjects_spp_paul, 100, -0.1,0.5  ,"spp_paul" );
+
+  //  plotter.Draw(histobjects_sppsrr, 100, -10,20  ,"s_div" );
+
+
+}
+
 
 /*
 
@@ -2193,197 +2381,6 @@ void HGC::plot_eta_jets(){
 
 
 
-
-
-
-
-void HGC::plot_eta_jets_VBF_PU0(){
-
-  TH1F* h_NN = single_plot("/vols/cms/tstreble/HGC_ntuples/VBF_Hinv_PU0/calibr_jet_ntuples_VBF_old/ntuple_calibr_jet_VBF_1*.root","jets","abs(jets_eta)","1",50,1.5,3.);
-  TH1F* h_GEO = single_plot("/vols/cms/tstreble/HGC_ntuples/VBF_Hinv_PU0_C2D_dR/calibr_jet_ntuples_VBF_new/ntuple_calibr_jet_VBF_1*.root","jets","abs(jets_eta)","1",50,1.5,3.);
-  TH1F* h_NN_pt10 = single_plot("/vols/cms/tstreble/HGC_ntuples/VBF_Hinv_PU0/calibr_jet_ntuples_VBF_old/ntuple_calibr_jet_VBF_*.root","jets","abs(jets_eta)","jets_pt>10",50,1.5,3.);
-  TH1F* h_GEO_pt10 = single_plot("/vols/cms/tstreble/HGC_ntuples/VBF_Hinv_PU0_C2D_dR/calibr_jet_ntuples_VBF_new/ntuple_calibr_jet_VBF_*.root","jets","abs(jets_eta)","jets_pt>10",50,1.5,3.);
-
-  TH1F* h_NN_pt20 = single_plot("/vols/cms/tstreble/HGC_ntuples/VBF_Hinv_PU0/calibr_jet_ntuples_VBF_old/ntuple_calibr_jet_VBF_*.root","jets","abs(jets_eta)","jets_pt>20",50,1.5,3.);
-  TH1F* h_GEO_pt20 = single_plot("/vols/cms/tstreble/HGC_ntuples/VBF_Hinv_PU0_C2D_dR/calibr_jet_ntuples_VBF_new/ntuple_calibr_jet_VBF_*.root","jets","abs(jets_eta)","jets_pt>20",50,1.5,3.);
-
-  vector<TH1F*> histo;
-  histo.push_back(h_NN);
-  histo.push_back(h_GEO);
-  histo.push_back(h_NN_pt10);
-  histo.push_back(h_GEO_pt10);
-  histo.push_back(h_NN_pt20);
-  histo.push_back(h_GEO_pt20);
-
-  vector<TString> leg_entry;
-  leg_entry.push_back("NN");
-  leg_entry.push_back("GEO");
-  leg_entry.push_back("NN p_{T}>10 GeV");
-  leg_entry.push_back("GEO p_{T}>10 GeV");
-  leg_entry.push_back("NN p_{T}>20 GeV");
-  leg_entry.push_back("GEO p_{T}>20 GeV");
- 
-  TLegend* leg=new TLegend(0.3,0.15,0.5,0.5);
-  leg->SetFillColor(0);
-  leg->SetBorderSize(0);
-  leg->SetTextSize(0.03);
-
-  for(unsigned int i=0;i<histo.size();i++){
-    TH1F* h = histo[i];
-    h->Scale(1/h->Integral());
-    h->SetLineWidth(2);
-    h->SetLineColor(i+1);
-    if(i>3)
-      h->SetLineColor(i+2);
-    leg->AddEntry(h,leg_entry[i]);
-  }
-
-  histo = sort_histo(histo);
-
-  TCanvas* c=new TCanvas("c","c",650,600);
-  c->SetLeftMargin(0.15);
-  c->SetRightMargin(0.15);
-  //c->SetLogy();
-  TGaxis::SetMaxDigits(4);
-
-  histo[0]->GetXaxis()->SetTitle("|#eta(L1 jet)|");
-  histo[0]->GetYaxis()->SetTitle("a. u.");
-  histo[0]->GetYaxis()->SetTitleOffset(1.7);
-  //histo[0]->GetYaxis()->SetRangeUser(10,5*histo[0]->GetMaximum());
-  histo[0]->GetYaxis()->SetRangeUser(0,1.3*histo[0]->GetMaximum());
-  histo[0]->SetStats(0);
-  histo[0]->SetTitle("");
-  histo[0]->Draw();
-  for(unsigned int i=1;i<histo.size();i++)
-    histo[i]->Draw("same");
-  leg->Draw("same");
-
-  
-  TLatex *texl = new TLatex(1.51,1.01*histo[0]->GetMaximum(),"CMS Simulation VBF H#rightarrowinv. PU=0 #sqrt{s}=14 TeV");
-  texl->SetTextSize(0.03);
-  texl->Draw("same");
-
-
-  gPad->SetTicks();
-
-
-  c->SaveAs("plots/eta_jets_VBF_PU0.pdf");  
-
-
-}
-
-
-
-
-
-
-
-
-
-void HGC::plot_profile_L1jet_resolution_C2D_PU0(){
-
-  TString cut = "VBF_parton_genjet>=0 && VBF_parton_jets>=0 && abs(genjet_eta[VBF_parton_genjet])>1.6 && abs(genjet_eta[VBF_parton_genjet])<2.9 && genjet_pt[VBF_parton_genjet]>20";
-
-
-
-  TH2F* h_PU0_raw = single_plot2D("/vols/cms/tstreble/HGC_ntuples/VBF_Hinv_PU0/calibr_jet_ntuples_VBF/ntuple_calibr_jet_VBF_*.root","jets","genjet_pt[VBF_parton_genjet]","jets_raw_Luca_pt[VBF_parton_jets]/genjet_pt[VBF_parton_genjet]",cut+"&& jets_raw_Luca_pt[VBF_parton_jets]>0",25,0,500,97,0.06,2);
-  TH2F* h_PU0_cal = single_plot2D("/vols/cms/tstreble/HGC_ntuples/VBF_Hinv_PU0/calibr_jet_ntuples_VBF/ntuple_calibr_jet_VBF_*.root","jets","genjet_pt[VBF_parton_genjet]","(4.4374 -0.948102 * log(max(jets_raw_Luca_pt[VBF_parton_jets],20)) + .0686934* pow(log(max(jets_raw_Luca_pt[VBF_parton_jets],20)),2) ) * jets_raw_Luca_pt[VBF_parton_jets]/genjet_pt[VBF_parton_genjet]",cut+"&& jets_raw_Luca_pt[VBF_parton_jets]>0",25,0,500,97,0.06,2);
-
-
-  TH2F* h_PU0_raw_GEO = single_plot2D("/vols/cms/tstreble/HGC_ntuples/VBF_Hinv_PU0_C2D_dR/calibr_jet_ntuples_VBF_new/ntuple_calibr_jet_VBF_*.root","HGCalTriggerNtuple","genjet_pt[VBF_parton_genjet]","jets_raw_Luca_pt[VBF_parton_jets]/genjet_pt[VBF_parton_genjet]",cut+"&& jets_raw_Luca_pt[VBF_parton_jets]>0",25,0,500,97,0.06,2);
-  TH2F* h_PU0_cal_GEO = single_plot2D("/vols/cms/tstreble/HGC_ntuples/VBF_Hinv_PU0_C2D_dR/calibr_jet_ntuples_VBF_new/ntuple_calibr_jet_VBF_*.root","HGCalTriggerNtuple","genjet_pt[VBF_parton_genjet]","1.06*(4.4374 -0.948102 * log(max(jets_raw_Luca_pt[VBF_parton_jets],20)) + .0686934* pow(log(max(jets_raw_Luca_pt[VBF_parton_jets],20)),2) ) * jets_raw_Luca_pt[VBF_parton_jets]/genjet_pt[VBF_parton_genjet]",cut+"&& jets_raw_Luca_pt[VBF_parton_jets]>0",25,0,500,97,0.06,2);
-
-
-
-
-  vector<TH2F*> histo;
-  histo.push_back(h_PU0_raw);
-  histo.push_back(h_PU0_raw_GEO);
-  histo.push_back(h_PU0_cal);
-  histo.push_back(h_PU0_cal_GEO);
-  
-
-  
-  vector<TString> leg_entry;
-  leg_entry.push_back("PU=0 NN");
-  leg_entry.push_back("PU=0 GEO");
-  leg_entry.push_back("PU=0 + jet calibr. NN");
-  leg_entry.push_back("PU=0 + jet calibr. GEO");
- 
-
-  TLegend* leg=new TLegend(0.4,0.5,0.7,0.85);
-  leg->SetHeader("#splitline{p_T(gen. jet)>20 GeV}{1.6<|#eta(gen.jet)|<2.9}");
-  leg->SetFillColor(0);
-  leg->SetBorderSize(0);
-  leg->SetTextSize(0.03);
-  
-  vector<TGraphErrors*> graph;
-
-  for(unsigned int i=0;i<histo.size();i++){
-
-    TGraphErrors* gr = new TGraphErrors();
-*/
-    /*TProfile* p = (TProfile*)histo[i]->ProfileX()->Clone();
-    p->BuildOptions(0,0,"s");
-    for(unsigned int j=1;j<=p->GetNbinsX();j++){
-      float x = p->GetBinCenter(j);
-      float y = p->GetBinError(j)/p->GetBinContent(j);
-      if(y>1 || p->GetBinContent(j)==0) continue;
-      gr->SetPoint(j-1,x,y);
-      }*/
-/*
-    for(unsigned int j=1;j<=histo[i]->GetNbinsX();j++){
-      TH1D* proj = histo[i]->ProjectionY("",j,j);
-      cout<<"bin "<<j<<endl;
-      Double_t xq[4] = {0.25,0.5,0.75,1};
-      Double_t yq[4];
-      proj->GetQuantiles(4,yq,xq);
-      gr->SetPoint(j-1,histo[i]->GetXaxis()->GetBinCenter(j),(yq[2]-yq[0])/yq[1]);
-    }
-
-   for(unsigned int j=0;j<gr->GetN();j++){
-      double x,y;
-      gr->GetPoint(j,x,y);
-      if(y==0) gr->RemovePoint(j);
-    }
-
-    graph.push_back(gr);
-    graph[i]->SetLineColor(i+1);    
-    if(i>3)
-      graph[i]->SetLineColor(i+2);
-    graph[i]->SetLineWidth(2);
-    graph[i]->SetFillColor(0);
-    leg->AddEntry(graph[i],leg_entry[i]);
-
-  }
-
-
-  TCanvas* c=new TCanvas("c","c",650,600);
-  c->SetLeftMargin(0.15);
-  c->SetRightMargin(0.15);
-
-  graph[0]->GetXaxis()->SetTitle("p_{T}(gen) [GeV]");
-  graph[0]->GetYaxis()->SetTitle("IQR / Median");
-  graph[0]->GetYaxis()->SetTitleOffset(1.7);
-  graph[0]->GetYaxis()->SetRangeUser(0,1.5);
-  graph[0]->SetTitle("");
-  graph[0]->Draw();
-  for(unsigned int i=1;i<histo.size();i++)
-    graph[i]->Draw("same");
-  leg->Draw("same");
-
-  TLatex *texl = new TLatex(0.01,1.51,"CMS Simulation VBF H#rightarrowinv. #sqrt{s}=14 TeV PU=0");
-  texl->SetTextSize(0.03);
-  texl->Draw("same");
-
-
-  gPad->SetTicks();
-
-
-  c->SaveAs("plots/profile_L1jet_resolution_C2D_PU0.pdf");  
-
-
-}
 
 
 

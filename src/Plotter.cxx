@@ -678,18 +678,24 @@ void Plotter::Draw(std::vector<TH1F*>& hists, std::vector<TString>& legend, TStr
 void Plotter::Draw(std::vector<HistObject>& hists, int nbins, double xlow, double xhigh, TString savename){
 
   TCanvas * c = _canvas;
+  TLegend * legend = _legend;
+  SetLegendXY( 0.6, 0.5, 0.82, 0.75  ); 
+  legend->Clear();
+  c->Clear();
   c->SetCanvasSize(800, 600);
   gPad->SetTicks(1,1);
-  SetLegendXY( 0.6, 0.5, 0.82, 0.75  );
+
 
   int i = 0;
   for (auto &hist: hists ){    
 
     TH1F* histo = 0;
-    histo = _helper.single_plot( hist.filename(), "HGCalTriggerNtupleJet", hist.var(), hist.cut(), nbins, xlow, xhigh );
+    histo = _helper.single_plot( hist.filename(), hist.treename(), hist.var(), hist.cut(), nbins, xlow, xhigh );
 
-    _legend->AddEntry( histo, hist.leg_entry(), "L");    
-
+    histo->Scale(1/histo->Integral() );
+    legend->AddEntry( histo, hist.leg_entry(), "L");    
+    
+    std::cout << hist.leg_entry() << " - " << histo->GetName() << std::endl;
 
     histo->SetLineColor(i+1);
     if(i>3){
@@ -703,16 +709,18 @@ void Plotter::Draw(std::vector<HistObject>& hists, int nbins, double xlow, doubl
       histo->Draw("same");
     }
     i++;
-    histo->SetName("cl3dpt");
-    histo->SaveAs("plots/" + TString(_outdir) + "/" + savename + ".root");
+    //    histo->SetName("cl3dpt");
+    //    histo->SaveAs("plots/" + TString(_outdir) + "/" + savename + ".root");
   }
-
+  legend->Draw();
   //  _latex->Draw("same");
-  //  _legend->Draw("same");
 
+  gPad->Modified(); gPad->Update(); 
   gPad->SetTicks();
 
   c->SaveAs("plots/" + TString(_outdir) + "/" + savename + ".png");
+  c->SaveAs("plots/" + TString(_outdir) + "/" + savename + ".root");
+
 
 }
 
@@ -732,19 +740,23 @@ TH2F * Plotter::Draw2D( HistObject hist, int nbins1, double xlow1, double xhigh1
   _legend->AddEntry( histo, hist.leg_entry(), "L");    
 
 
-    // histo->SetLineColor(i+1);
-    // if(i>3){
-    //   histo->SetLineColor(i+2);
-    // }
-    histo->SetTitle("");
+  // histo->SetLineColor(i+1);
+  // if(i>3){
+  //   histo->SetLineColor(i+2);
+  // }
+  histo->SetTitle("");
+  
+  //    if ( i == 0 )
 
-    //    if ( i == 0 )
-    histo->Draw();
-	// else{
-    //   histo->Draw("same");
-    // }
+  histo->Draw("COLZ");
+  gPad->SetLogz(1);
+  histo->Draw("COLZsame");
 
-    //  _latex->Draw("same");
+  // else{
+  //   histo->Draw("same");
+  // }
+  
+  //  _latex->Draw("same");
   //  _legend->Draw("same");
 
   gPad->SetTicks();
