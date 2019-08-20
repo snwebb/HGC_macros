@@ -13,17 +13,19 @@ Plotter::Plotter( CmdLine * cmd ){
 }
 
 Plotter::~Plotter(){
-
-  delete _canvas;
-  delete _legend;
-  delete _latex;
+  if ( _canvas )
+    delete _canvas;
+  if ( _legend )
+    delete _legend;
+  if ( _latex )
+    delete _latex;
 
 }
 
 
 void Plotter::InitialiseCanvas(){
 
-  _canvas = new TCanvas("c","c",650,600);
+  _canvas = new TCanvas("c"+_helper.counter(),"c",650,600);
   _canvas->SetLeftMargin(0.15);
   _canvas->SetRightMargin(0.15);
 
@@ -93,6 +95,30 @@ void Plotter::DrawGraphs(std::vector<TGraphErrors*>& graphs, std::vector<TString
   //  c->SaveAs("plots/" + TString(_outdir) + "/"+sa.root");
   
 
+
+}
+
+
+
+void Plotter::DrawGraph(TGraph* graph, TString filename){
+
+  TCanvas * c = _canvas;
+  c->SetCanvasSize(800, 600);
+  gPad->SetTicks(1,1);
+  SetLegendXY( 0.6, 0.63, 0.82, 0.85  );
+  _legend->Clear();
+
+  graph->SetMarkerSize(1);
+  graph->SetMarkerStyle(20);
+  graph->Draw("apL");
+
+  graph->SetTitle(";reco p_{T} Threshold;reco p_{T} at 95% efficiency");
+  graph->GetXaxis()->SetRangeUser(0,200);
+  graph->GetYaxis()->SetRangeUser(0,300);
+  graph->Draw("apLsame");
+
+  c->SaveAs("plots/" + TString(_outdir) + "/"+filename+".png");
+  c->SaveAs("plots/" + TString(_outdir) + "/"+filename+".root");
 
 }
 
@@ -244,6 +270,8 @@ void Plotter::DrawEtaGraphs(std::vector<TGraphErrors*>& graphs){
 
 
 
+
+
 TGraphErrors * Plotter::DrawProfile(TH2F * hist, TString savename, Option_t * option = ""){
 
   TCanvas * c = _canvas;
@@ -321,7 +349,7 @@ TGraphErrors * Plotter::DrawProfile(TH2F * hist, TString savename, Option_t * op
   // TF1 * f_rmsup = (TF1*)Logx->Clone("f_rmsup" );
   // TF1 * f_rmsdown = (TF1*)Logx->Clone("f_rmsdown" );
 
-   TFitResultPtr r;
+  TFitResultPtr r;
   TFitResultPtr r_rmsup;
   TFitResultPtr r_rmsdown;
 
@@ -674,6 +702,14 @@ void Plotter::Draw(std::vector<TH1F*>& hists, std::vector<TString>& legend, TStr
 
 }
 
+void Plotter::Draw( TH1F * hist, TString legend = "", TString savename = "temp", bool logy){
+    
+    std::vector<TH1F*> vechist = {hist};
+    std::vector<TString> leghist = {legend};
+    Draw( vechist, leghist, savename, logy );
+
+}
+
 
 void Plotter::Draw(std::vector<HistObject>& hists, int nbins, double xlow, double xhigh, TString savename){
 
@@ -787,6 +823,13 @@ TH2F * Plotter::Draw2D( HistObject hist, int nbins1, double* x, int nbins2, doub
 
   return histo;
 }
+
+
+
+
+
+
+
 //void Plotter::SaveFile( std::vector<TGraph*>& graphs ){
 
 

@@ -17,9 +17,14 @@ ROOTGLIBS = $(shell root-config --glibs)
 PWD = $(shell pwd)
 MKDIR_P = mkdir -p
 
-COMMONOBJS1 =  $(OBJS)
+COMMONOBJS1 =  $(OBJS) 
 COMMONOBJS = $(filter-out $(OBJDIR)/jet_ntuple_merge.o $(OBJDIR)/HGC.o, $(COMMONOBJS1))
 
+# MyDict.cxx: ./include/Helpers.h Linkdef.h
+# 	rootcling -f $@ -c `root-config --cflags` -p $^
+
+# libMyLib.so: MyDict.cxx src/Helpers.cxx
+# 	g++ -shared -o$@ `root-config --ldflags` $^
 
 all: $(PROGS)
 

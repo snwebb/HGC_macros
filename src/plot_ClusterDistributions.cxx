@@ -7,8 +7,8 @@ void HGC::plot_GenRecoET(){
   //        TString stats = "full";
   //    TString stats = "2";
   //            TString stats = "10*";
-                       TString stats = "*";
-  //                   TString stats = "1*";
+  //  TString stats = "*";
+                     TString stats = "1*";
 
   TString file_OneBit4444Fixed       = "VBF_Hinv/VBF-PU200-OneBit-4-4-4-4-Fixed";	  
   TString file_EqualShare4444Fixed   = "VBF_Hinv/VBF-PU200-EqualShare-4-4-4-4-Fixed";
@@ -39,9 +39,6 @@ void HGC::plot_GenRecoET(){
   TString file_v9_Default_WithTriggerCells = "VBF_HTT/VBF-HTT-PU200-Default-WithTriggerCells-WS";
   TString file_v8_Default_WithTriggerCells = "VBF_Hinv/VBF-PU200-Default-WithTriggerCells";
 
-
-
-
   TString file_httws_Threshold	     = "VBF_HTT/VBF-HTT-PU200-MultiAlgo-Threshold-WS";		  
   TString file_httws_SuperTCs	     = "VBF_HTT/VBF-HTT-PU200-MultiAlgo-SuperTCs-WS";		  
   TString file_httws_SeedThreshold	     = "VBF_HTT/VBF-HTT-PU200-MultiAlgo-SeedThreshold-WS";		  
@@ -53,14 +50,10 @@ void HGC::plot_GenRecoET(){
   TString file_hggws_SeedThreshold	     = "VBF_HGG/VBF-HGG-PU200-MultiAlgo-SeedThreshold-WS";		  
   TString file_hggws_ClusterRadius	     = "VBF_HGG/VBF-HGG-PU200-MultiAlgo-ClusterRadius-WS";		  
 
-
-
-
-
   //  TString file_VBF_Decentralised = "VBF_HGG/VBF-HGG-PU200-MultiAlgo-Decentralised";
   TString file_VBF_Decentralised = "VBF_HGG/VBF-HGG-PU200-Decentralised";
   TString file_VBF_Default = "VBF_HGG/VBF-HGG-PU200-Default";
-  TString file_Nu_Decentralised = "DoubleNu/DoubleNu-PU200-MultiAlgo-Decentralised";
+  TString file_Nu_Decentralised = "DoubleNu/DoubleNu-PU200-Decentralised";
 
   // TString file_VBF_Decentralised = "VBF_HGG/VBF-HGG-PU200-MultiAlgo-Decentralised-BugFix";
   // TString file_Nu_Decentralised = "DoubleNu/DoubleNu-PU200-MultiAlgo-Decentralised-BugFix";
@@ -69,16 +62,12 @@ void HGC::plot_GenRecoET(){
   TString file_QG_Pos_140 = "QuarkGun/QuarkGun-Pos-PU140-Decentralised";
   TString file_QG_Pos_0 = "QuarkGun/QuarkGun-Pos-PU0-Decentralised";
 
-
-
-
   TString tree_dr175_Threshold0p0  = "Fp8Threshold0p0DummyHistomaxvardrdrho1p75Ntup";
   TString tree_dr175_Threshold0p5  = "Fp8Threshold0p5DummyHistomaxvardrdrho1p75Ntup";
   TString tree_dr175_Threshold1p0  = "Fp8Threshold1p0DummyHistomaxvardrdrho1p75Ntup";
   TString tree_dr175_Threshold1p5  = "Fp8Threshold1p5DummyHistomaxvardrdrho1p75Ntup";
   TString tree_dr175_Threshold2p0  = "Fp8Threshold2p0DummyHistomaxvardrdrho1p75Ntup";
-  TString tree_dr175_Threshold3p0  = "Fp8Threshold3p0DummyHistomaxvardrdrho1p75Ntup";
-  
+  TString tree_dr175_Threshold3p0  = "Fp8Threshold3p0DummyHistomaxvardrdrho1p75Ntup";  
 
   TString tree_v9_Threshold0p0  = "Fp8Threshold0p0DummyHistomaxvardrdrho1p0Ntup";
   TString tree_v9_Threshold0p5  = "Fp8Threshold0p5DummyHistomaxvardrdrho1p0Ntup";
@@ -106,7 +95,6 @@ void HGC::plot_GenRecoET(){
   TString tree_dr175_ES  = "Fp8EqualShare4444FixedDummyHistomaxvardrdrho1p75Ntup";
   TString tree_dr175_OB  = "Fp8Onebit4444FixedDummyHistomaxvardrdrho1p75Ntup";
   TString tree_dr175_best  = "Fp8BestchoiceDummyHistomaxvardrdrho1p75Ntup";
-
 
   TString tree_v9_Stc16  = "Fp8Stc4161616DummyHistomaxvardrdrho1p0Ntup";
   TString tree_v9_Stc4  = "Fp8Stc4444FixedDummyHistomaxvardrdrho1p0Ntup";
@@ -142,10 +130,6 @@ void HGC::plot_GenRecoET(){
 
   TString tree_bc  =    "Fp8BestchoiceDummyHistomaxNtup";
 
-
-
-  //    TString cut_v9 = "VBF_parton_genjet>=0 && VBF_parton_jets>=0 && abs(genjet_eta[VBF_parton_genjet])>1.7 && abs(genjet_eta[VBF_parton_genjet])<2.8 && Tau_overlap<1";
- 
   TString cut_v9 = "VBF_parton_genjet>=0 && VBF_parton_jets>=0 && abs(genjet_eta[VBF_parton_genjet])>1.7 && abs(genjet_eta[VBF_parton_genjet])<2.8 ";
   TString cut = "VBF_parton_genjet>=0 && VBF_parton_jets>=0 && abs(genjet_eta[VBF_parton_genjet])>1.7 && abs(genjet_eta[VBF_parton_genjet])<2.8";
   TString cut_pion = "Pion_genjet>=0 && Pion_jets>=0 && abs(genjet_eta[Pion_genjet])>1.7 && abs(genjet_eta[Pion_genjet])<2.8 ";
@@ -158,18 +142,9 @@ void HGC::plot_GenRecoET(){
   TString cuteta54 = "VBF_parton_genjet>=0 && VBF_parton_jets>=0 && abs(genjet_eta[VBF_parton_genjet])>2.4 && abs(genjet_eta[VBF_parton_genjet])<2.7 ";
   TString cuteta55 = "VBF_parton_genjet>=0 && VBF_parton_jets>=0 && abs(genjet_eta[VBF_parton_genjet])>2.7 && abs(genjet_eta[VBF_parton_genjet])<3 ";
 
-
-  // TString cuteta51 = "VBF_parton_genjet>=0 && VBF_parton_jets>=0 && abs(jets_eta[VBF_parton_jets])>1.5 && abs(jets_eta[VBF_parton_jets])<1.8 ";
-  // TString cuteta52 = "VBF_parton_genjet>=0 && VBF_parton_jets>=0 && abs(jets_eta[VBF_parton_jets])>1.8 && abs(jets_eta[VBF_parton_jets])<2.1 ";
-  // TString cuteta53 = "VBF_parton_genjet>=0 && VBF_parton_jets>=0 && abs(jets_eta[VBF_parton_jets])>2.1 && abs(jets_eta[VBF_parton_jets])<2.4 ";
-  // TString cuteta54 = "VBF_parton_genjet>=0 && VBF_parton_jets>=0 && abs(jets_eta[VBF_parton_jets])>2.4 && abs(jets_eta[VBF_parton_jets])<2.7 ";
-  // TString cuteta55 = "VBF_parton_genjet>=0 && VBF_parton_jets>=0 && abs(jets_eta[VBF_parton_jets])>2.7 && abs(jets_eta[VBF_parton_jets])<3 ";
-
-
-
   std::vector<HistObject> histobjects, histobjects2;
   std::vector<TGraphErrors*> graphs;
-  Plotter plotter( _cmd );
+  Plotter * plotter = new Plotter( _cmd );
   double x[16]={0,10,20,40,60,80,100,120,140,160,180,200,220,250,300,400};
 
 
@@ -177,84 +152,27 @@ void HGC::plot_GenRecoET(){
   double y[11]={0,10,20,30,40,50,60,70,80,90,100};
   
 
-  //TString file = file_hggws_Threshold;
-  //    TString file = file_httws_Threshold;
-  //  TString file = file_v8_Threshold;
-  //  //   TString file = file_v8_Threshold_dr175;
-  //  //   std::vector<TString> trees = { tree_v9_Threshold0p0, tree_v9_Threshold1p0, tree_v9_Threshold2p0, tree_v9_Threshold3p0};
-  //  std::vector<TString> trees = { tree_v8_Threshold0p0, tree_v8_Threshold1p0, tree_v8_Threshold2p0, tree_v8_Threshold3p0};
-  //  //  std::vector<TString> trees = { tree_dr175_Threshold0p0, tree_dr175_Threshold1p0, tree_dr175_Threshold2p0, tree_dr175_Threshold3p0};
-  // std::vector<TString> description = { "0p0","1p0","2p0","3p0"};
-  // std::vector<TString> legend = { "Threshold 0 MIPT","Threshold 1.0 MIPT","Threshold 2.0 MIPT","Threshold 3.0 MIPT"};
-  
-
-    //SUPER TCS
-  //  TString file = file_hggws_SuperTCs;
-  //    TString file = file_v8_SuperTCs;
-  //  TString file = file_v8_SuperTCs_dr175;
-  //std::vector<TString> trees = { tree_v8_Stc16, tree_v8_Stc4, tree_v8_ES, tree_v8_OB};
-  //  std::vector<TString> trees = { tree_v9_Stc16, tree_v9_Stc4, tree_v9_ES, tree_v9_OB};
-  // std::vector<TString> trees = { tree_dr175_Stc16, tree_dr175_Stc4, tree_dr175_ES, tree_dr175_OB};
-  // std::vector<TString> description = { "stc16", "stc4", "es", "ob"};
-  // std::vector<TString> legend = { "STC4+16", "STC4+CTC4", "Equal Share", "STC fractions"};
-  
-
-    //SEED THRESHOLD
-  //   TString file = file_hggws_SeedThreshold;
-  //    TString file = file_v8_SeedThreshold;
-  // std::vector<TString> trees = { tree_v9_Seed0, tree_v9_Seed10, tree_v9_Seed20, tree_v9_Seed40};
-  // std::vector<TString> description = { "0", "10", "20", "40"};
-  // std::vector<TString> legend = { "Threshold 0 MIPT","Threshold 10 MIPT","Threshold 20 MIPT","Threshold 40 MIPT"};
- 
-   //CLUSTER RADIUS
-  //    TString file = file_hggws_ClusterRadius;  
-  // //     TString file = file_v8_ClusterRadius;  
-  // std::vector<TString> trees = { tree_v9_dr1p0, tree_v9_dr1p5, tree_v9_dr2p0, tree_v9_dr5p0};
-  // std::vector<TString> description = { "1", "1p5", "2",  "5"};
-  // std::vector<TString> legend = { "1 x default", "1.5 x default", "2 x default", "5 x default"};
-
-  //TRIGGER CELL CLUSTERING
-    //  TString file = file_v9_Default_WithTriggerCells;
-  // TString file = file_v8_Default_WithTriggerCells;
-  // std::vector<TString> trees = { tree_v9_default, tree_v9_dr1p0, tree_v9_dr2p0 };
-  // std::vector<TString> description = { "tconly",  "1", "2"};
-  // std::vector<TString> legend = { "Jet finding on TCs", "Default", "2 x default"};
-
-  //CONCENTRATOR COMBINATION
-  //  TString file = file_v8_Threshold;
-  // TString file = file_hggws_ClusterRadius;
-  // std::vector<TString> trees = { tree_v9_dr1p0, tree_v9_Stc16, tree_v9_best};
-  // //  std::vector<TString> trees = { tree_v9_dr1p0};
-  // std::vector<TString> description = { "1p35","stc16","bc"};
-  // std::vector<TString> legend = { "Threshold 1.35 MIPT","STC4+16","Best Choice"};
-
-  // TString file = file_v8_ClusterRadius;
-  // std::vector<TString> trees = { tree_v9_dr1p0, tree_v8_Stc16, tree_v8_best};
-  // std::vector<TString> description = { "2p0","stc16","bc"};
-  // std::vector<TString> legend = { "Threshold 2.0 MIPT","STC4+16","Best Choice"};
-
-
-
-
-
-
     TString file = file_VBF_Decentralised;
   //  TString file = file_VBF_Default;
-
-  //  TString file = file_QG_Pos_200;
+    //    file = file_Nu_Decentralised;
+  //      TString file = file_QG_Pos_200;
 
   // std::vector<TString> trees = { tree_thresh, tree_stc, tree_bc};
   // std::vector<TString> description = { "th","stc","bc", "th","stc","bc",};
   // std::vector<TString> legend = { "ThresholdLow","STCLow","Best ChoiceLow", "thresholdHigh","STCHigh","Best ChoiceHigh",};
   // std::vector<TString> trees = { tree_bc};
-  // std::vector<TString> description = { "bc1", "bc2", "bc3", "bc4", "bc5" };
+  // std::vector<TString> description = { "bc1", "bc2", "bc3"};
   // std::vector<TString> legend = { "1.8-2.1", "2.1-2.4", "2.4-2.7" };
-
   
 
-  std::vector<TString> trees = { tree_stc, tree_stc,tree_stc};
-  std::vector<TString> description = { "200", "140", "0"};
-  std::vector<TString> legend = { "200", "140", "0"};
+  // std::vector<TString> trees = { tree_bc, tree_bc,tree_bc};
+  // std::vector<TString> description = { "200", "140", "0"};
+  // std::vector<TString> legend = { "200", "140", "0"};
+
+  // std::vector<TString> trees = { tree_stc, tree_stc,tree_stc};
+  // std::vector<TString> description = { "200", "140", "0"};
+  // std::vector<TString> legend = { "200", "140", "0"};
+
   // std::vector<TString> trees = { tree_thresh, tree_thresh,tree_thresh,};
   // std::vector<TString> description = { "200", "140", "0"};
   // std::vector<TString> legend = { "200", "140", "0"};
@@ -262,24 +180,23 @@ void HGC::plot_GenRecoET(){
   // std::vector<TString> trees = { tree_thresh, tree_stc, tree_bc};
   // std::vector<TString> description = { "th","stc","bc"};
   // std::vector<TString> legend = { "Threshold","STC","Best Choice"};
+
+  // std::vector<TString> trees = { tree_bc};
+  // std::vector<TString> description = { "bc"};
+  // std::vector<TString> legend = { "Best Choice"};
+
+  std::vector<TString> trees = { tree_thresh};
+  std::vector<TString> description = { "th"};
+  std::vector<TString> legend = { "th" };
  
  
   //   for(unsigned int i=0;i<files.size();i++){
-   for(unsigned int i=0;i<trees.size();i++){
+  for(unsigned int i=0;i<trees.size();i++){
 
-     if (i==1) file = file_QG_Pos_140;
-     if (i==2) file = file_QG_Pos_0;
+     // if (i==1) file = file_QG_Pos_140;
+     // if (i==2) file = file_QG_Pos_0;
 
-     //               if ( i == 1 ) file = file_v8_SuperTCs;
-     //     if ( i == 1 ) file = file_hggws_SuperTCs;
-     //      if ( i == 1 ) file = file_v8_ClusterRadius;
-    //2 bins
-    // histobjects.emplace_back( HistObject( "Jets", (snwebb + "/" + files.at(i) + "/jet_ntuples_merged/ntuple_jet_merged_"+stats+".root"), "", "jets_pt[VBF_parton_jets]:genjet_pt[VBF_parton_genjet]", cuteta1, true  ) );
-
-    // histobjects.emplace_back( HistObject( "Jets", (snwebb + "/" + files.at(i) + "/jet_ntuples_merged/ntuple_jet_merged_"+stats+".root"), "", "jets_pt[VBF_parton_jets]:genjet_pt[VBF_parton_genjet]" ,cuteta2, true  ) );
-
-
-    //5 bins
+    //5 eta bins
 
     // histobjects.emplace_back( HistObject( "Jets", (snwebb + "/" + files.at(i) + "/jet_ntuples_merged/ntuple_jet_merged_"+stats+".root"), "", "jets_pt[VBF_parton_jets]:genjet_pt[VBF_parton_genjet]", cuteta51, true  ) );
     // histobjects.emplace_back( HistObject( "Jets", (snwebb + "/" + files.at(i) + "/jet_ntuples_merged/ntuple_jet_merged_"+stats+".root"), "", "jets_pt[VBF_parton_jets]:genjet_pt[VBF_parton_genjet]" ,cuteta52, true  ) );
@@ -294,26 +211,32 @@ void HGC::plot_GenRecoET(){
     //                histobjects.emplace_back( HistObject( "Jets", (snwebb + "/" + files.at(i) + "/jet_ntuples_merged/ntuple_jet_merged_"+stats+".root"), "", "jets_pt[VBF_parton_jets]:genjet_pt[VBF_parton_genjet]" ,cut, true  ) );
 
 
-
      histobjects.emplace_back( HistObject( "Jets", (snwebb + "/" + file + "/jet_ntuples_merged/ntuple_jet_merged_"+ trees.at(i) +"_"+stats+".root"), trees.at(i)+"_Jet", "", "jets_pt[VBF_parton_jets]:genjet_pt[VBF_parton_genjet]" ,cut_v9, true  ) );
-    // histobjects.emplace_back( HistObject( "Jets", (snwebb + "/" + file + "/jet_ntuples_merged/ntuple_jet_merged_"+ trees.at(i) +"_"+stats+".root"), trees.at(i)+"_Jet", "", "jets_pt[VBF_parton_jets]:genjet_pt[VBF_parton_genjet]" ,cuteta52, true  ) );
-    // histobjects.emplace_back( HistObject( "Jets", (snwebb + "/" + file + "/jet_ntuples_merged/ntuple_jet_merged_"+ trees.at(i) +"_"+stats+".root"), trees.at(i)+"_Jet", "", "jets_pt[VBF_parton_jets]:genjet_pt[VBF_parton_genjet]" ,cuteta53, true  ) );
-    // histobjects.emplace_back( HistObject( "Jets", (snwebb + "/" + file + "/jet_ntuples_merged/ntuple_jet_merged_"+ trees.at(i) +"_"+stats+".root"), trees.at(i)+"_Jet", "", "jets_pt[VBF_parton_jets]:genjet_pt[VBF_parton_genjet]" ,cuteta54, true  ) );
+
+    //3D attempt
+    //         histobjects.emplace_back( HistObject( "Jets", (snwebb + "/" + file + "/jet_ntuples_merged/ntuple_jet_merged_"+ trees.at(i) +"_"+stats+".root"), trees.at(i)+"_Jet", "", "jets_pt[VBF_parton_jets]*2.3/abs(jets_eta[VBF_parton_jets]):genjet_pt[VBF_parton_genjet]" ,cut_v9, true  ) );
+
+     //histobjects.emplace_back( HistObject( "Jets", (snwebb + "/" + file + "/jet_ntuples_merged/ntuple_jet_merged_"+ trees.at(i) +"_"+stats+".root"), trees.at(i)+"_Jet", "", "jets_pt[VBF_parton_jets]:genjet_pt[VBF_parton_genjet]" ,cut_v9, true  ) );
+
+
+    // histobjects.emplace_back( HistObject( "Jets", (snwebb + "/" + file + "/jet_ntuples_merged/ntuple_jet_merged_"+ trees.at(i) +"_"+stats+".root"), trees.at(i)+"_Jet", "", "jets_pt[VBF_parton_jets]*2.3/abs(jets_eta[VBF_parton_jets]):genjet_pt[VBF_parton_genjet]" ,cuteta52, true  ) );
+    // histobjects.emplace_back( HistObject( "Jets", (snwebb + "/" + file + "/jet_ntuples_merged/ntuple_jet_merged_"+ trees.at(i) +"_"+stats+".root"), trees.at(i)+"_Jet", "", "jets_pt[VBF_parton_jets]*2.3/abs(jets_eta[VBF_parton_jets]):genjet_pt[VBF_parton_genjet]" ,cuteta53, true  ) );
+    // histobjects.emplace_back( HistObject( "Jets", (snwebb + "/" + file + "/jet_ntuples_merged/ntuple_jet_merged_"+ trees.at(i) +"_"+stats+".root"), trees.at(i)+"_Jet", "", "jets_pt[VBF_parton_jets]*2.3/abs(jets_eta[VBF_parton_jets]):genjet_pt[VBF_parton_genjet]" ,cuteta54, true  ) );
     //    histobjects.emplace_back( HistObject( "Jets", (snwebb + "/" + file + "/jet_ntuples_merged/ntuple_jet_merged_"+ trees.at(i) +"_"+stats+".root"), trees.at(i)+"_Jet", "", "jets_pt[VBF_parton_jets]:genjet_pt[VBF_parton_genjet]" ,cuteta55, true  ) );
 
 
   }
 
 
-
-
-
+  TProfile* profile = 0;
 
   for(unsigned int i=0;i<histobjects.size();i++){
-    TH2F * hist = plotter.Draw2D(histobjects.at(i), 15, x, 4000,0,400  ,description.at(i) );//VBF
+    TH2F * hist = plotter->Draw2D(histobjects.at(i), 15, x, 4000,0,400  ,description.at(i) );//VBF
     //    TH2F * hist = plotter.Draw2D(histobjects.at(i), 10, y, 4000,0,400  ,description.at(i) );//Pion
-    graphs.emplace_back( plotter.DrawProfile(hist  ,(description.at(i)+"_profile"), "s" ) );
 
+    graphs.emplace_back( plotter->DrawProfile(hist  ,(description.at(i)+"_profile"), "s" ) );
+
+    profile = hist->ProfileX( "profile_mean_eff");
 
     // hist = plotter.Draw2D(histobjects2.at(i), 15, x, 4000,0,400  ,description.at(i) + "_high_eta");
     // graphs.emplace_back( plotter.DrawProfile(hist  ,(description.at(i)+"_profile_high_eta"), "s" ) );
@@ -322,11 +245,25 @@ void HGC::plot_GenRecoET(){
  }
 
 
-  plotter.DrawGraphs(graphs, legend);
+  plotter->DrawGraphs(graphs, legend);
   //  plotter.DrawEtaGraphs(graphs );
-  plotter.SaveFile( graphs );
+  plotter->SaveFile( graphs );
 
 
+  TF1 * pol_choice = new TF1 ( "pol", "[0] + [1]*x + [2]*x*x" , 20 , 350);
+
+  profile->Fit( pol_choice, "R","",20,300);
+  
+  profile->GetFunction("pol")->GetParameter( 0 ); 
+  profile->GetFunction("pol")->GetParameter( 1 ) ;
+  profile->GetFunction("pol")->GetParameter( 2 ) ;
+  
+  delete plotter;
+
+  
+  //   CalculateEfficiency( profile->GetFunction("pol")->GetParameter( 0 ), profile->GetFunction("pol")->GetParameter( 1 ), profile->GetFunction("pol")->GetParameter( 2 )  );
+
+  CalculateRates ( profile->GetFunction("pol")->GetParameter( 0 ), profile->GetFunction("pol")->GetParameter( 1 ), profile->GetFunction("pol")->GetParameter( 2 ) );
 
   
 
@@ -472,8 +409,8 @@ std::string tree1 = "Fp8ThresholdDummyHistomaxNtup";
 
 std::string tree = "Fp8ThresholdDummyHistomaxNtup";
   //  std::string tree ="Fp8Stc4161616DummyHistomaxbin4Ntup";
-  std::string jetpt_low = "40";
-  std::string jetpt_high = "60";
+  std::string jetpt_low = "0";
+  std::string jetpt_high = "10000";
 
   //NCL == 1
    // TString cut_basic = "abs(jets_eta)>1.7 && abs(jets_eta)<2.8 && jets_pt>" +jetpt_low +  " && jets_pt<"+jetpt_high + "&&jets_n_cl==1";
@@ -482,6 +419,11 @@ std::string tree = "Fp8ThresholdDummyHistomaxNtup";
    TString cut_basic = "abs(jets_eta)>1.7 && abs(jets_eta)<2.8 && jets_pt>" +jetpt_low +  " && jets_pt<"+jetpt_high;
    TString cut_vbf = "VBF_parton_genjet>=0 && VBF_parton_jets>=0 && abs(genjet_eta[VBF_parton_genjet])>1.7 && abs(genjet_eta[VBF_parton_genjet])<2.8 && genjet_pt[VBF_parton_genjet]>"+jetpt_low +"&& genjet_pt[VBF_parton_genjet]<"+jetpt_high;
 
+
+   TString cut_vbf_etalow = "VBF_parton_genjet>=0 && VBF_parton_jets>=0 && abs(genjet_eta[VBF_parton_genjet])>1.7 && abs(genjet_eta[VBF_parton_genjet])<2.1 && genjet_pt[VBF_parton_genjet]>"+jetpt_low +"&& genjet_pt[VBF_parton_genjet]<"+jetpt_high;
+   TString cut_vbf_etahigh = "VBF_parton_genjet>=0 && VBF_parton_jets>=0 && abs(genjet_eta[VBF_parton_genjet])>2.4 && abs(genjet_eta[VBF_parton_genjet])<2.8 && genjet_pt[VBF_parton_genjet]>"+jetpt_low +"&& genjet_pt[VBF_parton_genjet]<"+jetpt_high;
+   TString cut_vbf_etamid = "VBF_parton_genjet>=0 && VBF_parton_jets>=0 && abs(genjet_eta[VBF_parton_genjet])>2.1 && abs(genjet_eta[VBF_parton_genjet])<2.4 && genjet_pt[VBF_parton_genjet]>"+jetpt_low +"&& genjet_pt[VBF_parton_genjet]<"+jetpt_high;
+
    //TString cut_basic = "abs(jets_eta)>1.7 && abs(jets_eta)<2.8";
   //  TString cut_basic = """";
    //  TString cut_vbf = "VBF_parton_genjet>=0 && VBF_parton_jets>=0 && abs(genjet_eta[VBF_parton_genjet])>1.7 && abs(genjet_eta[VBF_parton_genjet])<2.8";
@@ -489,6 +431,11 @@ std::string tree = "Fp8ThresholdDummyHistomaxNtup";
    std::vector<HistObject> histobjects, histobjects_n_cl, histobjects_firstfrac, histobjects_srrsum, histobjects_srrjet, histobjects_sppsum, histobjects_sppjet, histobjects_spp_best, histobjects_srr_best, histobjects_spp_paul,histobjects_srr_paul, histobjects_sppsrr;
 
   HistObject histobjects_2d( "Jets", (snwebb + "/" + file1 + "/jet_ntuples_merged/ntuple_jet_merged_"+ tree1 +"_"+stats+".root"), tree1+"_Jet", "vbf", "jets_n_cl[VBF_parton_jets]:jets_pt[VBF_parton_jets]" ,cut_vbf, true  );
+
+  HistObject histobjects_2d_etalow( "Jets", (snwebb + "/" + file1 + "/jet_ntuples_merged/ntuple_jet_merged_"+ tree1 +"_"+stats+".root"), tree1+"_Jet", "vbf", "jets_n_cl[VBF_parton_jets]:jets_pt[VBF_parton_jets]" ,cut_vbf_etalow, true  );
+  HistObject histobjects_2d_etamid( "Jets", (snwebb + "/" + file1 + "/jet_ntuples_merged/ntuple_jet_merged_"+ tree1 +"_"+stats+".root"), tree1+"_Jet", "vbf", "jets_n_cl[VBF_parton_jets]:jets_pt[VBF_parton_jets]" ,cut_vbf_etamid, true  );
+  HistObject histobjects_2d_etahigh( "Jets", (snwebb + "/" + file1 + "/jet_ntuples_merged/ntuple_jet_merged_"+ tree1 +"_"+stats+".root"), tree1+"_Jet", "vbf", "jets_n_cl[VBF_parton_jets]:jets_pt[VBF_parton_jets]" ,cut_vbf_etahigh, true  );
+
   HistObject histobjects_2d_pu( "Jets", (snwebb + "/" + file2 + "/jet_ntuples_merged/ntuple_jet_merged_"+ tree +"_"+stats+".root"), tree+"_Jet", "vbf", "jets_n_cl:jets_pt" ,cut_basic, true  );
 
   histobjects.emplace_back( HistObject( "Jets", (snwebb + "/" + file1 + "/jet_ntuples_merged/ntuple_jet_merged_"+ tree1 +"_"+stats+".root"), tree1+"_Jet", "vbf", "jets_pt[VBF_parton_jets]" ,cut_vbf, true  ) );
@@ -537,1854 +484,242 @@ std::string tree = "Fp8ThresholdDummyHistomaxNtup";
 
 
   Plotter plotter( _cmd );
+
+
+
+
+
   //  plotter.Draw(histobjects, 100, 0, 200  ,"pt" );
 
-  plotter.Draw(histobjects_n_cl, 10, -0.5, 9.5  ,"ncl" );
+  // plotter.Draw(histobjects_n_cl, 10, -0.5, 9.5  ,"ncl" );
 
-  plotter.Draw(histobjects_firstfrac, 51, 0,1.01  ,"ff" );
+  // plotter.Draw(histobjects_firstfrac, 51, 0,1.01  ,"ff" );
 
-  plotter.Draw(histobjects_srrsum, 100, 0,0.05  ,"srrsum" );
-  plotter.Draw(histobjects_srrjet, 100, 0,0.05  ,"srrjet" );
+  // plotter.Draw(histobjects_srrsum, 100, 0,0.05  ,"srrsum" );
+  // plotter.Draw(histobjects_srrjet, 100, 0,0.05  ,"srrjet" );
 
-  plotter.Draw(histobjects_sppsum, 100, 0,0.2  ,"sppsum" );
-  plotter.Draw(histobjects_sppjet, 100, 0,0.05  ,"sppjet" );
+  // plotter.Draw(histobjects_sppsum, 100, 0,0.2  ,"sppsum" );
+  // plotter.Draw(histobjects_sppjet, 100, 0,0.05  ,"sppjet" );
 
   plotter.Draw2D(histobjects_2d, 100, 0,200,10,-0.5,9.5  ,"nclpt_vbf" );
   plotter.Draw2D(histobjects_2d_pu, 100, 0,200,10,-0.5,9.5  ,"nclpt_pu" );
   
 
-  plotter.Draw(histobjects_srr_best, 100, -0.05,0.1  ,"srr_best" );
-  plotter.Draw(histobjects_spp_best, 100, -0.1,0.5  ,"spp_best" );
+  plotter.Draw2D(histobjects_2d_etalow, 100, 0,200,10,-0.5,9.5  ,"nclpt_vbf_etalow" );
+  plotter.Draw2D(histobjects_2d_etamid, 100, 0,200,10,-0.5,9.5  ,"nclpt_vbf_etamid" );
+  plotter.Draw2D(histobjects_2d_etahigh, 100, 0,200,10,-0.5,9.5  ,"nclpt_vbf_etahigh" );
 
-  plotter.Draw(histobjects_srr_paul, 100, -0.05,0.1  ,"srr_paul" );
-  plotter.Draw(histobjects_spp_paul, 100, -0.1,0.5  ,"spp_paul" );
+  // plotter.Draw(histobjects_srr_best, 100, -0.05,0.1  ,"srr_best" );
+  // plotter.Draw(histobjects_spp_best, 100, -0.1,0.5  ,"spp_best" );
+
+  // plotter.Draw(histobjects_srr_paul, 100, -0.05,0.1  ,"srr_paul" );
+  // plotter.Draw(histobjects_spp_paul, 100, -0.1,0.5  ,"spp_paul" );
 
   //  plotter.Draw(histobjects_sppsrr, 100, -10,20  ,"s_div" );
 
 
 }
 
-
-/*
-
-void HGC::plot_nC2D(){
-
-  TH1F* h_NN = single_plot("/vols/cms/tstreble/HGC_ntuples/SingleNu_PU200/calibr_cone_ntuples/calibr_cone_ntuples_1*.root","HGCalTriggerNtuple","cl_n","1",130,0,13000);
-  TH1F* h_GEO = single_plot("/vols/cms/tstreble/HGC_ntuples/SingleNu_PU200_C2D_dR/calibr_cone_ntuples/calibr_cone_ntuples_1*.root","HGCalTriggerNtuple","cl_n","1",130,0,13000);
-
-  TH1F* h_NN_VBF_PU0 = single_plot("/vols/cms/tstreble/HGC_ntuples/VBF_Hinv_PU0/calibr_jet_ntuples_VBF_old/ntuple_calibr_jet_VBF_1*.root","HGCalTriggerNtuple","cl_n","1",130,0,13000);
-  TH1F* h_GEO_VBF_PU0 = single_plot("/vols/cms/tstreble/HGC_ntuples/VBF_Hinv_PU0_C2D_dR/calibr_jet_ntuples_VBF_new/ntuple_calibr_jet_VBF_1*.root","HGCalTriggerNtuple","cl_n","1",130,0,13000);
-
-  TH1F* h_NN_VBF_PU200 = single_plot("/vols/cms/tstreble/HGC_ntuples/VBF_Hinv_PU200/calibr_jet_ntuples_VBF_old/ntuple_calibr_jet_VBF_1*.root","HGCalTriggerNtuple","cl_n","1",130,0,13000);
-  TH1F* h_GEO_VBF_PU200 = single_plot("/vols/cms/tstreble/HGC_ntuples/VBF_Hinv_PU200_C2D_dR/jet_ntuples_merged/ntuple_jet_merged_1*.root","HGCalTriggerNtuple","cl_n","1",130,0,13000);
-
-  vector<TH1F*> histo;
-  histo.push_back(h_NN);
-  histo.push_back(h_GEO);
-  histo.push_back(h_NN_VBF_PU0);
-  histo.push_back(h_GEO_VBF_PU0);
-  //histo.push_back(h_NN_VBF_PU200);
-  //histo.push_back(h_GEO_VBF_PU200);
-
-  vector<TString> leg_entry;
-  leg_entry.push_back("NN ZB PU200");
-  leg_entry.push_back("GEO ZB PU200");
-  leg_entry.push_back("NN VBF PU0");
-  leg_entry.push_back("GEO VBF PU0");
-  leg_entry.push_back("NN VBF PU200");
-  leg_entry.push_back("GEO VBF PU200");
-
-  TLegend* leg=new TLegend(0.2,0.5,0.5,0.8);
-  leg->SetFillColor(0);
-  leg->SetBorderSize(0);
-  leg->SetTextSize(0.03);
-
-  for(unsigned int i=0;i<histo.size();i++){
-    TH1F* h = histo[i];
-    h->Scale(1/h->Integral());
-    h->SetLineWidth(2);
-    h->SetLineColor(i+1);
-    if(i>3)
-      h->SetLineColor(i+2);      
-    leg->AddEntry(h,leg_entry[i]);
-  }
-
-  TCanvas* c=new TCanvas("c","c",650,600);
-  c->SetLeftMargin(0.15);
-  c->SetRightMargin(0.15);
-  TGaxis::SetMaxDigits(4);
-
-  histo[0]->GetXaxis()->SetTitle("#C2D");
-  histo[0]->GetYaxis()->SetTitle("a. u.");
-  histo[0]->GetYaxis()->SetTitleOffset(1.7);
-  histo[0]->GetYaxis()->SetRangeUser(0,0.15);
-  histo[0]->SetStats(0);
-  histo[0]->SetTitle("");
-  histo[0]->Draw();
-  for(unsigned int i=1;i<histo.size();i++)
-    histo[i]->Draw("same");
-  leg->Draw("same");
-
+void HGC::CalculateEfficiency(double par0, double par1, double par2){
   
-  TLatex *texl = new TLatex(10.,0.151,"CMS Simulation #sqrt{s}=14 TeV");
-  texl->SetTextSize(0.03);
-  texl->Draw("same");
+  std::string stats = "*";
+  std::string file1 = "VBF_HGG/VBF-HGG-PU200-Decentralised";
 
-  TLine* line = new TLine(0,1,500,1);
-  line->Draw("same");
-
-  gPad->SetTicks();
+  std::string tree1 = "Fp8ThresholdDummyHistomaxNtup";
 
 
-  c->SaveAs("plots/nC2D.pdf");  
+  //  std::string jetpt_low = "40";
+  TString cut_gen = "VBF_parton_genjet>=0 && abs(genjet_eta[VBF_parton_genjet])>1.7 && abs(genjet_eta[VBF_parton_genjet])<2.8";
+  
+  std::vector<TH1F*> turnons;
+  //   std::vector<TEfficiency*> turnons_eff;
+  std::vector<TString> legend;
+  
+   TH1F* genhist = 0;
+   TH1F* recohist = 0;
 
+   //   std::vector<TString> cuts = {"10","20","30","40","50", "100", "150"};
+
+   std::vector<TString> cuts = {"150","100","50","40","30", "20", "10"};
+   std::vector<double> cutsdouble = {150,100,50,40,30, 20, 10};
+   std::vector<double> values95;
+
+   //      std::vector<TString> cuts = {"40"};
+   //   TF1 * fit = new TF1 ( "f1","-exp([0]/(x-[1]))+2",11,200);
+   //   TF1 * fit = new TF1 ( "f1","0.5*TMath::Erf( ( (x-[0])/[1] ) )+0.5",0,200);
+   //      TF1 * fit = new TF1 ( "f1","0.5*[2]*TMath::TanH( ( (x-[0])/[1] ) )+0.5*[3]",0,300);
+
+
+   TF1 * fit = new TF1 ( "f1","0.5*[2]*TMath::TanH( ( (x-[0])/[1] ) )+0.5*[3]",0,300);
+
+
+
+   //   TF1 * fit = new TF1 ( "f1"," -[3] /  ( 1 + pow( ((x-[0])/[1]),[2] )  )  ",0,300);
+
+   // fit->SetParameter(1,15);
+   // fit->SetParameter(2,7);
+   // fit->SetParameter(3,1.5);
+
+
+   //   TF1 * fit = new TF1 ( "f1","0.25*TMath::TanH( ( (x-[0])/[1] ) ) + 0.25*TMath::TanH( ( (x-[0])/[2] ) )  +0.5",0,200);
+
+   fit->SetParameter(1,20);
+   fit->SetParameter(2,1);
+   fit->SetParameter(3,1);
+
+   genhist = helper.single_plot( snwebb + "/" + file1 + "/jet_ntuples_merged/ntuple_jet_merged_"+ tree1 +"_"+stats+".root", tree1+"_Jet", "genjet_pt[VBF_parton_genjet]", cut_gen, 100, 0, 300 );
+
+   for ( int i = 0; i < cuts.size(); i++){
+     fit->SetParameter(0,cutsdouble.at(i));
+     fit->SetRange( cutsdouble.at(i)-10,(1.3)*cutsdouble.at(i)+50);
+     //     TString cut_reco = "VBF_parton_genjet>=0 && VBF_parton_jets>=0 && abs(genjet_eta[VBF_parton_genjet])>1.7 && abs(genjet_eta[VBF_parton_genjet])<2.8 && jets_pt[VBF_parton_jets]>"+cuts.at(i);
+     
+     TString calibpt = "( -"+TString(std::to_string(par1))+ "+ sqrt( " +  TString(std::to_string(par1*par1)) + "- 4*"+TString(std::to_string(par2))+"*("+TString(std::to_string(par0))+"-jets_pt[VBF_parton_jets]) ) ) / (2 * "+TString(std::to_string(par2))+")";
+
+     std::cout << calibpt << std::endl;
+
+
+     TString cut_reco = "VBF_parton_genjet>=0 && VBF_parton_jets>=0 && abs(genjet_eta[VBF_parton_genjet])>1.7 && abs(genjet_eta[VBF_parton_genjet])<2.8 && "+ calibpt + ">"+cuts.at(i);
+
+     //     std::cout << cut_reco << std::endl;
+
+     recohist = helper.single_plot( snwebb + "/" + file1 + "/jet_ntuples_merged/ntuple_jet_merged_"+ tree1 +"_"+stats+".root", tree1+"_Jet", "genjet_pt[VBF_parton_genjet]", cut_reco, 100, 0, 300 );
+     recohist->SetTitle(";Gen Jet p_{T}; Efficiency");
+
+     TH1D * recoclone = (TH1D*)recohist->Clone("reco");
+     //     TEfficiency * pEff = new TEfficiency(recohist,genhist);
+     recohist->Divide(genhist);
+
+     //SetErrors
+     for (int j = 1; j < recohist->GetNbinsX()+1;j++){
+       double A = recoclone->GetBinContent(j);
+       double sA = recoclone->GetBinError(j);
+       double C = genhist->GetBinContent(j);
+       double sC = genhist->GetBinError(j);
+       double B = C-A;
+
+       double err =std::sqrt( ((B*B)/(C*C*C*C))*(sA*sA)  +  ((A*A)/(C*C*C*C))*( sC*sC-sA*sA  )  ) ;
+       if (err==0) err = 0.001;
+       recohist->SetBinError(j, err );
+
+     }
+
+     recoclone->Delete();
+
+     recohist->Fit(fit, "R");
+
+     turnons.push_back(recohist);
+     //     turnons_eff.push_back(pEff);
+     legend.push_back(cuts.at(i) + " pT");
+     values95.push_back( fit->GetX( 0.95 ) );
+
+
+   }
+
+   TVectorD t_cutsdouble(cutsdouble.size(), &cutsdouble[0]);
+   TVectorD t_values95(values95.size(), &values95[0]);
+
+   TGraph * graph = new TGraph(t_cutsdouble,t_values95);
+
+   //   std::cout << "efficiency = " << recohist->Integral() / genhist->Integral() << std::endl;
+   
+   Plotter plotter2( _cmd );
+   //   plotter.Draw(recohist, "40", "turnon", false);
+
+
+   plotter2.Draw(turnons, legend, "turnon", false);
+
+
+   plotter2.DrawGraph(graph , "95eff");
+
+   //   plotter.DrawEff(turnons_eff, legend, "turnon_eff", false);
+   //   std::cout << "end of here " << std::endl;
+   
+   
 
 }
 
-
-
-
-
-
-void HGC::plot_nC2D_VBF_PU0(){
-
-
-  TH1F* h_NN_VBF_PU0 = single_plot("/vols/cms/tstreble/HGC_ntuples/VBF_Hinv_PU0/calibr_jet_ntuples_VBF_old/ntuple_calibr_jet_VBF_1*.root","HGCalTriggerNtuple","cl_n","1",100,0,500);
-  TH1F* h_GEO_VBF_PU0 = single_plot("/vols/cms/tstreble/HGC_ntuples/VBF_Hinv_PU0_C2D_dR/calibr_jet_ntuples_VBF_new/ntuple_calibr_jet_VBF_1*.root","HGCalTriggerNtuple","cl_n","1",100,0,500);
-
-
-  vector<TH1F*> histo;
-  histo.push_back(h_NN_VBF_PU0);
-  histo.push_back(h_GEO_VBF_PU0);
-
-  vector<TString> leg_entry;
-  leg_entry.push_back("NN VBF PU0");
-  leg_entry.push_back("GEO VBF PU0");
-
-  TLegend* leg=new TLegend(0.5,0.5,0.8,0.8);
-  leg->SetFillColor(0);
-  leg->SetBorderSize(0);
-  leg->SetTextSize(0.03);
-
-  for(unsigned int i=0;i<histo.size();i++){
-    TH1F* h = histo[i];
-    h->Scale(1/h->Integral());
-    h->SetLineWidth(2);
-    h->SetLineColor(i+1);
-    if(i>3)
-      h->SetLineColor(i+2);      
-    leg->AddEntry(h,leg_entry[i]);
-  }
-
-  TCanvas* c=new TCanvas("c","c",650,600);
-  c->SetLeftMargin(0.15);
-  c->SetRightMargin(0.15);
-  TGaxis::SetMaxDigits(4);
-
-  histo[0]->GetXaxis()->SetTitle("#C2D");
-  histo[0]->GetYaxis()->SetTitle("a. u.");
-  histo[0]->GetYaxis()->SetTitleOffset(1.7);
-  histo[0]->GetYaxis()->SetRangeUser(0,1.3*histo[0]->GetMaximum());
-  histo[0]->SetStats(0);
-  histo[0]->SetTitle("");
-  histo[0]->Draw();
-  for(unsigned int i=1;i<histo.size();i++)
-    histo[i]->Draw("same");
-  leg->Draw("same");
+void HGC::CalculateRates(double par0, double par1, double par2){
 
   
-  TLatex *texl = new TLatex(3010.,1.01*histo[0]->GetMaximum(),"CMS Simulation #sqrt{s}=14 TeV");
-  texl->SetTextSize(0.03);
-  texl->Draw("same");
+  std::string stats = "1*";
+  std::string file1 = "DoubleNu/DoubleNu-PU200-Decentralised";
+  std::string tree1 = "Fp8ThresholdDummyHistomaxNtup";
 
-  TLine* line = new TLine(0,1,500,1);
-  line->Draw("same");
+  std::vector<TH1F*> ratevec;
+  std::vector<TString> legend = {"Inclusive", "VBF-like", "di-jet"};
+  //  std::vector<TString> cuts = {"10","20","30","40","50","60","70","80","90","100","110","120","130","140","150","160","170","180","190","200"};
 
-  gPad->SetTicks();
+  TH1F * recohist = 0;  
+  TH1F * recohist_vbf = 0;  
+  TH1F * recohist_dijet = 0;  
 
-
-  c->SaveAs("plots/nC2D.pdf");  
-
-
-}
-
-
-
+  TString cut_basic = "abs(jets_eta[0])>1.7 && abs(jets_eta[0])<2.8";
+  TString cut_vbf = cut_basic + "&& jets_n_cl[0] < 3";
+  TString cut_dijet = cut_basic + "&& abs(jets_eta[1])>1.7 && abs(jets_eta[1])<2.8";
 
 
+  TString calibpt = "( -"+TString(std::to_string(par1))+ "+ sqrt( " +  TString(std::to_string(par1*par1)) + "- 4*"+TString(std::to_string(par2))+"*("+TString(std::to_string(par0))+"-jets_pt[0]) ) ) / (2 * "+TString(std::to_string(par2))+")";
+  TString calibpt1 = "( -"+TString(std::to_string(par1))+ "+ sqrt( " +  TString(std::to_string(par1*par1)) + "- 4*"+TString(std::to_string(par2))+"*("+TString(std::to_string(par0))+"-jets_pt[1]) ) ) / (2 * "+TString(std::to_string(par2))+")";
 
-void HGC::plot_eta_C2D_ext(){
 
-  TH1F* h_NN = single_plot("/vols/cms/tstreble/HGC_ntuples/SingleNu_PU200/calibr_cone_ntuples/calibr_cone_ntuples_1.root","HGCalTriggerNtuple","abs(cl_eta)","1",100,1.4,5);
-  TH1F* h_GEO = single_plot("/vols/cms/tstreble/HGC_ntuples/SingleNu_PU200_C2D_dR/calibr_cone_ntuples/calibr_cone_ntuples_1.root","HGCalTriggerNtuple","abs(cl_eta)","1",100,1.4,5);
-
- TH1F* h_NN_VBF_PU0 = single_plot("/vols/cms/tstreble/HGC_ntuples/VBF_Hinv_PU0/calibr_jet_ntuples_VBF_old/ntuple_calibr_jet_VBF_13.root","HGCalTriggerNtuple","abs(cl_eta)","1",100,1.4,5);
-  TH1F* h_GEO_VBF_PU0 = single_plot("/vols/cms/tstreble/HGC_ntuples/VBF_Hinv_PU0_C2D_dR/calibr_jet_ntuples_VBF_new/ntuple_calibr_jet_VBF_13.root","HGCalTriggerNtuple","abs(cl_eta)","1",100,1.4,5);
-
-  TH1F* h_NN_VBF_PU200 = single_plot("/vols/cms/tstreble/HGC_ntuples/VBF_Hinv_PU200/calibr_jet_ntuples_VBF_old/ntuple_calibr_jet_VBF_1.root","HGCalTriggerNtuple","abs(cl_eta)","1",100,1.4,5);
-  TH1F* h_GEO_VBF_PU200 = single_plot("/vols/cms/tstreble/HGC_ntuples/VBF_Hinv_PU200_C2D_dR/jet_ntuples_merged/ntuple_jet_merged_1.root","HGCalTriggerNtuple","abs(cl_eta)","1",100,1.4,5);
-
-  vector<TH1F*> histo;
-  histo.push_back(h_NN);
-  histo.push_back(h_GEO);
-  histo.push_back(h_NN_VBF_PU0);
-  histo.push_back(h_GEO_VBF_PU0);
-  //histo.push_back(h_NN_VBF_PU200);
-  //histo.push_back(h_GEO_VBF_PU200);
-
-  vector<TString> leg_entry;
-  leg_entry.push_back("NN ZB PU200");
-  leg_entry.push_back("GEO ZB PU200");
-  leg_entry.push_back("NN VBF PU0");
-  leg_entry.push_back("GEO VBF PU0");
-  leg_entry.push_back("NN VBF PU200");
-  leg_entry.push_back("GEO VBF PU200");
-
-  TLegend* leg=new TLegend(0.5,0.5,0.8,0.8);
-  leg->SetFillColor(0);
-  leg->SetBorderSize(0);
-  leg->SetTextSize(0.03);
-
-  for(unsigned int i=0;i<histo.size();i++){
-    TH1F* h = histo[i];
-    h->Scale(1/h->Integral());
-    h->SetLineWidth(2);
-    h->SetLineColor(i+1);
-   if(i>3)
-      h->SetLineColor(i+2);      
-    leg->AddEntry(h,leg_entry[i]);
-  }
-
-  TCanvas* c=new TCanvas("c","c",650,600);
-  c->SetLeftMargin(0.15);
-  c->SetRightMargin(0.15);
-  c->SetLogy();
-
-  histo[0]->GetXaxis()->SetTitle("|#eta(C2D)|");
-  histo[0]->GetYaxis()->SetTitle("a. u.");
-  histo[0]->GetYaxis()->SetTitleOffset(1.7);
-  histo[0]->GetYaxis()->SetRangeUser(1e-7,1e-1);
-  histo[0]->SetStats(0);
-  histo[0]->SetTitle("");
-  histo[0]->Draw();
-  for(unsigned int i=1;i<histo.size();i++)
-    histo[i]->Draw("same");
-  leg->Draw("same");
-
+  recohist = helper.single_plot( snwebb + "/" + file1 + "/jet_ntuples_merged/ntuple_jet_merged_"+ tree1 +"_"+stats+".root", tree1+"_Jet", calibpt, cut_basic, 200, 0, 1000 );
+  recohist_vbf = helper.single_plot( snwebb + "/" + file1 + "/jet_ntuples_merged/ntuple_jet_merged_"+ tree1 +"_"+stats+".root", tree1+"_Jet", calibpt, cut_vbf, 200, 0, 1000 );
   
-  TLatex *texl = new TLatex(1.5,0.15,"CMS Simulation #sqrt{s}=14 TeV");
-  texl->SetTextSize(0.03);
-  texl->Draw("same");
 
-  TLine* line = new TLine(0,1,500,1);
-  line->Draw("same");
+  int nbins = 40;
+  TH1F * rate = new TH1F("rate","",nbins,2.5,202.5);
+  TH1F * ratevbf = new TH1F("rate_vbf","",nbins,2.5,202.5);  
+  TH1F * ratedijet = new TH1F("rate_dijet","",nbins,2.5,202.5);  
+  //  for ( int i = 0; i < cuts.size(); i++){
+  for ( int i = 1; i < nbins + 1; i++){
 
-  gPad->SetTicks();
+    //Inclusive
+    rate->SetBinContent(i, 31200 * recohist->Integral(i,recohist->GetNbinsX()+1) / recohist->Integral());
+    double sA = 0;
+    double sC = 0;
+    double A = recohist->IntegralAndError(i,recohist->GetNbinsX()+1,sA);
+    double C = recohist->IntegralAndError(0,recohist->GetNbinsX()+1,sC);
+    double B = C-A;
+    double err =std::sqrt( ((B*B)/(C*C*C*C))*(sA*sA)  +  ((A*A)/(C*C*C*C))*( sC*sC-sA*sA  )  ) ;
+    rate->SetBinError(i, 31200 * err );
 
 
-  c->SaveAs("plots/eta_C2D_ext.pdf");  
+    //VBF like
+    ratevbf->SetBinContent(i, 31200 * recohist_vbf->Integral(i,recohist_vbf->GetNbinsX()+1) / recohist->Integral());
+    sA = 0;
+    sC = 0;
+    A = recohist_vbf->IntegralAndError(i,recohist_vbf->GetNbinsX()+1,sA);
+    C = recohist->IntegralAndError(0,recohist->GetNbinsX()+1,sC);
+    B = C-A;
+    err =std::sqrt( ((B*B)/(C*C*C*C))*(sA*sA)  +  ((A*A)/(C*C*C*C))*( sC*sC-sA*sA  )  ) ;
+    ratevbf->SetBinError(i, 31200 * err );
 
 
-}
-
-
-
-
-
-void HGC::plot_eta_TC(){
-
-  TH1F* h_TC_seed = single_plot("/vols/cms/tstreble/HGC_ntuples/SingleNu_PU200/calibr_cone_ntuples/calibr_cone_ntuples_1.root","HGCalTriggerNtuple","abs(tc_eta)","tc_MIPpt>5",50,1.5,3.);
-  TH1F* h_TC_clust = single_plot("/vols/cms/tstreble/HGC_ntuples/SingleNu_PU200_C2D_dR/calibr_cone_ntuples/calibr_cone_ntuples_1.root","HGCalTriggerNtuple","abs(tc_eta)","tc_MIPpt>2",50,1.5,3.);
-
-  vector<TH1F*> histo;
-  histo.push_back(h_TC_seed);
-  histo.push_back(h_TC_clust);
-
-  vector<TString> leg_entry;
-  leg_entry.push_back("MIP_{T}>5");
-  leg_entry.push_back("MIP_{T}>2");
-
-  TLegend* leg=new TLegend(0.5,0.2,0.8,0.5);
-  leg->SetFillColor(0);
-  leg->SetBorderSize(0);
-  leg->SetTextSize(0.03);
-
-  for(unsigned int i=0;i<histo.size();i++){
-    TH1F* h = histo[i];
-    h->Scale(1/h->Integral());
-    h->SetLineWidth(2);
-    h->SetLineColor(i+1);
-    h->SetFillColor(i+1);
+    std::cout <<  cut_dijet + "&&"+ calibpt1 + ">" + TString(std::to_string( rate->GetBinLowEdge(i) ) );
+    //Di jet
+    recohist_dijet = helper.single_plot( snwebb + "/" + file1 + "/jet_ntuples_merged/ntuple_jet_merged_"+ tree1 +"_"+stats+".root", tree1+"_Jet", calibpt, cut_dijet + "&&"+calibpt1 + ">" + TString(std::to_string( rate->GetBinLowEdge(i) ) ) , 200, 0, 1000 );
+    ratedijet->SetBinContent(i, 31200 * recohist_dijet->Integral(i,recohist_dijet->GetNbinsX()+1) / recohist->Integral());
+    sA = 0;
+    sC = 0;
+    A = recohist_dijet->IntegralAndError(i,recohist_dijet->GetNbinsX()+1,sA);
+    C = recohist->IntegralAndError(0,recohist->GetNbinsX()+1,sC);
+    B = C-A;
+    err =std::sqrt( ((B*B)/(C*C*C*C))*(sA*sA)  +  ((A*A)/(C*C*C*C))*( sC*sC-sA*sA  )  ) ;
+    ratedijet->SetBinError(i, 31200 * err );
     
-    leg->AddEntry(h,leg_entry[i]);
-  }
 
-  TCanvas* c=new TCanvas("c","c",650,600);
-  c->SetLeftMargin(0.15);
-  c->SetRightMargin(0.15);
 
-  histo[0]->GetXaxis()->SetTitle("|#eta(TC)|");
-  histo[0]->GetYaxis()->SetTitle("a. u.");
-  histo[0]->GetYaxis()->SetTitleOffset(1.7);
-  histo[0]->GetYaxis()->SetRangeUser(0,1.3*histo[0]->GetMaximum());
-  histo[0]->SetStats(0);
-  histo[0]->SetTitle("");
-  histo[0]->Draw();
-  for(unsigned int i=1;i<histo.size();i++)
-    histo[i]->Draw("same");
-  leg->Draw("same");
-
-  
-  TLatex *texl = new TLatex(1.51,1.01*histo[0]->GetMaximum(),"CMS Simulation NeutrinoGun PU=200 #sqrt{s}=14 TeV");
-  texl->SetTextSize(0.03);
-  texl->Draw("same");
-
-  TLine* line = new TLine(0,1,500,1);
-  line->Draw("same");
-
-  gPad->SetTicks();
-
-
-  c->SaveAs("plots/eta_TC.pdf");  
-
-
-}
-
-
-
-
-
-void HGC::plot_eta_C2D(){
-
-  TH1F* h_NN = single_plot("/vols/cms/tstreble/HGC_ntuples/SingleNu_PU200/calibr_cone_ntuples/calibr_cone_ntuples_1.root","HGCalTriggerNtuple","abs(cl_eta)","1",100,1.5,3.);
-  TH1F* h_GEO = single_plot("/vols/cms/tstreble/HGC_ntuples/SingleNu_PU200_C2D_dR/calibr_cone_ntuples/calibr_cone_ntuples_1.root","HGCalTriggerNtuple","abs(cl_eta)","1",100,1.5,3.);
-
- TH1F* h_NN_VBF_PU0 = single_plot("/vols/cms/tstreble/HGC_ntuples/VBF_Hinv_PU0/calibr_jet_ntuples_VBF_old/ntuple_calibr_jet_VBF_13.root","HGCalTriggerNtuple","abs(cl_eta)","1",100,1.5,3);
-  TH1F* h_GEO_VBF_PU0 = single_plot("/vols/cms/tstreble/HGC_ntuples/VBF_Hinv_PU0_C2D_dR/calibr_jet_ntuples_VBF_new/ntuple_calibr_jet_VBF_13.root","HGCalTriggerNtuple","abs(cl_eta)","1",100,1.5,3);
-
-  TH1F* h_NN_VBF_PU200 = single_plot("/vols/cms/tstreble/HGC_ntuples/VBF_Hinv_PU200/calibr_jet_ntuples_VBF_old/ntuple_calibr_jet_VBF_1.root","HGCalTriggerNtuple","abs(cl_eta)","1",100,1.5,3);
-  TH1F* h_GEO_VBF_PU200 = single_plot("/vols/cms/tstreble/HGC_ntuples/VBF_Hinv_PU200_C2D_dR/jet_ntuples_merged/ntuple_jet_merged_1.root","HGCalTriggerNtuple","abs(cl_eta)","1",100,1.5,3);
-
-  vector<TH1F*> histo;
-  histo.push_back(h_NN);
-  histo.push_back(h_GEO);
-  histo.push_back(h_NN_VBF_PU0);
-  histo.push_back(h_GEO_VBF_PU0);
-  //histo.push_back(h_NN_VBF_PU200);
-  //histo.push_back(h_GEO_VBF_PU200);
-
-  vector<TString> leg_entry;
-  leg_entry.push_back("NN ZB PU200");
-  leg_entry.push_back("GEO ZB PU200");
-  leg_entry.push_back("NN VBF PU0");
-  leg_entry.push_back("GEO VBF PU0");
-  leg_entry.push_back("NN VBF PU200");
-  leg_entry.push_back("GEO VBF PU200");
-
-
-  TLegend* leg=new TLegend(0.2,0.2,0.5,0.5);
-  leg->SetFillColor(0);
-  leg->SetBorderSize(0);
-  leg->SetTextSize(0.03);
-
-  for(unsigned int i=0;i<histo.size();i++){
-    TH1F* h = histo[i];
-    h->Scale(1/h->Integral());
-    h->SetLineWidth(2);
-    h->SetLineColor(i+1);
-    if(i>3)
-      h->SetLineColor(i+2);
-    leg->AddEntry(h,leg_entry[i]);
-  }
-
-  histo = sort_histo(histo);
-
-
-  TCanvas* c=new TCanvas("c","c",650,600);
-  c->SetLeftMargin(0.15);
-  c->SetRightMargin(0.15);
-
-  histo[0]->GetXaxis()->SetTitle("|#eta(C2D)|");
-  histo[0]->GetYaxis()->SetTitle("a. u.");
-  histo[0]->GetYaxis()->SetTitleOffset(1.7);
-  histo[0]->GetYaxis()->SetRangeUser(0,1.3*histo[0]->GetMaximum());
-  histo[0]->SetStats(0);
-  histo[0]->SetTitle("");
-  histo[0]->Draw();
-  for(unsigned int i=1;i<histo.size();i++)
-    histo[i]->Draw("same");
-  leg->Draw("same");
-
-  
-  TLatex *texl = new TLatex(1.51,1.01*histo[0]->GetMaximum(),"CMS Simulation #sqrt{s}=14 TeV");
-  texl->SetTextSize(0.03);
-  texl->Draw("same");
-
-  TLine* line = new TLine(0,1,500,1);
-  line->Draw("same");
-
-  gPad->SetTicks();
-
-
-  c->SaveAs("plots/eta_C2D.pdf");  
-
-
-}
-
-
-
-
-
-
-
-void HGC::plot_ncells_C2D(){
-
-  TH1F* h_NN = single_plot("/vols/cms/tstreble/HGC_ntuples/SingleNu_PU200/calibr_cone_ntuples/calibr_cone_ntuples_1.root","HGCalTriggerNtuple","cl_ncells","1",100,0,100);
-  TH1F* h_GEO = single_plot("/vols/cms/tstreble/HGC_ntuples/SingleNu_PU200_C2D_dR/calibr_cone_ntuples/calibr_cone_ntuples_1.root","HGCalTriggerNtuple","cl_ncells","1",100,0,100);
-
- TH1F* h_NN_VBF_PU0 = single_plot("/vols/cms/tstreble/HGC_ntuples/VBF_Hinv_PU0/calibr_jet_ntuples_VBF_old/ntuple_calibr_jet_VBF_13.root","HGCalTriggerNtuple","cl_ncells","1",100,0,100);
-  TH1F* h_GEO_VBF_PU0 = single_plot("/vols/cms/tstreble/HGC_ntuples/VBF_Hinv_PU0_C2D_dR/calibr_jet_ntuples_VBF_new/ntuple_calibr_jet_VBF_13.root","HGCalTriggerNtuple","cl_ncells","1",100,0,100);
-
-  TH1F* h_NN_VBF_PU200 = single_plot("/vols/cms/tstreble/HGC_ntuples/VBF_Hinv_PU200/calibr_jet_ntuples_VBF_old/ntuple_calibr_jet_VBF_1.root","HGCalTriggerNtuple","cl_ncells","1",100,0,100);
-  TH1F* h_GEO_VBF_PU200 = single_plot("/vols/cms/tstreble/HGC_ntuples/VBF_Hinv_PU200_C2D_dR/jet_ntuples_merged/ntuple_jet_merged_1.root","HGCalTriggerNtuple","cl_ncells","1",100,0,100);
-
-  vector<TH1F*> histo;
-  histo.push_back(h_NN);
-  histo.push_back(h_GEO);
-  histo.push_back(h_NN_VBF_PU0);
-  histo.push_back(h_GEO_VBF_PU0);
-  //histo.push_back(h_NN_VBF_PU200);
-  //histo.push_back(h_GEO_VBF_PU200);
-
-  vector<TString> leg_entry;
-  leg_entry.push_back("NN ZB PU200");
-  leg_entry.push_back("GEO ZB PU200");
-  leg_entry.push_back("NN VBF PU0");
-  leg_entry.push_back("GEO VBF PU0");
-  leg_entry.push_back("NN VBF PU200");
-  leg_entry.push_back("GEO VBF PU200");
-
-
-  TLegend* leg=new TLegend(0.5,0.5,0.8,0.8);
-  leg->SetFillColor(0);
-  leg->SetBorderSize(0);
-  leg->SetTextSize(0.03);
-
-  for(unsigned int i=0;i<histo.size();i++){
-    TH1F* h = histo[i];
-    h->Scale(1/h->Integral());
-    h->SetLineWidth(2);
-    h->SetLineColor(i+1);
-    if(i>3)
-      h->SetLineColor(i+2);
-    leg->AddEntry(h,leg_entry[i]);
-  }
-
-  TCanvas* c=new TCanvas("c","c",650,600);
-  c->SetLeftMargin(0.15);
-  c->SetRightMargin(0.15);
-  c->SetLogy();
-
-  histo = sort_histo(histo);
-
-  histo[0]->GetXaxis()->SetTitle("#TC per C2D");
-  histo[0]->GetYaxis()->SetTitle("a. u.");
-  histo[0]->GetYaxis()->SetTitleOffset(1.7);
-  histo[0]->GetYaxis()->SetRangeUser(1e-4,1.2);
-  histo[0]->SetStats(0);
-  histo[0]->SetTitle("");
-  histo[0]->Draw();
-  for(unsigned int i=1;i<histo.size();i++)
-    histo[i]->Draw("same");
-  leg->Draw("same");
-
-  
-  TLatex *texl = new TLatex(1.,1.3,"CMS Simulation #sqrt{s}=14 TeV");
-  texl->SetTextSize(0.03);
-  texl->Draw("same");
-
-
-  gPad->SetTicks();
-
-
-  c->SaveAs("plots/ncells_C2D.pdf");  
-
-
-}
-
-
-
-
-
-
-
-
-void HGC::plot_eta_pt_C2D(){
-
-  TH2F* h_NN = single_plot2D("/vols/cms/tstreble/HGC_ntuples/SingleNu_PU200/calibr_cone_ntuples/calibr_cone_ntuples_1.root","HGCalTriggerNtuple","abs(cl_eta)","cl_pt","",25,1.5,3.,1000,0,10);
-  TH2F* h_GEO = single_plot2D("/vols/cms/tstreble/HGC_ntuples/SingleNu_PU200_C2D_dR/calibr_cone_ntuples/calibr_cone_ntuples_1.root","HGCalTriggerNtuple","abs(cl_eta)","cl_pt","",25,1.5,3.,1000,0,10);
-
-
-
-
-  vector<TH2F*> histo;
-  histo.push_back(h_NN);
-  histo.push_back(h_GEO);
- 
-
-  vector<TProfile*> prof;
-
-  vector<TString> leg_entry;
-  leg_entry.push_back("NN");
-  leg_entry.push_back("GEO");
- 
-
-  TLegend* leg=new TLegend(0.3,0.5,0.5,0.8);
-  leg->SetFillColor(0);
-  leg->SetBorderSize(0);
-  leg->SetTextSize(0.03);
-
-  for(unsigned int i=0;i<histo.size();i++){
-    
-    TProfile* p = (TProfile*)(histo[i]->ProfileX())->Clone();;
-    p->SetLineColor(i+1);
-    p->SetLineWidth(2);
-    p->BuildOptions(0,0,"s");
-    p->SetStats(0);
-    prof.push_back(p);
-    leg->AddEntry(p,leg_entry[i]);
 
   }
 
-  TCanvas* c=new TCanvas("c","c",650,600);
-  c->SetLeftMargin(0.15);
-  c->SetRightMargin(0.15);
-
-  prof[0]->GetXaxis()->SetTitle("|#eta(C2D)|");
-  prof[0]->GetYaxis()->SetTitle("<p_{T}(C2D)> [GeV]");
-  prof[0]->GetYaxis()->SetTitleOffset(1.7);
-  prof[0]->GetYaxis()->SetRangeUser(0,2);
-  prof[0]->SetStats(0);
-  prof[0]->SetTitle("");
-  prof[0]->Draw("");
-  for(unsigned int i=1;i<histo.size();i++)
-    prof[i]->Draw("same");
-  leg->Draw("same");
-
+  ratevec.push_back(rate);
+  ratevec.push_back(ratevbf);  
+  ratevec.push_back(ratedijet);  
+  Plotter plotter( _cmd );
+  //  plotter.Draw(rate, "rate", "rate", true);
+  plotter.Draw(ratevec, legend, "rate", true);
   
-  TLatex *texl = new TLatex(1.51,2.01,"CMS Simulation NeutrinoGun PU=200 #sqrt{s}=14 TeV");
-  texl->SetTextSize(0.03);
-  texl->Draw("same");
-
-  gPad->SetTicks();
-
-
-  c->SaveAs("plots/eta_pT_C2D.pdf");  
-
-
 }
 
 
-
-
-
-
-
-void HGC::plot_eta_ncells_C2D(){
-
-  TH2F* h_NN = single_plot2D("/vols/cms/tstreble/HGC_ntuples/SingleNu_PU200/calibr_cone_ntuples/calibr_cone_ntuples_1.root","HGCalTriggerNtuple","abs(cl_eta)","cl_ncells","",25,1.5,3.,1000,0,1000);
-  TH2F* h_GEO = single_plot2D("/vols/cms/tstreble/HGC_ntuples/SingleNu_PU200_C2D_dR/calibr_cone_ntuples/calibr_cone_ntuples_1.root","HGCalTriggerNtuple","abs(cl_eta)","cl_ncells","",25,1.5,3.,1000,0,1000);
-
-
-  vector<TH2F*> histo;
-  histo.push_back(h_NN);
-  histo.push_back(h_GEO);
-
-  vector<TProfile*> prof;
-
-  vector<TString> leg_entry;
-  leg_entry.push_back("NN");
-  leg_entry.push_back("GEO");
-
-  TLegend* leg=new TLegend(0.3,0.5,0.5,0.8);
-  leg->SetFillColor(0);
-  leg->SetBorderSize(0);
-  leg->SetTextSize(0.03);
-
-  for(unsigned int i=0;i<histo.size();i++){
-
-    TProfile* p = (TProfile*)(histo[i]->ProfileX())->Clone();;
-    p->SetLineColor(i+1);
-    p->SetLineWidth(2);
-    p->BuildOptions(0,0,"s");
-    p->SetStats(0);
-    prof.push_back(p);
-    leg->AddEntry(p,leg_entry[i]);
-
-  }
-
-  TCanvas* c=new TCanvas("c","c",650,600);
-  c->SetLeftMargin(0.15);
-  c->SetRightMargin(0.15);
-
-  prof[0]->GetXaxis()->SetTitle("|#eta(C2D)|");
-  prof[0]->GetYaxis()->SetTitle("<#TC per C2D> [GeV]");
-  prof[0]->GetYaxis()->SetTitleOffset(1.7);
-  prof[0]->GetYaxis()->SetRangeUser(0,20);
-  prof[0]->SetStats(0);
-  prof[0]->SetTitle("");
-  prof[0]->Draw();
-  for(unsigned int i=1;i<histo.size();i++)
-    prof[i]->Draw("same");
-  leg->Draw("same");
-
-  
-  TLatex *texl = new TLatex(1.51,20.2,"CMS Simulation NeutrinoGun PU=200 #sqrt{s}=14 TeV");
-  texl->SetTextSize(0.03);
-  texl->Draw("same");
-
-  gPad->SetTicks();
-
-
-  c->SaveAs("plots/eta_ncells_C2D.pdf");  
-
-
-}
-
-
-
-
-
-*/
-
-
-
-
-
-
-/*
-
-void HGC::plot_eta_C3D(){
-
-
-  TH1F* h_NN = single_plot("/vols/cms/tstreble/HGC_ntuples/SingleNu_PU200/calibr_cone_ntuples/calibr_cone_ntuples_1.root","HGCalTriggerNtuple","abs(cl3d_eta)","1",100,1.5,3.);
-  h_NN->Scale(1/1500.);
-  TH1F* h_GEO = single_plot("/vols/cms/tstreble/HGC_ntuples/SingleNu_PU200_C2D_dR/calibr_cone_ntuples/calibr_cone_ntuples_1.root","HGCalTriggerNtuple","abs(cl3d_eta)","1",100,1.5,3.);
-  h_GEO->Scale(1/1500.);
-
-
- TH1F* h_NN_VBF_PU0 = single_plot("/vols/cms/tstreble/HGC_ntuples/VBF_Hinv_PU0/calibr_jet_ntuples_VBF_old/ntuple_calibr_jet_VBF_13.root","HGCalTriggerNtuple","abs(cl3d_eta)","1",100,1.5,3);
- h_NN_VBF_PU0->Scale(h_NN->Integral()/h_NN_VBF_PU0->Integral());
-  TH1F* h_GEO_VBF_PU0 = single_plot("/vols/cms/tstreble/HGC_ntuples/VBF_Hinv_PU0_C2D_dR/calibr_jet_ntuples_VBF_new/ntuple_calibr_jet_VBF_13.root","HGCalTriggerNtuple","abs(cl3d_eta)","1",100,1.5,3);
-  h_GEO_VBF_PU0->Scale(h_GEO->Integral()/h_GEO_VBF_PU0->Integral());
-
-  TH1F* h_NN_VBF_PU200 = single_plot("/vols/cms/tstreble/HGC_ntuples/VBF_Hinv_PU200/calibr_jet_ntuples_VBF_old/ntuple_calibr_jet_VBF_1.root","HGCalTriggerNtuple","abs(cl3d_eta)","1",100,1.5,3);
-  h_NN_VBF_PU200->Scale(1/300.);
-  TH1F* h_GEO_VBF_PU200 = single_plot("/vols/cms/tstreble/HGC_ntuples/VBF_Hinv_PU200_C2D_dR/jet_ntuples_merged/ntuple_jet_merged_1.root","HGCalTriggerNtuple","abs(cl3d_eta)","1",100,1.5,3);
-  h_GEO_VBF_PU200->Scale(1/300.);
-
-  vector<TH1F*> histo;
-  histo.push_back(h_NN);
-  histo.push_back(h_GEO);
-  histo.push_back(h_NN_VBF_PU0);
-  histo.push_back(h_GEO_VBF_PU0);
-  //histo.push_back(h_NN_VBF_PU200);
-  //histo.push_back(h_GEO_VBF_PU200);
-
-  vector<TString> leg_entry;
-  leg_entry.push_back("NN ZB PU200");
-  leg_entry.push_back("GEO ZB PU200");
-  leg_entry.push_back("NN VBF PU0");
-  leg_entry.push_back("GEO VBF PU0");
-  leg_entry.push_back("NN VBF PU200");
-  leg_entry.push_back("GEO VBF PU200");
-
-
-  TLegend* leg=new TLegend(0.3,0.2,0.6,0.4);
-  leg->SetFillColor(0);
-  leg->SetBorderSize(0);
-  leg->SetTextSize(0.03);
-
-  for(unsigned int i=0;i<histo.size();i++){
-    TH1F* h = histo[i];
-    h->SetLineWidth(2);
-    h->SetLineColor(i+1);
-    if(i>3)
-      h->SetLineColor(i+2);      
-    leg->AddEntry(h,leg_entry[i]);
-  }
-
-  TCanvas* c=new TCanvas("c","c",650,600);
-  c->SetLeftMargin(0.15);
-  c->SetRightMargin(0.15);
-
-  histo[0]->GetXaxis()->SetTitle("|#eta(C3D)|");
-  histo[0]->GetYaxis()->SetTitle("#C3D");
-  histo[0]->GetYaxis()->SetTitleOffset(1.9);
-  histo[0]->GetYaxis()->SetRangeUser(0,1.5*histo[0]->GetMaximum());
-  histo[0]->SetStats(0);
-  histo[0]->SetTitle("");
-  histo[0]->Draw();
-  for(unsigned int i=1;i<histo.size();i++)
-    histo[i]->Draw("same");
-  leg->Draw("same");
-  
-  
-  TLatex *texl = new TLatex(1.51,1.01*histo[0]->GetMaximum(),"CMS Simulation #sqrt{s}=14 TeV");
-  texl->SetTextSize(0.03);
-  texl->Draw("same");
-
-
-  gPad->SetTicks();
-
-
-  c->SaveAs("plots/eta_C3D.pdf");  
-
-
-}
-
-
-
-
-
-
-
-void HGC::plot_nclu_C3D(){
-
-  TH1F* h_NN = single_plot("/vols/cms/tstreble/HGC_ntuples/SingleNu_PU200/calibr_cone_ntuples/calibr_cone_ntuples_1.root","HGCalTriggerNtuple","cl3d_nclu","1",50,0,50);
-  h_NN->Scale(1/1500.);
-  TH1F* h_GEO = single_plot("/vols/cms/tstreble/HGC_ntuples/SingleNu_PU200_C2D_dR/calibr_cone_ntuples/calibr_cone_ntuples_1.root","HGCalTriggerNtuple","cl3d_nclu","1",50,0,50);
-  h_GEO->Scale(1/1500.);
-
-  TH1F* h_NN_VBF_PU0 = single_plot("/vols/cms/tstreble/HGC_ntuples/VBF_Hinv_PU0/calibr_jet_ntuples_VBF_old/ntuple_calibr_jet_VBF_13.root","HGCalTriggerNtuple","cl3d_nclu","1",50,0,50);
-  h_NN_VBF_PU0->Scale(h_NN->Integral()/h_NN_VBF_PU0->Integral());
-  TH1F* h_GEO_VBF_PU0 = single_plot("/vols/cms/tstreble/HGC_ntuples/VBF_Hinv_PU0_C2D_dR/calibr_jet_ntuples_VBF_new/ntuple_calibr_jet_VBF_13.root","HGCalTriggerNtuple","cl3d_nclu","1",50,0,50);
-  h_GEO_VBF_PU0->Scale(h_GEO->Integral()/h_GEO_VBF_PU0->Integral());
-
-  TH1F* h_NN_VBF_PU200 = single_plot("/vols/cms/tstreble/HGC_ntuples/VBF_Hinv_PU200/calibr_jet_ntuples_VBF_old/ntuple_calibr_jet_VBF_1.root","HGCalTriggerNtuple","cl3d_nclu","1",50,0,50);
-  h_NN_VBF_PU200->Scale(1/300.);
-  TH1F* h_GEO_VBF_PU200 = single_plot("/vols/cms/tstreble/HGC_ntuples/VBF_Hinv_PU200_C2D_dR/jet_ntuples_merged/ntuple_jet_merged_1.root","HGCalTriggerNtuple","cl3d_nclu","1",50,0,50);
-  h_GEO_VBF_PU200->Scale(1/300.);
-
-
-  vector<TH1F*> histo;
-  histo.push_back(h_NN);
-  histo.push_back(h_GEO);
-  histo.push_back(h_NN_VBF_PU0);
-  histo.push_back(h_GEO_VBF_PU0);
-  ////histo.push_back(h_NN_VBF_PU200);
-  //histo.push_back(h_GEO_VBF_PU200);
-
-  vector<TString> leg_entry;
-  leg_entry.push_back("NN ZB PU200");
-  leg_entry.push_back("GEO ZB PU200");
-  leg_entry.push_back("NN VBF PU0");
-  leg_entry.push_back("GEO VBF PU0");
-  leg_entry.push_back("NN VBF PU200");
-  leg_entry.push_back("GEO VBF PU200");
-
-
-  TLegend* leg=new TLegend(0.4,0.5,0.8,0.8);
-  leg->SetFillColor(0);
-  leg->SetBorderSize(0);
-  leg->SetTextSize(0.03);
-
-  for(unsigned int i=0;i<histo.size();i++){
-    TH1F* h = histo[i];
-    //h->Scale(1/h->Integral());
-    h->SetLineWidth(2);
-    h->SetLineColor(i+1);
-    if(i>3)
-      h->SetLineColor(i+2);
-    leg->AddEntry(h,leg_entry[i]);
-  }
-
-  TCanvas* c=new TCanvas("c","c",650,600);
-  c->SetLeftMargin(0.15);
-  c->SetRightMargin(0.15);
-  c->SetLogy();
-
-  histo = sort_histo(histo);
-
-  histo[0]->GetXaxis()->SetTitle("#C2D per C3D");
-  histo[0]->GetYaxis()->SetTitle("#C3D");
-  histo[0]->GetYaxis()->SetTitleOffset(1.7);
-  histo[0]->GetYaxis()->SetRangeUser(1,4*histo[0]->GetMaximum());
-  histo[0]->SetStats(0);
-  histo[0]->SetTitle("");
-  histo[0]->Draw();
-  for(unsigned int i=1;i<histo.size();i++)
-    histo[i]->Draw("same");
-  leg->Draw("same");
-
-  
-  TLatex *texl = new TLatex(1.,1.2*histo[0]->GetMaximum(),"CMS Simulation #sqrt{s}=14 TeV");
-  texl->SetTextSize(0.03);
-  texl->Draw("same");
-
-
-  gPad->SetTicks();
-
-
-  c->SaveAs("plots/nclu_C3D.pdf");  
-
-
-}
-
-
-
-
-
-
-
-void HGC::plot_eta_pt_C3D(){
-
-  TH2F* h_NN = single_plot2D("/vols/cms/tstreble/HGC_ntuples/SingleNu_PU200/calibr_cone_ntuples/calibr_cone_ntuples_1.root","HGCalTriggerNtuple","abs(cl3d_eta)","cl3d_pt","",25,1.5,3.,1000,0,100);
-  TH2F* h_GEO = single_plot2D("/vols/cms/tstreble/HGC_ntuples/SingleNu_PU200_C2D_dR/calibr_cone_ntuples/calibr_cone_ntuples_1.root","HGCalTriggerNtuple","abs(cl3d_eta)","cl3d_pt","",25,1.5,3.,1000,0,100);
-
-
-  vector<TH2F*> histo;
-  histo.push_back(h_NN);
-  histo.push_back(h_GEO);
-
-  vector<TProfile*> prof;
-
-  vector<TString> leg_entry;
-  leg_entry.push_back("NN");
-  leg_entry.push_back("GEO");
-
-  TLegend* leg=new TLegend(0.3,0.5,0.5,0.8);
-  leg->SetFillColor(0);
-  leg->SetBorderSize(0);
-  leg->SetTextSize(0.03);
-
-  for(unsigned int i=0;i<histo.size();i++){
-
-    TProfile* p = (TProfile*)(histo[i]->ProfileX())->Clone();;
-    p->SetLineColor(i+1);
-    p->SetLineWidth(2);
-    p->BuildOptions(0,0,"s");
-    p->SetStats(0);
-    prof.push_back(p);
-    leg->AddEntry(p,leg_entry[i]);
-
-  }
-
-  TCanvas* c=new TCanvas("c","c",650,600);
-  c->SetLeftMargin(0.15);
-  c->SetRightMargin(0.15);
-
-  prof[0]->GetXaxis()->SetTitle("|#eta(C3D)|");
-  prof[0]->GetYaxis()->SetTitle("<p_{T}(C3D)> [GeV]");
-  prof[0]->GetYaxis()->SetTitleOffset(1.7);
-  prof[0]->GetYaxis()->SetRangeUser(0,6);
-  prof[0]->SetStats(0);
-  prof[0]->SetTitle("");
-  prof[0]->Draw();
-  for(unsigned int i=1;i<histo.size();i++)
-    prof[i]->Draw("same");
-  leg->Draw("same");
-
-  
-  TLatex *texl = new TLatex(1.51,6.1,"CMS Simulation NeutrinoGun PU=200 #sqrt{s}=14 TeV");
-  texl->SetTextSize(0.03);
-  texl->Draw("same");
-
-  gPad->SetTicks();
-
-
-  c->SaveAs("plots/eta_pT_C3D.pdf");  
-
-
-}
-
-
-
-
-
-
-
-void HGC::plot_eta_nclu_C3D(){
-
-  TH2F* h_NN = single_plot2D("/vols/cms/tstreble/HGC_ntuples/SingleNu_PU200/calibr_cone_ntuples/calibr_cone_ntuples_1.root","HGCalTriggerNtuple","abs(cl3d_eta)","cl3d_nclu","",25,1.5,3.,1000,0,1000);
-  TH2F* h_GEO = single_plot2D("/vols/cms/tstreble/HGC_ntuples/SingleNu_PU200_C2D_dR/calibr_cone_ntuples/calibr_cone_ntuples_1.root","HGCalTriggerNtuple","abs(cl3d_eta)","cl3d_nclu","",25,1.5,3.,1000,0,1000);
-
-
-  vector<TH2F*> histo;
-  histo.push_back(h_NN);
-  histo.push_back(h_GEO);
-
-  vector<TProfile*> prof;
-
-  vector<TString> leg_entry;
-  leg_entry.push_back("NN");
-  leg_entry.push_back("GEO");
-
-  TLegend* leg=new TLegend(0.3,0.5,0.5,0.8);
-  leg->SetFillColor(0);
-  leg->SetBorderSize(0);
-  leg->SetTextSize(0.03);
-
-  for(unsigned int i=0;i<histo.size();i++){
-
-    TProfile* p = (TProfile*)(histo[i]->ProfileX())->Clone();;
-    p->SetLineColor(i+1);
-    p->SetLineWidth(2);
-    p->BuildOptions(0,0,"s");
-    p->SetStats(0);
-    prof.push_back(p);
-    leg->AddEntry(p,leg_entry[i]);
-
-  }
-
-  TCanvas* c=new TCanvas("c","c",650,600);
-  c->SetLeftMargin(0.15);
-  c->SetRightMargin(0.15);
-
-  prof[0]->GetXaxis()->SetTitle("|#eta(C3D)|");
-  prof[0]->GetYaxis()->SetTitle("<#C2D per C3D> [GeV]");
-  prof[0]->GetYaxis()->SetTitleOffset(1.7);
-  prof[0]->GetYaxis()->SetRangeUser(0,20);
-  prof[0]->SetStats(0);
-  prof[0]->SetTitle("");
-  prof[0]->Draw();
-  for(unsigned int i=1;i<histo.size();i++)
-    prof[i]->Draw("same");
-  leg->Draw("same");
-
-  
-  TLatex *texl = new TLatex(1.51,20.2,"CMS Simulation NeutrinoGun PU=200 #sqrt{s}=14 TeV");
-  texl->SetTextSize(0.03);
-  texl->Draw("same");
-
-  gPad->SetTicks();
-
-
-  c->SaveAs("plots/eta_nclu_C3D.pdf");  
-
-
-}
-
-
-
-
-
-
-
-
-
-void HGC::plot_showerlength_C3D(){
-
-  TH1F* h_NN = single_plot("/vols/cms/tstreble/HGC_ntuples/SingleNu_PU200/calibr_cone_ntuples/calibr_cone_ntuples_1.root","HGCalTriggerNtuple","cl3d_showerlength","1",58,2,60);
-  h_NN->Scale(1/1500.);
-  TH1F* h_GEO = single_plot("/vols/cms/tstreble/HGC_ntuples/SingleNu_PU200_C2D_dR/calibr_cone_ntuples/calibr_cone_ntuples_1.root","HGCalTriggerNtuple","cl3d_showerlength","1",58,2,60);
-  h_GEO->Scale(1/1500.);
-
-
-  TH1F* h_NN_VBF_PU0 = single_plot("/vols/cms/tstreble/HGC_ntuples/VBF_Hinv_PU0/calibr_jet_ntuples_VBF_old/ntuple_calibr_jet_VBF_13.root","HGCalTriggerNtuple","cl3d_showerlength","1",58,2,60);
-  h_NN_VBF_PU0->Scale(h_NN->Integral()/h_NN_VBF_PU0->Integral());
-  TH1F* h_GEO_VBF_PU0 = single_plot("/vols/cms/tstreble/HGC_ntuples/VBF_Hinv_PU0_C2D_dR/calibr_jet_ntuples_VBF_new/ntuple_calibr_jet_VBF_13.root","HGCalTriggerNtuple","cl3d_showerlength","1",58,2,60);
-  h_GEO_VBF_PU0->Scale(h_GEO->Integral()/h_GEO_VBF_PU0->Integral());
-
-  TH1F* h_NN_VBF_PU200 = single_plot("/vols/cms/tstreble/HGC_ntuples/VBF_Hinv_PU200/calibr_jet_ntuples_VBF_old/ntuple_calibr_jet_VBF_1.root","HGCalTriggerNtuple","cl3d_showerlength","1",58,2,60);
-  h_NN_VBF_PU200->Scale(1/300.);
-  TH1F* h_GEO_VBF_PU200 = single_plot("/vols/cms/tstreble/HGC_ntuples/VBF_Hinv_PU200_C2D_dR/jet_ntuples_merged/ntuple_jet_merged_1.root","HGCalTriggerNtuple","cl3d_showerlength","1",58,2,60);
-  h_GEO_VBF_PU200->Scale(1/300.);
-
-
-  vector<TH1F*> histo;
-  histo.push_back(h_NN);
-  histo.push_back(h_GEO);
-  histo.push_back(h_NN_VBF_PU0);
-  histo.push_back(h_GEO_VBF_PU0);
-  //histo.push_back(h_NN_VBF_PU200);
-  //histo.push_back(h_GEO_VBF_PU200);
- 
-
-  vector<TString> leg_entry;
-  leg_entry.push_back("NN ZB PU200");
-  leg_entry.push_back("GEO ZB PU200");
-  leg_entry.push_back("NN VBF PU0");
-  leg_entry.push_back("GEO VBF PU0");
-  leg_entry.push_back("NN VBF PU200");
-  leg_entry.push_back("GEO VBF PU200");
-
-
-  TLegend* leg=new TLegend(0.5,0.5,0.7,0.8);
-  leg->SetFillColor(0);
-  leg->SetBorderSize(0);
-  leg->SetTextSize(0.03);
-
-  for(unsigned int i=0;i<histo.size();i++){
-    TH1F* h = histo[i];
-    //h->Scale(1/h->Integral());
-    h->SetLineWidth(2);
-    h->SetLineColor(i+1);
-    if(i>3)
-      h->SetLineColor(i+2);
-    leg->AddEntry(h,leg_entry[i]);
-  }
-
-  TCanvas* c=new TCanvas("c","c",650,600);
-  c->SetLeftMargin(0.15);
-  c->SetRightMargin(0.15);
-  //c->SetLogy();
-
-  histo = sort_histo(histo);
-
-  histo[0]->GetXaxis()->SetTitle("Shower length");
-  histo[0]->GetYaxis()->SetTitle("#C3D");
-  histo[0]->GetYaxis()->SetTitleOffset(1.7);
-  histo[0]->GetYaxis()->SetRangeUser(0,1.3*histo[0]->GetMaximum());
-  histo[0]->SetStats(0);
-  histo[0]->SetTitle("");
-  histo[0]->Draw();
-  for(unsigned int i=1;i<histo.size();i++)
-    histo[i]->Draw("same");
-  leg->Draw("same");
-
-  
-  TLatex *texl = new TLatex(3.,1.02*histo[0]->GetMaximum(),"CMS Simulation #sqrt{s}=14 TeV");
-  texl->SetTextSize(0.03);
-  texl->Draw("same");
-
-
-  gPad->SetTicks();
-
-
-  c->SaveAs("plots/showerlength_C3D.pdf");  
-
-
-}
-
-
-
-
-void HGC::plot_showerlength_C3D_pt20(){
-
-  TH1F* h_NN = single_plot("/vols/cms/tstreble/HGC_ntuples/SingleNu_PU200/calibr_cone_ntuples/calibr_cone_ntuples_1*.root","HGCalTriggerNtuple","cl3d_showerlength","cl3d_pt>20",58,2,60);
-  h_NN->Scale(1/1500.);
-  TH1F* h_GEO = single_plot("/vols/cms/tstreble/HGC_ntuples/SingleNu_PU200_C2D_dR/calibr_cone_ntuples/calibr_cone_ntuples_1*.root","HGCalTriggerNtuple","cl3d_showerlength","cl3d_pt>20",58,2,60);
-  h_GEO->Scale(1/1500.);
-
-
-  TH1F* h_NN_VBF_PU0 = single_plot("/vols/cms/tstreble/HGC_ntuples/VBF_Hinv_PU0/calibr_jet_ntuples_VBF_old/ntuple_calibr_jet_VBF_1*.root","HGCalTriggerNtuple","cl3d_showerlength","cl3d_pt>20",58,2,60);
-  h_NN_VBF_PU0->Scale(h_NN->Integral()/h_NN_VBF_PU0->Integral());
-  TH1F* h_GEO_VBF_PU0 = single_plot("/vols/cms/tstreble/HGC_ntuples/VBF_Hinv_PU0_C2D_dR/calibr_jet_ntuples_VBF_new/ntuple_calibr_jet_VBF_1*.root","HGCalTriggerNtuple","cl3d_showerlength","cl3d_pt>20",58,2,60);
-  h_GEO_VBF_PU0->Scale(h_GEO->Integral()/h_GEO_VBF_PU0->Integral());
-
-  TH1F* h_NN_VBF_PU200 = single_plot("/vols/cms/tstreble/HGC_ntuples/VBF_Hinv_PU200/calibr_jet_ntuples_VBF_old/ntuple_calibr_jet_VBF_1*.root","HGCalTriggerNtuple","cl3d_showerlength","cl3d_pt>20",58,2,60);
-  h_NN_VBF_PU200->Scale(1/300.);
-  TH1F* h_GEO_VBF_PU200 = single_plot("/vols/cms/tstreble/HGC_ntuples/VBF_Hinv_PU200_C2D_dR/jet_ntuples_merged/ntuple_jet_merged_1*.root","HGCalTriggerNtuple","cl3d_showerlength","cl3d_pt>20",58,2,60);
-  h_GEO_VBF_PU200->Scale(1/300.);
-
-
-  vector<TH1F*> histo;
-  histo.push_back(h_NN);
-  histo.push_back(h_GEO);
-  histo.push_back(h_NN_VBF_PU0);
-  histo.push_back(h_GEO_VBF_PU0);
-  //histo.push_back(h_NN_VBF_PU200);
-  //histo.push_back(h_GEO_VBF_PU200);
- 
-
-  vector<TString> leg_entry;
-  leg_entry.push_back("NN ZB PU200");
-  leg_entry.push_back("GEO ZB PU200");
-  leg_entry.push_back("NN VBF PU0");
-  leg_entry.push_back("GEO VBF PU0");
-  leg_entry.push_back("NN VBF PU200");
-  leg_entry.push_back("GEO VBF PU200");
-
-
-  TLegend* leg=new TLegend(0.5,0.5,0.7,0.8);
-  leg->SetHeader("p_{T}(C3D)>20 GeV");
-  leg->SetFillColor(0);
-  leg->SetBorderSize(0);
-  leg->SetTextSize(0.03);
-
-  for(unsigned int i=0;i<histo.size();i++){
-    TH1F* h = histo[i];
-    h->Scale(1/h->Integral());
-    h->SetLineWidth(2);
-    h->SetLineColor(i+1);
-    if(i>3)
-      h->SetLineColor(i+2);
-    leg->AddEntry(h,leg_entry[i]);
-  }
-
-  TCanvas* c=new TCanvas("c","c",650,600);
-  c->SetLeftMargin(0.15);
-  c->SetRightMargin(0.15);
-  //c->SetLogy();
-
-  histo = sort_histo(histo);
-
-  histo[0]->GetXaxis()->SetTitle("Shower length");
-  histo[0]->GetYaxis()->SetTitle("a. u.");
-  histo[0]->GetYaxis()->SetTitleOffset(1.7);
-  histo[0]->GetYaxis()->SetRangeUser(0,1.3*histo[0]->GetMaximum());
-  histo[0]->SetStats(0);
-  histo[0]->SetTitle("");
-  histo[0]->Draw();
-  for(unsigned int i=1;i<histo.size();i++)
-    histo[i]->Draw("same");
-  leg->Draw("same");
-
-  
-  TLatex *texl = new TLatex(3.,1.02*histo[0]->GetMaximum(),"CMS Simulation #sqrt{s}=14 TeV");
-  texl->SetTextSize(0.03);
-  texl->Draw("same");
-
-
-  gPad->SetTicks();
-
-
-  c->SaveAs("plots/showerlength_C3D_pt20.pdf");  
-
-
-}
-
-
-
-
-
-
-
-
-void HGC::plot_firstlayer_C3D(){
-
-  TH1F* h_NN = single_plot("/vols/cms/tstreble/HGC_ntuples/SingleNu_PU200/calibr_cone_ntuples/calibr_cone_ntuples_1.root","HGCalTriggerNtuple","cl3d_firstlayer","1",60,0,60);
-  h_NN->Scale(1/1500.);
-  TH1F* h_GEO = single_plot("/vols/cms/tstreble/HGC_ntuples/SingleNu_PU200_C2D_dR/calibr_cone_ntuples/calibr_cone_ntuples_1.root","HGCalTriggerNtuple","cl3d_firstlayer","1",60,0,60);
-  h_GEO->Scale(1/1500.);
-
-  TH1F* h_NN_VBF_PU0 = single_plot("/vols/cms/tstreble/HGC_ntuples/VBF_Hinv_PU0/calibr_jet_ntuples_VBF_old/ntuple_calibr_jet_VBF_13.root","HGCalTriggerNtuple","cl3d_firstlayer","1",60,0,60);
-  h_NN_VBF_PU0->Scale(h_NN->Integral()/h_NN_VBF_PU0->Integral());
-  TH1F* h_GEO_VBF_PU0 = single_plot("/vols/cms/tstreble/HGC_ntuples/VBF_Hinv_PU0_C2D_dR/calibr_jet_ntuples_VBF_new/ntuple_calibr_jet_VBF_13.root","HGCalTriggerNtuple","cl3d_firstlayer","1",60,0,60);
-  h_GEO_VBF_PU0->Scale(h_GEO->Integral()/h_GEO_VBF_PU0->Integral());
-
-  TH1F* h_NN_VBF_PU200 = single_plot("/vols/cms/tstreble/HGC_ntuples/VBF_Hinv_PU200/calibr_jet_ntuples_VBF_old/ntuple_calibr_jet_VBF_1.root","HGCalTriggerNtuple","cl3d_firstlayer","1",60,0,60);
-  h_NN_VBF_PU200->Scale(1/300.);
-  TH1F* h_GEO_VBF_PU200 = single_plot("/vols/cms/tstreble/HGC_ntuples/VBF_Hinv_PU200_C2D_dR/jet_ntuples_merged/ntuple_jet_merged_1.root","HGCalTriggerNtuple","cl3d_firstlayer","1",60,0,60);
-  h_GEO_VBF_PU200->Scale(1/300.);
-
-  vector<TH1F*> histo;
-  histo.push_back(h_NN);
-  histo.push_back(h_GEO);
-  histo.push_back(h_NN_VBF_PU0);
-  histo.push_back(h_GEO_VBF_PU0);
-  //histo.push_back(h_NN_VBF_PU200);
-  //histo.push_back(h_GEO_VBF_PU200);
-
-  vector<TString> leg_entry;
-  leg_entry.push_back("NN ZB PU200");
-  leg_entry.push_back("GEO ZB PU200");
-  leg_entry.push_back("NN VBF PU0");
-  leg_entry.push_back("GEO VBF PU0");
-  leg_entry.push_back("NN VBF PU200");
-  leg_entry.push_back("GEO VBF PU200");
-
-
-  TLegend* leg=new TLegend(0.6,0.6,0.8,0.8);
-  leg->SetFillColor(0);
-  leg->SetBorderSize(0);
-  leg->SetTextSize(0.03);
-
-  for(unsigned int i=0;i<histo.size();i++){
-    TH1F* h = histo[i];
-    //h->Scale(1/h->Integral());
-    h->SetLineWidth(2);
-    h->SetLineColor(i+1);
-    if(i>3)
-      h->SetLineColor(i+2);
-    leg->AddEntry(h,leg_entry[i]);
-  }
-
-  TCanvas* c=new TCanvas("c","c",650,600);
-  c->SetLeftMargin(0.15);
-  c->SetRightMargin(0.15);
-  c->SetLogy();
-
-  histo = sort_histo(histo);
-
-  histo[0]->GetXaxis()->SetTitle("First layer");
-  histo[0]->GetYaxis()->SetTitle("#C3D");
-  histo[0]->GetYaxis()->SetTitleOffset(1.7);
-  histo[0]->GetYaxis()->SetRangeUser(1e-1,5*histo[0]->GetMaximum());
-  histo[0]->SetStats(0);
-  histo[0]->SetTitle("");
-  histo[0]->Draw();
-  for(unsigned int i=1;i<histo.size();i++)
-    histo[i]->Draw("same");
-  leg->Draw("same");
-
-  
-  TLatex *texl = new TLatex(1.,1.2*histo[0]->GetMaximum(),"CMS Simulation #sqrt{s}=14 TeV");
-  texl->SetTextSize(0.03);
-  texl->Draw("same");
-
-
-  gPad->SetTicks();
-
-
-  c->SaveAs("plots/firstlayer_C3D.pdf");  
-
-
-}
-
-
-
-
-
-
-
-void HGC::plot_firstlayer_C3D_pt20(){
-
-  TH1F* h_NN = single_plot("/vols/cms/tstreble/HGC_ntuples/SingleNu_PU200/calibr_cone_ntuples/calibr_cone_ntuples_1*.root","HGCalTriggerNtuple","cl3d_firstlayer","cl3d_pt>20",60,0,60);
-  h_NN->Scale(1/1500.);
-  TH1F* h_GEO = single_plot("/vols/cms/tstreble/HGC_ntuples/SingleNu_PU200_C2D_dR/calibr_cone_ntuples/calibr_cone_ntuples_1*.root","HGCalTriggerNtuple","cl3d_firstlayer","cl3d_pt>20",60,0,60);
-  h_GEO->Scale(1/1500.);
-
-
-  TH1F* h_NN_VBF_PU0 = single_plot("/vols/cms/tstreble/HGC_ntuples/VBF_Hinv_PU0/calibr_jet_ntuples_VBF_old/ntuple_calibr_jet_VBF_1*.root","HGCalTriggerNtuple","cl3d_firstlayer","cl3d_pt>20",60,0,60);
-  h_NN_VBF_PU0->Scale(h_NN->Integral()/h_NN_VBF_PU0->Integral());
-  TH1F* h_GEO_VBF_PU0 = single_plot("/vols/cms/tstreble/HGC_ntuples/VBF_Hinv_PU0_C2D_dR/calibr_jet_ntuples_VBF_new/ntuple_calibr_jet_VBF_1*.root","HGCalTriggerNtuple","cl3d_firstlayer","cl3d_pt>20",60,0,60);
-  h_GEO_VBF_PU0->Scale(h_GEO->Integral()/h_GEO_VBF_PU0->Integral());
-
-  TH1F* h_NN_VBF_PU200 = single_plot("/vols/cms/tstreble/HGC_ntuples/VBF_Hinv_PU200/calibr_jet_ntuples_VBF_old/ntuple_calibr_jet_VBF_1*.root","HGCalTriggerNtuple","cl3d_firstlayer","cl3d_pt>20",60,0,60);
-  h_NN_VBF_PU200->Scale(1/300.);
-  TH1F* h_GEO_VBF_PU200 = single_plot("/vols/cms/tstreble/HGC_ntuples/VBF_Hinv_PU200_C2D_dR/jet_ntuples_merged/ntuple_jet_merged_1*.root","HGCalTriggerNtuple","cl3d_firstlayer","cl3d_pt>20",60,0,60);
-  h_GEO_VBF_PU200->Scale(1/300.);
-
-
-  vector<TH1F*> histo;
-  histo.push_back(h_NN);
-  histo.push_back(h_GEO);
-  histo.push_back(h_NN_VBF_PU0);
-  histo.push_back(h_GEO_VBF_PU0);
-  //histo.push_back(h_NN_VBF_PU200);
-  //histo.push_back(h_GEO_VBF_PU200);
- 
-
-  vector<TString> leg_entry;
-  leg_entry.push_back("NN ZB PU200");
-  leg_entry.push_back("GEO ZB PU200");
-  leg_entry.push_back("NN VBF PU0");
-  leg_entry.push_back("GEO VBF PU0");
-  leg_entry.push_back("NN VBF PU200");
-  leg_entry.push_back("GEO VBF PU200");
-
-
-  TLegend* leg=new TLegend(0.5,0.5,0.7,0.8);
-  leg->SetHeader("p_{T}(C3D)>20 GeV");
-  leg->SetFillColor(0);
-  leg->SetBorderSize(0);
-  leg->SetTextSize(0.03);
-
-  for(unsigned int i=0;i<histo.size();i++){
-    TH1F* h = histo[i];
-    h->Scale(1/h->Integral());
-    h->SetLineWidth(2);
-    h->SetLineColor(i+1);
-    if(i>3)
-      h->SetLineColor(i+2);
-    leg->AddEntry(h,leg_entry[i]);
-  }
-
-  TCanvas* c=new TCanvas("c","c",650,600);
-  c->SetLeftMargin(0.15);
-  c->SetRightMargin(0.15);
-  c->SetLogy();
-
-  histo = sort_histo(histo);
-
-  histo[0]->GetXaxis()->SetTitle("First layer");
-  histo[0]->GetYaxis()->SetTitle("a. u.");
-  histo[0]->GetYaxis()->SetTitleOffset(1.7);
-  histo[0]->GetYaxis()->SetRangeUser(1e-6,5*histo[0]->GetMaximum());
-  histo[0]->SetStats(0);
-  histo[0]->SetTitle("");
-  histo[0]->Draw();
-  for(unsigned int i=1;i<histo.size();i++)
-    histo[i]->Draw("same");
-  leg->Draw("same");
-
-  
-  TLatex *texl = new TLatex(3.,1.02*histo[0]->GetMaximum(),"CMS Simulation #sqrt{s}=14 TeV");
-  texl->SetTextSize(0.03);
-  texl->Draw("same");
-
-
-  gPad->SetTicks();
-
-
-  c->SaveAs("plots/firstlayer_C3D_pt20.pdf");  
-
-
-}
-
-
-
-
-
-
-
-
-void HGC::plot_eta_showerlength_C3D(){
-
-  TH2F* h_NN = single_plot2D("/vols/cms/tstreble/HGC_ntuples/SingleNu_PU200/calibr_cone_ntuples/calibr_cone_ntuples_1.root","HGCalTriggerNtuple","abs(cl3d_eta)","cl3d_showerlength","",25,1.5,3.,60,0,60);
-  TH2F* h_GEO = single_plot2D("/vols/cms/tstreble/HGC_ntuples/SingleNu_PU200_C2D_dR/calibr_cone_ntuples/calibr_cone_ntuples_1.root","HGCalTriggerNtuple","abs(cl3d_eta)","cl3d_showerlength","",25,1.5,3.,60,0,60);
-
-
-  vector<TH2F*> histo;
-  histo.push_back(h_NN);
-  histo.push_back(h_GEO);
-
-  vector<TProfile*> prof;
-
-  vector<TString> leg_entry;
-  leg_entry.push_back("NN");
-  leg_entry.push_back("GEO");
-
-  TLegend* leg=new TLegend(0.3,0.5,0.5,0.8);
-  leg->SetFillColor(0);
-  leg->SetBorderSize(0);
-  leg->SetTextSize(0.03);
-
-  for(unsigned int i=0;i<histo.size();i++){
-
-    TProfile* p = (TProfile*)(histo[i]->ProfileX())->Clone();;
-    p->SetLineColor(i+1);
-    p->SetLineWidth(2);
-    p->BuildOptions(0,0,"s");
-    p->SetStats(0);
-    prof.push_back(p);
-    leg->AddEntry(p,leg_entry[i]);
-
-  }
-
-  TCanvas* c=new TCanvas("c","c",650,600);
-  c->SetLeftMargin(0.15);
-  c->SetRightMargin(0.15);
-
-  prof[0]->GetXaxis()->SetTitle("|#eta(C3D)|");
-  prof[0]->GetYaxis()->SetTitle("<Shower length>");
-  prof[0]->GetYaxis()->SetTitleOffset(1.7);
-  prof[0]->GetYaxis()->SetRangeUser(0,60);
-  prof[0]->SetStats(0);
-  prof[0]->SetTitle("");
-  prof[0]->Draw();
-  for(unsigned int i=1;i<histo.size();i++)
-    prof[i]->Draw("same");
-  leg->Draw("same");
-
-  
-  TLatex *texl = new TLatex(1.51,61,"CMS Simulation NeutrinoGun PU=200 #sqrt{s}=14 TeV");
-  texl->SetTextSize(0.03);
-  texl->Draw("same");
-
-  gPad->SetTicks();
-
-
-  c->SaveAs("plots/eta_showerlength_C3D.pdf");  
-
-
-}
-
-
-
-
-
-
-
-
-
-void HGC::plot_eta_firstlayer_C3D(){
-
-  TH2F* h_NN = single_plot2D("/vols/cms/tstreble/HGC_ntuples/SingleNu_PU200/calibr_cone_ntuples/calibr_cone_ntuples_1.root","HGCalTriggerNtuple","abs(cl3d_eta)","cl3d_firstlayer","",25,1.5,3.,60,0,60);
-  TH2F* h_GEO = single_plot2D("/vols/cms/tstreble/HGC_ntuples/SingleNu_PU200_C2D_dR/calibr_cone_ntuples/calibr_cone_ntuples_1.root","HGCalTriggerNtuple","abs(cl3d_eta)","cl3d_firstlayer","",25,1.5,3.,60,0,60);
-
-
-  vector<TH2F*> histo;
-  histo.push_back(h_NN);
-  histo.push_back(h_GEO);
-
-  vector<TProfile*> prof;
-
-  vector<TString> leg_entry;
-  leg_entry.push_back("NN");
-  leg_entry.push_back("GEO");
-
-  TLegend* leg=new TLegend(0.3,0.5,0.5,0.8);
-  leg->SetFillColor(0);
-  leg->SetBorderSize(0);
-  leg->SetTextSize(0.03);
-
-  for(unsigned int i=0;i<histo.size();i++){
-
-    TProfile* p = (TProfile*)(histo[i]->ProfileX())->Clone();;
-    p->SetLineColor(i+1);
-    p->SetLineWidth(2);
-    p->BuildOptions(0,0,"s");
-    p->SetStats(0);
-    prof.push_back(p);
-    leg->AddEntry(p,leg_entry[i]);
-
-  }
-
-  TCanvas* c=new TCanvas("c","c",650,600);
-  c->SetLeftMargin(0.15);
-  c->SetRightMargin(0.15);
-
-  prof[0]->GetXaxis()->SetTitle("|#eta(C3D)|");
-  prof[0]->GetYaxis()->SetTitle("<First layer>");
-  prof[0]->GetYaxis()->SetTitleOffset(1.7);
-  prof[0]->GetYaxis()->SetRangeUser(0,60);
-  prof[0]->SetStats(0);
-  prof[0]->SetTitle("");
-  prof[0]->Draw();
-  for(unsigned int i=1;i<histo.size();i++)
-    prof[i]->Draw("same");
-  leg->Draw("same");
-
-  
-  TLatex *texl = new TLatex(1.51,61,"CMS Simulation NeutrinoGun PU=200 #sqrt{s}=14 TeV");
-  texl->SetTextSize(0.03);
-  texl->Draw("same");
-
-  gPad->SetTicks();
-
-
-  c->SaveAs("plots/eta_firstlayer_C3D.pdf");  
-
-
-}
-
-
-
-
-
-
-
-void HGC::plot_njets(){
-
-  TH1F* h_NN = single_plot("/vols/cms/tstreble/HGC_ntuples/SingleNu_PU200/calibr_jet_ntuples/ntuple_calibr_jet_core_1*.root","jets","jets_n","1",300,0,300);
-  TH1F* h_GEO = single_plot("/vols/cms/tstreble/HGC_ntuples/SingleNu_PU200_C2D_dR/jet_ntuples_merged/ntuple_jet_merged_1*.root","jets","jets_n","1",300,0,300);
-
-  TH1F* h_NN_VBF_PU0 = single_plot("/vols/cms/tstreble/HGC_ntuples/VBF_Hinv_PU0/calibr_jet_ntuples_VBF_old/ntuple_calibr_jet_VBF_1*.root","jets","jets_n","1",300,0,300);
-  TH1F* h_GEO_VBF_PU0 = single_plot("/vols/cms/tstreble/HGC_ntuples/VBF_Hinv_PU0_C2D_dR/calibr_jet_ntuples_VBF_new/ntuple_calibr_jet_VBF_1*.root","jets","jets_n","1",300,0,300);
-
-  TH1F* h_NN_VBF_PU200 = single_plot("/vols/cms/tstreble/HGC_ntuples/VBF_Hinv_PU200/calibr_jet_ntuples_VBF_old/ntuple_calibr_jet_VBF_1*.root","jets","jets_n","1",300,0,300);
-  TH1F* h_GEO_VBF_PU200 = single_plot("/vols/cms/tstreble/HGC_ntuples/VBF_Hinv_PU200_C2D_dR/jet_ntuples_merged/ntuple_jet_merged_1*.root","jets","jets_n","1",300,0,300);
-
-  vector<TH1F*> histo;
-  histo.push_back(h_NN);
-  histo.push_back(h_GEO);
-  histo.push_back(h_NN_VBF_PU0);
-  histo.push_back(h_GEO_VBF_PU0);
-  //histo.push_back(h_NN_VBF_PU200);
-  //histo.push_back(h_GEO_VBF_PU200);
- 
-
-  vector<TString> leg_entry;
-  leg_entry.push_back("NN ZB PU200");
-  leg_entry.push_back("GEO ZB PU200");
-  leg_entry.push_back("NN VBF PU0");
-  leg_entry.push_back("GEO VBF PU0");
-  leg_entry.push_back("NN VBF PU200");
-  leg_entry.push_back("GEO VBF PU200");
-
-
-
-  TLegend* leg=new TLegend(0.3,0.6,0.6,0.8);
-  leg->SetFillColor(0);
-  leg->SetBorderSize(0);
-  leg->SetTextSize(0.03);
-
-  for(unsigned int i=0;i<histo.size();i++){
-    TH1F* h = histo[i];
-    h->Scale(1/h->Integral());
-    h->SetLineWidth(2);
-    h->SetLineColor(i+1);
-    if(i>3)
-      h->SetLineColor(i+2);
-    leg->AddEntry(h,leg_entry[i]);
-  }
-
-  TCanvas* c=new TCanvas("c","c",650,600);
-  c->SetLeftMargin(0.15);
-  c->SetRightMargin(0.15);
-  TGaxis::SetMaxDigits(4);
-
-  histo[0]->GetXaxis()->SetTitle("#L1 Jets");
-  histo[0]->GetYaxis()->SetTitle("a. u.");
-  histo[0]->GetYaxis()->SetTitleOffset(1.7);
-  histo[0]->GetYaxis()->SetRangeUser(0,0.08);
-  histo[0]->SetStats(0);
-  histo[0]->SetTitle("");
-  histo[0]->Draw();
-  for(unsigned int i=1;i<histo.size();i++)
-    histo[i]->Draw("same");
-  leg->Draw("same");
-
-  
-  TLatex *texl = new TLatex(10.,0.082,"CMS Simulation #sqrt{s}=14 TeV");
-  texl->SetTextSize(0.03);
-  texl->Draw("same");
-
-  TLine* line = new TLine(0,1,500,1);
-  line->Draw("same");
-
-  gPad->SetTicks();
-
-
-  c->SaveAs("plots/njets.pdf");  
-
-
-}
-
-
-
-
-void HGC::plot_njets_pt20(){
-
-  TH1F* h_NN = single_plot("/vols/cms/tstreble/HGC_ntuples/SingleNu_PU200/calibr_jet_ntuples/ntuple_calibr_jet_core_1*.root","jets","Sum$(jets_pt>20)","1",15,0,15);
-  TH1F* h_GEO = single_plot("/vols/cms/tstreble/HGC_ntuples/SingleNu_PU200_C2D_dR/jet_ntuples_merged/ntuple_jet_merged_1*.root","jets","Sum$(jets_pt>20)","1",15,0,15);
-
-  TH1F* h_NN_VBF_PU0 = single_plot("/vols/cms/tstreble/HGC_ntuples/VBF_Hinv_PU0/calibr_jet_ntuples_VBF_old/ntuple_calibr_jet_VBF_1*.root","jets","Sum$(jets_pt>20)","1",15,0,15);
-  TH1F* h_GEO_VBF_PU0 = single_plot("/vols/cms/tstreble/HGC_ntuples/VBF_Hinv_PU0_C2D_dR/calibr_jet_ntuples_VBF_new/ntuple_calibr_jet_VBF_1*.root","jets","Sum$(jets_pt>20)","1",15,0,15);
-
-  TH1F* h_NN_VBF_PU200 = single_plot("/vols/cms/tstreble/HGC_ntuples/VBF_Hinv_PU200/calibr_jet_ntuples_VBF_old/ntuple_calibr_jet_VBF_1*.root","jets","Sum$(jets_pt>20)","1",15,0,15);
-  TH1F* h_GEO_VBF_PU200 = single_plot("/vols/cms/tstreble/HGC_ntuples/VBF_Hinv_PU200_C2D_dR/jet_ntuples_merged/ntuple_jet_merged_1*.root","jets","Sum$(jets_pt>20)","1",15,0,15);
-
-  vector<TH1F*> histo;
-  histo.push_back(h_NN);
-  histo.push_back(h_GEO);
-  histo.push_back(h_NN_VBF_PU0);
-  histo.push_back(h_GEO_VBF_PU0);
-  //histo.push_back(h_NN_VBF_PU200);
-  //histo.push_back(h_GEO_VBF_PU200);
- 
-
-  vector<TString> leg_entry;
-  leg_entry.push_back("NN ZB PU200");
-  leg_entry.push_back("GEO ZB PU200");
-  leg_entry.push_back("NN VBF PU0");
-  leg_entry.push_back("GEO VBF PU0");
-  leg_entry.push_back("NN VBF PU200");
-  leg_entry.push_back("GEO VBF PU200");
-
-
-
-  TLegend* leg=new TLegend(0.3,0.6,0.6,0.8);
-  leg->SetFillColor(0);
-  leg->SetBorderSize(0);
-  leg->SetTextSize(0.03);
-
-  for(unsigned int i=0;i<histo.size();i++){
-    TH1F* h = histo[i];
-    h->Scale(1/h->Integral());
-    h->SetLineWidth(2);
-    h->SetLineColor(i+1);
-    if(i>3)
-      h->SetLineColor(i+2);
-    leg->AddEntry(h,leg_entry[i]);
-  }
-
-  histo = sort_histo(histo);
-
-
-  TCanvas* c=new TCanvas("c","c",650,600);
-  c->SetLeftMargin(0.15);
-  c->SetRightMargin(0.15);
-  TGaxis::SetMaxDigits(4);
-
-  histo[0]->GetXaxis()->SetTitle("#L1 Jets(p_{T}>20 GeV)");
-  histo[0]->GetYaxis()->SetTitle("a. u.");
-  histo[0]->GetYaxis()->SetTitleOffset(1.7);
-  histo[0]->GetYaxis()->SetRangeUser(0,1.3*histo[0]->GetMaximum());
-  histo[0]->SetStats(0);
-  histo[0]->SetTitle("");
-  histo[0]->Draw();
-  for(unsigned int i=1;i<histo.size();i++)
-    histo[i]->Draw("same");
-  leg->Draw("same");
-
-  
-  TLatex *texl = new TLatex(1.,1.01*histo[0]->GetMaximum(),"CMS Simulation #sqrt{s}=14 TeV");
-  texl->SetTextSize(0.03);
-  texl->Draw("same");
-
-  TLine* line = new TLine(0,1,500,1);
-  line->Draw("same");
-
-  gPad->SetTicks();
-
-
-  c->SaveAs("plots/njets_pt20.pdf");  
-
-
-}
-
-
-
-
-
-
-void HGC::plot_ncl3d_jets(){
-
-  TH1F* h_NN = single_plot("/vols/cms/tstreble/HGC_ntuples/SingleNu_PU200/calibr_jet_ntuples/ntuple_calibr_jet_core_10.root","jets","jets_ncl3d","1",25,0,25);
-  TH1F* h_GEO = single_plot("/vols/cms/tstreble/HGC_ntuples/SingleNu_PU200_C2D_dR/jet_ntuples_merged/ntuple_jet_merged_10.root","jets","jets_ncl3d","1",25,0,25);
-
-  TH1F* h_NN_pt10 = single_plot("/vols/cms/tstreble/HGC_ntuples/SingleNu_PU200/calibr_jet_ntuples/ntuple_calibr_jet_core_10.root","jets","jets_ncl3d","jets_pt>10",25,0,25);
-  TH1F* h_GEO_pt10 = single_plot("/vols/cms/tstreble/HGC_ntuples/SingleNu_PU200_C2D_dR/jet_ntuples_merged/ntuple_jet_merged_10.root","jets","jets_ncl3d","jets_pt>10",25,0,25);
-
-  TH1F* h_NN_pt20 = single_plot("/vols/cms/tstreble/HGC_ntuples/SingleNu_PU200/calibr_jet_ntuples/ntuple_calibr_jet_core_10.root","jets","jets_ncl3d","jets_pt>20",25,0,25);
-  TH1F* h_GEO_pt20 = single_plot("/vols/cms/tstreble/HGC_ntuples/SingleNu_PU200_C2D_dR/jet_ntuples_merged/ntuple_jet_merged_10.root","jets","jets_ncl3d","jets_pt>20",25,0,25);
-
-  vector<TH1F*> histo;
-  histo.push_back(h_NN);
-  histo.push_back(h_GEO);
-  histo.push_back(h_NN_pt10);
-  histo.push_back(h_GEO_pt10);
-  histo.push_back(h_NN_pt20);
-  histo.push_back(h_GEO_pt20);
-
-  vector<TString> leg_entry;
-  leg_entry.push_back("NN p_{T}>0 GeV");
-  leg_entry.push_back("GEO p_{T}>0 GeV");
-  leg_entry.push_back("NN p_{T}>10 GeV");
-  leg_entry.push_back("GEO p_{T}>10 GeV");
-  leg_entry.push_back("NN p_{T}>20 GeV");
-  leg_entry.push_back("GEO p_{T}>20 GeV");
-
-  TLegend* leg=new TLegend(0.5,0.5,0.8,0.8);
-  leg->SetFillColor(0);
-  leg->SetBorderSize(0);
-  leg->SetTextSize(0.03);
-
-  for(unsigned int i=0;i<histo.size();i++){
-    TH1F* h = histo[i];
-    h->Scale(1/h->Integral());
-    h->SetLineWidth(2);
-    h->SetLineColor(i+1);
-    if(i>3)
-      h->SetLineColor(i+2);
-    leg->AddEntry(h,leg_entry[i]);
-  }
-
-
-  histo = sort_histo(histo);
-
-
-  TCanvas* c=new TCanvas("c","c",650,600);
-  c->SetLeftMargin(0.15);
-  c->SetRightMargin(0.15);
-  TGaxis::SetMaxDigits(4);
-
-  histo[0]->GetXaxis()->SetTitle("#C3D per L1 jet");
-  histo[0]->GetYaxis()->SetTitle("a. u.");
-  histo[0]->GetYaxis()->SetTitleOffset(1.7);
-  histo[0]->GetYaxis()->SetRangeUser(0,1.3*histo[0]->GetMaximum());
-  histo[0]->SetStats(0);
-  histo[0]->SetTitle("");
-  histo[0]->Draw();
-  for(unsigned int i=1;i<histo.size();i++)
-    histo[i]->Draw("same");
-  leg->Draw("same");
-
-  
-  TLatex *texl = new TLatex(1.,1.01*histo[0]->GetMaximum(),"CMS Simulation NeutrinoGun PU=200 #sqrt{s}=14 TeV");
-  texl->SetTextSize(0.03);
-  texl->Draw("same");
-
-  TLine* line = new TLine(0,1,500,1);
-  line->Draw("same");
-
-  gPad->SetTicks();
-
-
-  c->SaveAs("plots/nC3D_jets.pdf");  
-
-
-}
-
-
-
-
-
-
-
-
-
-void HGC::plot_pT_jets(){
-
-  TH1F* h_NN = single_plot("/vols/cms/tstreble/HGC_ntuples/SingleNu_PU200/calibr_jet_ntuples/ntuple_calibr_jet_core_10.root","jets","jets_pt","1",100,0,100);
-  //TH1F* h_NN = single_plot("/vols/cms/tstreble/HGC_ntuples/SingleNu_PU200/calibr_jet_ntuples/ntuple_calibr_jet_core_10.root","jets","max(jets_raw_Luca_pt-jets_PU_subtr_cone_C3D,0)","1",100,0,100);
-  TH1F* h_GEO = single_plot("/vols/cms/tstreble/HGC_ntuples/SingleNu_PU200_C2D_dR/jet_ntuples_merged/ntuple_jet_merged_10.root","jets","jets_pt","1",100,0,100);
-
-  TH1F* h_NN_VBF_PU0 = single_plot("/vols/cms/tstreble/HGC_ntuples/VBF_Hinv_PU0/calibr_jet_ntuples_VBF_old/ntuple_calibr_jet_VBF_1*.root","jets","jets_pt","1",100,0,100);
-  TH1F* h_GEO_VBF_PU0 = single_plot("/vols/cms/tstreble/HGC_ntuples/VBF_Hinv_PU0_C2D_dR/calibr_jet_ntuples_VBF_new/ntuple_calibr_jet_VBF_1*.root","jets","jets_pt","1",100,0,100);
-
-  TH1F* h_NN_VBF_PU200 = single_plot("/vols/cms/tstreble/HGC_ntuples/VBF_Hinv_PU200/calibr_jet_ntuples_VBF_old/ntuple_calibr_jet_VBF_1*.root","jets","jets_pt","1",100,0,100);
-  TH1F* h_GEO_VBF_PU200 = single_plot("/vols/cms/tstreble/HGC_ntuples/VBF_Hinv_PU200_C2D_dR/jet_ntuples_merged/ntuple_jet_merged_1*.root","jets","jets_pt","1",100,0,100);
-
-  vector<TH1F*> histo;
-  histo.push_back(h_NN);
-  histo.push_back(h_GEO);
-  histo.push_back(h_NN_VBF_PU0);
-  histo.push_back(h_GEO_VBF_PU0);
-  //histo.push_back(h_NN_VBF_PU200);
-  //histo.push_back(h_GEO_VBF_PU200);
- 
-
-  vector<TString> leg_entry;
-  leg_entry.push_back("NN ZB PU200");
-  leg_entry.push_back("GEO ZB PU200");
-  leg_entry.push_back("NN VBF PU0");
-  leg_entry.push_back("GEO VBF PU0");
-  leg_entry.push_back("NN VBF PU200");
-  leg_entry.push_back("GEO VBF PU200");
-
- 
-  TLegend* leg=new TLegend(0.5,0.6,0.7,0.8);
-  leg->SetFillColor(0);
-  leg->SetBorderSize(0);
-  leg->SetTextSize(0.03);
-
-  for(unsigned int i=0;i<histo.size();i++){
-    TH1F* h = histo[i];
-    h->Scale(1/h->Integral());
-    h->SetLineWidth(2);
-    h->SetLineColor(i+1);
-    if(i>3)
-      h->SetLineColor(i+2);
-    leg->AddEntry(h,leg_entry[i]);
-  }
-
-  TCanvas* c=new TCanvas("c","c",650,600);
-  c->SetLeftMargin(0.15);
-  c->SetRightMargin(0.15);
-  c->SetLogy();
-  TGaxis::SetMaxDigits(4);
-
-  histo[0]->GetXaxis()->SetTitle("p_{T}(L1 jet) [GeV]");
-  histo[0]->GetYaxis()->SetTitle("a. u.");
-  histo[0]->GetYaxis()->SetTitleOffset(1.7);
-  histo[0]->GetYaxis()->SetRangeUser(1e-5,5*histo[0]->GetMaximum());
-  histo[0]->SetStats(0);
-  histo[0]->SetTitle("");
-  histo[0]->Draw();
-  for(unsigned int i=1;i<histo.size();i++)
-    histo[i]->Draw("same");
-  leg->Draw("same");
-
-  
-  TLatex *texl = new TLatex(1.,1.2*histo[0]->GetMaximum(),"CMS Simulation #sqrt{s}=14 TeV");
-  texl->SetTextSize(0.03);
-  texl->Draw("same");
-
-
-  gPad->SetTicks();
-
-
-  c->SaveAs("plots/pt_jets.pdf");  
-
-
-}
-
-
-
-
-
-
-
-
-void HGC::plot_eta_jets(){
-
-  TH1F* h_NN = single_plot("/vols/cms/tstreble/HGC_ntuples/SingleNu_PU200/calibr_jet_ntuples/ntuple_calibr_jet_core_10.root","jets","abs(jets_eta)","1",100,1.5,3.);
-  TH1F* h_GEO = single_plot("/vols/cms/tstreble/HGC_ntuples/SingleNu_PU200_C2D_dR/jet_ntuples_merged/ntuple_jet_merged_10.root","jets","abs(jets_eta)","1",100,1.5,3.);
-  TH1F* h_NN_pt10 = single_plot("/vols/cms/tstreble/HGC_ntuples/SingleNu_PU200/calibr_jet_ntuples/ntuple_calibr_jet_core_10.root","jets","abs(jets_eta)","jets_pt>10",100,1.5,3.);
-  TH1F* h_GEO_pt10 = single_plot("/vols/cms/tstreble/HGC_ntuples/SingleNu_PU200_C2D_dR/jet_ntuples_merged/ntuple_jet_merged_10.root","jets","abs(jets_eta)","jets_pt>10",100,1.5,3.);
-
-  TH1F* h_NN_pt20 = single_plot("/vols/cms/tstreble/HGC_ntuples/SingleNu_PU200/calibr_jet_ntuples/ntuple_calibr_jet_core_1*.root","jets","abs(jets_eta)","jets_pt>20",100,1.5,3.);
-  TH1F* h_GEO_pt20 = single_plot("/vols/cms/tstreble/HGC_ntuples/SingleNu_PU200_C2D_dR/jet_ntuples_merged/ntuple_jet_merged_1*.root","jets","abs(jets_eta)","jets_pt>20",100,1.5,3.);
-
-  vector<TH1F*> histo;
-  histo.push_back(h_NN);
-  histo.push_back(h_GEO);
-  histo.push_back(h_NN_pt10);
-  histo.push_back(h_GEO_pt10);
-  histo.push_back(h_NN_pt20);
-  histo.push_back(h_GEO_pt20);
-
-  vector<TString> leg_entry;
-  leg_entry.push_back("NN");
-  leg_entry.push_back("GEO");
-  leg_entry.push_back("NN p_{T}>10 GeV");
-  leg_entry.push_back("GEO p_{T}>10 GeV");
-  leg_entry.push_back("NN p_{T}>20 GeV");
-  leg_entry.push_back("GEO p_{T}>20 GeV");
- 
-  TLegend* leg=new TLegend(0.2,0.5,0.5,0.8);
-  leg->SetFillColor(0);
-  leg->SetBorderSize(0);
-  leg->SetTextSize(0.03);
-
-  for(unsigned int i=0;i<histo.size();i++){
-    TH1F* h = histo[i];
-    h->Scale(1/h->Integral()); 
-    h->SetLineWidth(2);
-    h->SetLineColor(i+1);
-    if(i>3)
-      h->SetLineColor(i+2);
-    leg->AddEntry(h,leg_entry[i]);
-  }
-
-  histo = sort_histo(histo);
-
-  TCanvas* c=new TCanvas("c","c",650,600);
-  c->SetLeftMargin(0.15);
-  c->SetRightMargin(0.15);
-  //c->SetLogy();
-  TGaxis::SetMaxDigits(4);
-
-  histo[0]->GetXaxis()->SetTitle("|#eta(L1 jet)|");
-  histo[0]->GetYaxis()->SetTitle("a. u.");
-  histo[0]->GetYaxis()->SetTitleOffset(1.7);
-  //histo[0]->GetYaxis()->SetRangeUser(10,5*histo[0]->GetMaximum());
-  histo[0]->GetYaxis()->SetRangeUser(0,1.3*histo[0]->GetMaximum());
-  histo[0]->SetStats(0);
-  histo[0]->SetTitle("");
-  histo[0]->Draw();
-  for(unsigned int i=1;i<histo.size();i++)
-    histo[i]->Draw("same");
-  leg->Draw("same");
-
-  
-  TLatex *texl = new TLatex(1.51,1.01*histo[0]->GetMaximum(),"CMS Simulation NeutrinoGun PU=200 #sqrt{s}=14 TeV");
-  texl->SetTextSize(0.03);
-  texl->Draw("same");
-
-
-  gPad->SetTicks();
-
-
-  c->SaveAs("plots/eta_jets.pdf");  
-
-
-}
-
-
-
-
-
-
-
-
-
-
-
-*/
- 

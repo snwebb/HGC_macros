@@ -41,6 +41,11 @@ class HGC{
   void plot_nC3D();
   void plot_GenRecoET();
   void JetStudies();
+  void CalculateEfficiency();
+  void CalculateEfficiency(double par0, double par1, double par2);
+  void CalculateRates(double par0, double par1, double par2);
+
+
   //Event Display
   void display3D_tc(TString file,int n_event=0,const std::vector<int>& tc= std::vector<int>(), const std::vector<int>& cl= std::vector<int>(), const std::vector<int>& c3d= std::vector<int>(), float eta_min=-3, float eta_max=3, float phi_min=-3.2, float phi_max=3.2, float layer_min=0, float layer_max=60);
 
@@ -57,6 +62,8 @@ class HGC{
   //Jet Calibration
 
   void calibrate_jet(TString filein,TString fileout);
+
+
 
 };
 

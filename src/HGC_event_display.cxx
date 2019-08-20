@@ -240,10 +240,10 @@ void HGC::display3D_cl(TString file,
 
 
 void HGC::display2D_c3d(TString file, int n_event, 
-		   const std::vector<int>& c3d,
-		   const std::vector<int>& jets,
-		   float eta_min, float eta_max, 
-		   float phi_min, float phi_max){
+			const std::vector<int>& c3d,
+			const std::vector<int>& jets,
+			float eta_min, float eta_max, 
+			float phi_min, float phi_max){
 
   TH2F* h=new TH2F("h","h",50,eta_min,eta_max,50,phi_min,phi_max);
 
@@ -600,16 +600,16 @@ void HGC::display2D_jetscl3dtc(TString file, int n_event,
   TCanvas* c=new TCanvas("c","c",650,600);
   c->SetLeftMargin(0.15);
   c->SetRightMargin(0.15);
-
+  
   gStyle->SetPaintTextFormat("4.1f");
   jets->SetLineColor(kBlue);
   tc->SetLineColor(kRed);
   cl->SetLineColor(kGreen);
-
+  
   //  tc->Draw("box");
   cl->Draw("colz");
   jets->Draw("boxsame");
-
+  
   c->SaveAs("plots/20190107-1-temp/jetscl3dtc.png");
   c->SaveAs("plots/20190107-1-temp/jetscl3dtc.root");
 

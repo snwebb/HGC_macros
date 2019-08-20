@@ -27,9 +27,13 @@ int main( int argc, char ** argv){
 
 	//            hgc.plot_effRMS_pT_VBFHinv_PU200_CompareDR();
 
-  //  hgc.plot_GenRecoET();
 
-    hgc.JetStudies();
+
+     hgc.plot_GenRecoET();
+
+  //     hgc.JetStudies();
+  //    hgc.CalculateEfficiency();
+  //    hgc.CalculateRates();
 
 
   //Single plots

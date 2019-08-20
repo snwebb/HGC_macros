@@ -35,6 +35,19 @@ float Helpers::binning(TH1F* h){
 }
 
 
+// TEventList* Helpers::getEventList(TString file, TString tree_name, TString var, TString cut, int nbin, float min, float max){
+
+//   TChain * tree = new TChain(tree_name);
+//   tree->Add(file);
+ 
+//   tree->Draw(var+Form(">>g(%i, %f, %f)", nbin, min, max),cut,"goff");
+
+//   TEventList* g =  (TEventList*) ( (TEventList*)gDirectory->Get("g"))->Clone( var + counter() );
+
+//   return g;
+
+// }
+
 TH1F* Helpers::single_plot(TString file, TString tree_name, TString var, TString cut, int nbin, float min, float max){
 
   TChain * tree = new TChain(tree_name);
@@ -368,3 +381,9 @@ double Helpers::Get2dX(TF1 * f, double y){
 
 }
 
+double Helpers::Get2dX(double a, double b, double c, double y){
+
+  double x = ( -b + std::sqrt( b*b - 4*a*(c-y) ) ) / (2 * a);
+  return x;
+
+}

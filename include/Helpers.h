@@ -14,6 +14,8 @@
 #include <TRandom3.h>
 #include <TBranch.h>
 #include <TClonesArray.h>
+#include <TEventList.h>
+#include <TEfficiency.h>
 #include <TChain.h>
 #include <THStack.h>
 #include <TLatex.h>
@@ -29,6 +31,8 @@
 #include <TSystem.h>
 #include <TFitResult.h>
 #include <TROOT.h>
+#include <TVector.h>
+#include <TVectorD.h>
 
 #include <tuple>
 #include <map>
@@ -74,6 +78,7 @@ class Helpers{
   void makeBinContentsPositive(TH1* histogram, bool verbosity=false);
   TString counter();
   double Get2dX(TF1 * f, double y);
+  double Get2dX(double a, double b, double c, double y);
 };
 
 #endif
