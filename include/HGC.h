@@ -41,9 +41,10 @@ class HGC{
   void plot_nC3D();
   void plot_GenRecoET();
   void JetStudies();
+  void JetStudies(double par0, double par1, double par2, std::string algo);
   void CalculateEfficiency();
-  void CalculateEfficiency(double par0, double par1, double par2);
-  void CalculateRates(double par0, double par1, double par2);
+  TGraph * CalculateEfficiency(double par0, double par1, double par2, std::string algo);
+  void CalculateRates(double par0, double par1, double par2, std::string algo, TGraph * mapping);
 
 
   //Event Display

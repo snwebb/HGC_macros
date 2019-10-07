@@ -76,6 +76,7 @@ void Plotter::DrawGraphs(std::vector<TGraphErrors*>& graphs, std::vector<TString
 
       if ( i==0 ){
 	graph->Draw("ap");
+	gStyle->SetOptStat(0);
 	graph->SetTitle(";gen p_{T};Resolution");
 	graph->GetXaxis()->SetRangeUser(20,300);
 	graph->GetYaxis()->SetRangeUser(0,0.6);
@@ -110,13 +111,15 @@ void Plotter::DrawGraph(TGraph* graph, TString filename){
 
   graph->SetMarkerSize(1);
   graph->SetMarkerStyle(20);
-  graph->Draw("apL");
+  graph->Draw("ap");
+
 
   graph->SetTitle(";reco p_{T} Threshold;reco p_{T} at 95% efficiency");
-  graph->GetXaxis()->SetRangeUser(0,200);
+  graph->GetXaxis()->SetRangeUser(0,250);
   graph->GetYaxis()->SetRangeUser(0,300);
-  graph->Draw("apLsame");
-
+  graph->Draw("apsame");
+  graph->SaveAs("plots/" + TString(_outdir) + "/graph_"+filename+".root");
+  
   c->SaveAs("plots/" + TString(_outdir) + "/"+filename+".png");
   c->SaveAs("plots/" + TString(_outdir) + "/"+filename+".root");
 
@@ -572,17 +575,24 @@ void Plotter::Draw(std::vector<TH1F*>& hists, std::vector<TString>& legend, TStr
     if(i>3){
       histo->SetLineColor(i+2);
     }
-    histo->SetTitle("");
+    histo->SetTitle(";offline p_{T} [GeV];Rate [kHz]");
 
     if ( i == 0 ){
 	histo->Draw();
-       	gPad->SetLogy(logy);
+	gPad->SetLogy(logy);
+	if ( !gPad->GetLogy() ) histo->SetMinimum(0);
+	else histo->SetMinimum(0.1);
+	histo->Draw("same");
+	// histo->SetMaximum(70000);
+	// histo->SetMinimum(1);
     }
     else{
       histo->Draw("same");
     }
+    histo->SaveAs("plots/" + TString(_outdir) + "/" + savename + "_" + legend.at(i) + ".root");
     i++;
     histo->SetName("cl3dpt");
+
 
   }
 
@@ -616,6 +626,8 @@ void Plotter::Draw(std::vector<HistObject>& hists, int nbins, double xlow, doubl
 
 
   int i = 0;
+  double max = 0;
+  TH1F* first = 0;
   for (auto &hist: hists ){    
 
     TH1F* histo = 0;
@@ -632,9 +644,16 @@ void Plotter::Draw(std::vector<HistObject>& hists, int nbins, double xlow, doubl
     }
     histo->SetTitle("");
 
-    if ( i == 0 )
-	histo->Draw();
+    if ( i == 0 ){
+      first = histo;
+      histo->Draw();
+      max = 1.3*histo->GetBinContent(histo->GetMaximumBin());
+    }
     else{
+      if (1.3*histo->GetBinContent(histo->GetMaximumBin()) > max){
+	max = 1.3*histo->GetBinContent(histo->GetMaximumBin());
+	first->SetMaximum(max);
+      }
       histo->Draw("same");
     }
     i++;

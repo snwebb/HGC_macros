@@ -15,45 +15,15 @@ interval = 1 # number files to be processed in a single job, take care to split 
 
 InputDirList = [ 
 
-#WORKSHOP
-
-#V9 (DEFAULT CLUSTER RADIUS)
-#"VBFHToTauTau_M125_14TeV_powheg_pythia8/crab_VBF-HTT-PU200-MultiAlgo-Threshold/190610_093502/0000",
-#  "VBFHToTauTau_M125_14TeV_powheg_pythia8/crab_VBF-HTT-PU200-MultiAlgo-SuperTCs/190610_093658/0000",
-#   "VBFHToTauTau_M125_14TeV_powheg_pythia8/crab_VBF-HTT-PU200-MultiAlgo-SeedThreshold/190610_093753/0000",
-#   "VBFHToTauTau_M125_14TeV_powheg_pythia8/crab_VBF-HTT-PU200-MultiAlgo-ClusterRadius/190610_093841/0000",
-#"VBFHToTauTau_M125_14TeV_powheg_pythia8/crab_VBF-HTT-PU200-Default-WithTriggerCells/190610_120552/0000",
-
-#V8 (DEFAULT CLUSTER RADIUS)
-# "VBF_HToInvisible_M125_14TeV_powheg_pythia8/crab_VBF-PU200-MultiAlgo-Threshold/190610_142648/0000",
-# "VBF_HToInvisible_M125_14TeV_powheg_pythia8/crab_VBF-PU200-MultiAlgo-SuperTCs/190610_142730/0000",
-# "VBF_HToInvisible_M125_14TeV_powheg_pythia8/crab_VBF-PU200-MultiAlgo-SeedThreshold/190610_142831/0000",
-#"VBF_HToInvisible_M125_14TeV_powheg_pythia8/crab_VBF-PU200-MultiAlgo-ClusterRadius/190610_142908/0000",
-#"VBF_HToInvisible_M125_14TeV_powheg_pythia8/crab_VBF-PU200-Default-WithTriggerCells/190610_143015/0000",
-
-#V9 (EXTENDED CLUSTER RADIUS)
-# "VBFHToTauTau_M125_14TeV_powheg_pythia8/crab_VBF-HTT-PU200-MultiAlgo-Threshold-DR1p75/190610_160411/0000",
-# "VBFHToTauTau_M125_14TeV_powheg_pythia8/crab_VBF-HTT-PU200-MultiAlgo-SuperTCs-DR1p75/190610_160541/0000",
-# "VBFHToTauTau_M125_14TeV_powheg_pythia8/crab_VBF-HTT-PU200-MultiAlgo-SeedThreshold-DR1p75/190610_161108/0000",
-
-
 #V8 (EXTENDED CLUSTER RADIUS)
 # "VBF_HToInvisible_M125_14TeV_powheg_pythia8/crab_VBF-PU200-MultiAlgo-Threshold-DR1p75/190610_161427/0000",
 # "VBF_HToInvisible_M125_14TeV_powheg_pythia8/crab_VBF-PU200-MultiAlgo-SuperTCs-DR1p75/190610_161652/0000",
 # "VBF_HToInvisible_M125_14TeV_powheg_pythia8/crab_VBF-PU200-MultiAlgo-SeedThreshold-DR1p75/190610_161347/0000",
 
-
-
-
 #V9 HGG (DEFAULT CLUSTER RADIUS)
 #"VBFHToGG_M-125_14TeV_powheg_pythia8/crab_VBF-HGG-PU200-MultiAlgo-Threshold/190612_085552/0000",
 
-
-
 #WS
-
-
-
 
 #"VBFHToGG_M-125_14TeV_powheg_pythia8/crab_VBF-HGG-PU200-MultiAlgo-Threshold-WS/190614_103104/0000",
 #"VBFHToGG_M-125_14TeV_powheg_pythia8/crab_VBF-HGG-PU200-MultiAlgo-SuperTCs-WS/190614_103316/0000",
@@ -66,10 +36,6 @@ InputDirList = [
 #"VBFHToTauTau_M125_14TeV_powheg_pythia8/crab_VBF-HTT-PU200-MultiAlgo-ClusterRadius-WS/190614_103833/0000",
 
 #"VBFHToTauTau_M125_14TeV_powheg_pythia8/crab_VBF-HTT-PU200-Default-WithTriggerCells-WS/190614_132424/0000",
-
-
-
-
 
 #"VBFHToGG_M-125_14TeV_powheg_pythia8/crab_VBF-HGG-PU200-MultiAlgo-Decentralised/190709_130200/0000",
 #"NeutrinoGun_E_10GeV/crab_DoubleNu-PU200-MultiAlgo-Decentralised/190709_130228/0000",
@@ -89,10 +55,16 @@ InputDirList = [
 
 
 #"VBFHToGG_M-125_14TeV_powheg_pythia8/crab_VBF-HGG-PU200-Default/190726_142831/0000",
-"VBFHToGG_M-125_14TeV_powheg_pythia8/crab_VBF-HGG-PU200-Decentralised/190730_112632/0000",
+#"VBFHToGG_M-125_14TeV_powheg_pythia8/crab_VBF-HGG-PU200-Decentralised/190730_112632/0000",
 
 #"NeutrinoGun_E_10GeV/crab_DoubleNu-PU200-Decentralised/190731_092913/0000",
 
+#"VBFHToGG_M-125_14TeV_powheg_pythia8/crab_VBF-HGG-PU200-Decentralised-SignalDriven/190822_123250/0000",
+#"NeutrinoGun_E_10GeV/crab_DoubleNu-PU200-Decentralised-SignalDriven/190905_140242/0000",
+
+
+#"VBFHToGG_M-125_14TeV_powheg_pythia8/crab_VBF-HGG-PU200-Default-withTCs/190822_132142/0000",
+#"NeutrinoGun_E_10GeV/crab_DoubleNu-PU200-Default-withTCs/190916_134011/0000",
 
 
 # "RelValDiQ_Pt20To300_Etam1p6Tom2p9/crab_QuarkGun-Neg-PU0-Decentralised/190802_100839/0000",
@@ -102,13 +74,36 @@ InputDirList = [
 # "RelValDiQ_Pt20To300_Eta1p6To2p9/crab_QuarkGun-Pos-PU140-Decentralised/190802_100633/0000",
 # "RelValDiQ_Pt20To300_Eta1p6To2p9/crab_QuarkGun-Pos-PU200-Decentralised/190802_100555/0000",
 
+
+#SIGNAL DRIVEN
+# "RelValDiQ_Pt20To300_Eta1p6To2p9/crab_QuarkGun-Pos-PU0-Decentralised/190924_151910/0000",
+# "RelValDiQ_Pt20To300_Eta1p6To2p9/crab_QuarkGun-Pos-PU140-Decentralised/190924_151840/0000",
+# "RelValDiQ_Pt20To300_Eta1p6To2p9/crab_QuarkGun-Pos-PU200-Decentralised/190924_151710/0000",
+# "RelValDiQ_Pt20To300_Eta1p6To2p9/crab_QuarkGun-Pos-PU0-Decentralised/190926_093004/0000",
+# "RelValDiQ_Pt20To300_Eta1p6To2p9/crab_QuarkGun-Pos-PU140-Decentralised/190926_093906/0000",
+# "RelValDiQ_Pt20To300_Eta1p6To2p9/crab_QuarkGun-Pos-PU200-Decentralised/190926_093951/0000",
+
+
+
+#"VBFHToGG_M-125_14TeV_powheg_pythia8/crab_VBF-HGG-PU200-MixedFE-EM/190927_143347/0000",
+
+#"VBFHToGG_M-125_14TeV_powheg_pythia8/crab_VBF-HGG-PU200-BestChoice-Coarser/191002_102809/0000",
+
+
+"VBFHToGG_M-125_14TeV_powheg_pythia8/crab_VBF-HGG-PU0-BestChoice-CoarserInH-Fix/191003_164218/0000",
+
    ]
+
+Tag = "-DR0p2"
+#Tag = ""
 OutputDirList1=[  i.split("/")[1] for i in InputDirList ]
 #OutputDirList=[  "/vols/cms/snwebb/HGC_ntuples/VBF_Hinv/" + i.split("_")[1] for i in OutputDirList1 ]
-OutputDirList=[  "/vols/cms/snwebb/HGC_ntuples/VBF_HGG/" + i.split("_")[1] for i in OutputDirList1 ]
-#OutputDirList=[  "/vols/cms/snwebb/HGC_ntuples/DoubleNu/" + i.split("_")[1] for i in OutputDirList1 ]
 #OutputDirList=[  "/vols/cms/snwebb/HGC_ntuples/VBF_HTT/" + i.split("_")[1] for i in OutputDirList1 ]
-#OutputDirList=[  "/vols/cms/snwebb/HGC_ntuples/QuarkGun/" + i.split("_")[1] for i in OutputDirList1 ]
+#OutputDirList=[  "/vols/cms/snwebb/HGC_ntuples/QuarkGun/" + i.split("_")[1] +Tag for i in OutputDirList1 ]
+
+
+OutputDirList=[  "/vols/cms/snwebb/HGC_ntuples/VBF_HGG/" + i.split("_")[1] + Tag for i in OutputDirList1 ]
+#OutputDirList=[  "/vols/cms/snwebb/HGC_ntuples/DoubleNu/" + i.split("_")[1] + Tag for i in OutputDirList1 ]
 
 
 
@@ -119,47 +114,9 @@ OutputDirList=[  "/vols/cms/snwebb/HGC_ntuples/VBF_HGG/" + i.split("_")[1] for i
 
 
 
-#TreeNames = ["hgcalTriggerNtuplizer"]
-
 
 
 TreeNames = [
-#THRESHOLD
-# "Fp8Threshold0p0DummyHistomaxvardrth10Ntup",
-# #"Fp8Threshold0p5DummyHistomaxvardrth10Ntup",
-# "Fp8Threshold1p0DummyHistomaxvardrth10Ntup",
-# #"Fp8Threshold1p5DummyHistomaxvardrth10Ntup",
-# "Fp8Threshold2p0DummyHistomaxvardrth10Ntup",
-# "Fp8Threshold3p0DummyHistomaxvardrth10Ntup",
-#THRESHOLD EXTENDED
-# "Fp8Threshold0p0DummyHistomaxvardrdrho1p75Ntup",
-# "Fp8Threshold0p5DummyHistomaxvardrdrho1p75Ntup",
-# "Fp8Threshold1p0DummyHistomaxvardrdrho1p75Ntup",
-# "Fp8Threshold1p5DummyHistomaxvardrdrho1p75Ntup",
-# "Fp8Threshold2p0DummyHistomaxvardrdrho1p75Ntup",
-# "Fp8Threshold3p0DummyHistomaxvardrdrho1p75Ntup",
-
-   # "Fp8Threshold0p0DummyHistomaxvardrdrho1p0Ntup",
-   # "Fp8Threshold0p5DummyHistomaxvardrdrho1p0Ntup",
-   # "Fp8Threshold1p0DummyHistomaxvardrdrho1p0Ntup",
-   # "Fp8Threshold1p5DummyHistomaxvardrdrho1p0Ntup",
-   # "Fp8Threshold2p0DummyHistomaxvardrdrho1p0Ntup",
-   # "Fp8Threshold3p0DummyHistomaxvardrdrho1p0Ntup",
-
-#SUPER TC
-# "Fp8BestchoiceDummyHistomaxvardrth10Ntup",
-# "Fp8Stc4161616DummyHistomaxvardrth10Ntup",
-# "Fp8Stc4444FixedDummyHistomaxvardrth10Ntup",
-# "Fp8EqualShare4444FixedDummyHistomaxvardrth10Ntup",
-# "Fp8Onebit4444FixedDummyHistomaxvardrth10Ntup",
-
-#SUPER TC EXTENDED
-# "Fp8BestchoiceDummyHistomaxvardrdrho1p75Ntup",
-# "Fp8Stc4161616DummyHistomaxvardrdrho1p75Ntup",
-# "Fp8Stc4444FixedDummyHistomaxvardrdrho1p75Ntup",
-# "Fp8EqualShare4444FixedDummyHistomaxvardrdrho1p75Ntup",
-#"Fp8Onebit4444FixedDummyHistomaxvardrdrho1p75Ntup",
-
 #SEED THRESHOLD
 
 # "Fp8ThresholdDummyHistomaxvardrth0Ntup",
@@ -183,19 +140,6 @@ TreeNames = [
 # "Fp8ThresholdDummyHistomaxvardrdrho2p0Ntup",
 # "Fp8ThresholdDummyHistomaxvardrdrho3p0Ntup",
 # "Fp8ThresholdDummyHistomaxvardrdrho5p0Ntup",
-
-
-#DEFAULT
-#"hgcalTriggerNtuplizer",
-
-
-
-
-
-#NEW
-
-
-
 
 #THRESHOLD
 # "Fp8Threshold0p0DummyHistomaxvardrdrho1p0Ntup",
@@ -244,9 +188,21 @@ TreeNames = [
 # "Fp8Stc4161616DummyHistomaxbin4Ntup",
 # "Fp8BestchoiceDummyHistomaxNtup",
 
-"Fp8ThresholdDummyHistomaxNtup",
-"Fp8Stc4161616DummyHistomaxNtup",
+# "Fp8ThresholdDummyHistomaxNtup",
+# "Fp8Stc4161616DummyHistomaxNtup",
+# "Fp8BestchoiceDummyHistomaxNtup",
+
+# "Fp8MixedDummyHistomaxNtup",
+
 "Fp8BestchoiceDummyHistomaxNtup",
+"Fp8BestchoiceCoarse1DummyHistomaxNtup",
+"Fp8BestchoiceCoarse2DummyHistomaxNtup",
+"Fp8BestchoiceCoarse4DummyHistomaxNtup",
+"Fp8BestchoiceCoarse8DummyHistomaxNtup",
+"Fp8BestchoiceCoarse16DummyHistomaxNtup",
+
+#DEFAULT
+#"hgcalTriggerNtuplizer",
 
  ]
 

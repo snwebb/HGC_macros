@@ -26,6 +26,16 @@ double Helpers::deltaPhi(double phi1, double phi2){
 }
 
 
+double Helpers::diJetMass(double pt1, double eta1, double phi1, double mass1, double pt2, double eta2, double phi2, double mass2){
+
+  TLorentzVector j1,j2;
+  j1.SetPtEtaPhiM(pt1,eta1,phi1,mass1);
+  j2.SetPtEtaPhiM(pt2,eta2,phi2,mass2);
+  return (j1+j2).M();
+
+}
+
+
 float Helpers::binning(TH1F* h){
 
   float max=h->GetBinLowEdge(h->GetNbinsX()+1);

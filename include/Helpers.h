@@ -60,6 +60,7 @@ class Helpers{
   double normalizedPhi(double phi);
   double deltaPhi(double phi1, double phi2);
   float binning(TH1F* h);
+  double diJetMass(double pt1, double eta1, double phi1, double mass1, double pt2, double eta2, double phi2, double mass2);
   TH1F* single_plot(TString file, TString tree_name, TString var, TString cut, int nbin, float min, float max);
   void single_plot(TH1F* g, TString file, TString tree_name, TString var, TString cut);
   TH1F* single_plot(std::vector<TString> files, TString tree_name, TString var, TString cut, int nbin, float min, float max);

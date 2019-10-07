@@ -33,6 +33,7 @@ void jet_ntuple_merger_simple::add_jet(TString filein,  TString treename, TStrin
 
   
   int _cl3d_n;
+  float _dijet_mass;
 
   std::vector<float> *_cl3d_pt;
   std::vector<float> *_cl3d_eta;
@@ -45,7 +46,11 @@ void jet_ntuple_merger_simple::add_jet(TString filein,  TString treename, TStrin
   std::vector<float> *_jets_phi;
   std::vector<float> *_jets_energy;
   std::vector<unsigned int> *_jets_n_cl;
+  std::vector<unsigned int> *_jets_n_tcs;
   std::vector<float> *_jets_firstfrac;
+  std::vector<float> *_jets_coreenergyratio;
+  std::vector<float> *_jets_riso;
+  std::vector<float> *_jets_hoe;
 
   std::vector<float> *_jets_srrsum;
   std::vector<float> *_jets_srrjet;
@@ -56,6 +61,8 @@ void jet_ntuple_merger_simple::add_jet(TString filein,  TString treename, TStrin
   std::vector<float> *_jets_sppjet;
   std::vector<float> *_jets_spp_best;
   std::vector<float> *_jets_spp_paul;
+
+
 
   // std::vector<std::vector<float> > *_jets_C3d_pt;
   // std::vector<std::vector<float> > *_jets_C3d_eta;
@@ -151,6 +158,7 @@ void jet_ntuple_merger_simple::add_jet(TString filein,  TString treename, TStrin
   tree_jet->SetBranchAddress("jets_phi",    &_jets_phi);
   tree_jet->SetBranchAddress("jets_energy", &_jets_energy);
   tree_jet->SetBranchAddress("jets_n_cl", &_jets_n_cl);
+  tree_jet->SetBranchAddress("jets_n_tcs", &_jets_n_tcs);
   tree_jet->SetBranchAddress("jets_srrsum", &_jets_srrsum);
   tree_jet->SetBranchAddress("jets_srrjet", &_jets_srrjet);
   tree_jet->SetBranchAddress("jets_srr_best", &_jets_srr_best);
@@ -162,6 +170,9 @@ void jet_ntuple_merger_simple::add_jet(TString filein,  TString treename, TStrin
   tree_jet->SetBranchAddress("jets_spp_paul", &_jets_spp_paul);
 
   tree_jet->SetBranchAddress("jets_firstfrac", &_jets_firstfrac);
+  tree_jet->SetBranchAddress("jets_coreenergyratio", &_jets_coreenergyratio);
+  tree_jet->SetBranchAddress("jets_riso", &_jets_riso);
+  tree_jet->SetBranchAddress("jets_hoe", &_jets_hoe);
     
 
   // tree->SetBranchStatus ("*",1);
@@ -247,6 +258,7 @@ void jet_ntuple_merger_simple::add_jet(TString filein,  TString treename, TStrin
   tree_new->Branch("jets_phi", &_jets_phi);
   tree_new->Branch("jets_energy", &_jets_energy);
   tree_new->Branch("jets_n_cl", &_jets_n_cl);
+  tree_new->Branch("jets_n_tcs", &_jets_n_tcs);
 
   tree_new->Branch("jets_srrsum", &_jets_srrsum);
   tree_new->Branch("jets_srrjet", &_jets_srrjet);
@@ -259,6 +271,11 @@ void jet_ntuple_merger_simple::add_jet(TString filein,  TString treename, TStrin
   tree_new->Branch("jets_spp_paul", &_jets_spp_paul);
 
   tree_new->Branch("jets_firstfrac", &_jets_firstfrac);
+  tree_new->Branch("jets_coreenergyratio", &_jets_coreenergyratio);
+  tree_new->Branch("jets_riso", &_jets_riso);
+  tree_new->Branch("jets_hoe", &_jets_hoe);
+
+  tree_new->Branch("dijet_mass", &_dijet_mass);
 
   //  tree_new->Branch("num_seeds_in_jet", &_num_seeds_in_jet);
   
@@ -282,6 +299,7 @@ void jet_ntuple_merger_simple::add_jet(TString filein,  TString treename, TStrin
 
     //    _tc_n = 0;
     _cl3d_n = 0;
+    _dijet_mass = 0;
     // _tc_eta = 0;
     // _tc_pt = 0;
     // _tc_phi = 0;
@@ -304,6 +322,7 @@ void jet_ntuple_merger_simple::add_jet(TString filein,  TString treename, TStrin
     _jets_phi = 0;
     _jets_energy = 0;  
     _jets_n_cl = 0;  
+    _jets_n_tcs = 0;  
     _jets_srrsum = 0;  
     _jets_srrjet = 0;  
     _jets_srr_best = 0;  
@@ -315,6 +334,9 @@ void jet_ntuple_merger_simple::add_jet(TString filein,  TString treename, TStrin
     _jets_spp_paul = 0;  
 
     _jets_firstfrac = 0;  
+    _jets_coreenergyratio = 0;  
+    _jets_riso = 0;  
+    _jets_hoe = 0;  
     
     _gen_id = 0;
     _gen_status = 0;
@@ -392,6 +414,9 @@ void jet_ntuple_merger_simple::add_jet(TString filein,  TString treename, TStrin
     _jets_cl3d.resize(_jets_n);
 
 
+    if ( _jets_n >1){
+      _dijet_mass =     std::sqrt(2*std::sqrt(std::pow((*_jets_pt)[0],2)*std::pow(std::cosh((*_jets_eta)[0]),2))*    	  std::sqrt(std::pow((*_jets_pt)[1],2)*std::pow(std::cosh((*_jets_eta)[1]),2)) -    2*(*_jets_pt)[0]*(*_jets_pt)[1]*(std::cos((*_jets_phi)[0] -  (*_jets_phi)[1]) + std::sinh((*_jets_eta)[0])*std::sinh((*_jets_eta)[1])));
+    }
 
     for(int i_jet=0; i_jet<_jets_n; i_jet++){
       
