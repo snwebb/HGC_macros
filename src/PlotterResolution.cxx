@@ -281,20 +281,6 @@ TH1F* PlotterResolution::histo_ET_resolution(TString filename, TString var, TStr
   
 }
 
-// TH1F* PlotterResolution::histo_ET_resolution_Jets_noPUS(TString filename, TString var, TString cut){
-
-//   TChain * tree = new TChain("HGCalTriggerNtupleJet");
-//   tree->Add(filename);
-//   TString all_cuts=cut;
-//   tree->Draw(var + ">>g(500,-2,2)",all_cuts+ " && jets_pt[VBF_parton_jets]>0","goff");
-//   TH1F* g=(TH1F*) ((TH1F*)gDirectory->Get("g"))->Clone();
-  
-//   return g;
-  
-//}
-
-
-
 TF1* PlotterResolution::doubleCBFit(TH1F* histo, double rangeInSigma, int fitrebin){
 
   TString hname = histo->GetName();

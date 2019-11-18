@@ -153,7 +153,7 @@ for indir, outdir in zip( InputDirList, OutputDirList ):
          os.system("chmod 755 " + jobname)
       
          ###### sends bjobs ######
-         #os.system("bsub -q "+queue+" -o logs job.sh")
+         # os.system("bsub -q "+queue+" -o logs job.sh")
          os.system("qsub -cwd -q hep.q -l h_vmem=8G -l s_vmem=7.5G -l h_rt=2:0:0 -l s_rt=1:50:0 " + jobname)
          print "job nr " + str(x) + " submitted"
             

@@ -224,13 +224,10 @@ void plot_profile_only_eta(){
   // TH2F* h_C3D = single_plot2D(filename,"HGCalTriggerNtuple","abs(cone_eta)","cone_calib_Luca_pt","",16,1.45,3.05,100,0,100);
   // TH2F* h_C3D0 = single_plot2D(filename,"HGCalTriggerNtuple","abs(cone_eta)","cone_calib_Luca_pt","cone_calib_Luca_pt>0",16,1.45,3.05,100,0,100);
 
-
   TH2F* h_tc = single_plot2D(filename,"HGCalTriggerNtuple","abs(cone_eta)","cone_tc_pt_original","",16,1.45,3.05,100,0,100);
   TH2F* h_tc0 = single_plot2D(filename,"HGCalTriggerNtuple","abs(cone_eta)","cone_tc_pt_original","cone_tc_pt_original>0",16,1.45,3.05,100,0,100);
   TH2F* h_C3D = single_plot2D(filename,"HGCalTriggerNtuple","abs(cone_eta)","cone_pt_original","",16,1.45,3.05,100,0,100);
   TH2F* h_C3D0 = single_plot2D(filename,"HGCalTriggerNtuple","abs(cone_eta)","cone_pt_original","cone_pt_original>0",16,1.45,3.05,100,0,100);
-
-
  
   vector<TH2F*> histo;
   histo.push_back(h_tc);
