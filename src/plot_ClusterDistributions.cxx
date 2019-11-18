@@ -4,21 +4,15 @@
 
 void HGC::plot_GenRecoET(){
 
-  //        TString stats = "full";
-  //    TString stats = "2";
-  //            TString stats = "10*";
   TString stats = "*";
-  //                           TString stats = "1*";
+  // TString stats = "1*";
 
   TString file_QG_Pos_200 = "QuarkGun/QuarkGun-Pos-PU200-Decentralised";
   TString file_QG_Pos_140 = "QuarkGun/QuarkGun-Pos-PU140-Decentralised";
   TString file_QG_Pos_0 = "QuarkGun/QuarkGun-Pos-PU0-Decentralised";
-
-
   TString file2_QG_Pos_200 = "QuarkGun/QuarkGun-Pos-PU200-Decentralised-DR0p2";
   TString file2_QG_Pos_140 = "QuarkGun/QuarkGun-Pos-PU140-Decentralised-DR0p2";
   TString file2_QG_Pos_0 = "QuarkGun/QuarkGun-Pos-PU0-Decentralised-DR0p2";
-
 
   TString file_VBF_Decentralised = "VBF_HGG/VBF-HGG-PU200-Decentralised";
   TString file_VBF_Decentralised_signaldriven = "VBF_HGG/VBF-HGG-PU200-Decentralised-SignalDriven";
@@ -28,25 +22,24 @@ void HGC::plot_GenRecoET(){
   TString file_VBF_withTCs = "VBF_HGG/VBF-HGG-PU200-Default-withTCs";
   TString file_VBF_withTCs_DR0p2 = "VBF_HGG/VBF-HGG-PU200-Default-withTCs-DR0p2";
   TString file_VBF_withTCs_DR0p4 = "VBF_HGG/VBF-HGG-PU200-Default-withTCs-DR0p4";
-
   TString file_VBF_MixedFE = "VBF_HGG/VBF-HGG-PU200-MixedFE-EM-DR0p2";
   TString file_VBF_BCCoarse = "VBF_HGG/VBF-HGG-PU200-BestChoice-Coarser-DR0p2";
-
   TString file_VBF_BCCoarseH = "VBF_HGG/VBF-HGG-PU0-BestChoice-CoarserInH-Fix-DR0p2";
-  
-  TString tree_v9_dr1p0  ="Fp8ThresholdDummyHistomaxvardrdrho1p0Ntup";
-  TString tree_v9_dr1p25  ="Fp8ThresholdDummyHistomaxvardrdrho1p25Ntup";
-  TString tree_v9_dr1p5  ="Fp8ThresholdDummyHistomaxvardrdrho1p5Ntup";
-  TString tree_v9_dr1p75  ="Fp8ThresholdDummyHistomaxvardrdrho1p75Ntup";
-  TString tree_v9_dr2p0  ="Fp8ThresholdDummyHistomaxvardrdrho2p0Ntup";
-  TString tree_v9_dr3p0  ="Fp8ThresholdDummyHistomaxvardrdrho3p0Ntup";
-  TString tree_v9_dr5p0  ="Fp8ThresholdDummyHistomaxvardrdrho5p0Ntup";
-
+  TString file_VBF_Validation = "VBF_HGG/VBF-HGG-PU200-SuperTC-Validation-DR0p2";
+  TString file_VBF_Old = "VBF_HGG/VBF-HGG-PU200-SuperTC-Old-DR0p2";
+  TString file_VBF_Decentralised_signaldriven_DR0p2 = "VBF_HGG/VBF-HGG-PU200-Decentralised-SignalDriven-DR0p2";
+  TString file_VBF_Decentralised_signaldriven_DR0p2_Normal = "VBF_HGG/VBF-HGG-PU200-Decentralised-SignalDriven-DR0p2-Normal";
+  TString VBF_HGG_PU200_SuperTC_SignalDriven_DR0p2 = "VBF_HGG/VBF-HGG-PU200-SuperTC-SignalDriven-DR0p2";
+  TString VBF_HGG_PU200_SuperTC_ScintillatorStudies_DR0p2 = "VBF_HGG/VBF-HGG-PU200-SuperTC-ScintillatorStudies-DR0p2";
 
   TString tree_thresh  =  "Fp8ThresholdDummyHistomaxNtup";
-  //  TString tree_stc  =    "Fp8Stc4444FixedDummyHistomaxNtup";
-  //  TString tree_stc  =    "Fp8Stc4161616DummyHistomaxbin4Ntup";
+  TString tree_stc_validation  =    "Fp8Stc4444FixedDummyHistomaxNtup";
   TString tree_stc  =    "Fp8Stc4161616DummyHistomaxNtup";
+  TString tree_stcScin4  =    "Fp8Stc416164DummyHistomaxNtup";
+  TString tree_stcScin4C  =    "Fp8Stc416164CoarseDummyHistomaxNtup";
+  TString tree_stc_sig1  =    "Fp8StcSigDriv1DummyHistomaxNtup";
+  TString tree_stc_sig2  =    "Fp8StcSigDriv2DummyHistomaxNtup";
+  TString tree_stc_sig3  =    "Fp8StcSigDriv3DummyHistomaxNtup";
 
   TString tree_bc  =    "Fp8BestchoiceDummyHistomaxNtup";
   TString tree_mixed  =    "Fp8MixedDummyHistomaxNtup";
@@ -58,6 +51,8 @@ void HGC::plot_GenRecoET(){
   TString tree_bc_c4  =    "Fp8BestchoiceCoarse4DummyHistomaxNtup";
   TString tree_bc_c8  =    "Fp8BestchoiceCoarse8DummyHistomaxNtup";
   TString tree_bc_c16  =   "Fp8BestchoiceCoarse16DummyHistomaxNtup";
+
+  //Cuts
 
   TString cut_v9 = "VBF_parton_genjet>=0 && VBF_parton_jets>=0 && abs(genjet_eta[VBF_parton_genjet])>1.7 && abs(genjet_eta[VBF_parton_genjet])<2.8 ";
   TString cut = "VBF_parton_genjet>=0 && VBF_parton_jets>=0 && abs(genjet_eta[VBF_parton_genjet])>1.7 && abs(genjet_eta[VBF_parton_genjet])<2.8";
@@ -75,42 +70,29 @@ void HGC::plot_GenRecoET(){
   std::vector<TGraphErrors*> graphs;
   Plotter * plotter = new Plotter( _cmd );
   double x[16]={0,10,20,40,60,80,100,120,140,160,180,200,220,250,300,400};
-
-
-  //  double y[7]={0,10,20,40,60,80,100};
-  //  double y[11]={0,10,20,30,40,50,60,70,80,90,100};
   
-  //TString file = file_VBF_Decentralised_signaldriven;
-  //  TString file = file_VBF_Decentralised_signaldriven_DR0p4;
+  TString file = VBF_HGG_PU200_SuperTC_ScintillatorStudies_DR0p2;
 
-  //      TString file = file_VBF_withTCs_DR0p2;
-  //      TString file = file_VBF_withTCs_DR0p4;
-  //    TString file = file2_QG_Pos_200;
-  // TString file = file_VBF_MixedFE;
+  // std::vector<TString> trees = { tree_stc_validation, tree_stc};
+  // std::vector<TString> description = { "STC4_CTC4", "STC4_16"};
+  // std::vector<TString> legend = { "STC4+CTC4", "STC4+16"};
+  // std::string algo = "Fp8BestchoiceDummyHistomaxNtup";
+  
 
-  TString file = file_VBF_BCCoarseH;
-      
+  // std::vector<TString> trees = { tree_stc, tree_bc_c4, tree_thresh};
+  // std::vector<TString> description = { "STC4_16", "BC_4", "Thresh"};
+  // std::vector<TString> legend = { "STC4+16", "BC-4", "Threshold"};
+  // std::string algo = "Fp8BestchoiceDummyHistomaxNtup";
+
+
   // std::vector<TString> trees = { tree_bc, tree_bc,tree_bc};
   // std::vector<TString> description = { "200", "140", "0"};
   // std::vector<TString> legend = { "PU 200", "PU 140", "PU 0"};
   // std::string algo = "Fp8BestchoiceDummyHistomaxNtup";
-
-  // std::vector<TString> trees = { tree_stc, tree_stc,tree_stc};
-  // std::vector<TString> description = { "200", "140", "0"};
-  // std::vector<TString> legend = { "200", "140", "0"};
-
-  // std::vector<TString> trees = { tree_thresh, tree_thresh,tree_thresh,};
-   // std::vector<TString> description = { "200", "140", "0"};
-  // std::vector<TString> legend = { "PU 200", "PU 140", "PU 0"};
   
   // std::vector<TString> trees = { tree_thresh, tree_stc, tree_bc, tree_mixed};
   // std::vector<TString> description = { "th","stc","bc","mixed"};
   // std::vector<TString> legend = { "Threshold","STC","Best Choice", "Mixed"};
-
-  std::vector<TString> trees = { tree_bc, tree_bc_c1, tree_bc_c2, tree_bc_c4, tree_bc_c8,tree_bc_c16,};
-  std::vector<TString> description = { "bc", "bc-1","bc-2","bc-4","bc-8","bc-16"};
-  std::vector<TString> legend = { "bc", "bc-1","bc-2","bc-4","bc-8","bc-16"};
-  //  std::vector<TString> legend = { "bc", "bc-1","bc-2","bc-4"};
 
   // std::vector<TString> trees = { tree_bc};
   //  std::vector<TString> description = { "bc"};
@@ -132,10 +114,14 @@ void HGC::plot_GenRecoET(){
   // std::vector<TString> legend = { "tcs" };
   // std::string algo = "hgcalTriggerNtuplizer";
 
+  std::vector<TString> trees = { tree_thresh, tree_stc, tree_stcScin4, tree_stcScin4C};
+  std::vector<TString> description = { "th","stc4161616","stc416164","stc416164Coarse"};
+  std::vector<TString> legend = { "Threshold","STC 4,16,16,16","STC 4,16,16,4","STC 4,16,16,4(Coarse)"};
+
   for(unsigned int i=0;i<trees.size();i++){
 
-     // if (i==1) file = file2_QG_Pos_140;
-     // if (i==2) file = file2_QG_Pos_0;
+    //    if (i==1) file = file_VBF_BCCoarseH;
+    //    if (i==2 ) file = file_VBF_MixedFE;
     //5 eta bins
 
     // histobjects.emplace_back( HistObject( "Jets", (snwebb + "/" + files.at(i) + "/jet_ntuples_merged/ntuple_jet_merged_"+stats+".root"), "", "jets_pt[VBF_parton_jets]:genjet_pt[VBF_parton_genjet]", cuteta51, true  ) );
@@ -155,7 +141,6 @@ void HGC::plot_GenRecoET(){
 
     //3D attempt
     //         histobjects.emplace_back( HistObject( "Jets", (snwebb + "/" + file + "/jet_ntuples_merged/ntuple_jet_merged_"+ trees.at(i) +"_"+stats+".root"), trees.at(i)+"_Jet", "", "jets_pt[VBF_parton_jets]*2.3/abs(jets_eta[VBF_parton_jets]):genjet_pt[VBF_parton_genjet]" ,cut_v9, true  ) );
-
      //histobjects.emplace_back( HistObject( "Jets", (snwebb + "/" + file + "/jet_ntuples_merged/ntuple_jet_merged_"+ trees.at(i) +"_"+stats+".root"), trees.at(i)+"_Jet", "", "jets_pt[VBF_parton_jets]:genjet_pt[VBF_parton_genjet]" ,cut_v9, true  ) );
 
 
@@ -195,20 +180,15 @@ void HGC::plot_GenRecoET(){
   profile->GetFunction("pol")->GetParameter( 0 ); 
   profile->GetFunction("pol")->GetParameter( 1 ) ;
   profile->GetFunction("pol")->GetParameter( 2 ) ;
+
   
   delete plotter;
 
 
    // TGraph * mapping = CalculateEfficiency( profile->GetFunction("pol")->GetParameter( 0 ), profile->GetFunction("pol")->GetParameter( 1 ), profile->GetFunction("pol")->GetParameter( 2 ), algo  );
-
    // CalculateRates ( profile->GetFunction("pol")->GetParameter( 0 ), profile->GetFunction("pol")->GetParameter( 1 ), profile->GetFunction("pol")->GetParameter( 2 ) , algo, mapping);
-
-
   //  JetStudies(  profile->GetFunction("pol")->GetParameter( 0 ), profile->GetFunction("pol")->GetParameter( 1 ), profile->GetFunction("pol")->GetParameter( 2 ), algo  );
   
-
-  
-
 }
 
 
@@ -220,58 +200,11 @@ void HGC::plot_nC3D(){
   Plotter plotter( _cmd );
 
 
-  // files.push_back("VBF_Hinv/VBF-PU200-stc-TCs-histoMax-DRAInf-DRB00-NS");
-  // files.push_back("VBF_Hinv/VBF-PU200-stc-TCs-histoMax-DRAInf-DRB00-NS");
-  // files.push_back("VBF_Hinv/VBF-PU200-stc-TCs-histoMax-DRAInf-DRB00-NS");
-  // files.push_back("VBF_Hinv/VBF-PU200-stc-TCs-histoMax-DRAInf-DRB00-NS");
-  // files.push_back("VBF_Hinv/VBF-PU200-stc-TCs-histoMax-DRAInf-DRB00-NS");
-
-  // files.push_back("VBF_Hinv/VBF_Hinv_PU200_threshold_polarHisto_Max");
-  // files.push_back("VBF_Hinv/VBF_Hinv_PU200_threshold_polarHisto_Max");
-  // files.push_back("VBF_Hinv/VBF_Hinv_PU200_threshold_polarHisto_Max");
-  // files.push_back("VBF_Hinv/VBF_Hinv_PU200_threshold_polarHisto_Max");
-  // files.push_back("VBF_Hinv/VBF_Hinv_PU200_threshold_polarHisto_Max");
-  // files.push_back("VBF_Hinv_PU200_dRNNC2D");
-  // files.push_back("VBF_Hinv_PU200_dRNNC2D");
-  // files.push_back("VBF_Hinv_PU200_dRNNC2D");
-  // files.push_back("VBF_Hinv_PU200_dRNNC2D");
-  // files.push_back("VBF_Hinv_PU200_dRNNC2D");
-
-  // files.push_back("VBF_Hinv/VBF-PU200-stc-TCs-histoMax-DRAInf-DRB00-NS-Jet1p0");
-  // files.push_back("VBF_Hinv/VBF-PU200-stc-TCs-histoMax-DRAInf-DRB00-NS-Jet2p0");
-  // files.push_back("VBF_Hinv/VBF-PU200-stc-TCs-histoMax-DRAInf-DRB00-NS-Jet5p0");
-  // files.push_back("VBF_Hinv/VBF-PU200-stc-TCs-histoMax-DRAInf-DRB00-NS-Jet10p0");
-  // legend.push_back( "0.5");
-  // legend.push_back( "1.0");
-  // legend.push_back( "2.0");
-  // legend.push_back( "5.0");
-  // legend.push_back( "10.0");
-
-
-
-
-
-
-  // files.push_back( "VBF_Hinv/VBF_Hinv_PU200_threshold_polarHisto_Max");
-  // files.push_back("VBF_Hinv/VBF_Hinv_PU200_stc_polarHisto_Max");
-  // legend.push_back( "Threshold Histo");
-  // legend.push_back( "Threshold Stc");
-
-
   //Gamma stc threshold study
   files.push_back( "SingleGammaPt25/SingleGamma-PU2000-stc-wThresh-TCs-histoMax-DRA040-DRB00-NS");
   files.push_back("SingleGammaPt25/SingleGammaPt25_PU200_stc_HistoMax");
-  // files.push_back( "SingleGammaPt25/SingleGamma-PU0-stc-wThresh-TCs-histoMax-DRA040-DRB00-NS");
-  // files.push_back("SingleGammaPt25/SingleGammaPt25_PU0_stc_HistoMax");
   legend.push_back( "stc w/thresh");
   legend.push_back( "stc");
-
-
-
-
-
-
-
 
   for(unsigned int i=0;i<files.size();i++){
 
@@ -290,7 +223,6 @@ void HGC::plot_nC3D(){
     hist.push_back( ncl3D );
  
   }
-
   
   plotter.Draw( hist , legend, "ncl3d" , true);
   
@@ -311,13 +243,11 @@ void HGC::JetStudies(double par0, double par1, double par2, std::string algo){
 
    // std::string file1 = "VBF_HGG/VBF-HGG-PU200-Default-withTCs-DR0p2";
    // std::string file2 = "DoubleNu/DoubleNu-PU200-Default-withTCs-DR0p2";
-
       
   // std::string file1 = "VBF_HGG/VBF-HGG-PU200-Default-withTCs-DR0p4";
   // std::string file2 = "DoubleNu/DoubleNu-PU200-Default-withTCs-DR0p4";
-      
 
-   //   std::string file1 = "VBF_HGG/VBF-HGG-PU200-Decentralised-SignalDriven-DR0p4";
+  //   std::string file1 = "VBF_HGG/VBF-HGG-PU200-Decentralised-SignalDriven-DR0p4";
 
   std::string tree = algo;
   std::string tree1 = algo;
@@ -330,11 +260,6 @@ void HGC::JetStudies(double par0, double par1, double par2, std::string algo){
 
   TString calibpt_VBF = "( -"+TString(std::to_string(par1))+ "+ sqrt( " +  TString(std::to_string(par1*par1)) + "- 4*"+TString(std::to_string(par2))+"*("+TString(std::to_string(par0))+"-jets_pt[VBF_parton_jets]) ) ) / (2 * "+TString(std::to_string(par2))+")";
   TString calibpt_PU = "( -"+TString(std::to_string(par1))+ "+ sqrt( " +  TString(std::to_string(par1*par1)) + "- 4*"+TString(std::to_string(par2))+"*("+TString(std::to_string(par0))+"-jets_pt) ) ) / (2 * "+TString(std::to_string(par2))+")";
-
-
-  //NCL == 1
-   // TString cut_basic = "abs(jets_eta)>1.7 && abs(jets_eta)<2.8 && jets_pt>" +jetpt_low +  " && jets_pt<"+jetpt_high + "&&jets_n_cl==1";
-   // TString cut_vbf = "VBF_parton_genjet>=0 && VBF_parton_jets>=0 && abs(genjet_eta[VBF_parton_genjet])>1.7 && abs(genjet_eta[VBF_parton_genjet])<2.8 && genjet_pt[VBF_parton_genjet]>"+jetpt_low +"&& genjet_pt[VBF_parton_genjet]<"+jetpt_high + "&&jets_n_cl[VBF_parton_jets]==1";
 
   //Uncalibrated
   //   TString cut_basic = "abs(jets_eta)>1.7 && abs(jets_eta)<2.8 && jets_pt>" +jetpt_low +  " && jets_pt<"+jetpt_high;
@@ -437,47 +362,34 @@ void HGC::JetStudies(double par0, double par1, double par2, std::string algo){
 
   plotter.Draw(histobjects_n_cl, 20, -0.5, 19.5  ,"ncl_small" );
   plotter.Draw(histobjects_n_cl, 20, -0.5, 9.5  ,"ncl_vsmall" );
+
   // plotter.Draw(histobjects_n_cl, 150, -0.5, 1499.5  ,"ncl" );
   // plotter.Draw(histobjects_n_cl, 150, -0.5, 999.5  ,"ncl_med" );
-
-
   //plotter.Draw(histobjects_n_cl, 100, -0.5, 99.5  ,"ncl" );
-
   // plotter.Draw(histobjects_firstfrac, 51, 0,1.01  ,"ff" );
-
   //  plotter.Draw(histobjects_srrsum, 100, 0,0.05  ,"srrsum" );
   //  plotter.Draw(histobjects_srrjet, 100, 0,0.05  ,"srrjet" );
-
   //  plotter.Draw(histobjects_sppsum, 100, 0,0.2  ,"sppsum" );
   //  plotter.Draw(histobjects_sppjet, 100, 0,0.3  ,"sppjet" );
-
   // plotter.Draw2D(histobjects_2d, 100, 0,200,10,-0.5,9.5  ,"nclpt_vbf" );
-  // plotter.Draw2D(histobjects_2d_pu, 100, 0,200,10,-0.5,9.5  ,"nclpt_pu" );
-  
-
+  // plotter.Draw2D(histobjects_2d_pu, 100, 0,200,10,-0.5,9.5  ,"nclpt_pu" );  
   // // plotter.Draw2D(histobjects_2d_etalow, 100, 0,200,10,-0.5,9.5  ,"nclpt_vbf_etalow" );
   // // plotter.Draw2D(histobjects_2d_etamid, 100, 0,200,10,-0.5,9.5  ,"nclpt_vbf_etamid" );
   // // plotter.Draw2D(histobjects_2d_etahigh, 100, 0,200,10,-0.5,9.5  ,"nclpt_vbf_etahigh" );
 
   // plotter.Draw(histobjects_srr_best, 100, -0.05,0.1  ,"srr_best" );
   // plotter.Draw(histobjects_spp_best, 100, -0.1,0.5  ,"spp_best" );
-
   // plotter.Draw(histobjects_srr_paul, 100, -0.05,0.1  ,"srr_paul" );
   // plotter.Draw(histobjects_spp_paul, 100, -0.1,0.5  ,"spp_paul" );
-
   //  //  plotter.Draw(histobjects_sppsrr, 100, -10,20  ,"s_div" );
-
-    //  plotter.Draw(histobjects_coreenergyratio, 100, -0.1,1.1  ,"coreenergyratio" );
+  //  plotter.Draw(histobjects_coreenergyratio, 100, -0.1,1.1  ,"coreenergyratio" );
   //  plotter.Draw(histobjects_riso, 50, 0,10  ,"riso" );
-
-
-    //  plotter.Draw2D(histobjects_hoe_pt, 47, 20, 300,100, 0,1 ,"emfrac_pt" );
+  //  plotter.Draw2D(histobjects_hoe_pt, 47, 20, 300,100, 0,1 ,"emfrac_pt" );
 
   plotter.Draw(histobjects_n_tcs, 100, -0.5, 499.5  ,"n_tcs_500" );
   plotter.Draw(histobjects_n_tcs, 100, -0.5, 999.5  ,"n_tcs_1000" );
   
-
-    //  plotter.Draw(histobjects_hoe, 100, 0, 1  ,"emfrac" );
+  //  plotter.Draw(histobjects_hoe, 100, 0, 1  ,"emfrac" );
 
 }
 
