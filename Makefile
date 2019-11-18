@@ -17,9 +17,8 @@ ROOTGLIBS = $(shell root-config --glibs)
 PWD = $(shell pwd)
 MKDIR_P = mkdir -p
 
-COMMONOBJS1 =  $(OBJS)
+COMMONOBJS1 =  $(OBJS) 
 COMMONOBJS = $(filter-out $(OBJDIR)/jet_ntuple_merge.o $(OBJDIR)/HGC.o, $(COMMONOBJS1))
-
 
 all: $(PROGS)
 

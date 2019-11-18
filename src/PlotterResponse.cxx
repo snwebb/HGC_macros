@@ -44,7 +44,8 @@ void PlotterResponse::Draw(std::vector<HistObject>& hists, std::string savename,
   }
 
   prof[0]->GetYaxis()->SetTitleOffset(1.7);
-  prof[0]->GetYaxis()->SetRangeUser(-0.5,1.2);
+  //  prof[0]->GetYaxis()->SetRangeUser(-0.5,1.2);
+  prof[0]->GetYaxis()->SetRangeUser(-0.5,2.0);
   prof[0]->SetStats(0);
   prof[0]->SetTitle("");
   prof[0]->Draw();

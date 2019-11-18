@@ -1,9 +1,9 @@
-#ifndef _jet_ntuple_merger_v2_h_
-#define _jet_ntuple_merger_v2_h_
+#ifndef _jet_ntuple_merger_simple_h_
+#define _jet_ntuple_merger_simple_h_
 
 #include "Helpers.h"
 
-class jet_ntuple_merger_v2{
+class jet_ntuple_merger_simple{
 
  private:
 
@@ -32,19 +32,10 @@ class jet_ntuple_merger_v2{
   float thickCorr = 1.092;
  
 
-  float calibrateInMipT(int hwPt, float eta, int subdet);
-  float calibrateMipTinGeV(float MIPpt, int HGClayer, TString calib_version);
-
-  int HGC_layer(const uint32_t subdet, const uint32_t layer);
-  float meanX(const std::vector<std::pair<float,float> >& energy_X_tc);
-  float sigmaXX(const std::vector<std::pair<float,float> >& energy_X_tc, const float X_cluster);
-  float sigmaPhiPhi(const std::vector<std::pair<float,float> >& energy_phi_tc, const float phi_cluster);
-
-
  public:
 
-  jet_ntuple_merger_v2();
-  void add_jet(TString filein,  TString treename, TString filein_jet, TString treename_jet, TString fileout);
+  jet_ntuple_merger_simple();
+  void add_jet(TString filein,  TString treename, TString filein_jet, TString treename_jet, TString fileout , TString treenameout);
   void create_cones(TString filein,  TString treename, TString fileout);
   void calibrate_layer(TString filein,  TString treename, TString fileout, bool JB_version=false, bool add_jet=false, bool add_cone=false);
   void test();
