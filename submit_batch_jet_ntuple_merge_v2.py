@@ -15,54 +15,6 @@ interval = 1 # number files to be processed in a single job, take care to split 
 
 InputDirList = [ 
 
-#V8 (EXTENDED CLUSTER RADIUS)
-# "VBF_HToInvisible_M125_14TeV_powheg_pythia8/crab_VBF-PU200-MultiAlgo-Threshold-DR1p75/190610_161427/0000",
-# "VBF_HToInvisible_M125_14TeV_powheg_pythia8/crab_VBF-PU200-MultiAlgo-SuperTCs-DR1p75/190610_161652/0000",
-# "VBF_HToInvisible_M125_14TeV_powheg_pythia8/crab_VBF-PU200-MultiAlgo-SeedThreshold-DR1p75/190610_161347/0000",
-
-#V9 HGG (DEFAULT CLUSTER RADIUS)
-#"VBFHToGG_M-125_14TeV_powheg_pythia8/crab_VBF-HGG-PU200-MultiAlgo-Threshold/190612_085552/0000",
-
-#WS
-
-#"VBFHToGG_M-125_14TeV_powheg_pythia8/crab_VBF-HGG-PU200-MultiAlgo-Threshold-WS/190614_103104/0000",
-#"VBFHToGG_M-125_14TeV_powheg_pythia8/crab_VBF-HGG-PU200-MultiAlgo-SuperTCs-WS/190614_103316/0000",
-# "VBFHToGG_M-125_14TeV_powheg_pythia8/crab_VBF-HGG-PU200-MultiAlgo-SeedThreshold-WS/190614_103718/0000",
-# "VBFHToGG_M-125_14TeV_powheg_pythia8/crab_VBF-HGG-PU200-MultiAlgo-ClusterRadius-WS/190614_103923/0000",
-
-#"VBFHToTauTau_M125_14TeV_powheg_pythia8/crab_VBF-HTT-PU200-MultiAlgo-Threshold-WS/190614_103007/0000",
-#   "VBFHToTauTau_M125_14TeV_powheg_pythia8/crab_VBF-HTT-PU200-MultiAlgo-SuperTCs-WS/190614_103237/0000",
-# "VBFHToTauTau_M125_14TeV_powheg_pythia8/crab_VBF-HTT-PU200-MultiAlgo-SeedThreshold-WS/190614_103645/0000",
-#"VBFHToTauTau_M125_14TeV_powheg_pythia8/crab_VBF-HTT-PU200-MultiAlgo-ClusterRadius-WS/190614_103833/0000",
-
-#"VBFHToTauTau_M125_14TeV_powheg_pythia8/crab_VBF-HTT-PU200-Default-WithTriggerCells-WS/190614_132424/0000",
-
-#"VBFHToGG_M-125_14TeV_powheg_pythia8/crab_VBF-HGG-PU200-MultiAlgo-Decentralised/190709_130200/0000",
-#"NeutrinoGun_E_10GeV/crab_DoubleNu-PU200-MultiAlgo-Decentralised/190709_130228/0000",
-
-
-#"VBFHToGG_M-125_14TeV_powheg_pythia8/crab_VBF-HGG-PU200-MultiAlgo-Decentralised/190717_141103/0000",
-#"NeutrinoGun_E_10GeV/crab_DoubleNu-PU200-MultiAlgo-Decentralised/190717_141958/0000",
-
-#"VBF_HToInvisible_M125_14TeV_powheg_pythia8/crab_VBF-PU200-MultiAlgo-Threshold-WS/190617_142337/0000",
-#"VBF_HToInvisible_M125_14TeV_powheg_pythia8/crab_VBF-PU200-MultiAlgo-SuperTCs-WS/190617_155355/0000",
-#"VBF_HToInvisible_M125_14TeV_powheg_pythia8/crab_VBF-PU200-MultiAlgo-SeedThreshold-WS/190617_155622/0000",
-#"VBF_HToInvisible_M125_14TeV_powheg_pythia8/crab_VBF-PU200-MultiAlgo-ClusterRadius-WS/190617_/0000",
-
-
-#"VBFHToGG_M-125_14TeV_powheg_pythia8/crab_VBF-HGG-PU200-MultiAlgo-Decentralised-BugFix/190718_161801/0000",
-#"NeutrinoGun_E_10GeV/crab_DoubleNu-PU200-MultiAlgo-Decentralised-BugFix/190718_161654/0000",
-
-
-#"VBFHToGG_M-125_14TeV_powheg_pythia8/crab_VBF-HGG-PU200-Default/190726_142831/0000",
-#"VBFHToGG_M-125_14TeV_powheg_pythia8/crab_VBF-HGG-PU200-Decentralised/190730_112632/0000",
-
-#"NeutrinoGun_E_10GeV/crab_DoubleNu-PU200-Decentralised/190731_092913/0000",
-
-#"VBFHToGG_M-125_14TeV_powheg_pythia8/crab_VBF-HGG-PU200-Decentralised-SignalDriven/190822_123250/0000",
-#"NeutrinoGun_E_10GeV/crab_DoubleNu-PU200-Decentralised-SignalDriven/190905_140242/0000",
-
-
 #"VBFHToGG_M-125_14TeV_powheg_pythia8/crab_VBF-HGG-PU200-Default-withTCs/190822_132142/0000",
 #"NeutrinoGun_E_10GeV/crab_DoubleNu-PU200-Default-withTCs/190916_134011/0000",
 
@@ -83,14 +35,15 @@ InputDirList = [
 # "RelValDiQ_Pt20To300_Eta1p6To2p9/crab_QuarkGun-Pos-PU140-Decentralised/190926_093906/0000",
 # "RelValDiQ_Pt20To300_Eta1p6To2p9/crab_QuarkGun-Pos-PU200-Decentralised/190926_093951/0000",
 
-
-
 #"VBFHToGG_M-125_14TeV_powheg_pythia8/crab_VBF-HGG-PU200-MixedFE-EM/190927_143347/0000",
-
 #"VBFHToGG_M-125_14TeV_powheg_pythia8/crab_VBF-HGG-PU200-BestChoice-Coarser/191002_102809/0000",
+#"VBFHToGG_M-125_14TeV_powheg_pythia8/crab_VBF-HGG-PU0-BestChoice-CoarserInH-Fix/191003_164218/0000",
+#"VBFHToGG_M-125_14TeV_powheg_pythia8/crab_VBF-HGG-PU200-SuperTC-Old/191004_084722/0000",
+#"VBFHToGG_M-125_14TeV_powheg_pythia8/crab_VBF-HGG-PU200-SuperTC-Validation/191004_083722/0000",
+#"VBFHToGG_M-125_14TeV_powheg_pythia8/crab_VBF-HGG-PU200-SuperTC-SignalDriven/191028_142710/0000",
 
-
-"VBFHToGG_M-125_14TeV_powheg_pythia8/crab_VBF-HGG-PU0-BestChoice-CoarserInH-Fix/191003_164218/0000",
+#"VBFHToGG_M-125_14TeV_powheg_pythia8/crab_VBF-HGG-PU200-SuperTC-ScintillatorStudies/191031_115118/0000",
+"VBFHToGG_M-125_14TeV_powheg_pythia8/crab_VBF-HGG-PU200-Standard/191114_072918/0000",
 
    ]
 
@@ -117,93 +70,28 @@ OutputDirList=[  "/vols/cms/snwebb/HGC_ntuples/VBF_HGG/" + i.split("_")[1] + Tag
 
 
 TreeNames = [
-#SEED THRESHOLD
 
-# "Fp8ThresholdDummyHistomaxvardrth0Ntup",
-# "Fp8ThresholdDummyHistomaxvardrth10Ntup",
-# "Fp8ThresholdDummyHistomaxvardrth20Ntup",
-# "Fp8ThresholdDummyHistomaxvardrth30Ntup",
-# "Fp8ThresholdDummyHistomaxvardrth40Ntup",
-# "Fp8ThresholdDummyHistomaxvardrth50Ntup",
+ "Fp8ThresholdDummyHistomaxNtup",
+ "Fp8Stc4161616DummyHistomaxNtup",
+ "Fp8BestchoiceDummyHistomaxNtup",
+ "Fp8MixedDummyHistomaxNtup",
 
-
-
-#"Fp8ThresholdDummyHistomaxvardrth100Ntup",
-
-
-#DRHO
-
-# "Fp8ThresholdDummyHistomaxvardrdrho1p0Ntup",
-# "Fp8ThresholdDummyHistomaxvardrdrho1p25Ntup",
-# "Fp8ThresholdDummyHistomaxvardrdrho1p5Ntup",
-# "Fp8ThresholdDummyHistomaxvardrdrho1p75Ntup",
-# "Fp8ThresholdDummyHistomaxvardrdrho2p0Ntup",
-# "Fp8ThresholdDummyHistomaxvardrdrho3p0Ntup",
-# "Fp8ThresholdDummyHistomaxvardrdrho5p0Ntup",
-
-#THRESHOLD
-# "Fp8Threshold0p0DummyHistomaxvardrdrho1p0Ntup",
-# # "Fp8Threshold0p5DummyHistomaxvardrdrho1p0Ntup",
-# "Fp8Threshold1p0DummyHistomaxvardrdrho1p0Ntup",
-# # "Fp8Threshold1p5DummyHistomaxvardrdrho1p0Ntup",
-# "Fp8Threshold2p0DummyHistomaxvardrdrho1p0Ntup",
-# "Fp8Threshold3p0DummyHistomaxvardrdrho1p0Ntup",
-
-#SUPER TC
-
-# "Fp8BestchoiceDummyHistomaxvardrdrho1p0Ntup",
-# "Fp8Stc4161616DummyHistomaxvardrdrho1p0Ntup",
-#"Fp8Stc4444FixedDummyHistomaxvardrdrho1p0Ntup",
-# "Fp8EqualShare4444FixedDummyHistomaxvardrdrho1p0Ntup",
-# "Fp8Onebit4444FixedDummyHistomaxvardrdrho1p0Ntup",
-
-#SEED THRESHOLD
-
-#  "Fp8ThresholdDummyHistomaxvardrth0Ntup",
-#  "Fp8ThresholdDummyHistomaxvardrth10Ntup",
-#  "Fp8ThresholdDummyHistomaxvardrth20Ntup",
-# # "Fp8ThresholdDummyHistomaxvardrth30Ntup",
-#  "Fp8ThresholdDummyHistomaxvardrth40Ntup",
-# # "Fp8ThresholdDummyHistomaxvardrth50Ntup",
-
-
-# #DRHO
-
-# "Fp8ThresholdDummyHistomaxvardrdrho1p0Ntup",
-# # "Fp8ThresholdDummyHistomaxvardrdrho1p25Ntup",
-# "Fp8ThresholdDummyHistomaxvardrdrho1p5Ntup",
-# # "Fp8ThresholdDummyHistomaxvardrdrho1p75Ntup",
-# "Fp8ThresholdDummyHistomaxvardrdrho2p0Ntup",
-# # "Fp8ThresholdDummyHistomaxvardrdrho3p0Ntup",
-# "Fp8ThresholdDummyHistomaxvardrdrho5p0Ntup",
-
-
-
-# "Fp8ThresholdDummyHistomaxNtup",
-# "Fp8Stc4444FixedDummyHistomaxNtup",
 # "Fp8BestchoiceDummyHistomaxNtup",
-
-
-# "Fp8ThresholdDummyHistomaxNtup",
-# "Fp8Stc4161616DummyHistomaxbin4Ntup",
-# "Fp8BestchoiceDummyHistomaxNtup",
-
-# "Fp8ThresholdDummyHistomaxNtup",
-# "Fp8Stc4161616DummyHistomaxNtup",
-# "Fp8BestchoiceDummyHistomaxNtup",
-
-# "Fp8MixedDummyHistomaxNtup",
-
-"Fp8BestchoiceDummyHistomaxNtup",
-"Fp8BestchoiceCoarse1DummyHistomaxNtup",
-"Fp8BestchoiceCoarse2DummyHistomaxNtup",
-"Fp8BestchoiceCoarse4DummyHistomaxNtup",
-"Fp8BestchoiceCoarse8DummyHistomaxNtup",
-"Fp8BestchoiceCoarse16DummyHistomaxNtup",
+# "Fp8BestchoiceCoarse1DummyHistomaxNtup",
+# "Fp8BestchoiceCoarse2DummyHistomaxNtup",
+# "Fp8BestchoiceCoarse4DummyHistomaxNtup",
+# "Fp8BestchoiceCoarse8DummyHistomaxNtup",
+# "Fp8BestchoiceCoarse16DummyHistomaxNtup",
 
 #DEFAULT
 #"hgcalTriggerNtuplizer",
 
+# "Fp8StcSigDriv1DummyHistomaxNtup",
+# "Fp8StcSigDriv2DummyHistomaxNtup",
+# "Fp8StcSigDriv3DummyHistomaxNtup",
+
+# "Fp8Stc416164DummyHistomaxNtup",
+# "Fp8Stc416164CoarseDummyHistomaxNtup",
  ]
 
 
@@ -257,11 +145,7 @@ for indir, outdir in zip( InputDirList, OutputDirList ):
             fout.write("cd /home/hep/snwebb/hgcal/CMSSW_10_1_7/src\n")
             fout.write("eval `scramv1 runtime -sh`\n")
             fout.write("cd /home/hep/snwebb/hgcal/HGC_macros\n")
-            #         fout.write("./jet_ntuple_merge --runtype jet --filein root://cms-xrd-global.cern.ch//store/user/sawebb/"+ indir + "/ntuple_"+str(x)+".root --filein_jet " + outdir+"/jet_ntuples/ntuple_jet_"+str(x)+".root --fileout " + OutputFileNames +"_"+str(x)+".root \n")
             fout.write("./jet_ntuple_merge --runtype jet --filein root://gfe02.grid.hep.ph.ic.ac.uk:1096//store/user/sawebb/"+ indir + "/ntuple_"+str(x)+".root --treename "+ treename +"/HGCalTriggerNtuple --treename_out "+ treename +"_Jet --filein_jet " + outdir+"/jet_ntuples/ntuple_jet_"+treename+"_"+str(x)+".root --treename_jet jets_" + treename +" --fileout " + OutputFileNames +"_"+str(x)+".root \n")
-
-
-#            fout.write("./jet_ntuple_merge --runtype jet --filein root://gfe02.grid.hep.ph.ic.ac.uk:1096//store/user/sawebb/"+ indir + "/ntuple_"+str(x)+".root --treename "+ treename +"/HGCalTriggerNtuple --treename_out "+ treename +"_Jet --filein_jet " + outdir+"/jet_ntuples/ntuple_jet_hgcalTriggerNtuplizer_"+str(x)+".root --treename_jet jets_" + treename + " --fileout " + OutputFileNames +"_"+str(x)+".root \n")
             fout.write("echo 'STOP---------------'\n")
             fout.write("echo\n")
             fout.write("echo\n")
