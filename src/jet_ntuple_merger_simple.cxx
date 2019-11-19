@@ -179,6 +179,7 @@ void jet_ntuple_merger_simple::add_jet(TString filein,  TString treename, TStrin
   std::vector<float> _jets_PU_subtr_cone_GEO_C3D;
 
   bool _isVBF;
+  bool _isHGG = false;
   std::vector<int> _VBF_parton_gen;
   std::vector<int> _VBF_parton_genjet;
   std::vector<int> _VBF_parton_jets;
@@ -399,8 +400,10 @@ void jet_ntuple_merger_simple::add_jet(TString filein,  TString treename, TStrin
     for(unsigned int i_Higgs=0; i_Higgs<_Higgs_gen.size(); i_Higgs++){      
      for(unsigned int i_daught=0; i_daught<(*_gen_daughters)[_Higgs_gen[i_Higgs]].size(); i_daught++){
     	int id = (*_gen_daughters)[_Higgs_gen[i_Higgs]].at(i_daught);
-    	if(abs((*_gen_id)[id])==22 && (*_gen_status)[id]==1)
-    	_Photon_gen.emplace_back(id);
+    	if(abs((*_gen_id)[id])==22 && (*_gen_status)[id]==1){
+	  _isHGG = true;
+	  _Photon_gen.emplace_back(id);
+	}
       }
     }
     ///If we need to get photon gen jets  
@@ -469,10 +472,10 @@ void jet_ntuple_merger_simple::add_jet(TString filein,  TString treename, TStrin
 	
       }
     }
-    
-    
+
+
     if ( (*_jets_pt).size() > 1 ){
-      if ( !_Photon_overlap[0] && !_Photon_overlap[1] ){
+      if ( _isHGG && (!_Photon_overlap[0] && !_Photon_overlap[1]) || !_isHGG ){
 	_dijet_mass = std::sqrt(2*std::sqrt(std::pow((*_jets_pt)[0],2)*std::pow(std::cosh((*_jets_eta)[0]),2))*    	  std::sqrt(std::pow((*_jets_pt)[1],2)*std::pow(std::cosh((*_jets_eta)[1]),2)) -    2*(*_jets_pt)[0]*(*_jets_pt)[1]*(std::cos((*_jets_phi)[0] -  (*_jets_phi)[1]) + std::sinh((*_jets_eta)[0])*std::sinh((*_jets_eta)[1])));
       }
     }
