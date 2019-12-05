@@ -73,6 +73,27 @@ void HGC::plot_GenRecoET(){
   
   TString file = VBF_HGG_PU200_SuperTC_ScintillatorStudies_DR0p2;
 
+  // std::vector<TString> trees = { tree_stc_validation, tree_stc};
+  // std::vector<TString> description = { "STC4_CTC4", "STC4_16"};
+  // std::vector<TString> legend = { "STC4+CTC4", "STC4+16"};
+  // std::string algo = "Fp8BestchoiceDummyHistomaxNtup";
+
+
+  // std::vector<TString> trees = { tree_stc, tree_bc_c4, tree_thresh};
+  // std::vector<TString> description = { "STC4_16", "BC_4", "Thresh"};
+  // std::vector<TString> legend = { "STC4+16", "BC-4", "Threshold"};
+  // std::string algo = "Fp8BestchoiceDummyHistomaxNtup";
+
+
+  // std::vector<TString> trees = { tree_bc, tree_bc,tree_bc};
+  // std::vector<TString> description = { "200", "140", "0"};
+  // std::vector<TString> legend = { "PU 200", "PU 140", "PU 0"};
+  // std::string algo = "Fp8BestchoiceDummyHistomaxNtup";
+
+  // std::vector<TString> trees = { tree_thresh, tree_stc, tree_bc, tree_mixed};
+  // std::vector<TString> description = { "th","stc","bc","mixed"};
+  // std::vector<TString> legend = { "Threshold","STC","Best Choice", "Mixed"};
+
   std::vector<TString> etaCuts = {
     "VBF_parton_genjet>=0 && VBF_parton_jets>=0 && abs(genjet_eta[VBF_parton_genjet])>1.7 && abs(genjet_eta[VBF_parton_genjet])<2.8",
     "VBF_parton_genjet>=0 && VBF_parton_jets>=0 && abs(genjet_eta[VBF_parton_genjet])>1.7 && abs(genjet_eta[VBF_parton_genjet])<1.9",
@@ -100,34 +121,6 @@ void HGC::plot_GenRecoET(){
 
   std::vector<TString> fullDescriptions;
 
-  //  double y[7]={0,10,20,40,60,80,100};
-  //  double y[11]={0,10,20,30,40,50,60,70,80,90,100};
-  
-
-  // std::vector<TString> trees = { tree_stc, tree_bc_c4, tree_thresh};
-  // std::vector<TString> description = { "STC4_16", "BC_4", "Thresh"};
-  // std::vector<TString> legend = { "STC4+16", "BC-4", "Threshold"};
-  // std::string algo = "Fp8BestchoiceDummyHistomaxNtup";
-
-
-  // std::vector<TString> trees = { tree_bc, tree_bc,tree_bc};
-  // std::vector<TString> description = { "200", "140", "0"};
-  // std::vector<TString> legend = { "PU 200", "PU 140", "PU 0"};
-  // std::string algo = "Fp8BestchoiceDummyHistomaxNtup";
-  
-  // std::vector<TString> trees = { tree_thresh, tree_stc, tree_bc, tree_mixed};
-  // std::vector<TString> description = { "th","stc","bc","mixed"};
-  // std::vector<TString> legend = { "Threshold","STC","Best Choice", "Mixed"};
-
-  std::vector<TString> trees = { tree_bc, tree_bc_c1, tree_bc_c2, tree_bc_c4, tree_bc_c8,tree_bc_c16,};
-  std::vector<TString> description = { "bc", "bc-1","bc-2","bc-4","bc-8","bc-16"};
-  std::vector<TString> legend = { "bc", "bc-1","bc-2","bc-4","bc-8","bc-16"};
-
-  std::vector<TString> allLegends = {};
-
-
-  //  std::vector<TString> legend = { "bc", "bc-1","bc-2","bc-4"};
-
   // std::vector<TString> trees = { tree_bc};
   //  std::vector<TString> description = { "bc"};
   //  std::vector<TString> legend = { "Best Choice"};
@@ -151,6 +144,8 @@ void HGC::plot_GenRecoET(){
   std::vector<TString> trees = { tree_thresh, tree_stc, tree_stcScin4, tree_stcScin4C};
   std::vector<TString> description = { "th","stc4161616","stc416164","stc416164Coarse"};
   std::vector<TString> legend = { "Threshold","STC 4,16,16,16","STC 4,16,16,4","STC 4,16,16,4(Coarse)"};
+
+  std::vector<TString> allLegends = {};
 
   for(unsigned int i=0;i<trees.size();i++){
 
@@ -191,23 +186,23 @@ void HGC::plot_GenRecoET(){
 
   std::vector<TProfile*> profiles;
 
-  std::vector<TH2F*> histos_2D;
-
+  // Choose just a few plots for final resolution plot
   std::vector<TGraphErrors*> graphsForEtaCalibPlot;
   std::vector<TString> allLegendsForEtaCalibPlot = {};
   std::vector<TString> graphLegendsForEtaCalibPlot = {
     "Inclusive",
     "1.7 < |#eta| < 1.9",
     "2.5 < |#eta| < 2.8",
+    // Additional plot for "inclusive after calibrating in eta" will be added later
    };
 
   for(unsigned int i=0;i<histobjects.size();i++){
       TH2F * hist = plotter->Draw2D(histobjects.at(i), 15, x, 4000,0,400  ,fullDescriptions.at(i) );//VBF
       //    TH2F * hist = plotter.Draw2D(histobjects.at(i), 10, y, 4000,0,400  ,description.at(i) );//Pion
-      histos_2D.emplace_back( hist );
       TGraphErrors * graph = plotter->DrawProfile(hist  ,(fullDescriptions.at(i)+"_profile"), "s" );
       graphs.emplace_back( graph );
 
+      // Pick out a few graphs for plotting later
       if ( std::find(graphLegendsForEtaCalibPlot.begin(), graphLegendsForEtaCalibPlot.end(), allLegends.at(i)) != graphLegendsForEtaCalibPlot.end() ) {
         graphsForEtaCalibPlot.emplace_back( graph );
         allLegendsForEtaCalibPlot.emplace_back( allLegends.at(i) );
@@ -260,22 +255,24 @@ void HGC::plot_GenRecoET(){
     graphLegendsForEtaCalibPlot.emplace_back("After calibration in #eta");
   }
   
+  // Plot all resolution plots (one for each bin in eta, so many)
   // plotter->DrawGraphs(graphs, allLegends);
   // //  plotter.DrawEtaGraphs(graphs );
   // plotter->SaveFile( graphs );
 
-  
+
+  // This will just plot a few of the resolution plots to avoid cluttering canvase  
   plotter->DrawGraphs(graphsForEtaCalibPlot, graphLegendsForEtaCalibPlot);
-  //  plotter.DrawEtaGraphs(graphs );
   plotter->SaveFile( graphsForEtaCalibPlot );
 
-  // TF1 * pol_choice = new TF1 ( "pol", "[0] + [1]*x + [2]*x*x" , 20 , 350);
-  // TProfile * profile = profiles.at(0);
-  // profile->Fit( pol_choice, "R","",20,300);
+  TF1 * pol_choice = new TF1 ( "pol", "[0] + [1]*x + [2]*x*x" , 20 , 350);
+  TProfile * profile = profiles.at(0);
+
+  profile->Fit( pol_choice, "R","",20,300);
   
-  // profile->GetFunction("pol")->GetParameter( 0 ); 
-  // profile->GetFunction("pol")->GetParameter( 1 ) ;
-  // profile->GetFunction("pol")->GetParameter( 2 ) ;
+  profile->GetFunction("pol")->GetParameter( 0 ); 
+  profile->GetFunction("pol")->GetParameter( 1 ) ;
+  profile->GetFunction("pol")->GetParameter( 2 ) ;
 
   delete plotter;
 
@@ -326,7 +323,7 @@ void HGC::plot_nC3D(){
 
 void HGC::JetStudies(double par0, double par1, double par2, std::string algo){
 
-  std::string stats = "*";
+      std::string stats = "*";
   //      std::string stats = "1*";
 
 
