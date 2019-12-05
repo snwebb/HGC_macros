@@ -5,6 +5,7 @@ Plotter::Plotter( CmdLine * cmd ){
 
   _outdir = cmd->string_val( "--outdir" );
   std::system( ("mkdir -p plots/" + _outdir )   .c_str() );
+  std::system( ("mkdir -p plots/" + _outdir + "/EtaCalibrated/" )   .c_str() );
 
   InitialiseLegend();
   InitialiseCanvas();
@@ -69,6 +70,7 @@ void Plotter::DrawGraphs(std::vector<TGraphErrors*>& graphs, std::vector<TString
   int i = 0;
     for (auto &graph: graphs ){    
       
+      graph->SetLineWidth(2.5);
       graph->SetLineColor(i+1);      
       if(i>3){
 	graph->SetLineColor(i+2);
