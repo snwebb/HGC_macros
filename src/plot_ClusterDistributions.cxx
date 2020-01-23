@@ -96,27 +96,44 @@ void HGC::plot_GenRecoET(){
 
   std::vector<TString> etaCuts = {
     "VBF_parton_genjet>=0 && VBF_parton_jets>=0 && abs(genjet_eta[VBF_parton_genjet])>1.7 && abs(genjet_eta[VBF_parton_genjet])<2.8",
-    "VBF_parton_genjet>=0 && VBF_parton_jets>=0 && abs(genjet_eta[VBF_parton_genjet])>1.7 && abs(genjet_eta[VBF_parton_genjet])<1.9",
-    "VBF_parton_genjet>=0 && VBF_parton_jets>=0 && abs(genjet_eta[VBF_parton_genjet])>1.9 && abs(genjet_eta[VBF_parton_genjet])<2.1",
-    "VBF_parton_genjet>=0 && VBF_parton_jets>=0 && abs(genjet_eta[VBF_parton_genjet])>2.1 && abs(genjet_eta[VBF_parton_genjet])<2.3",
-    "VBF_parton_genjet>=0 && VBF_parton_jets>=0 && abs(genjet_eta[VBF_parton_genjet])>2.3 && abs(genjet_eta[VBF_parton_genjet])<2.5",
-    "VBF_parton_genjet>=0 && VBF_parton_jets>=0 && abs(genjet_eta[VBF_parton_genjet])>2.5 && abs(genjet_eta[VBF_parton_genjet])<2.8",
+    "VBF_parton_genjet>=0 && VBF_parton_jets>=0 && abs(genjet_eta[VBF_parton_genjet])>1.7 && abs(genjet_eta[VBF_parton_genjet])<2.8 && abs(jets_eta[VBF_parton_jets])>1.7 && abs(jets_eta[VBF_parton_jets])<1.9",
+    "VBF_parton_genjet>=0 && VBF_parton_jets>=0 && abs(genjet_eta[VBF_parton_genjet])>1.7 && abs(genjet_eta[VBF_parton_genjet])<2.8 && abs(jets_eta[VBF_parton_jets])>1.9 && abs(jets_eta[VBF_parton_jets])<2.0",
+    "VBF_parton_genjet>=0 && VBF_parton_jets>=0 && abs(genjet_eta[VBF_parton_genjet])>1.7 && abs(genjet_eta[VBF_parton_genjet])<2.8 && abs(jets_eta[VBF_parton_jets])>2.0 && abs(jets_eta[VBF_parton_jets])<2.1",
+    "VBF_parton_genjet>=0 && VBF_parton_jets>=0 && abs(genjet_eta[VBF_parton_genjet])>1.7 && abs(genjet_eta[VBF_parton_genjet])<2.8 && abs(jets_eta[VBF_parton_jets])>2.1 && abs(jets_eta[VBF_parton_jets])<2.2",
+    "VBF_parton_genjet>=0 && VBF_parton_jets>=0 && abs(genjet_eta[VBF_parton_genjet])>1.7 && abs(genjet_eta[VBF_parton_genjet])<2.8 && abs(jets_eta[VBF_parton_jets])>2.2 && abs(jets_eta[VBF_parton_jets])<2.3",
+    "VBF_parton_genjet>=0 && VBF_parton_jets>=0 && abs(genjet_eta[VBF_parton_genjet])>1.7 && abs(genjet_eta[VBF_parton_genjet])<2.8 && abs(jets_eta[VBF_parton_jets])>2.3 && abs(jets_eta[VBF_parton_jets])<2.4",
+    "VBF_parton_genjet>=0 && VBF_parton_jets>=0 && abs(genjet_eta[VBF_parton_genjet])>1.7 && abs(genjet_eta[VBF_parton_genjet])<2.8 && abs(jets_eta[VBF_parton_jets])>2.4 && abs(jets_eta[VBF_parton_jets])<2.5",
+    "VBF_parton_genjet>=0 && VBF_parton_jets>=0 && abs(genjet_eta[VBF_parton_genjet])>1.7 && abs(genjet_eta[VBF_parton_genjet])<2.8 && abs(jets_eta[VBF_parton_jets])>2.5 && abs(jets_eta[VBF_parton_jets])<2.6",
+    "VBF_parton_genjet>=0 && VBF_parton_jets>=0 && abs(genjet_eta[VBF_parton_genjet])>1.7 && abs(genjet_eta[VBF_parton_genjet])<2.8 && abs(jets_eta[VBF_parton_jets])>2.6 && abs(jets_eta[VBF_parton_jets])<2.8",
    };
   std::vector<TString> etaCutDescriptions = { 
     "1p7_2p8",
+
     "1p7_1p9",
-    "1p9_2p1",
-    "2p1_2p3",
-    "2p3_2p5",
-    "2p5_2p8",
+    "1p9_2p0",
+    "2p0_2p1",
+    "2p1_2p2",
+    "2p2_2p3",
+    "2p3_2p4",
+    "2p4_2p5",
+    "2p5_2p6",
+    "2p6_2p8",
+
+
    };
   std::vector<TString> etaCutLegend = {
     "Inclusive",
+
     "1.7 < |#eta| < 1.9",
-    "1.9 < |#eta| < 2.1",
-    "2.1 < |#eta| < 2.3",
-    "2.3 < |#eta| < 2.5",
-    "2.5 < |#eta| < 2.8",
+    "1.9 < |#eta| < 2.0",
+    "2.0 < |#eta| < 2.1",
+    "2.1 < |#eta| < 2.2",
+    "2.2 < |#eta| < 2.3",
+    "2.3 < |#eta| < 2.4",
+    "2.4 < |#eta| < 2.5",
+    "2.5 < |#eta| < 2.6",
+    "2.6 < |#eta| < 2.8",
+
    };
 
   std::vector<TString> fullDescriptions;
@@ -168,7 +185,8 @@ void HGC::plot_GenRecoET(){
        // histobjects.emplace_back( HistObject( "Jets", (snwebb + "/" + file + "/jet_ntuples_merged/ntuple_jet_merged_"+ trees.at(i) +"_"+stats+".root"), trees.at(i)+"_Jet", "", "jets_pt[VBF_parton_jets]:genjet_pt[VBF_parton_genjet]" ,cut_v9, true  ) );
        histobjects.emplace_back( HistObject( "Jets", (snwebb + "/" + file + "/jet_ntuples_merged/ntuple_jet_merged_"+ trees.at(i) +"_"+stats+".root"), trees.at(i)+"_Jet", "", "jets_pt[VBF_parton_jets]:genjet_pt[VBF_parton_genjet]" ,etaCuts[i_etaCut], true  ) );
        fullDescriptions.emplace_back( description.at(i) + etaCutDescriptions.at(i_etaCut) );
-       allLegends.emplace_back( etaCutLegend.at(i_etaCut) );
+       allLegends.emplace_back( legend.at(i) + " " + etaCutLegend.at(i_etaCut) );
+
       //3D attempt
       //         histobjects.emplace_back( HistObject( "Jets", (snwebb + "/" + file + "/jet_ntuples_merged/ntuple_jet_merged_"+ trees.at(i) +"_"+stats+".root"), trees.at(i)+"_Jet", "", "jets_pt[VBF_parton_jets]*2.3/abs(jets_eta[VBF_parton_jets]):genjet_pt[VBF_parton_genjet]" ,cut_v9, true  ) );
 
@@ -241,18 +259,21 @@ void HGC::plot_GenRecoET(){
 
     }
 
+    if ( calibrated_histos_2D_etaBins.size() == 0 ) continue;
+
     // Add plots of calibrated reco jet pt vs gen jet pt from the different eta bins
     TH2F* calibrated_histo_2D = (TH2F*) calibrated_histos_2D_etaBins[0]->Clone();
     for ( unsigned int i=1;i<calibrated_histos_2D_etaBins.size();i++ ) {
       calibrated_histo_2D->Add( calibrated_histos_2D_etaBins[i] );
     }
-    TGraphErrors * graph = plotter->DrawProfile(calibrated_histo_2D  ,("EtaCalibrated/profile"), "s" );
+    TGraphErrors * graph = plotter->DrawProfile(calibrated_histo_2D  ,("EtaCalibrated/"+description.at(i)+"profile"), "s" );
 
     graphs.emplace_back( graph );
     allLegends.emplace_back("After calibration in #eta");
 
     graphsForEtaCalibPlot.emplace_back( graph );
-    graphLegendsForEtaCalibPlot.emplace_back("After calibration in #eta");
+    allLegendsForEtaCalibPlot.emplace_back(legend.at(i) + " After calibration in #eta");
+
   }
   
   // Plot all resolution plots (one for each bin in eta, so many)
@@ -261,8 +282,8 @@ void HGC::plot_GenRecoET(){
   // plotter->SaveFile( graphs );
 
 
-  // This will just plot a few of the resolution plots to avoid cluttering canvase  
-  plotter->DrawGraphs(graphsForEtaCalibPlot, graphLegendsForEtaCalibPlot);
+  // This will just plot a few of the resolution plots to avoid cluttering the canvas
+  plotter->DrawGraphs(graphsForEtaCalibPlot, allLegendsForEtaCalibPlot);
   plotter->SaveFile( graphsForEtaCalibPlot );
 
   TF1 * pol_choice = new TF1 ( "pol", "[0] + [1]*x + [2]*x*x" , 20 , 350);
