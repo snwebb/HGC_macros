@@ -43,7 +43,24 @@ InputDirList = [
 #"VBFHToGG_M-125_14TeV_powheg_pythia8/crab_VBF-HGG-PU200-SuperTC-SignalDriven/191028_142710/0000",
 
 #"VBFHToGG_M-125_14TeV_powheg_pythia8/crab_VBF-HGG-PU200-SuperTC-ScintillatorStudies/191031_115118/0000",
-"VBFHToGG_M-125_14TeV_powheg_pythia8/crab_VBF-HGG-PU200-Standard/191114_072918/0000",
+
+#"VBFHToGG_M-125_14TeV_powheg_pythia8/crab_VBF-HGG-PU200-Standard/191114_072918/0000",
+#"NeutrinoGun_E_10GeV/crab_DoubleNu-PU200-Standard/191115_164927/0000",
+
+#"NeutrinoGun_E_10GeV/crab_DoubleNu-PU200-BestChoice-CoarserInH/191127_100629/0000",
+#
+#"VBFHToGG_M-125_14TeV_powheg_pythia8/crab_VBF-HGG-PU200-BestChoice-Coarse/191217_155430/0000",
+#"NeutrinoGun_E_10GeV/crab_DoubleNu-PU200-BestChoice-Coarse/191217_134059/0000",
+
+
+#"VBFHToGG_M-125_14TeV_powheg_pythia8/crab_VBF-HGG-PU200-OOP/191220_104900/0000",
+#"NeutrinoGun_E_10GeV/crab_DoubleNu-PU200-OOP/191220_104729/0000",
+
+
+"VBFHToGG_M-125_14TeV_powheg_pythia8/crab_VBF-HGG-PU200-OOP-LargerDR/200107_111137/0000",
+#"NeutrinoGun_E_10GeV/crab_DoubleNu-PU200-OOP-LargerDR/200107_111003/0000",
+
+
 
    ]
 
@@ -71,17 +88,32 @@ OutputDirList=[  "/vols/cms/snwebb/HGC_ntuples/VBF_HGG/" + i.split("_")[1] + Tag
 
 TreeNames = [
 
- "Fp8ThresholdDummyHistomaxNtup",
- "Fp8Stc4161616DummyHistomaxNtup",
- "Fp8BestchoiceDummyHistomaxNtup",
- "Fp8MixedDummyHistomaxNtup",
+ # "Fp8ThresholdDummyHistomaxNtup",
+ # "Fp8Stc4161616DummyHistomaxNtup",
+ # "Fp8BestchoiceDummyHistomaxNtup",
+ # "Fp8MixedDummyHistomaxNtup",
+   
+ #   "Fp8BestchoiceDummyHistomaxNtup",
+ #   "Fp8BestchoiceCoarse1DummyHistomaxNtup",
+ #   "Fp8BestchoiceCoarse2DummyHistomaxNtup",
+ #   "Fp8BestchoiceCoarse4DummyHistomaxNtup",
+ #   "Fp8BestchoiceCoarse8DummyHistomaxNtup",
+#   "Fp8BestchoiceCoarse16DummyHistomaxNtup",
 
-# "Fp8BestchoiceDummyHistomaxNtup",
-# "Fp8BestchoiceCoarse1DummyHistomaxNtup",
-# "Fp8BestchoiceCoarse2DummyHistomaxNtup",
-# "Fp8BestchoiceCoarse4DummyHistomaxNtup",
-# "Fp8BestchoiceCoarse8DummyHistomaxNtup",
-# "Fp8BestchoiceCoarse16DummyHistomaxNtup",
+
+#OOT from JB
+# "NoOOTThresholdDummyHistomaxxydr015GenmatchGenclustersntuple",
+# "NoOOTMixedbcstcDummyHistomaxxydr015GenmatchGenclustersntuple",
+# "OOT1ThresholdDummyHistomaxxydr015GenmatchGenclustersntuple",
+# "OOT1MixedbcstcDummyHistomaxxydr015GenmatchGenclustersntuple",
+# "OOT2ThresholdDummyHistomaxxydr015GenmatchGenclustersntuple",
+# "OOT2MixedbcstcDummyHistomaxxydr015GenmatchGenclustersntuple",
+"NoOOTThresholdDummyHistomaxxydr015Genclustersntuple",
+"NoOOTMixedbcstcDummyHistomaxxydr015Genclustersntuple",
+"OOT1ThresholdDummyHistomaxxydr015Genclustersntuple",
+"OOT1MixedbcstcDummyHistomaxxydr015Genclustersntuple",
+"OOT2ThresholdDummyHistomaxxydr015Genclustersntuple",
+"OOT2MixedbcstcDummyHistomaxxydr015Genclustersntuple",
 
 #DEFAULT
 #"hgcalTriggerNtuplizer",

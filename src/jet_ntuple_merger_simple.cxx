@@ -76,6 +76,19 @@ void jet_ntuple_merger_simple::add_jet(TString filein,  TString treename, TStrin
 
   std::vector<float> *_jets_szzjet;
 
+  std::vector<float> * _jets_meanz_mean;   
+  std::vector<float> * _jets_meanz_max;
+  std::vector<float> * _jets_layer10_mean;
+  std::vector<float> * _jets_layer10_max;
+  std::vector<float> * _jets_layer50_mean;
+  std::vector<float> * _jets_layer50_max;
+  std::vector<float> * _jets_layer90_mean;
+  std::vector<float> * _jets_layer90_max;
+  std::vector<float> * _jets_ntc67_mean;
+  std::vector<float> * _jets_ntc67_max;
+  std::vector<float> * _jets_ntc90_mean;
+  std::vector<float> * _jets_ntc90_max;
+
   std::vector<std::vector<int> > *_gen_daughters;
   std::vector<int> *_gen_id;
   std::vector<int> *_gen_status;
@@ -164,6 +177,22 @@ void jet_ntuple_merger_simple::add_jet(TString filein,  TString treename, TStrin
   tree_jet->SetBranchAddress("jets_maxlayer", &_jets_maxlayer);
   tree_jet->SetBranchAddress("jets_firstlayer", &_jets_firstlayer);
   tree_jet->SetBranchAddress("jets_coreshowerlength_sum", &_jets_coreshowerlength_sum);
+
+
+  tree_jet->SetBranchAddress("jets_meanz_mean" , &_jets_meanz_mean);   
+  tree_jet->SetBranchAddress("jets_meanz_max" , &_jets_meanz_max);	 
+  tree_jet->SetBranchAddress("jets_layer10_mean" , &_jets_layer10_mean); 
+  tree_jet->SetBranchAddress("jets_layer10_max" , &_jets_layer10_max);  
+  tree_jet->SetBranchAddress("jets_layer50_mean" , &_jets_layer50_mean); 
+  tree_jet->SetBranchAddress("jets_layer50_max" , &_jets_layer50_max);  
+  tree_jet->SetBranchAddress("jets_layer90_mean" , &_jets_layer90_mean); 
+  tree_jet->SetBranchAddress("jets_layer90_max" , &_jets_layer90_max);  
+  tree_jet->SetBranchAddress("jets_ntc67_mean" , &_jets_ntc67_mean);   
+  tree_jet->SetBranchAddress("jets_ntc67_max" , &_jets_ntc67_max);	 
+  tree_jet->SetBranchAddress("jets_ntc90_mean" , &_jets_ntc90_mean);   
+  tree_jet->SetBranchAddress("jets_ntc90_max" , &_jets_ntc90_max);	     
+
+
     
   f_new->cd();
   TTree* tree_new = new TTree(treenameout,treenameout);
@@ -270,6 +299,23 @@ void jet_ntuple_merger_simple::add_jet(TString filein,  TString treename, TStrin
   tree_new->Branch("dijet_mass", &_dijet_mass);
   tree_new->Branch("dijet_mass_VBF", &_dijet_mass_VBF);
 
+
+
+  tree_new->Branch("jets_meanz_mean" , &_jets_meanz_mean);   
+  tree_new->Branch("jets_meanz_max" , &_jets_meanz_max);	 
+  tree_new->Branch("jets_layer10_mean" , &_jets_layer10_mean); 
+  tree_new->Branch("jets_layer10_max" , &_jets_layer10_max);  
+  tree_new->Branch("jets_layer50_mean" , &_jets_layer50_mean); 
+  tree_new->Branch("jets_layer50_max" , &_jets_layer50_max);  
+  tree_new->Branch("jets_layer90_mean" , &_jets_layer90_mean); 
+  tree_new->Branch("jets_layer90_max" , &_jets_layer90_max);  
+  tree_new->Branch("jets_ntc67_mean" , &_jets_ntc67_mean);   
+  tree_new->Branch("jets_ntc67_max" , &_jets_ntc67_max);	 
+  tree_new->Branch("jets_ntc90_mean" , &_jets_ntc90_mean);   
+  tree_new->Branch("jets_ntc90_max" , &_jets_ntc90_max);	     
+
+
+
   bool include_num_seeds_jet = false;
   if ( include_num_seeds_jet )
     tree_new->Branch("num_seeds_in_jet", &_num_seeds_in_jet);
@@ -333,6 +379,19 @@ void jet_ntuple_merger_simple::add_jet(TString filein,  TString treename, TStrin
     _jets_firstlayer = 0;  
     _jets_coreshowerlength_sum = 0;   
     
+    _jets_meanz_mean = 0;   
+    _jets_meanz_max = 0;
+    _jets_layer10_mean = 0;
+    _jets_layer10_max = 0;
+    _jets_layer50_mean = 0;
+    _jets_layer50_max = 0;
+    _jets_layer90_mean = 0;
+    _jets_layer90_max = 0;
+    _jets_ntc67_mean = 0;
+    _jets_ntc67_max = 0;
+    _jets_ntc90_mean = 0;
+    _jets_ntc90_max = 0;
+
     _gen_id = 0;
     _gen_status = 0;
     _gen_pt = 0;
@@ -453,29 +512,29 @@ void jet_ntuple_merger_simple::add_jet(TString filein,  TString treename, TStrin
     */
 
     //Determine photon overlap
-    for(unsigned int phot=0; phot<_Photon_gen.size(); phot++){
-      
-      bool overlap = false;
+
+    for(unsigned int i_jet=0; i_jet<(*_jets_pt).size(); i_jet++){
+
       TLorentzVector jet;
       TLorentzVector photon;
-      int i_gen = _Photon_gen[phot];
-      photon.SetPtEtaPhiE((*_gen_pt)[i_gen], (*_gen_eta)[i_gen], (*_gen_phi)[i_gen], (*_gen_energy)[i_gen]);     
+      jet.SetPtEtaPhiE((*_jets_pt)[i_jet], (*_jets_eta)[i_jet], (*_jets_phi)[i_jet], (*_jets_energy)[i_jet]);     
+      bool overlap = false;
       
-      for(unsigned int i_jet=0; i_jet<(*_jets_pt).size(); i_jet++){
-	jet.SetPtEtaPhiE((*_jets_pt)[i_jet], (*_jets_eta)[i_jet], (*_jets_phi)[i_jet], (*_jets_energy)[i_jet]);     
-	
-	
-	if ( jet.DeltaR( photon ) < 0.1 ){
+      for(unsigned int phot=0; phot<_Photon_gen.size(); phot++){
+      	int i_gen = _Photon_gen[phot];
+	photon.SetPtEtaPhiE((*_gen_pt)[i_gen], (*_gen_eta)[i_gen], (*_gen_phi)[i_gen], (*_gen_energy)[i_gen]);     
+      	if ( jet.DeltaR( photon ) < 0.1 ){
 	  overlap = true;
+	  break;
 	}
-	_Photon_overlap.emplace_back(overlap);
-	
       }
+
+      _Photon_overlap.emplace_back(overlap);
     }
 
 
     if ( (*_jets_pt).size() > 1 ){
-      if ( _isHGG && (!_Photon_overlap[0] && !_Photon_overlap[1]) || !_isHGG ){
+      if ( (_isHGG && (!_Photon_overlap[0] && !_Photon_overlap[1])) || !_isHGG ){
 	_dijet_mass = std::sqrt(2*std::sqrt(std::pow((*_jets_pt)[0],2)*std::pow(std::cosh((*_jets_eta)[0]),2))*    	  std::sqrt(std::pow((*_jets_pt)[1],2)*std::pow(std::cosh((*_jets_eta)[1]),2)) -    2*(*_jets_pt)[0]*(*_jets_pt)[1]*(std::cos((*_jets_phi)[0] -  (*_jets_phi)[1]) + std::sinh((*_jets_eta)[0])*std::sinh((*_jets_eta)[1])));
       }
     }
@@ -569,7 +628,9 @@ void jet_ntuple_merger_simple::add_jet(TString filein,  TString treename, TStrin
 
       for(unsigned int i_jet=0; i_jet<(*_jets_pt).size(); i_jet++){
 	//Continue if jet overlaps with truth photon
-	if ( _Photon_overlap[i_jet] ) continue;
+	if ( _Photon_overlap.size() > 0){
+	  if ( _Photon_overlap[i_jet] ) continue;
+	}
 	TLorentzVector jet;
 	jet.SetPtEtaPhiE((*_jets_pt)[i_jet],(*_jets_eta)[i_jet],(*_jets_phi)[i_jet],(*_jets_energy)[i_jet]);	
 	float dR = jet.DeltaR(VBF_genjet);
