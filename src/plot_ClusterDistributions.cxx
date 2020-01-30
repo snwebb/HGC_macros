@@ -31,6 +31,12 @@ void HGC::plot_GenRecoET(){
   TString file_VBF_Decentralised_signaldriven_DR0p2_Normal = "VBF_HGG/VBF-HGG-PU200-Decentralised-SignalDriven-DR0p2-Normal";
   TString VBF_HGG_PU200_SuperTC_SignalDriven_DR0p2 = "VBF_HGG/VBF-HGG-PU200-SuperTC-SignalDriven-DR0p2";
   TString VBF_HGG_PU200_SuperTC_ScintillatorStudies_DR0p2 = "VBF_HGG/VBF-HGG-PU200-SuperTC-ScintillatorStudies-DR0p2";
+  TString file_VBF_Standard = "VBF_HGG/VBF-HGG-PU200-Standard-DR0p2";
+  TString file_Nu_BCCoarseH = "DoubleNu/DoubleNu-PU200-BestChoice-CoarserInH-DR0p2";
+  TString file_VBF_Dec = "VBF_HGG/VBF-HGG-PU200-BestChoice-Coarse-DR0p2";
+  TString file_VBF_OOP = "VBF_HGG/VBF-HGG-PU200-OOP-DR0p2";
+  TString file_VBF_OOP_LargerDR = "VBF_HGG/VBF-HGG-PU200-OOP-LargerDR-DR0p2";
+
 
   TString tree_thresh  =  "Fp8ThresholdDummyHistomaxNtup";
   TString tree_stc_validation  =    "Fp8Stc4444FixedDummyHistomaxNtup";
@@ -40,18 +46,22 @@ void HGC::plot_GenRecoET(){
   TString tree_stc_sig1  =    "Fp8StcSigDriv1DummyHistomaxNtup";
   TString tree_stc_sig2  =    "Fp8StcSigDriv2DummyHistomaxNtup";
   TString tree_stc_sig3  =    "Fp8StcSigDriv3DummyHistomaxNtup";
-
   TString tree_bc  =    "Fp8BestchoiceDummyHistomaxNtup";
   TString tree_mixed  =    "Fp8MixedDummyHistomaxNtup";
-
   TString tree_tcs  =  "hgcalTriggerNtuplizer";
-
   TString tree_bc_c1  =    "Fp8BestchoiceCoarse1DummyHistomaxNtup";
   TString tree_bc_c2  =    "Fp8BestchoiceCoarse2DummyHistomaxNtup";
   TString tree_bc_c4  =    "Fp8BestchoiceCoarse4DummyHistomaxNtup";
   TString tree_bc_c8  =    "Fp8BestchoiceCoarse8DummyHistomaxNtup";
   TString tree_bc_c16  =   "Fp8BestchoiceCoarse16DummyHistomaxNtup";
 
+  TString tree_no_oop_thresh  =  "NoOOTThresholdDummyHistomaxxydr015Genclustersntuple";
+  TString tree_no_oop_mixed  =     "NoOOTMixedbcstcDummyHistomaxxydr015Genclustersntuple";
+  TString tree_oop1_thresh  =     "OOT1ThresholdDummyHistomaxxydr015Genclustersntuple";
+  TString tree_oop1_mixed  =     "OOT1MixedbcstcDummyHistomaxxydr015Genclustersntuple";
+  TString tree_oop2_thresh  =     "OOT2ThresholdDummyHistomaxxydr015Genclustersntuple";
+  TString tree_oop2_mixed  =     "OOT2MixedbcstcDummyHistomaxxydr015Genclustersntuple";
+  // 
   //Cuts
 
   TString cut_v9 = "VBF_parton_genjet>=0 && VBF_parton_jets>=0 && abs(genjet_eta[VBF_parton_genjet])>1.7 && abs(genjet_eta[VBF_parton_genjet])<2.8 ";
@@ -71,33 +81,78 @@ void HGC::plot_GenRecoET(){
   Plotter * plotter = new Plotter( _cmd );
   double x[16]={0,10,20,40,60,80,100,120,140,160,180,200,220,250,300,400};
   
-  TString file = VBF_HGG_PU200_SuperTC_ScintillatorStudies_DR0p2;
+  TString file = file_VBF_OOP_LargerDR;
 
   // std::vector<TString> trees = { tree_stc_validation, tree_stc};
   // std::vector<TString> description = { "STC4_CTC4", "STC4_16"};
   // std::vector<TString> legend = { "STC4+CTC4", "STC4+16"};
   // std::string algo = "Fp8BestchoiceDummyHistomaxNtup";
   
-
   // std::vector<TString> trees = { tree_stc, tree_bc_c4, tree_thresh};
   // std::vector<TString> description = { "STC4_16", "BC_4", "Thresh"};
   // std::vector<TString> legend = { "STC4+16", "BC-4", "Threshold"};
   // std::string algo = "Fp8BestchoiceDummyHistomaxNtup";
-
 
   // std::vector<TString> trees = { tree_bc, tree_bc,tree_bc};
   // std::vector<TString> description = { "200", "140", "0"};
   // std::vector<TString> legend = { "PU 200", "PU 140", "PU 0"};
   // std::string algo = "Fp8BestchoiceDummyHistomaxNtup";
   
-  // std::vector<TString> trees = { tree_thresh, tree_stc, tree_bc, tree_mixed};
-  // std::vector<TString> description = { "th","stc","bc","mixed"};
-  // std::vector<TString> legend = { "Threshold","STC","Best Choice", "Mixed"};
+  // std::vector<TString> trees = { tree_thresh, tree_stc, tree_bc, tree_mixed, tree_bc_c4};
+  // std::vector<TString> description = { "th","stc","bc","mixed", "bccoarse"};
+  // std::vector<TString> legend = { "Threshold 1.35 mip_{T}","SuperTriggerCell","BestChoice", "Mixed BC + SuperTriggerCell", "Coarse-4 BC in CE-H"};
+
+ // std::vector<TString> trees = { tree_no_oop_thresh,tree_no_oop_mixed,tree_oop1_thresh, tree_oop1_mixed, tree_oop2_thresh, tree_oop2_mixed};
+ // std::vector<TString> description = {  "nooop_thresh", "nooop_mixed", "oop1_thresh", "oop1_mixed", "oop2_thresh", "oop2_mixed"};
+ // std::vector<TString> legend = {  "nooop_thresh", "nooop_mixed", "oop1_thresh", "oop1_mixed", "oop2_thresh", "oop2_mixed"};
+
+ // std::vector<TString> trees = { tree_no_oop_thresh};
+ // std::vector<TString> description = {  "nooop_thresh"};
+ // std::vector<TString> legend = {   "No OOT Correction"};
+
+ std::vector<TString> trees = { tree_no_oop_thresh,tree_oop1_thresh,tree_oop2_thresh};
+ std::vector<TString> description = {  "nooop_thresh", "oop1_thresh", "oop2_thresh"};
+ std::vector<TString> legend = {   "No OOT Correction",  "OOT Option 1",  "OOT Option 2"};
+
+ // std::vector<TString> trees = {tree_no_oop_mixed, tree_oop1_mixed, tree_oop2_mixed};
+ // std::vector<TString> description = {  "nooop_mixed", "oop1_mixed", "oop2_mixed"};
+ // std::vector<TString> legend = {   "No OOT Correction",  "OOT Option 1",  "OOT Option 2"};
+
+
+  // std::vector<TString> trees = { tree_thresh, tree_stc};
+  // std::vector<TString> description = {  "thresh", "STC"};
+  // std::vector<TString> legend = { "Threshold", "Super TC"};
+
+  // std::vector<TString> trees = { tree_bc_c1,tree_bc_c2, tree_bc_c4, tree_bc_c8, tree_bc_c16,tree_mixed, tree_bc, tree_thresh, tree_stc};
+  // std::vector<TString> description = { "bccoarse1", "bccoarse2", "bccoarse4", "bccoarse8","bccoarse16","mixed", "bc", "thresh", "STC"};
+  // std::vector<TString> legend = { "Coarse-1 BC in CE-H", "Coarse-2 BC in CE-H","Coarse-4 BC in CE-H", "Coarse-8 BC in CE-H", "Coarse-16 BC in CE-H","Mixed", "BC","Threshold", "Super TC"};
+  //  std::vector<std::string algo> = std::string(tree_bc_c1);
+
+  // std::vector<TString> trees = { tree_bc_c2};
+  // std::vector<TString> description = { "bccoarse"};
+  // std::vector<TString> legend = { "Coarse-2 BC in CE-H"};
+  // std::string algo = std::string(tree_bc_c2);
+
+  // std::vector<TString> trees = { tree_bc_c4};
+  // std::vector<TString> description = { "bccoarse"};
+  // std::vector<TString> legend = { "Coarse-4 BC in CE-H"};
+  // std::string algo = std::string(tree_bc_c4);
+
+  // std::vector<TString> trees = { tree_bc_c8};
+  // std::vector<TString> description = { "bccoarse"};
+  // std::vector<TString> legend = { "Coarse-8 BC in CE-H"};
+  // std::string algo = std::string(tree_bc_c8);
+
+  // std::vector<TString> trees = { tree_bc_c16};
+  // std::vector<TString> description = { "bccoarse"};
+  // std::vector<TString> legend = { "Coarse-16 BC in CE-H"};
+  // std::string algo = std::string(tree_bc_c16);
+
 
   // std::vector<TString> trees = { tree_bc};
-  //  std::vector<TString> description = { "bc"};
-  //  std::vector<TString> legend = { "Best Choice"};
-  //  std::string algo = "Fp8BestchoiceDummyHistomaxNtup";
+  // std::vector<TString> description = { "bc"};
+  // std::vector<TString> legend = { "Best Choice"};
+  // std::string algo = "Fp8BestchoiceDummyHistomaxNtup";
   
   // std::vector<TString> trees = { tree_thresh};
   // std::vector<TString> description = { "th"};
@@ -108,19 +163,26 @@ void HGC::plot_GenRecoET(){
   // std::vector<TString> description = { "stc"};
   // std::vector<TString> legend = { "stc"};
   // std::string algo = "Fp8Stc4161616DummyHistomaxNtup";
-  
+
+
+  // std::vector<TString> trees = { tree_mixed};
+  // std::vector<TString> description = { "mixed"};
+  // std::vector<TString> legend = { "Mixed BC + SuperTriggerCell"};
+  // std::string algo = std::string(tree_mixed);
+    
   // std::vector<TString> trees = { tree_tcs};
   // std::vector<TString> description = { "tcs"};
   // std::vector<TString> legend = { "tcs" };
   // std::string algo = "hgcalTriggerNtuplizer";
 
-  std::vector<TString> trees = { tree_thresh, tree_stc, tree_stcScin4, tree_stcScin4C};
-  std::vector<TString> description = { "th","stc4161616","stc416164","stc416164Coarse"};
-  std::vector<TString> legend = { "Threshold","STC 4,16,16,16","STC 4,16,16,4","STC 4,16,16,4(Coarse)"};
+  // std::vector<TString> trees = { tree_thresh, tree_stc, tree_stcScin4, tree_stcScin4C};
+  // std::vector<TString> description = { "th","stc4161616","stc416164","stc416164Coarse"};
+  // std::vector<TString> legend = { "Threshold","STC 4,16,16,16","STC 4,16,16,4","STC 4,16,16,4(Coarse)"};
 
   for(unsigned int i=0;i<trees.size();i++){
 
-    //    if (i==1) file = file_VBF_BCCoarseH;
+
+    //       if (i==4) file = file_VBF_BCCoarseH;
     //    if (i==2 ) file = file_VBF_MixedFE;
     //5 eta bins
 
@@ -159,7 +221,7 @@ void HGC::plot_GenRecoET(){
     //    TH2F * hist = plotter.Draw2D(histobjects.at(i), 10, y, 4000,0,400  ,description.at(i) );//Pion
 
     graphs.emplace_back( plotter->DrawProfile(hist  ,(description.at(i)+"_profile"), "s" ) );
-    profiles.push_back( hist->ProfileX( "profile_mean_eff") );
+    profiles.push_back( hist->ProfileX( ( "profile_mean_eff" + description.at(i) )) );
 
     // hist = plotter.Draw2D(histobjects2.at(i), 15, x, 4000,0,400  ,description.at(i) + "_high_eta");
     // graphs.emplace_back( plotter.DrawProfile(hist  ,(description.at(i)+"_profile_high_eta"), "s" ) );
@@ -171,22 +233,27 @@ void HGC::plot_GenRecoET(){
   //  plotter.DrawEtaGraphs(graphs );
   plotter->SaveFile( graphs );
 
-
-  TF1 * pol_choice = new TF1 ( "pol", "[0] + [1]*x + [2]*x*x" , 20 , 350);
-  TProfile * profile = profiles.at(0);
-
-  profile->Fit( pol_choice, "R","",20,300);
-  
-  profile->GetFunction("pol")->GetParameter( 0 ); 
-  profile->GetFunction("pol")->GetParameter( 1 ) ;
-  profile->GetFunction("pol")->GetParameter( 2 ) ;
-
-  
   delete plotter;
 
+  for(unsigned int i=0;i<trees.size();i++){
 
-   // TGraph * mapping = CalculateEfficiency( profile->GetFunction("pol")->GetParameter( 0 ), profile->GetFunction("pol")->GetParameter( 1 ), profile->GetFunction("pol")->GetParameter( 2 ), algo  );
-   // CalculateRates ( profile->GetFunction("pol")->GetParameter( 0 ), profile->GetFunction("pol")->GetParameter( 1 ), profile->GetFunction("pol")->GetParameter( 2 ) , algo, mapping);
+    TF1 * pol_choice = new TF1 ( "pol", "[0] + [1]*x + [2]*x*x" , 20 , 350);
+    TProfile * profile = profiles.at(i);
+    
+    profile->Fit( pol_choice, "R","",20,300);
+
+    TGraph * mapping = CalculateEfficiency( profile->GetFunction("pol")->GetParameter( 0 ), profile->GetFunction("pol")->GetParameter( 1 ), profile->GetFunction("pol")->GetParameter( 2 ), std::string(trees.at(i))  );
+    CalculateRates ( profile->GetFunction("pol")->GetParameter( 0 ), profile->GetFunction("pol")->GetParameter( 1 ), profile->GetFunction("pol")->GetParameter( 2 ) , std::string(trees.at(i)), mapping);
+
+    //    profile->SaveAs("prof.root");
+    
+    // profile->GetFunction("pol")->GetParameter( 1 ) ;
+    // profile->GetFunction("pol")->GetParameter( 2 ) ;
+  }
+  
+
+  // TGraph * mapping = CalculateEfficiency( profile->GetFunction("pol")->GetParameter( 0 ), profile->GetFunction("pol")->GetParameter( 1 ), profile->GetFunction("pol")->GetParameter( 2 ), algo  );
+  // CalculateRates ( profile->GetFunction("pol")->GetParameter( 0 ), profile->GetFunction("pol")->GetParameter( 1 ), profile->GetFunction("pol")->GetParameter( 2 ) , algo, mapping);
   //  JetStudies(  profile->GetFunction("pol")->GetParameter( 0 ), profile->GetFunction("pol")->GetParameter( 1 ), profile->GetFunction("pol")->GetParameter( 2 ), algo  );
   
 }
@@ -339,13 +406,6 @@ void HGC::JetStudies(double par0, double par1, double par2, std::string algo){
 
   //  histobjects_n_tcs.emplace_back( HistObject( "Jets", (snwebb + "/" + file1 + "/jet_ntuples_merged/ntuple_jet_merged_"+ tree1 +"_"+stats+".root"), tree1+"_Jet", "vbf", "jets_n_tcs[VBF_parton_jets]" ,cut_vbf, true  ) );
 
-  //something going wrong here.
-
-
-  std::cout << "jets_n_tcs[VBF_parton_jets]" << std::endl;
-  std::cout << cut_vbf << std::endl;
-  std::cout << snwebb + "/" + file1 + "/jet_ntuples_merged/ntuple_jet_merged_"+ tree1 +"_"+stats+".root" << std::endl;
-
   histobjects_n_tcs.emplace_back( HistObject( "Jets", (snwebb + "/" + file1 + "/jet_ntuples_merged/ntuple_jet_merged_"+ tree1 +"_"+stats+".root"), tree1+"_Jet", "vbf", "jets_n_tcs[VBF_parton_jets]" ,cut_vbf, true  ) );
   histobjects_n_tcs.emplace_back( HistObject( "Jets", (snwebb + "/" + file2 + "/jet_ntuples_merged/ntuple_jet_merged_"+ tree1 +"_"+stats+".root"), tree1+"_Jet", "pu", "jets_n_tcs" ,cut_basic, true  ) );
 
@@ -397,8 +457,8 @@ TGraph * HGC::CalculateEfficiency(double par0, double par1, double par2, std::st
   
   std::string stats = "*";
   //  std::string stats = "1*";
-  //  std::string file1 = "VBF_HGG/VBF-HGG-PU200-Decentralised";
-  std::string file1 = "VBF_HGG/VBF-HGG-PU200-Decentralised-SignalDriven";
+  //  std::string file1 = "VBF_HGG/VBF-HGG-PU200-OOP-DR0p2";  
+  std::string file1 = "VBF_HGG/VBF-HGG-PU200-OOP-LargerDR-DR0p2";
   std::string tree1  =    algo;
   
   
@@ -442,15 +502,12 @@ TGraph * HGC::CalculateEfficiency(double par0, double par1, double par2, std::st
      
      TString calibpt = "( -"+TString(std::to_string(par1))+ "+ sqrt( " +  TString(std::to_string(par1*par1)) + "- 4*"+TString(std::to_string(par2))+"*("+TString(std::to_string(par0))+"-jets_pt[VBF_parton_jets]) ) ) / (2 * "+TString(std::to_string(par2))+")";
 
-     std::cout << calibpt << std::endl;
-
      //Original cut
      TString cut_reco = "VBF_parton_genjet>=0 && VBF_parton_jets>=0 && abs(genjet_eta[VBF_parton_genjet])>1.7 && abs(genjet_eta[VBF_parton_genjet])<2.8 && "+ calibpt + ">"+cuts.at(i);
 
      //With VBF requirement
      //        cut_reco = cut_reco + " &&  jets_n_cl[VBF_parton_jets] < 3";
-        cut_reco = cut_reco + " &&  jets_n_cl[VBF_parton_jets] < 4";
-     //     std::cout << cut_reco << std::endl;
+     //            cut_reco = cut_reco + " &&  jets_n_cl[VBF_parton_jets] < 4";
 
      recohist = helper.single_plot( snwebb + "/" + file1 + "/jet_ntuples_merged/ntuple_jet_merged_"+ tree1 +"_"+stats+".root", tree1+"_Jet", "genjet_pt[VBF_parton_genjet]", cut_reco, 100, 0, max );
      recohist->SetTitle(";Gen Jet p_{T}; Efficiency");
@@ -480,6 +537,9 @@ TGraph * HGC::CalculateEfficiency(double par0, double par1, double par2, std::st
      if(i>3){
        recohist->GetFunction("f1")->SetLineColor(i+2);
      }
+     if(i>7){
+       recohist->GetFunction("f1")->SetLineColor(i+3);
+     }
      
      turnons.push_back(recohist);
      //     turnons_eff.push_back(pEff);
@@ -497,21 +557,17 @@ TGraph * HGC::CalculateEfficiency(double par0, double par1, double par2, std::st
    TF1 * mapfit = new TF1("fit","[2]*x*x+[1]*x+[0]");
    graph->Fit(mapfit);
 
-
-
-   //   std::cout << "efficiency = " << recohist->Integral() / genhist->Integral() << std::endl;
    
    Plotter plotter2( _cmd );
    //   plotter.Draw(recohist, "40", "turnon", false);
    
    
-   plotter2.Draw(turnons, legend, "turnon", false);
+   plotter2.Draw(turnons, legend, "turnon_" + algo, false);
    
 
-   plotter2.DrawGraph(graph , "95eff");
+   plotter2.DrawGraph(graph , "95eff_" + algo);
 
    //   plotter.DrawEff(turnons_eff, legend, "turnon_eff", false);
-   //   std::cout << "end of here " << std::endl;
    
    return graph;   
 
@@ -521,17 +577,19 @@ void HGC::CalculateRates(double par0, double par1, double par2, std::string algo
 
   //      std::string stats = "1*";
   std::string stats = "*";
-  //std::string file1 = "DoubleNu/DoubleNu-PU200-Decentralised";
-  std::string file1 = "DoubleNu/DoubleNu-PU200-Decentralised-SignalDriven";  
-  std::string tree1  =   algo;
+
+  //  std::string file1 = "DoubleNu/DoubleNu-PU200-OOP-DR0p2";
+  std::string file1 = "DoubleNu/DoubleNu-PU200-OOP-LargerDR-DR0p2";
+  std::string tree1  =  algo;
   
   TF1 * mapfit = new TF1("pol2","[2]*x*x+[1]*x+[0]");
   mapping->Fit(mapfit);
   
   std::vector<TH1F*> ratevec;
+  std::vector<TGraphErrors*> rategraphvec;
   //  std::vector<TString> legend = {"Inclusive", "VBF-like", "di-jet", "di-jet+VBF-like", "di-jet+masscut"};
   //  std::vector<TString> legend = {"Inclusive", "di-jet", "di-jet+masscut"};
-    std::vector<TString> legend = {"VBF-like", "di-jet+VBF-like"};
+      std::vector<TString> legend = {"Inclusive", "VBF-like", "di-jet+VBF-like"};
   //  std::vector<TString> cuts = {"10","20","30","40","50","60","70","80","90","100","110","120","130","140","150","160","170","180","190","200"};
 
   TH1F * recohist = 0;  
@@ -560,16 +618,21 @@ void HGC::CalculateRates(double par0, double par1, double par2, std::string algo
 
   TString cut_dijetmass = cut_basic + "&&" + cut_etaprod + "&& abs(jets_eta[1])>1.7 && abs(jets_eta[1])<2.8 &&  ( sqrt(2*sqrt(  pow("+calibpt+",2)*pow(cosh(jets_eta[0]),2)) * sqrt(  pow("+calibpt1+",2)*pow(cosh(jets_eta[1]),2)) - 2 *" +calibpt+ "*" + calibpt1 + "*( cos(jets_phi[0]-jets_phi[1]) + sinh(jets_eta[0])*sinh(jets_eta[1])    )    ))  > 200" ;
 
-  recohist = helper.single_plot( snwebb + "/" + file1 + "/jet_ntuples_merged/ntuple_jet_merged_"+ tree1 +"_"+stats+".root", tree1+"_Jet", calibpt, cut_basic, 200, 0, 1000 );
+  recohist = helper.single_plot( snwebb + "/" + file1 + "/jet_ntuples_merged/ntuple_jet_merged_"+ tree1 +"_"+stats+".root", tree1+"_Jet", calibpt, cut_basic, 1000, 0, 1000 );
+
+
+  recohist->SaveAs(("recohist"+ tree1+ ".root").c_str());
+
   recohist_vbf = helper.single_plot( snwebb + "/" + file1 + "/jet_ntuples_merged/ntuple_jet_merged_"+ tree1 +"_"+stats+".root", tree1+"_Jet", calibpt, cut_vbf, 200, 0, 1000 );
 
 
-  int nbins = 40;
+  int nbins = 80;
   TH1F * rate = new TH1F("rate","",nbins,2.5,202.5);
+  TGraphErrors * rate_graph = new TGraphErrors(nbins);
   TH1F * ratevbf = new TH1F("rate_vbf","",nbins,2.5,202.5);  
-  TH1F * ratedijet = new TH1F("rate_dijet","",nbins,2.5,202.5);  
-  TH1F * ratedijetmass = new TH1F("rate_dijetmass","",nbins,2.5,202.5);  
-  TH1F * ratedijetvbf = new TH1F("rate_dijetvbf","",nbins,2.5,202.5);  
+  // TH1F * ratedijet = new TH1F("rate_dijet","",nbins,2.5,202.5);  
+  // TH1F * ratedijetmass = new TH1F("rate_dijetmass","",nbins,2.5,202.5);  
+  // TH1F * ratedijetvbf = new TH1F("rate_dijetvbf","",nbins,2.5,202.5);  
 
   for ( int i = 1; i < nbins + 1; i++){
 
@@ -577,87 +640,103 @@ void HGC::CalculateRates(double par0, double par1, double par2, std::string algo
     double l1pt = rate->GetBinCenter(i);
     double offlinept = mapping->Eval( l1pt );
     int newi = rate->GetXaxis()->FindBin(offlinept);
-    if ( newi > nbins ) continue;
+
+    int recohisti = recohist->GetXaxis()->FindBin(offlinept);
+
     //Inclusive
-    rate->SetBinContent(newi, 31200 * recohist->Integral(i,recohist->GetNbinsX()+1) / recohist->Integral());
+
+    rate_graph->SetPoint(i-1, offlinept, 31200 * recohist->Integral(recohisti,recohist->GetNbinsX()+1) / recohist->Integral() );
+
     double sA = 0;
     double sC = 0;
-    double A = recohist->IntegralAndError(i,recohist->GetNbinsX()+1,sA);
+    double A = recohist->IntegralAndError(recohisti,recohist->GetNbinsX()+1,sA);
     double C = recohist->IntegralAndError(0,recohist->GetNbinsX()+1,sC);
     double B = C-A;
     double err =std::sqrt( ((B*B)/(C*C*C*C))*(sA*sA)  +  ((A*A)/(C*C*C*C))*( sC*sC-sA*sA  )  ) ;
+    rate_graph->SetPointError(i-1, 0, 31200 * err );
+
+    if ( newi > nbins ) continue;
+
+    rate->SetBinContent(newi, 31200 * recohist->Integral(recohisti,recohist->GetNbinsX()+1) / recohist->Integral());
     rate->SetBinError(newi, 31200 * err );
 
-
-    //VBF like
-    ratevbf->SetBinContent(newi, 31200 * recohist_vbf->Integral(i,recohist_vbf->GetNbinsX()+1) / recohist->Integral());
-    sA = 0;
-    sC = 0;
-    A = recohist_vbf->IntegralAndError(i,recohist_vbf->GetNbinsX()+1,sA);
-    C = recohist->IntegralAndError(0,recohist->GetNbinsX()+1,sC);
-    B = C-A;
-    err =std::sqrt( ((B*B)/(C*C*C*C))*(sA*sA)  +  ((A*A)/(C*C*C*C))*( sC*sC-sA*sA  )  ) ;
-    ratevbf->SetBinError(newi, 31200 * err );
+    // //VBF like
+    // ratevbf->SetBinContent(newi, 31200 * recohist_vbf->Integral(recohisti,recohist_vbf->GetNbinsX()+1) / recohist->Integral());
+    // sA = 0;
+    // sC = 0;
+    // A = recohist_vbf->IntegralAndError(recohisti,recohist_vbf->GetNbinsX()+1,sA);
+    // C = recohist->IntegralAndError(0,recohist->GetNbinsX()+1,sC);
+    // B = C-A;
+    // err =std::sqrt( ((B*B)/(C*C*C*C))*(sA*sA)  +  ((A*A)/(C*C*C*C))*( sC*sC-sA*sA  )  ) ;
+    // ratevbf->SetBinError(newi, 31200 * err );
 
 
     //    std::cout <<  cut_dijet + "&&"+ calibpt1 + ">" + TString(std::to_string( rate->GetBinLowEdge(i) ) );
 
 
-    //Di jet
-    recohist_dijet = helper.single_plot( snwebb + "/" + file1 + "/jet_ntuples_merged/ntuple_jet_merged_"+ tree1 +"_"+stats+".root", tree1+"_Jet", calibpt, cut_dijet + "&&"+calibpt1 + ">" + TString(std::to_string( rate->GetBinLowEdge(i) ) ) , 200, 0, 1000 );
-    ratedijet->SetBinContent(newi, 31200 * recohist_dijet->Integral(i,recohist_dijet->GetNbinsX()+1) / recohist->Integral());
-    sA = 0;
-    sC = 0;
-    A = recohist_dijet->IntegralAndError(i,recohist_dijet->GetNbinsX()+1,sA);
-    C = recohist->IntegralAndError(0,recohist->GetNbinsX()+1,sC);
-    B = C-A;
-    err =std::sqrt( ((B*B)/(C*C*C*C))*(sA*sA)  +  ((A*A)/(C*C*C*C))*( sC*sC-sA*sA  )  ) ;
-    ratedijet->SetBinError(newi, 31200 * err );
+    // //Di jet
+    // recohist_dijet = helper.single_plot( snwebb + "/" + file1 + "/jet_ntuples_merged/ntuple_jet_merged_"+ tree1 +"_"+stats+".root", tree1+"_Jet", calibpt, cut_dijet + "&&"+calibpt1 + ">" + TString(std::to_string( rate->GetBinLowEdge(i) ) ) , 200, 0, 1000 );
+    // ratedijet->SetBinContent(newi, 31200 * recohist_dijet->Integral(recohisti,recohist_dijet->GetNbinsX()+1) / recohist->Integral());
+    // sA = 0;
+    // sC = 0;
+    // A = recohist_dijet->IntegralAndError(recohisti,recohist_dijet->GetNbinsX()+1,sA);
+    // C = recohist->IntegralAndError(0,recohist->GetNbinsX()+1,sC);
+    // B = C-A;
+    // err =std::sqrt( ((B*B)/(C*C*C*C))*(sA*sA)  +  ((A*A)/(C*C*C*C))*( sC*sC-sA*sA  )  ) ;
+    // ratedijet->SetBinError(newi, 31200 * err );
 
 
 
-    //Di jet + vbf
-    recohist_dijetvbf = helper.single_plot( snwebb + "/" + file1 + "/jet_ntuples_merged/ntuple_jet_merged_"+ tree1 +"_"+stats+".root", tree1+"_Jet", calibpt, cut_dijetvbf + "&&"+calibpt1 + ">" + TString(std::to_string( rate->GetBinLowEdge(i) ) ) , 200, 0, 1000 );
-    ratedijetvbf->SetBinContent(newi, 31200 * recohist_dijetvbf->Integral(i,recohist_dijetvbf->GetNbinsX()+1) / recohist->Integral());
-    sA = 0;
-    sC = 0;
-    A = recohist_dijetvbf->IntegralAndError(i,recohist_dijetvbf->GetNbinsX()+1,sA);
-    C = recohist->IntegralAndError(0,recohist->GetNbinsX()+1,sC);
-    B = C-A;
-    err =std::sqrt( ((B*B)/(C*C*C*C))*(sA*sA)  +  ((A*A)/(C*C*C*C))*( sC*sC-sA*sA  )  ) ;
-    ratedijetvbf->SetBinError(newi, 31200 * err );
+    // //Di jet + vbf
+    // recohist_dijetvbf = helper.single_plot( snwebb + "/" + file1 + "/jet_ntuples_merged/ntuple_jet_merged_"+ tree1 +"_"+stats+".root", tree1+"_Jet", calibpt, cut_dijetvbf + "&&"+calibpt1 + ">" + TString(std::to_string( rate->GetBinLowEdge(i) ) ) , 200, 0, 1000 );
+    // ratedijetvbf->SetBinContent(newi, 31200 * recohist_dijetvbf->Integral(recohisti,recohist_dijetvbf->GetNbinsX()+1) / recohist->Integral());
+    // sA = 0;
+    // sC = 0;
+    // A = recohist_dijetvbf->IntegralAndError(recohisti,recohist_dijetvbf->GetNbinsX()+1,sA);
+    // C = recohist->IntegralAndError(0,recohist->GetNbinsX()+1,sC);
+    // B = C-A;
+    // err =std::sqrt( ((B*B)/(C*C*C*C))*(sA*sA)  +  ((A*A)/(C*C*C*C))*( sC*sC-sA*sA  )  ) ;
+    // ratedijetvbf->SetBinError(newi, 31200 * err );
     
 
 
-    // //Di jet + mass
-    recohist_dijetmass = helper.single_plot( snwebb + "/" + file1 + "/jet_ntuples_merged/ntuple_jet_merged_"+ tree1 +"_"+stats+".root", tree1+"_Jet", calibpt, cut_dijetmass + "&&"+calibpt1 + ">" + TString(std::to_string( rate->GetBinLowEdge(i) ) ) , 200, 0, 1000 );
-    ratedijetmass->SetBinContent(newi, 31200 * recohist_dijetmass->Integral(i,recohist_dijetmass->GetNbinsX()+1) / recohist->Integral());
-    sA = 0;
-    sC = 0;
-    A = recohist_dijetmass->IntegralAndError(i,recohist_dijetmass->GetNbinsX()+1,sA);
-    C = recohist->IntegralAndError(0,recohist->GetNbinsX()+1,sC);
-    B = C-A;
-    err =std::sqrt( ((B*B)/(C*C*C*C))*(sA*sA)  +  ((A*A)/(C*C*C*C))*( sC*sC-sA*sA  )  ) ;
-    ratedijetmass->SetBinError(newi, 31200 * err );
+    // // //Di jet + mass
+    // recohist_dijetmass = helper.single_plot( snwebb + "/" + file1 + "/jet_ntuples_merged/ntuple_jet_merged_"+ tree1 +"_"+stats+".root", tree1+"_Jet", calibpt, cut_dijetmass + "&&"+calibpt1 + ">" + TString(std::to_string( rate->GetBinLowEdge(i) ) ) , 200, 0, 1000 );
+    // ratedijetmass->SetBinContent(newi, 31200 * recohist_dijetmass->Integral(recohisti,recohist_dijetmass->GetNbinsX()+1) / recohist->Integral());
+    // sA = 0;
+    // sC = 0;
+    // A = recohist_dijetmass->IntegralAndError(recohisti,recohist_dijetmass->GetNbinsX()+1,sA);
+    // C = recohist->IntegralAndError(0,recohist->GetNbinsX()+1,sC);
+    // B = C-A;
+    // err =std::sqrt( ((B*B)/(C*C*C*C))*(sA*sA)  +  ((A*A)/(C*C*C*C))*( sC*sC-sA*sA  )  ) ;
+    // ratedijetmass->SetBinError(newi, 31200 * err );
     
 
 
 
   }
+  _outdir = _cmd->string_val( "--outdir" );
+  rate_graph->SaveAs(("plots/" + _outdir + "/rateg_Inclusive_"+algo+".root").c_str());
 
-  //  ratevec.push_back(rate);
+  ratevec.push_back(rate);
+
+
   // ratevec.push_back(ratedijet);  
   // ratevec.push_back(ratedijetmass);  
-
-
   ratevec.push_back(ratevbf);  
-  ratevec.push_back(ratedijetvbf);  
+  //  ratevec.push_back(ratedijetvbf);  
 
 
+
+
+  rategraphvec.push_back(rate_graph);
 
   Plotter plotter( _cmd );
   //  plotter.Draw(rate, "rate", "rate", true);
-  plotter.Draw(ratevec, legend, "rate", true);
+  plotter.Draw(ratevec, legend, "rate_" + algo, true);
+
+
+  
   
 }
 
