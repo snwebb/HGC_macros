@@ -35,8 +35,12 @@ void Plotter::InitialiseLatex(){
 
   _latex = new TLatex();
   _latex->SetNDC();
-  _latex->SetTextSize(0.03);
-  _latex->SetText(0.2,0.9,"CMS Simulation Preliminary, VBF H#rightarrowinv. #sqrt{s}=14 TeV");
+  _latex->SetTextFont(42);
+  _latex->SetTextSize(0.04);
+  //  _latex->SetText(0.2,0.9,"CMS Simulation Preliminary, VBF H#rightarrowinv. #sqrt{s}=14 TeV");
+  _latex->SetText(0.2,0.81,"#splitline{CMS Simulation Preliminary, 14 TeV, 200 PU}{1.7 < jet_{#eta} < 2.8}");
+  //  _latex->AddText(0.2,0.8,"CMS Simulation Preliminary, 14 TeV, 200 PU");
+  //  _latex->AddText(0.5,0.5,"1.7 < jet_{#eta} < 2.8");
 }
 
 void Plotter::InitialiseLegend(){
@@ -46,7 +50,8 @@ void Plotter::InitialiseLegend(){
   //  _legend->SetHeader("#splitline{p_T(gen. jet)>20 GeV}{1.6<|#eta(gen.jet)|<2.9}");
   _legend->SetFillColor(0);
   _legend->SetBorderSize(0);
-  _legend->SetTextSize(0.03);
+  _legend->SetTextSize(0.04);
+
 
 }
 
@@ -64,7 +69,9 @@ void Plotter::DrawGraphs(std::vector<TGraphErrors*>& graphs, std::vector<TString
   TCanvas * c = _canvas;
   c->SetCanvasSize(800, 600);
   gPad->SetTicks(1,1);
-  SetLegendXY( 0.6, 0.63, 0.82, 0.85  );
+  //  SetLegendXY( 0.6, 0.63, 0.82, 0.85  );
+  //  SetLegendXY( 0.5, 0.63, 0.72, 0.85  );
+  SetLegendXY( 0.4, 0.48, 0.62, 0.70  );
   _legend->Clear();
   int i = 0;
     for (auto &graph: graphs ){    
@@ -77,25 +84,25 @@ void Plotter::DrawGraphs(std::vector<TGraphErrors*>& graphs, std::vector<TString
       if ( i==0 ){
 	graph->Draw("ap");
 	gStyle->SetOptStat(0);
-	graph->SetTitle(";gen p_{T};Resolution");
+	//	graph->SetTitle(";generated p_{T} [GeV];Resolution");
+	graph->SetTitle(";generated p_{T} [GeV];#sigma_{p_{T}}/generated p_{T}");
+	graph->GetXaxis()->SetTitleSize(0.04);
+	graph->GetYaxis()->SetTitleSize(0.04);
 	graph->GetXaxis()->SetRangeUser(20,300);
-	graph->GetYaxis()->SetRangeUser(0,0.6);
+	graph->GetYaxis()->SetRangeUser(0,0.7);
 	graph->Draw("apsame");
       }
       else {
 	graph->Draw("psame");
       }
-      _legend->AddEntry(graph, legend.at(i), "L" );
+      _legend->AddEntry(graph, legend.at(i), "PL" );
       i++;
     }
 
-
+    _latex->Draw("same");
     _legend->Draw("same");
     c->SaveAs("plots/" + TString(_outdir) + "/res2.png");
     c->SaveAs("plots/" + TString(_outdir) + "/res2.root");
-  //  c->SaveAs("plots/" + TString(_outdir) + "/"+sa.root");
-  
-
 
 }
 
@@ -596,7 +603,7 @@ void Plotter::Draw(std::vector<TH1F*>& hists, std::vector<TString>& legend, TStr
 
   }
 
-  //_latex->Draw("same");
+  //  _latex->Draw("same");
   _legend->Draw("same");
 
   gPad->SetTicks();
