@@ -4,7 +4,7 @@
 int main( int argc, char ** argv){
 
   CmdLine cmd( argc, argv ) ;
-
+  
   HGC hgc( &cmd );
 
 
@@ -58,6 +58,10 @@ int main( int argc, char ** argv){
 HGC::HGC( CmdLine* cmd ){
 
   _cmd = cmd;
+  _config = cmd->string_val( "--config" );
+  std::ifstream inputjson(_config);
+  inputjson >> _json;
+
   
 }
 

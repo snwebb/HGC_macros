@@ -5,6 +5,8 @@
 #include "PlotterResponse.h"
 #include "PlotterResolution.h"
 #include "PlotterEventDisplay.h"
+#include "json.hpp"
+using nlohmann::json;
 
 class HGC{
 
@@ -16,6 +18,8 @@ class HGC{
 
   CmdLine *  _cmd;
   std::string _outdir;
+  std::string _config;
+  json _json;
 
  public:
 
