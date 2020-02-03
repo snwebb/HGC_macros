@@ -39,6 +39,7 @@ class HGC{
 
   //Single plots
   void plot_nC3D();
+  void plot_nTCs();
   void plot_GenRecoET();
   void JetStudies();
   void JetStudies(double par0, double par1, double par2, std::string algo);

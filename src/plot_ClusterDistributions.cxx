@@ -266,32 +266,52 @@ void HGC::plot_nC3D(){
   std::vector<TString> legend;
   Plotter plotter( _cmd );
 
-
   //Gamma stc threshold study
-  files.push_back( "SingleGammaPt25/SingleGamma-PU2000-stc-wThresh-TCs-histoMax-DRA040-DRB00-NS");
-  files.push_back("SingleGammaPt25/SingleGammaPt25_PU200_stc_HistoMax");
-  legend.push_back( "stc w/thresh");
-  legend.push_back( "stc");
+  files.push_back( "DoubleNu/DoubleNu-PU200-Default-withTCs-DR0p2");
+  // legend.push_back( "stc w/thresh");
+  legend.push_back( "");
 
   for(unsigned int i=0;i<files.size();i++){
 
-    TString cutval = "0.5";
+    TString cutval = "1.0";
+    //    TString cutval = "0.5";
     // if ( i == 1 ) cutval = "1";
     // if ( i == 2 ) cutval = "2";
     // if ( i == 3 ) cutval = "5";
     // if ( i == 4 ) cutval = "10";
     //    TH1F * ncl3D = helper.single_plot( tstreble + "/" +files.at(i) +"/jet_ntuples_merged/ntuple_jet_merged_2.root" , "HGCalTriggerNtupleJet", "Sum$(cl3d_pt>"+cutval+")/2", "", 250,0,750);
-    TH1F * ncl3D = helper.single_plot( snwebb + "/" +files.at(i) +"/jet_ntuples_merged/ntuple_jet_merged_*1.root" , "HGCalTriggerNtupleJet", "Sum$(cl3d_pt>"+cutval+")/2", "", 450,300,750);
-    //    TH1F * ncl3D = helper.single_plot( snwebb + "/" +files.at(i) +"/jet_ntuples_merged/ntuple_jet_merged_2.root" , "HGCalTriggerNtupleJet", "Sum$(cl3d_pt>"+cutval+")/2", "", 250,0,10);
-
+    TH1F * ncl3D = helper.single_plot( snwebb + "/" +files.at(i) +"/jet_ntuples_merged/ntuple_jet_merged_hgcalTriggerNtuplizer_*.root" , "hgcalTriggerNtuplizer_Jet", "Sum$(cl3d_pt>"+cutval+")", "", 450,300,750);
     //    ncl3D->Scale(0.5);//per endcap
     ncl3D->SetTitle(";3D clusters per endcap;arbitrary units");
     ncl3D->Scale(1/(ncl3D->Integral()));
     hist.push_back( ncl3D );
+  }
+  plotter.Draw( hist , legend, "ncl3d" , true);
+  
+}
+
+void HGC::plot_nTCs(){
+
+  std::vector<TH1F*> hist;
+  std::vector<TString> files;
+  std::vector<TString> legend;
+  Plotter plotter( _cmd );
+
+  files.push_back( "DoubleNu/DoubleNu-PU200-Default-withTCs-DR0p2");
+
+  for(unsigned int i=0;i<files.size();i++){
+
+    TString cutval = "0.0";
+    TH1F * nTCs = helper.single_plot( snwebb + "/" +files.at(i) +"/jet_ntuples_merged/ntuple_jet_merged_1.root" , "hgcalTriggerNtuplizer_Jet", "Sum$(tc_pt>"+cutval+")", "", 10000,0,10000);
+
+    //    ncl3D->Scale(0.5);//per endcap
+    nTCs->SetTitle(";TCs per endcap;arbitrary units");
+    nTCs->Scale(1/(nTCs->Integral()));
+    hist.push_back( nTCs );
  
   }
   
-  plotter.Draw( hist , legend, "ncl3d" , true);
+  plotter.Draw( hist , legend, "nTCs" , true);
   
 }
 
