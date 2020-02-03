@@ -87,7 +87,7 @@ void HGC::plot_GenRecoET(){
   // std::vector<TString> description = { "STC4_CTC4", "STC4_16"};
   // std::vector<TString> legend = { "STC4+CTC4", "STC4+16"};
   // std::string algo = "Fp8BestchoiceDummyHistomaxNtup";
-  
+
   // std::vector<TString> trees = { tree_stc, tree_bc_c4, tree_thresh};
   // std::vector<TString> description = { "STC4_16", "BC_4", "Thresh"};
   // std::vector<TString> legend = { "STC4+16", "BC-4", "Threshold"};
@@ -97,6 +97,10 @@ void HGC::plot_GenRecoET(){
   // std::vector<TString> description = { "200", "140", "0"};
   // std::vector<TString> legend = { "PU 200", "PU 140", "PU 0"};
   // std::string algo = "Fp8BestchoiceDummyHistomaxNtup";
+
+  // std::vector<TString> trees = { tree_thresh, tree_stc, tree_bc, tree_mixed};
+  // std::vector<TString> description = { "th","stc","bc","mixed"};
+  // std::vector<TString> legend = { "Threshold","STC","Best Choice", "Mixed"};
   
   // std::vector<TString> trees = { tree_thresh, tree_stc, tree_bc, tree_mixed, tree_bc_c4};
   // std::vector<TString> description = { "th","stc","bc","mixed", "bccoarse"};
@@ -148,6 +152,49 @@ void HGC::plot_GenRecoET(){
   // std::vector<TString> legend = { "Coarse-16 BC in CE-H"};
   // std::string algo = std::string(tree_bc_c16);
 
+  std::vector<TString> etaCuts = {
+    "VBF_parton_genjet>=0 && VBF_parton_jets>=0 && abs(genjet_eta[VBF_parton_genjet])>1.7 && abs(genjet_eta[VBF_parton_genjet])<2.8",
+    "VBF_parton_genjet>=0 && VBF_parton_jets>=0 && abs(genjet_eta[VBF_parton_genjet])>1.7 && abs(genjet_eta[VBF_parton_genjet])<2.8 && abs(jets_eta[VBF_parton_jets])>1.7 && abs(jets_eta[VBF_parton_jets])<1.9",
+    "VBF_parton_genjet>=0 && VBF_parton_jets>=0 && abs(genjet_eta[VBF_parton_genjet])>1.7 && abs(genjet_eta[VBF_parton_genjet])<2.8 && abs(jets_eta[VBF_parton_jets])>1.9 && abs(jets_eta[VBF_parton_jets])<2.0",
+    "VBF_parton_genjet>=0 && VBF_parton_jets>=0 && abs(genjet_eta[VBF_parton_genjet])>1.7 && abs(genjet_eta[VBF_parton_genjet])<2.8 && abs(jets_eta[VBF_parton_jets])>2.0 && abs(jets_eta[VBF_parton_jets])<2.1",
+    "VBF_parton_genjet>=0 && VBF_parton_jets>=0 && abs(genjet_eta[VBF_parton_genjet])>1.7 && abs(genjet_eta[VBF_parton_genjet])<2.8 && abs(jets_eta[VBF_parton_jets])>2.1 && abs(jets_eta[VBF_parton_jets])<2.2",
+    "VBF_parton_genjet>=0 && VBF_parton_jets>=0 && abs(genjet_eta[VBF_parton_genjet])>1.7 && abs(genjet_eta[VBF_parton_genjet])<2.8 && abs(jets_eta[VBF_parton_jets])>2.2 && abs(jets_eta[VBF_parton_jets])<2.3",
+    "VBF_parton_genjet>=0 && VBF_parton_jets>=0 && abs(genjet_eta[VBF_parton_genjet])>1.7 && abs(genjet_eta[VBF_parton_genjet])<2.8 && abs(jets_eta[VBF_parton_jets])>2.3 && abs(jets_eta[VBF_parton_jets])<2.4",
+    "VBF_parton_genjet>=0 && VBF_parton_jets>=0 && abs(genjet_eta[VBF_parton_genjet])>1.7 && abs(genjet_eta[VBF_parton_genjet])<2.8 && abs(jets_eta[VBF_parton_jets])>2.4 && abs(jets_eta[VBF_parton_jets])<2.5",
+    "VBF_parton_genjet>=0 && VBF_parton_jets>=0 && abs(genjet_eta[VBF_parton_genjet])>1.7 && abs(genjet_eta[VBF_parton_genjet])<2.8 && abs(jets_eta[VBF_parton_jets])>2.5 && abs(jets_eta[VBF_parton_jets])<2.6",
+    "VBF_parton_genjet>=0 && VBF_parton_jets>=0 && abs(genjet_eta[VBF_parton_genjet])>1.7 && abs(genjet_eta[VBF_parton_genjet])<2.8 && abs(jets_eta[VBF_parton_jets])>2.6 && abs(jets_eta[VBF_parton_jets])<2.8",
+   };
+  std::vector<TString> etaCutDescriptions = { 
+    "1p7_2p8",
+
+    "1p7_1p9",
+    "1p9_2p0",
+    "2p0_2p1",
+    "2p1_2p2",
+    "2p2_2p3",
+    "2p3_2p4",
+    "2p4_2p5",
+    "2p5_2p6",
+    "2p6_2p8",
+
+
+   };
+  std::vector<TString> etaCutLegend = {
+    "Inclusive",
+
+    "1.7 < |#eta| < 1.9",
+    "1.9 < |#eta| < 2.0",
+    "2.0 < |#eta| < 2.1",
+    "2.1 < |#eta| < 2.2",
+    "2.2 < |#eta| < 2.3",
+    "2.3 < |#eta| < 2.4",
+    "2.4 < |#eta| < 2.5",
+    "2.5 < |#eta| < 2.6",
+    "2.6 < |#eta| < 2.8",
+
+   };
+
+  std::vector<TString> fullDescriptions;
 
   // std::vector<TString> trees = { tree_bc};
   // std::vector<TString> description = { "bc"};
@@ -179,6 +226,8 @@ void HGC::plot_GenRecoET(){
   // std::vector<TString> description = { "th","stc4161616","stc416164","stc416164Coarse"};
   // std::vector<TString> legend = { "Threshold","STC 4,16,16,16","STC 4,16,16,4","STC 4,16,16,4(Coarse)"};
 
+  std::vector<TString> allLegends = {};
+
   for(unsigned int i=0;i<trees.size();i++){
 
 
@@ -186,59 +235,137 @@ void HGC::plot_GenRecoET(){
     //    if (i==2 ) file = file_VBF_MixedFE;
     //5 eta bins
 
-    // histobjects.emplace_back( HistObject( "Jets", (snwebb + "/" + files.at(i) + "/jet_ntuples_merged/ntuple_jet_merged_"+stats+".root"), "", "jets_pt[VBF_parton_jets]:genjet_pt[VBF_parton_genjet]", cuteta51, true  ) );
-    // histobjects.emplace_back( HistObject( "Jets", (snwebb + "/" + files.at(i) + "/jet_ntuples_merged/ntuple_jet_merged_"+stats+".root"), "", "jets_pt[VBF_parton_jets]:genjet_pt[VBF_parton_genjet]" ,cuteta52, true  ) );
-    // histobjects.emplace_back( HistObject( "Jets", (snwebb + "/" + files.at(i) + "/jet_ntuples_merged/ntuple_jet_merged_"+stats+".root"), "", "jets_pt[VBF_parton_jets]:genjet_pt[VBF_parton_genjet]" ,cuteta53, true  ) );
-    // histobjects.emplace_back( HistObject( "Jets", (snwebb + "/" + files.at(i) + "/jet_ntuples_merged/ntuple_jet_merged_"+stats+".root"), "", "jets_pt[VBF_parton_jets]:genjet_pt[VBF_parton_genjet]" ,cuteta54, true  ) );
-    // histobjects.emplace_back( HistObject( "Jets", (snwebb + "/" + files.at(i) + "/jet_ntuples_merged/ntuple_jet_merged_"+stats+".root"), "", "jets_pt[VBF_parton_jets]:genjet_pt[VBF_parton_genjet]" ,cuteta55, true  ) );
+    for (unsigned int i_etaCut =0; i_etaCut < etaCuts.size(); ++i_etaCut ) {
+       // if (i==1) file = file2_QG_Pos_140;
+       // if (i==2) file = file2_QG_Pos_0;
+      //5 eta bins
+      // histobjects.emplace_back( HistObject( "Jets", (snwebb + "/" + files.at(i) + "/jet_ntuples_merged/ntuple_jet_merged_"+stats+".root"), "", "jets_pt[VBF_parton_jets]:genjet_pt[VBF_parton_genjet]", cuteta51, true  ) );
+      // histobjects.emplace_back( HistObject( "Jets", (snwebb + "/" + files.at(i) + "/jet_ntuples_merged/ntuple_jet_merged_"+stats+".root"), "", "jets_pt[VBF_parton_jets]:genjet_pt[VBF_parton_genjet]" ,cuteta52, true  ) );
+      // histobjects.emplace_back( HistObject( "Jets", (snwebb + "/" + files.at(i) + "/jet_ntuples_merged/ntuple_jet_merged_"+stats+".root"), "", "jets_pt[VBF_parton_jets]:genjet_pt[VBF_parton_genjet]" ,cuteta53, true  ) );
+      // histobjects.emplace_back( HistObject( "Jets", (snwebb + "/" + files.at(i) + "/jet_ntuples_merged/ntuple_jet_merged_"+stats+".root"), "", "jets_pt[VBF_parton_jets]:genjet_pt[VBF_parton_genjet]" ,cuteta54, true  ) );
+      // histobjects.emplace_back( HistObject( "Jets", (snwebb + "/" + files.at(i) + "/jet_ntuples_merged/ntuple_jet_merged_"+stats+".root"), "", "jets_pt[VBF_parton_jets]:genjet_pt[VBF_parton_genjet]" ,cuteta55, true  ) );
 
 
-    //Pion
-    //    histobjects.emplace_back( HistObject( "Jets", (snwebb + "/" + files.at(i) + "/jet_ntuples_merged/ntuple_jet_merged_"+stats+".root"), "", "jets_pt[Pion_jets]:genjet_pt[Pion_genjet]", cut_pion, true  ) );
-    //Not separated (default)
-    //                histobjects.emplace_back( HistObject( "Jets", (snwebb + "/" + files.at(i) + "/jet_ntuples_merged/ntuple_jet_merged_"+stats+".root"), "", "jets_pt[VBF_parton_jets]:genjet_pt[VBF_parton_genjet]" ,cut, true  ) );
+      //Pion
+      //    histobjects.emplace_back( HistObject( "Jets", (snwebb + "/" + files.at(i) + "/jet_ntuples_merged/ntuple_jet_merged_"+stats+".root"), "", "jets_pt[Pion_jets]:genjet_pt[Pion_genjet]", cut_pion, true  ) );
+      //Not separated (default)
+      //                histobjects.emplace_back( HistObject( "Jets", (snwebb + "/" + files.at(i) + "/jet_ntuples_merged/ntuple_jet_merged_"+stats+".root"), "", "jets_pt[VBF_parton_jets]:genjet_pt[VBF_parton_genjet]" ,cut, true  ) );
+
+       // histobjects.emplace_back( HistObject( "Jets", (snwebb + "/" + file + "/jet_ntuples_merged/ntuple_jet_merged_"+ trees.at(i) +"_"+stats+".root"), trees.at(i)+"_Jet", "", "jets_pt[VBF_parton_jets]:genjet_pt[VBF_parton_genjet]" ,cut_v9, true  ) );
+       histobjects.emplace_back( HistObject( "Jets", (snwebb + "/" + file + "/jet_ntuples_merged/ntuple_jet_merged_"+ trees.at(i) +"_"+stats+".root"), trees.at(i)+"_Jet", "", "jets_pt[VBF_parton_jets]:genjet_pt[VBF_parton_genjet]" ,etaCuts[i_etaCut], true  ) );
+       fullDescriptions.emplace_back( description.at(i) + etaCutDescriptions.at(i_etaCut) );
+       allLegends.emplace_back( legend.at(i) + " " + etaCutLegend.at(i_etaCut) );
+
+      //3D attempt
+      //         histobjects.emplace_back( HistObject( "Jets", (snwebb + "/" + file + "/jet_ntuples_merged/ntuple_jet_merged_"+ trees.at(i) +"_"+stats+".root"), trees.at(i)+"_Jet", "", "jets_pt[VBF_parton_jets]*2.3/abs(jets_eta[VBF_parton_jets]):genjet_pt[VBF_parton_genjet]" ,cut_v9, true  ) );
+
+       //histobjects.emplace_back( HistObject( "Jets", (snwebb + "/" + file + "/jet_ntuples_merged/ntuple_jet_merged_"+ trees.at(i) +"_"+stats+".root"), trees.at(i)+"_Jet", "", "jets_pt[VBF_parton_jets]:genjet_pt[VBF_parton_genjet]" ,cut_v9, true  ) );
 
 
-     histobjects.emplace_back( HistObject( "Jets", (snwebb + "/" + file + "/jet_ntuples_merged/ntuple_jet_merged_"+ trees.at(i) +"_"+stats+".root"), trees.at(i)+"_Jet", "", "jets_pt[VBF_parton_jets]:genjet_pt[VBF_parton_genjet]" ,cut_v9, true  ) );
+      // histobjects.emplace_back( HistObject( "Jets", (snwebb + "/" + file + "/jet_ntuples_merged/ntuple_jet_merged_"+ trees.at(i) +"_"+stats+".root"), trees.at(i)+"_Jet", "", "jets_pt[VBF_parton_jets]*2.3/abs(jets_eta[VBF_parton_jets]):genjet_pt[VBF_parton_genjet]" ,cuteta52, true  ) );
+      // histobjects.emplace_back( HistObject( "Jets", (snwebb + "/" + file + "/jet_ntuples_merged/ntuple_jet_merged_"+ trees.at(i) +"_"+stats+".root"), trees.at(i)+"_Jet", "", "jets_pt[VBF_parton_jets]*2.3/abs(jets_eta[VBF_parton_jets]):genjet_pt[VBF_parton_genjet]" ,cuteta53, true  ) );
+      // histobjects.emplace_back( HistObject( "Jets", (snwebb + "/" + file + "/jet_ntuples_merged/ntuple_jet_merged_"+ trees.at(i) +"_"+stats+".root"), trees.at(i)+"_Jet", "", "jets_pt[VBF_parton_jets]*2.3/abs(jets_eta[VBF_parton_jets]):genjet_pt[VBF_parton_genjet]" ,cuteta54, true  ) );
+      //    histobjects.emplace_back( HistObject( "Jets", (snwebb + "/" + file + "/jet_ntuples_merged/ntuple_jet_merged_"+ trees.at(i) +"_"+stats+".root"), trees.at(i)+"_Jet", "", "jets_pt[VBF_parton_jets]:genjet_pt[VBF_parton_genjet]" ,cuteta55, true  ) );
 
-    //3D attempt
-    //         histobjects.emplace_back( HistObject( "Jets", (snwebb + "/" + file + "/jet_ntuples_merged/ntuple_jet_merged_"+ trees.at(i) +"_"+stats+".root"), trees.at(i)+"_Jet", "", "jets_pt[VBF_parton_jets]*2.3/abs(jets_eta[VBF_parton_jets]):genjet_pt[VBF_parton_genjet]" ,cut_v9, true  ) );
-     //histobjects.emplace_back( HistObject( "Jets", (snwebb + "/" + file + "/jet_ntuples_merged/ntuple_jet_merged_"+ trees.at(i) +"_"+stats+".root"), trees.at(i)+"_Jet", "", "jets_pt[VBF_parton_jets]:genjet_pt[VBF_parton_genjet]" ,cut_v9, true  ) );
-
-
-    // histobjects.emplace_back( HistObject( "Jets", (snwebb + "/" + file + "/jet_ntuples_merged/ntuple_jet_merged_"+ trees.at(i) +"_"+stats+".root"), trees.at(i)+"_Jet", "", "jets_pt[VBF_parton_jets]*2.3/abs(jets_eta[VBF_parton_jets]):genjet_pt[VBF_parton_genjet]" ,cuteta52, true  ) );
-    // histobjects.emplace_back( HistObject( "Jets", (snwebb + "/" + file + "/jet_ntuples_merged/ntuple_jet_merged_"+ trees.at(i) +"_"+stats+".root"), trees.at(i)+"_Jet", "", "jets_pt[VBF_parton_jets]*2.3/abs(jets_eta[VBF_parton_jets]):genjet_pt[VBF_parton_genjet]" ,cuteta53, true  ) );
-    // histobjects.emplace_back( HistObject( "Jets", (snwebb + "/" + file + "/jet_ntuples_merged/ntuple_jet_merged_"+ trees.at(i) +"_"+stats+".root"), trees.at(i)+"_Jet", "", "jets_pt[VBF_parton_jets]*2.3/abs(jets_eta[VBF_parton_jets]):genjet_pt[VBF_parton_genjet]" ,cuteta54, true  ) );
-    //    histobjects.emplace_back( HistObject( "Jets", (snwebb + "/" + file + "/jet_ntuples_merged/ntuple_jet_merged_"+ trees.at(i) +"_"+stats+".root"), trees.at(i)+"_Jet", "", "jets_pt[VBF_parton_jets]:genjet_pt[VBF_parton_genjet]" ,cuteta55, true  ) );
-
+    }
   }
 
 
   std::vector<TProfile*> profiles;
+  std::vector<TProfile*> profilesAfterEtaCalibration;
+
+  // Choose just a few plots for final resolution plot
+  std::vector<TGraphErrors*> graphsForEtaCalibPlot;
+  std::vector<TString> allLegendsForEtaCalibPlot = {};
+  std::vector<TString> graphLegendsForEtaCalibPlot = {
+    "Inclusive",
+    "1.7 < |#eta| < 1.9",
+    "2.5 < |#eta| < 2.8",
+    // Additional plot for "inclusive after calibrating in eta" will be added later
+   };
 
   for(unsigned int i=0;i<histobjects.size();i++){
-    TH2F * hist = plotter->Draw2D(histobjects.at(i), 15, x, 4000,0,400  ,description.at(i) );//VBF
-    //    TH2F * hist = plotter.Draw2D(histobjects.at(i), 10, y, 4000,0,400  ,description.at(i) );//Pion
+      TH2F * hist = plotter->Draw2D(histobjects.at(i), 15, x, 4000,0,400  ,fullDescriptions.at(i) );//VBF
+      //    TH2F * hist = plotter.Draw2D(histobjects.at(i), 10, y, 4000,0,400  ,description.at(i) );//Pion
+      TGraphErrors * graph = plotter->DrawProfile(hist  ,(fullDescriptions.at(i)+"_profile"), "s" );
+      graphs.emplace_back( graph );
 
-    graphs.emplace_back( plotter->DrawProfile(hist  ,(description.at(i)+"_profile"), "s" ) );
-    profiles.push_back( hist->ProfileX( ( "profile_mean_eff" + description.at(i) )) );
-
-    // hist = plotter.Draw2D(histobjects2.at(i), 15, x, 4000,0,400  ,description.at(i) + "_high_eta");
-    // graphs.emplace_back( plotter.DrawProfile(hist  ,(description.at(i)+"_profile_high_eta"), "s" ) );
- 
+      // Pick out a few graphs for plotting later
+      if ( std::find(graphLegendsForEtaCalibPlot.begin(), graphLegendsForEtaCalibPlot.end(), allLegends.at(i)) != graphLegendsForEtaCalibPlot.end() ) {
+        graphsForEtaCalibPlot.emplace_back( graph );
+        allLegendsForEtaCalibPlot.emplace_back( allLegends.at(i) );
+      }
+      profiles.push_back( hist->ProfileX( fullDescriptions.at(i)+"profile_mean_eff") );
  }
 
+  // Now rerun procedure for calibrated jets
+  // For inclusive case, it's a sanity check
+  // For bins in eta, can obtain resolution after taking into account variation of calibration vs eta
+  for(unsigned int i=0;i<trees.size();i++){
 
-  plotter->DrawGraphs(graphs, legend);
-  //  plotter.DrawEtaGraphs(graphs );
-  plotter->SaveFile( graphs );
+    //graphs.emplace_back( plotter->DrawProfile(hist  ,(description.at(i)+"_profile"), "s" ) );
+    //profiles.push_back( hist->ProfileX( ( "profile_mean_eff" + description.at(i) )) );
+
+    // Calibrate and accumulate 2D plots from different eta bins
+    std::vector<TH2F*> calibrated_histos_2D_etaBins;
+    for (unsigned int i_etaCut =0; i_etaCut < etaCuts.size(); ++i_etaCut ) {
+
+      // Get calibration
+      TF1 * pol_choice = new TF1 ( "pol", "[0] + [1]*x + [2]*x*x" , 20 , 350);
+      TProfile * profile = profiles.at(i*(etaCuts.size())+i_etaCut);
+      profile->Fit( pol_choice, "R","",20,300);
+      double c = profile->GetFunction("pol")->GetParameter( 0 ); 
+      double b = profile->GetFunction("pol")->GetParameter( 1 ) ;
+      double a = profile->GetFunction("pol")->GetParameter( 2 ) ;
+
+      // Get 2D histogram of calibrated reco jet pt vs gen jet pt
+      TString calibratedJetPt("");
+      calibratedJetPt.Form("( -1.0 * %f + sqrt( %f*%f - 4*%f*(%f-jets_pt[VBF_parton_jets]) ) ) / (2 * %f)", b, b, b, a, c, a);
+      HistObject calibratedHist( "CalibratedJets", (snwebb + "/" + file + "/jet_ntuples_merged/ntuple_jet_merged_"+ trees.at(i) +"_"+stats+".root"), trees.at(i)+"_Jet", "", calibratedJetPt+":genjet_pt[VBF_parton_genjet]" ,etaCuts[i_etaCut], true  );
+      // Exclude histogram from inclusive selection (i.e. all eta)
+      // Better way to do this, rather than depending on a label?
+      if ( !etaCutLegend[i_etaCut].Contains("Inclusive") ) {
+        TH2F * hist = plotter->Draw2D(calibratedHist, 15, x, 4000,0,400  ,"EtaCalibrated/"+fullDescriptions.at(i*(etaCuts.size())+i_etaCut) );
+        calibrated_histos_2D_etaBins.emplace_back( hist );
+        plotter->DrawProfile(hist  ,"EtaCalibrated/"+(fullDescriptions.at(i*(etaCuts.size())+i_etaCut)+"_profile"), "s" );
+      }
+
+    }
+
+    if ( calibrated_histos_2D_etaBins.size() == 0 ) continue;
+
+    // Add plots of calibrated reco jet pt vs gen jet pt from the different eta bins
+    TH2F* calibrated_histo_2D = (TH2F*) calibrated_histos_2D_etaBins[0]->Clone();
+    for ( unsigned int i=1;i<calibrated_histos_2D_etaBins.size();i++ ) {
+      calibrated_histo_2D->Add( calibrated_histos_2D_etaBins[i] );
+    }
+    TGraphErrors * graph = plotter->DrawProfile(calibrated_histo_2D  ,("EtaCalibrated/"+description.at(i)+"profile"), "s" );
+    profilesAfterEtaCalibration.push_back( calibrated_histo_2D->ProfileX( description.at(i)+"profile_AfterEtaCalibration") );
+
+    graphs.emplace_back( graph );
+    allLegends.emplace_back("After calibration in #eta");
+
+    graphsForEtaCalibPlot.emplace_back( graph );
+    allLegendsForEtaCalibPlot.emplace_back(legend.at(i) + " After calibration in #eta");
+
+  }
+  
+  // Plot all resolution plots (one for each bin in eta, so many)
+  // plotter->DrawGraphs(graphs, allLegends);
+  // //  plotter.DrawEtaGraphs(graphs );
+  // plotter->SaveFile( graphs );
+
+
+  // This will just plot a few of the resolution plots to avoid cluttering the canvas
+  plotter->DrawGraphs(graphsForEtaCalibPlot, allLegendsForEtaCalibPlot);
+  plotter->SaveFile( graphsForEtaCalibPlot );
 
   delete plotter;
 
   for(unsigned int i=0;i<trees.size();i++){
 
     TF1 * pol_choice = new TF1 ( "pol", "[0] + [1]*x + [2]*x*x" , 20 , 350);
-    TProfile * profile = profiles.at(i);
+    TProfile * profile = profilesAfterEtaCalibration.at(i);
     
     profile->Fit( pol_choice, "R","",20,300);
 
@@ -318,7 +445,7 @@ void HGC::plot_nTCs(){
 
 void HGC::JetStudies(double par0, double par1, double par2, std::string algo){
 
-        std::string stats = "*";
+      std::string stats = "*";
   //      std::string stats = "1*";
 
 
