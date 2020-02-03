@@ -8,4 +8,5 @@ obj/
 HGC
 jet_ntuple_merge
 *.pdf
+*.png
 *.root
