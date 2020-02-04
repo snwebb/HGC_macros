@@ -19,6 +19,7 @@ class HGC{
   CmdLine *  _cmd;
   std::string _outdir;
   std::string _config;
+  std::string _hgcpath;
   json _json;
 
  public:

@@ -1,4 +1,5 @@
 {    
+    "hgcpath": "/vols/cms/snwebb/HGC_ntuples/",
     "inputfile": "VBF_HGG/VBF-HGG-PU200-OOP-LargerDR-DR0p2",
     "trees": {
 	"names": ["NoOOTThresholdDummyHistomaxxydr015Genclustersntuple"

@@ -1,25 +1,38 @@
 {
     "hgcpath": "/vols/cms/snwebb/HGC_ntuples/",
-    "inputfile": "VBF_HGG/VBF-HGG-PU200-OOP-LargerDR-DR0p2",
+    "inputfile": "VBF_HGG/VBF-HGG-PU200-BestChoice-Coarse-DR0p2",
     "trees": {
-	"names": ["NoOOTThresholdDummyHistomaxxydr015Genclustersntuple",
-		  "OOT1ThresholdDummyHistomaxxydr015Genclustersntuple",
-		  "OOT2ThresholdDummyHistomaxxydr015Genclustersntuple"
-		  ],
-	"description": ["nooop_thresh",
-			"oop1_thresh",
-			"oop2_thresh"
-			],
-	"legend": ["No OOT Correction",
-		   "OOT Option 1",
-		   "OOT Option 2"
-		   ]
-	},
+	"names": [
+	    "Fp8ThresholdDummyHistomaxNtup",
+	    "Fp8BestchoiceDummyHistomaxNtup",
+	    "Fp8Stc4161616DummyHistomaxNtup",
+	    "Fp8BestchoiceCoarse4DummyHistomaxNtup",
+	    "Fp8MixedDummyHistomaxNtup"
+	],
+	"description": [
+	    "Threshold",
+	    "BestChoice",
+	    "STC",
+	    "BestChoiceCoarse4",
+	    "Mixed"
+	],
+	"legend": [
+	    "Threshold",
+	    "BestChoice",
+	    "STC",
+	    "BestChoice Coarse-4",
+	    "Mixed BC+STC"
+	]
+    },
+
     "stats": "full",
     "plotrates": false,
     "plotefficiencies": false,
+
     "cuts": {
+
 	"inclusive": "VBF_parton_genjet>=0 && VBF_parton_jets>=0 && abs(genjet_eta[VBF_parton_genjet])>1.7 && abs(genjet_eta[VBF_parton_genjet])<2.8",
+
 	"values": [  "abs(genjet_eta[VBF_parton_genjet])>1.7 && abs(genjet_eta[VBF_parton_genjet])<2.8",
 		   "abs(genjet_eta[VBF_parton_genjet])>1.7 && abs(genjet_eta[VBF_parton_genjet])<2.8 && abs(jets_eta[VBF_parton_jets])>1.7 && abs(jets_eta[VBF_parton_jets])<1.9",
 		   "abs(genjet_eta[VBF_parton_genjet])>1.7 && abs(genjet_eta[VBF_parton_genjet])<2.8 && abs(jets_eta[VBF_parton_jets])>1.9 && abs(jets_eta[VBF_parton_jets])<2.0",

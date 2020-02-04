@@ -61,6 +61,7 @@ HGC::HGC( CmdLine* cmd ){
   _config = cmd->string_val( "--config" );
   std::ifstream inputjson(_config);
   inputjson >> _json;
+  _hgcpath = _json["hgcpath"];
 
   
 }
