@@ -1,0 +1,66 @@
+{
+    "hgcpath": "/vols/cms/snwebb/HGC_ntuples/",
+    "inputfile": "VBF_HGG/VBF-HGG-PU200-OOP-LargerDR-DR0p2",
+    "trees": {
+	"names": ["NoOOTThresholdDummyHistomaxxydr015Genclustersntuple",
+		  "OOT1ThresholdDummyHistomaxxydr015Genclustersntuple",
+		  "OOT2ThresholdDummyHistomaxxydr015Genclustersntuple"
+		  ],
+	"description": ["nooop_thresh",
+			"oop1_thresh",
+			"oop2_thresh"
+			],
+	"legend": ["No OOT Correction",
+		   "OOT Option 1",
+		   "OOT Option 2"
+		   ]
+	},
+    "stats": "full",
+    "plotrates": false,
+    "plotefficiencies": false,
+    "cuts": {
+	"inclusive": "VBF_parton_genjet>=0 && VBF_parton_jets>=0 && abs(genjet_eta[VBF_parton_genjet])>1.7 && abs(genjet_eta[VBF_parton_genjet])<2.8",
+	"values": [  "abs(genjet_eta[VBF_parton_genjet])>1.7 && abs(genjet_eta[VBF_parton_genjet])<2.8",
+		   "abs(genjet_eta[VBF_parton_genjet])>1.7 && abs(genjet_eta[VBF_parton_genjet])<2.8 && abs(jets_eta[VBF_parton_jets])>1.7 && abs(jets_eta[VBF_parton_jets])<1.9",
+		   "abs(genjet_eta[VBF_parton_genjet])>1.7 && abs(genjet_eta[VBF_parton_genjet])<2.8 && abs(jets_eta[VBF_parton_jets])>1.9 && abs(jets_eta[VBF_parton_jets])<2.0",
+		   "abs(genjet_eta[VBF_parton_genjet])>1.7 && abs(genjet_eta[VBF_parton_genjet])<2.8 && abs(jets_eta[VBF_parton_jets])>2.0 && abs(jets_eta[VBF_parton_jets])<2.1",
+		   "abs(genjet_eta[VBF_parton_genjet])>1.7 && abs(genjet_eta[VBF_parton_genjet])<2.8 && abs(jets_eta[VBF_parton_jets])>2.1 && abs(jets_eta[VBF_parton_jets])<2.2",
+		   "abs(genjet_eta[VBF_parton_genjet])>1.7 && abs(genjet_eta[VBF_parton_genjet])<2.8 && abs(jets_eta[VBF_parton_jets])>2.2 && abs(jets_eta[VBF_parton_jets])<2.3",
+		   "abs(genjet_eta[VBF_parton_genjet])>1.7 && abs(genjet_eta[VBF_parton_genjet])<2.8 && abs(jets_eta[VBF_parton_jets])>2.3 && abs(jets_eta[VBF_parton_jets])<2.4",
+		   "abs(genjet_eta[VBF_parton_genjet])>1.7 && abs(genjet_eta[VBF_parton_genjet])<2.8 && abs(jets_eta[VBF_parton_jets])>2.4 && abs(jets_eta[VBF_parton_jets])<2.5",
+		   "abs(genjet_eta[VBF_parton_genjet])>1.7 && abs(genjet_eta[VBF_parton_genjet])<2.8 && abs(jets_eta[VBF_parton_jets])>2.5 && abs(jets_eta[VBF_parton_jets])<2.6",
+		   "abs(genjet_eta[VBF_parton_genjet])>1.7 && abs(genjet_eta[VBF_parton_genjet])<2.8 && abs(jets_eta[VBF_parton_jets])>2.6 && abs(jets_eta[VBF_parton_jets])<2.8"
+		  ],
+	"description": [
+	    
+	    "1p7_2p8",
+	    
+	    "1p7_1p9",
+	    "1p9_2p0",
+	    "2p0_2p1",
+	    "2p1_2p2",
+	    "2p2_2p3",
+	    "2p3_2p4",
+	    "2p4_2p5",
+	    "2p5_2p6",
+	    "2p6_2p8"
+	],
+
+	"legend": [
+	    
+	    "Inclusive",
+	    
+	    "1.7 < |#eta| < 1.9",
+	    "1.9 < |#eta| < 2.0",
+	    "2.0 < |#eta| < 2.1",
+	    "2.1 < |#eta| < 2.2",
+	    "2.2 < |#eta| < 2.3",
+	    "2.3 < |#eta| < 2.4",
+	    "2.4 < |#eta| < 2.5",
+	    "2.5 < |#eta| < 2.6",
+	    "2.6 < |#eta| < 2.8"
+
+	]
+    }
+
+}

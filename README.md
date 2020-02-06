@@ -12,3 +12,10 @@ Response plots are found in `C3D_histo_jet.cxx`
 Resolution plots are found in `effRMS.cxx`
 Plot an event display using `PlotterEventDisplay.cxx`
 
+## Running the resolution, efficiency and rate plots
+
+To run do:
+
+```./HGC --outdir out --config configs/default.json```
+
+where the user sets the output directory and the input config file.

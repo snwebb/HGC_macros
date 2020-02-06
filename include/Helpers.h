@@ -37,6 +37,7 @@
 #include <tuple>
 #include <map>
 #include <iostream>
+#include <fstream>
 #include <vector>
 #include <cassert>
 #include <unordered_map>

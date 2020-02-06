@@ -5,6 +5,8 @@
 #include "PlotterResponse.h"
 #include "PlotterResolution.h"
 #include "PlotterEventDisplay.h"
+#include "json.hpp"
+using nlohmann::json;
 
 class HGC{
 
@@ -16,6 +18,9 @@ class HGC{
 
   CmdLine *  _cmd;
   std::string _outdir;
+  std::string _config;
+  std::string _hgcpath;
+  json _json;
 
  public:
 
@@ -39,6 +44,7 @@ class HGC{
 
   //Single plots
   void plot_nC3D();
+  void plot_nTCs();
   void plot_GenRecoET();
   void JetStudies();
   void JetStudies(double par0, double par1, double par2, std::string algo);
